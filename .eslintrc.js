@@ -28,7 +28,8 @@ module.exports = {
       ],
       excludedFiles: [
         'app/**',
-        'addon/**'
+        'addon/**',
+        'tests/dummy/app/**'
       ],
       parserOptions: {
         sourceType: 'script',
@@ -50,6 +51,16 @@ module.exports = {
       excludedFiles: ['tests/dummy/**/*.js'],
       env: {
         embertest: true
+      },
+      globals: {
+        lastLogMessageAssert: true,
+        openModal: true,
+        modalIsOpened: true,
+        confirmModal: true,
+        declineModal: true,
+        promptValue: true,
+        confirmState: true,
+        customModalText: true
       }
     }
   ]

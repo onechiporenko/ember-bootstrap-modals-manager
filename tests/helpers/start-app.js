@@ -2,6 +2,14 @@ import Application from '../../app';
 import config from '../../config/environment';
 import { merge } from '@ember/polyfills';
 import { run } from '@ember/runloop';
+import './confirm-modal';
+import './decline-modal';
+import './open-modal';
+import './modal-is-opened';
+import './last-log-message-assert';
+import './prompt-value';
+import './confirm-state';
+import './custom-modal-text';
 
 export default function startApp(attrs) {
   let attributes = merge({}, config.APP);

@@ -1,0 +1,34 @@
+{{#bs-modal open=modalIsOpened onSubmit=(action "confirm") onHide=(action "decline") as |modal|}}
+  {{#modal.header}}
+    {{#if options.titleComponent}}
+      {{component
+        options.titleComponent
+        options=options
+      }}
+    {{else}}
+      {{#bs-modal/header/title}}{{options.title}}{{/bs-modal/header/title}}
+    {{/if}}
+  {{/modal.header}}
+  {{#modal.body}}
+    {{#if options.bodyComponent}}
+      {{component
+        options.bodyComponent
+        options=options
+      }}
+    {{else}}
+      <p>{{options.body}}</p>
+    {{/if}}
+  {{/modal.body}}
+  {{#modal.footer}}
+    {{#if options.footerComponent}}
+      {{component
+        options.footerComponent
+        options=options
+        confirm=(action modal.submit)
+      }}
+    {{else}}
+      <p>{{options.footer}}</p>
+      {{#bs-button onClick=(action modal.submit)}}{{options.confirm}}{{/bs-button}}
+    {{/if}}
+  {{/modal.footer}}
+{{/bs-modal}}
