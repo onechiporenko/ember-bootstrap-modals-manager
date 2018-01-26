@@ -1,26 +1,20 @@
 # ember-bootstrap-modals-manager
 
-This README outlines the details of collaborating on this Ember addon.
+[![Build Status](https://travis-ci.org/onechiporenko/ember-bootstrap-modals-manager.svg?branch=master)](https://travis-ci.org/onechiporenko/ember-bootstrap-modals-manager)
+[![Codacy Badge](https://www.codacy.com/project/badge/062ef689838e43dfa46eecd1f74f22af)](https://www.codacy.com/app/cv_github/ember-bootstrap-modals-manager)
+[![Ember Observer Score](https://emberobserver.com/badges/ember-bootstrap-modals-manager.svg)](https://emberobserver.com/addons/ember-bootstrap-modals-manager)
+[![npm version](https://badge.fury.io/js/ember-bootstrap-modals-manager.png)](http://badge.fury.io/js/ember-bootstrap-modals-manager)
+[![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
+[![Downloads](http://img.shields.io/npm/dm/ember-bootstrap-modals-manager.svg)](https://www.npmjs.com/package/ember-bootstrap-modals-manager)
+
+`ember-bootstrap-modals-manager` is an Ember-addon that provides a simple mechanism for interaction with user using modals. This addon is based on modals from `ember-bootstrap`.
 
 ## Installation
 
-* `git clone <repository-url>` this repository
-* `cd ember-bootstrap-modals-manager`
-* `npm install`
+`ember i ember-bootstrap-modals-manager`
 
-## Running
+## Demo and docs
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+Check [demo-page](https://onechiporenko.github.io/ember-bootstrap-modals-manager/)
 
-## Running Tests
-
-* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
-
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
+Check [docs-page](https://onechiporenko.github.io/ember-bootstrap-modals-manager/docs/modules/EmberBootstrapModalsManager.html)

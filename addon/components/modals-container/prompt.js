@@ -32,7 +32,7 @@ export default BaseModal.extend({
 
     /**
      * @method actions.updatePromptValue
-     * @param {string} val
+     * @param {*} val
      */
     updatePromptValue(val) {
       set(this, 'promptValue', val);
