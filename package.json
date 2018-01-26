@@ -1,7 +1,7 @@
 {
   "name": "ember-bootstrap-modals-manager",
   "version": "1.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Modals-manager for modals from ember-bootstrap",
   "keywords": [
     "ember-addon"
   ],
