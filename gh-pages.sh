@@ -3,7 +3,7 @@
 git branch -D gh-pages
 git push origin --delete gh-pages
 git checkout -b gh-pages
-ember build --environment gh-pages
+ember build --prod --docs
 git rm -rf app addon config tests
 git rm -rf Brocfile.js bower.json package.json testem.json
 git rm -rf .bowerrc .editorconfig .jshintrc .travis.yml
