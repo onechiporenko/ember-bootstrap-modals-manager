@@ -11,11 +11,16 @@
     {{#bs-button class="custom-confirm-modal" onClick=(action "showCustomConfirmModal")}}Confirm Modal{{/bs-button}}
     {{#bs-button class="custom-prompt-modal" onClick=(action "showCustomPromptModal")}}Prompt Modal{{/bs-button}}
     {{#bs-button class="custom-prompt-confirm-modal" onClick=(action "showCustomPromptConfirmModal")}}Prompt Confirm Modal{{/bs-button}}
+    <h3>Settings:</h3>
+    <p><label>{{input type="checkbox" class="disallow-empty" checked=disallowEmptyPrompt}} Disallow empty prompt</label> (Confirm-button in the Prompt Modals will be disabled until user input something)</p>
     {{outlet}}
   </div>
   <div class="col-md-6">
+    <p>Last Modal Options:</p>
+    <pre>{{stringifiedOptions}}</pre>
     <p>Logs:</p>
     <pre class="logs">{{#each messages as |message|}}{{message}}
 {{/each}}</pre>
+    {{#bs-button onClick=(action "cleanMessage")}}Clear logs{{/bs-button}}
   </div>
 </div>

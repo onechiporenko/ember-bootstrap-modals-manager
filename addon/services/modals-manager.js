@@ -149,6 +149,12 @@ import {defer} from 'rsvp';
  * });
  * ```
  *
+ * Extra option `disallowEmpty` with `true`-value will disable Confirm-button until user input at least something:
+ *
+ * ```js
+ * modalsManager.prompt({disallowEmpty: true, title: '', body: ''});
+ * ```
+ *
  * ### `promptConfirm`
  *
  * Almost the same as `prompt`, however its "Yes"-button is disabled until user write needed value to the input-field.

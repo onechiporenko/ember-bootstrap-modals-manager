@@ -59,7 +59,7 @@ module.exports = {
         confirmModal: true,
         declineModal: true,
         promptValue: true,
-        confirmState: true,
+        confirmButtonState: true,
         customModalText: true
       }
     }

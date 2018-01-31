@@ -8,7 +8,7 @@ import './open-modal';
 import './modal-is-opened';
 import './last-log-message-assert';
 import './prompt-value';
-import './confirm-state';
+import './confirm-button-state';
 import './custom-modal-text';
 
 export default function startApp(attrs) {

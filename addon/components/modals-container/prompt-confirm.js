@@ -1,6 +1,6 @@
 import PromptModal from './prompt';
 import {computed, get} from '@ember/object';
-import layout from '../../templates/components/modals-container/prompt-confirm';
+import layout from '../../templates/components/modals-container/prompt';
 
 /**
  * Prompt-confirm-modal

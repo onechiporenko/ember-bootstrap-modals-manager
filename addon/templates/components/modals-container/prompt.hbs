@@ -26,13 +26,14 @@
       {{component
         options.footerComponent
         options=options
+        confirmDisabled=confirmDisabled
         confirm=(action modal.submit)
         decline=(action modal.close)
       }}
     {{else}}
       <p>{{options.footer}}</p>
       {{#bs-button onClick=(action modal.close)}}{{options.decline}}{{/bs-button}}
-      {{#bs-button onClick=(action modal.submit)}}{{options.confirm}}{{/bs-button}}
+      {{#bs-button disabled=confirmDisabled onClick=(action modal.submit)}}{{options.confirm}}{{/bs-button}}
     {{/if}}
   {{/modal.footer}}
 {{/bs-modal}}

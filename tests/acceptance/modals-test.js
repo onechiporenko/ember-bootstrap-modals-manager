@@ -4,6 +4,9 @@ import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
 moduleForAcceptance('Acceptance | modals', {
   beforeEach() {
     visit('/');
+    if (find('.disallow-empty:checked').length) {
+      click('.disallow-empty');
+    }
   }
 });
 
@@ -78,6 +81,18 @@ test('prompt-modal', function (assert) {
   lastLogMessageAssert(assert, 'Prompt was declined');
 });
 
+test('prompt-modal with disabled Confirm button', function (assert) {
+  click('.disallow-empty');
+  openModal('prompt');
+  modalIsOpened(assert, true);
+  customModalText(assert, 'header', 'Custom Prompt Modal Title');
+  confirmButtonState(assert, true);
+  promptValue('test');
+  confirmButtonState(assert, false);
+  confirmModal();
+  modalIsOpened(assert, false);
+});
+
 test('Custom prompt-modal', function (assert) {
   openModal('custom-prompt');
   modalIsOpened(assert, true);
@@ -96,21 +111,33 @@ test('Custom prompt-modal', function (assert) {
   lastLogMessageAssert(assert, 'Custom Prompt was declined');
 });
 
+test('Custom prompt-modal with disabled Confirm button', function (assert) {
+  click('.disallow-empty');
+  openModal('custom-prompt');
+  customModalText(assert, 'header', 'Custom Prompt Title Component');
+  modalIsOpened(assert, true);
+  confirmButtonState(assert, true);
+  promptValue('test');
+  confirmButtonState(assert, false);
+  confirmModal();
+  modalIsOpened(assert, false);
+});
+
 test('prompt-confirm-modal', function (assert) {
   openModal('prompt-confirm');
   modalIsOpened(assert, true);
-  confirmState(assert, true);
+  confirmButtonState(assert, true);
   customModalText(assert, 'header', 'Custom Prompt Confirm Modal Title');
   customModalText(assert, 'body', 'Please enter a "modal" without quotes');
   promptValue('modal');
-  confirmState(assert, false);
+  confirmButtonState(assert, false);
   confirmModal();
   modalIsOpened(assert, false);
   lastLogMessageAssert(assert, 'Prompt-Confirm was confirmed (with "modal")');
 
   openModal('prompt-confirm');
   modalIsOpened(assert, true);
-  confirmState(assert, true);
+  confirmButtonState(assert, true);
   declineModal();
   modalIsOpened(assert, false);
   lastLogMessageAssert(assert, 'Prompt-Confirm was declined');
@@ -119,20 +146,20 @@ test('prompt-confirm-modal', function (assert) {
 test('Custom prompt-confirm-modal', function (assert) {
   openModal('custom-prompt-confirm');
   modalIsOpened(assert, true);
-  confirmState(assert, true);
+  confirmButtonState(assert, true);
   customModalText(assert, 'header', 'Custom Prompt Confirm Title Component');
   customModalText(assert, 'body', 'Custom Prompt Confirm Body Component');
   customModalText(assert, 'body', 'Please enter a "modal" without quotes');
   customModalText(assert, 'footer', 'Custom Prompt Confirm Footer Component');
   promptValue('modal');
-  confirmState(assert, false);
+  confirmButtonState(assert, false);
   confirmModal();
   modalIsOpened(assert, false);
   lastLogMessageAssert(assert, 'Custom Prompt-Confirm was confirmed (with "modal")');
 
   openModal('custom-prompt-confirm');
   modalIsOpened(assert, true);
-  confirmState(assert, true);
+  confirmButtonState(assert, true);
   declineModal();
   modalIsOpened(assert, false);
   lastLogMessageAssert(assert, 'Custom Prompt-Confirm was declined');

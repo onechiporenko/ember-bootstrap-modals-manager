@@ -1,5 +1,6 @@
 import BaseModal from './base';
-import {get, set} from '@ember/object';
+import {computed, get, set} from '@ember/object';
+import {isEmpty} from '@ember/utils';
 import layout from '../../templates/components/modals-container/prompt';
 
 /**
@@ -20,6 +21,17 @@ export default BaseModal.extend({
    * @readonly
    */
   promptValue: '',
+
+  /**
+   * @property confirmDisabled
+   * @type boolean
+   * @default true
+   * @private
+   * @readonly
+   */
+  confirmDisabled: computed('promptValue', 'options.disallowEmpty', function () {
+    return get(this, 'options.disallowEmpty') ? isEmpty(get(this, 'promptValue')) : false;
+  }),
 
   actions: {
 
