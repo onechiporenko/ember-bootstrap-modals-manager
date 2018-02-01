@@ -30,7 +30,7 @@
     {{else}}
       <p>{{options.footer}}</p>
       {{#bs-button onClick=(action modal.close)}}{{options.decline}}{{/bs-button}}
-      {{#bs-button onClick=(action modal.submit)}}{{options.confirm}}{{/bs-button}}
+      {{#bs-button type="primary" onClick=(action modal.submit)}}{{options.confirm}}{{/bs-button}}
     {{/if}}
   {{/modal.footer}}
 {{/bs-modal}}
