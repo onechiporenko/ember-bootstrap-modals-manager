@@ -5,6 +5,7 @@ import {alias} from '@ember/object/computed';
 import {inject as service} from '@ember/service';
 import {later} from '@ember/runloop';
 import {A} from '@ember/array';
+import {run} from '@ember/runloop';
 
 /**
  * Here `promises` means functions that return Promise
@@ -95,8 +96,10 @@ export default Base.extend({
   next(promiseFactory) {
     promiseFactory()
       .then(result => {
-        get(this, 'results').pushObject(result);
-        this.incrementProperty('done');
+        run(() => {
+          get(this, 'results').pushObject(result);
+          this.incrementProperty('done');
+        });
         const promises = get(this, 'promises');
         if (promises.length) {
           this.next(promises.shift());
