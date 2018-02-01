@@ -4,8 +4,11 @@ import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
 moduleForAcceptance('Acceptance | modals', {
   beforeEach() {
     visit('/');
-    if (find('.disallow-empty:checked').length) {
-      click('.disallow-empty');
+    if (find('.disallow-empty input:checked').length) {
+      click('.disallow-empty input');
+    }
+    if (find('.progress-will-fail input:checked').length) {
+      click('.progress-will-fail input');
     }
   }
 });
@@ -82,7 +85,7 @@ test('prompt-modal', function (assert) {
 });
 
 test('prompt-modal with disabled Confirm button', function (assert) {
-  click('.disallow-empty');
+  click('.disallow-empty input');
   openModal('prompt');
   modalIsOpened(assert, true);
   customModalText(assert, 'header', 'Custom Prompt Modal Title');
@@ -112,7 +115,7 @@ test('Custom prompt-modal', function (assert) {
 });
 
 test('Custom prompt-modal with disabled Confirm button', function (assert) {
-  click('.disallow-empty');
+  click('.disallow-empty input');
   openModal('custom-prompt');
   customModalText(assert, 'header', 'Custom Prompt Title Component');
   modalIsOpened(assert, true);
@@ -163,4 +166,62 @@ test('Custom prompt-confirm-modal', function (assert) {
   declineModal();
   modalIsOpened(assert, false);
   lastLogMessageAssert(assert, 'Custom Prompt-Confirm was declined');
+});
+
+test('progress-modal (success)', function (assert) {
+  openModal('progress');
+  const done = assert.async();
+  modalIsOpened(assert, true);
+  andThen(() => {
+    assert.equal(find('.modal-body .progress-bar').length, 1, 'Progress bar exists');
+    assert.equal(find('.modal-footer button').length, 0, 'Footer has not buttons');
+    keyEvent('.modal', 'keydown', 27).then(() => {  // click Esc
+      assert.equal(find('.modal-body .progress-bar').length, 1, 'Progress bar exists');
+    });
+    triggerEvent('.modal', 'click');
+    modalIsOpened(assert, true);
+  });
+  setTimeout(() => {
+    modalIsOpened(assert, false);
+    lastLogMessageAssert(assert, 'Progress was finished (with [0,1,2,3,4])');
+    return done();
+  }, 3000);
+});
+
+test('progress-modal (error)', function (assert) {
+  click('.progress-will-fail input');
+  openModal('progress');
+  const done = assert.async();
+  modalIsOpened(assert, true);
+  andThen(() => {
+    assert.equal(find('.modal-body .progress-bar').length, 1, 'Progress bar exists');
+    assert.equal(find('.modal-footer button').length, 0, 'Footer has not buttons');
+  });
+  setTimeout(() => {
+    // actually it's another modal (alert)
+    modalIsOpened(assert, true);
+    assert.equal(find('.modal-body .progress-bar').length, 0, 'Progress bar does not exist');
+    customModalText(assert, 'body', 'Promise was rejected');
+    lastLogMessageAssert(assert, 'Progress was failed (completed [0,1]). Error - "Promise was rejected"');
+    return done();
+  }, 1000);
+});
+
+test('Custom progress-modal (success)', function (assert) {
+  openModal('custom-progress');
+  const done = assert.async();
+  modalIsOpened(assert, true);
+  andThen(() => {
+    customModalText(assert, 'header', 'Custom Progress Title Component');
+    customModalText(assert, 'body', 'Custom Progress Body Component');
+    customModalText(assert, 'body', '/ 5');
+    customModalText(assert, 'footer', 'Custom Progress Footer Component');
+    assert.equal(find('.modal-body .progress-bar').length, 1, 'Progress bar exists');
+    assert.equal(find('.modal-footer button').length, 0, 'Footer has not buttons');
+  });
+  setTimeout(() => {
+    modalIsOpened(assert, false);
+    lastLogMessageAssert(assert, 'Progress was finished (with [0,1,2,3,4])');
+    return done();
+  }, 3000);
 });

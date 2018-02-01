@@ -8,6 +8,10 @@ module.exports = function(defaults) {
       'bootstrapVersion': 3,
       'importBootstrapFont': true,
       'importBootstrapCSS': true
+    },
+
+    'ember-power-select': {
+      'theme': 'bootstrap'
     }
   });
 

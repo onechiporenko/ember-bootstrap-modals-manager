@@ -52,9 +52,10 @@ export default Component.extend({
 
     /**
      * @method actions.decline
+     * @param {*} [v]
      */
-    decline() {
-      get(this, 'onDecline')();
+    decline(v) {
+      get(this, 'onDecline')(v);
     }
   }
 });

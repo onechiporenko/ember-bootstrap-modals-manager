@@ -1,0 +1,42 @@
+{{#bs-modal open=modalIsOpened keyboard=false backdropClose=false onSubmit=(action "confirm") onHide=(action "decline") as |modal|}}
+  {{#modal.header closeButton=false}}
+    {{#if options.titleComponent}}
+      {{component
+        options.titleComponent
+        options=options
+      }}
+    {{else}}
+      {{#bs-modal/header/title}}{{options.title}}{{/bs-modal/header/title}}
+    {{/if}}
+  {{/modal.header}}
+  {{#modal.body}}
+    {{#if options.bodyComponent}}
+      {{component
+        options.bodyComponent
+        options=options
+        progress=progress
+        done=done
+        overall=promisesCount
+      }}
+    {{else}}
+      <p>{{options.body}}</p>
+      {{#bs-progress as |p|}}
+        {{p.bar
+          value=progress
+          showLabel=options.showLabel
+          striped=options.striped
+          animate=options.animate
+          type=options.type
+        }}
+      {{/bs-progress}}
+    {{/if}}
+  {{/modal.body}}
+  {{#modal.footer}}
+    {{#if options.footerComponent}}
+      {{component
+        options.footerComponent
+        options=options
+      }}
+    {{/if}}
+  {{/modal.footer}}
+{{/bs-modal}}

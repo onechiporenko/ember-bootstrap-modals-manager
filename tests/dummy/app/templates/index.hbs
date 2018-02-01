@@ -5,14 +5,33 @@
     {{#bs-button class="confirm-modal" onClick=(action "showConfirmModal")}}Confirm Modal{{/bs-button}}
     {{#bs-button class="prompt-modal" onClick=(action "showPromptModal")}}Prompt Modal{{/bs-button}}
     {{#bs-button class="prompt-confirm-modal" onClick=(action "showPromptConfirmModal")}}Prompt Confirm Modal{{/bs-button}}
+    {{#bs-button class="progress-modal" onClick=(action "showProgressModal")}}Progress Modal{{/bs-button}}
 
     <h3>Modals with custom components:</h3>
     {{#bs-button class="custom-alert-modal" onClick=(action "showCustomAlertModal")}}Alert Modal{{/bs-button}}
     {{#bs-button class="custom-confirm-modal" onClick=(action "showCustomConfirmModal")}}Confirm Modal{{/bs-button}}
     {{#bs-button class="custom-prompt-modal" onClick=(action "showCustomPromptModal")}}Prompt Modal{{/bs-button}}
     {{#bs-button class="custom-prompt-confirm-modal" onClick=(action "showCustomPromptConfirmModal")}}Prompt Confirm Modal{{/bs-button}}
+    {{#bs-button class="custom-progress-modal" onClick=(action "showCustomProgressModal")}}Progress Modal{{/bs-button}}
     <h3>Settings:</h3>
-    <p><label>{{input type="checkbox" class="disallow-empty" checked=disallowEmptyPrompt}} Disallow empty prompt</label> (Confirm-button in the Prompt Modals will be disabled until user input something)</p>
+    {{#bs-form formLayout="vertical" model=this as |form|}}
+      <h4>Prompt:</h4>
+      {{form.element controlType="checkbox" class="disallow-empty" label="Disallow empty prompt" property="disallowEmptyPrompt"}}
+      <h4>Progress:</h4>
+      <div class="row">
+        <div class="col-md-6">
+          {{form.element controlType="checkbox" class="progress-show-label" label="Show label in the progress bar" property="showLabel"}}
+          {{#form.element controlType="power-select" options=typeChoices property="type" as |el|}}
+            {{el.control searchEnabled=false}}
+          {{/form.element}}
+        </div>
+        <div class="col-md-6">
+          {{form.element controlType="checkbox" class="progress-striped" label="Progress bar is striped" property="striped"}}
+          {{form.element controlType="checkbox" class="progress-animate" disabled=notStriped label="Progress bar is animated" property="animate"}}
+          {{form.element controlType="checkbox" class="progress-will-fail" label="Progress will fail" property="progressWillFail"}}
+        </div>
+      </div>
+    {{/bs-form}}
     {{outlet}}
   </div>
   <div class="col-md-6">

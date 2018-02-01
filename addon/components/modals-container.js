@@ -58,17 +58,18 @@ export default Component.extend({
 
     /**
      * @method actions.confirm
-     * @param {*} [val]
+     * @param {*} [v]
      */
-    confirm(val) {
-      get(this, 'modalsManager').onConfirmClick(val);
+    confirm(v) {
+      get(this, 'modalsManager').onConfirmClick(v);
     },
 
     /**
      * @method actions.decline
+     * @param {*} [v]
      */
-    decline() {
-      get(this, 'modalsManager').onDeclineClick();
+    decline(v) {
+      get(this, 'modalsManager').onDeclineClick(v);
     }
   }
 });
