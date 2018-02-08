@@ -79,6 +79,7 @@ export default Controller.extend({
       const options = {
         title: 'Custom Prompt Modal Title',
         body: 'Custom Prompt Modal Body',
+        inputLabel: 'Input Label',
         disallowEmpty: get(this, 'disallowEmptyPrompt')
       };
       set(this, 'options', options);
@@ -91,6 +92,7 @@ export default Controller.extend({
       const options = {
         title: 'Custom Prompt Confirm Modal Title',
         body: 'Please enter a "modal" without quotes',
+        inputLabel: 'Input Label',
         promptValue: 'modal'
       };
       set(this, 'options', options);
@@ -98,6 +100,18 @@ export default Controller.extend({
         .promptConfirm(options)
         .then(v => this.addMessage(`Prompt-Confirm was confirmed (with "${v}")`))
         .catch(() => this.addMessage('Prompt-Confirm was declined'));
+    },
+    showCheckConfirmModal() {
+      const options = {
+        title: 'Custom Check Confirm Modal Title',
+        body: 'Confirm your suggestion',
+        inputLabel: 'Input Label'
+      };
+      set(this, 'options', options);
+      get(this, 'modalsManager')
+        .checkConfirm(options)
+        .then(() => this.addMessage(`Check-Confirm was confirmed`))
+        .catch(() => this.addMessage('Check-Confirm was declined'));
     },
     showProgressModal() {
       const options = {
@@ -171,6 +185,20 @@ export default Controller.extend({
         .promptConfirm(options)
         .then(v => this.addMessage(`Custom Prompt-Confirm was confirmed (with "${v}")`))
         .catch(() => this.addMessage('Custom Prompt-Confirm was declined'));
+    },
+    showCustomCheckConfirmModal() {
+      const options = {
+        title: 'Custom Check Confirm Modal Title',
+        body: 'Confirm your suggestion',
+        titleComponent: 'custom-check-confirm-header',
+        bodyComponent: 'custom-check-confirm-body',
+        footerComponent: 'custom-check-confirm-footer'
+      };
+      set(this, 'options', options);
+      get(this, 'modalsManager')
+        .checkConfirm(options)
+        .then(() => this.addMessage(`Custom Check-Confirm was confirmed`))
+        .catch(() => this.addMessage('Custom Check-Confirm was declined'));
     },
     showCustomProgressModal() {
       const options = {

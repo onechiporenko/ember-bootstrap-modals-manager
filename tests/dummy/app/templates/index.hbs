@@ -1,10 +1,11 @@
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-6 demo">
     <h3>Default modals:</h3>
     {{#bs-button class="alert-modal" onClick=(action "showAlertModal")}}Alert Modal{{/bs-button}}
     {{#bs-button class="confirm-modal" onClick=(action "showConfirmModal")}}Confirm Modal{{/bs-button}}
     {{#bs-button class="prompt-modal" onClick=(action "showPromptModal")}}Prompt Modal{{/bs-button}}
     {{#bs-button class="prompt-confirm-modal" onClick=(action "showPromptConfirmModal")}}Prompt Confirm Modal{{/bs-button}}
+    {{#bs-button class="check-confirm-modal" onClick=(action "showCheckConfirmModal")}}Check Confirm Modal{{/bs-button}}
     {{#bs-button class="progress-modal" onClick=(action "showProgressModal")}}Progress Modal{{/bs-button}}
 
     <h3>Modals with custom components:</h3>
@@ -12,6 +13,7 @@
     {{#bs-button class="custom-confirm-modal" onClick=(action "showCustomConfirmModal")}}Confirm Modal{{/bs-button}}
     {{#bs-button class="custom-prompt-modal" onClick=(action "showCustomPromptModal")}}Prompt Modal{{/bs-button}}
     {{#bs-button class="custom-prompt-confirm-modal" onClick=(action "showCustomPromptConfirmModal")}}Prompt Confirm Modal{{/bs-button}}
+    {{#bs-button class="custom-check-confirm-modal" onClick=(action "showCustomCheckConfirmModal")}}Check Confirm Modal{{/bs-button}}
     {{#bs-button class="custom-progress-modal" onClick=(action "showCustomProgressModal")}}Progress Modal{{/bs-button}}
     <h3>Settings:</h3>
     {{#bs-form formLayout="vertical" model=this as |form|}}

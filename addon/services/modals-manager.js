@@ -197,6 +197,37 @@ import {defer} from 'rsvp';
  * });
  * ```
  *
+ * ### `checkConfirm`
+ *
+ * Almost same as `promptConfirm` however it contains a checkbox instead of text-field. "Yes"-button is disabled until checkbox is not checked.
+ *
+ * ```js
+ * import Controller from '@ember/controller';
+ * import {inject as service} from '@ember/service';
+ * import {get} from '@ember/object';
+ *
+ * export default Controller.extend({
+ *   modalsManager: service(),
+ *
+ *   actions: {
+ *     showCheckConfirmModal() {
+ *       get(this, 'modalsManager')
+ *         .checkConfirm({
+ *           title: 'Confirm Title',
+ *           body: 'Confirm your suggestion',
+ *           inputLabel: 'Input Label'
+ *         })
+ *         .then(() => {
+ *           // called after user clicks "Yes" in the modal
+ *         })
+ *         .catch(() => {
+ *           // called after user clicks "No" in the modal
+ *         });
+ *     }
+ *   }
+ * });
+ * ```
+ *
  * ### `progress`
  *
  * This modal used to show a progress-bar for chain of Promises executed one by one. This modal doesn't have any controls like confirm/decline-buttons in the footer or "&times;" in the header and can't be closed by pressing `Esc` or clicking somewhere outside a modal. Modal will be confirmed and self-closed after all promises are fulfilled or it will be declined (and self-closed) if at least one promise becomes rejected.
@@ -410,7 +441,7 @@ import {defer} from 'rsvp';
  * <input type="text" class="form-control" oninput={{action updatePromptValue value="target.value"}} />
  * ```
  *
- * ##### Footer Component
+ * #### Footer Component
  *
  * It takes three parameters. First on is an `options` described before. Second one is an action `confirm` used to confirm modal. Third one is an action `decline` used to decline modal. Both of them may be used like:
  *
@@ -419,6 +450,68 @@ import {defer} from 'rsvp';
  * {{options.footer}}
  * {{#bs-button onClick=(action decline)}}Decline{{/bs-button}}
  * {{#bs-button onClick=(action confirm)}}Confirm{{/bs-button}}
+ * ```
+ *
+ * ### `checkConfirm`
+ *
+ * ```js
+ * import Controller from '@ember/controller';
+ * import {inject as service} from '@ember/service';
+ * import {get} from '@ember/object';
+ *
+ * export default Controller.extend({
+ *   modalsManager: service(),
+ *
+ *   actions: {
+ *     showCheckConfirm() {
+ *       get(this, 'modalsManager')
+ *         .checkConfirm({
+ *           title: 'Check Confirm Title',
+ *           footer: 'Prompt Confirm Footer',
+ *           titleComponent: 'custom-check-confirm-header',
+ *           bodyComponent: 'custom-check-confirm-body',
+ *           footerComponent: 'custom-check-confirm-footer'
+ *         })
+ *         .then(() => {})
+ *         .catch(() => {});
+ *     }
+ *   }
+ * });
+ * ```
+ *
+ * #### Title Component
+ *
+ * It takes a single parameter `options`. Its value is an object passed to the `modalsManager.prompt`.
+ *
+ * ```hbs
+ * {{! component/custom-check-confirm-header.hbs}}
+ * <h4 class="modal-title"><i class="glyphicon glyphicon-asterisk"></i> Custom Check Confirm Title Component</h4>
+ * ```
+ *
+ * #### Body Component
+ *
+ * It takes two parameters. First one is an `options` described before. Second one is an action `updatePromptValue`. It's used to update prompted value in the modal-scope. Usage example:
+ *
+ * ```hbs
+ * {{! components/custom-check-confirm-body.hbs}}
+ * <p class="alert alert-danger">Custom Check Confirm Body Component</p>
+ * <div class="form-group">
+ *   <div class="checkbox">
+ *     <label>
+ *       <input type="checkbox" onchange={{action updatePromptValue value="target.value"}}/> Custom Label
+ *     </label>
+ *   </div>
+ * </div>
+ * ```
+ *
+ * #### Footer Component
+ *
+ * It takes four parameters. First one is an `options` described before. Second one is a `confirmDisabled`. This flag determines if confirm-button should be disabled. Last two are actions `confirm` and `decline` used as click-handler for "Yes" and "No" buttons. Usage example:
+ *
+ * ```hbs
+ * {{! components/custom-check-confirm-footer.hbs}}
+ * Custom Check Confirm Footer Component {{#bs-button onClick=(action decline)}}Decline{{/bs-button}} {{#bs-button
+ * disabled=confirmDisabled onClick=(action confirm) type="primary"}}Confirm{{/bs-button}}
  * ```
  *
  * ### `promptConfirm`
@@ -685,6 +778,17 @@ export default Service.extend({
   promptConfirm(options) {
     assert('"options.promptValue" must be defined and not empty', !!options.promptValue);
     return this.show('modals-container/prompt-confirm', options);
+  },
+
+  /**
+   * Show `check-confirm`-modal
+   *
+   * @method checkConfirm
+   * @param {object} options
+   * @returns {RSVP.Promise}
+   */
+  checkConfirm(options) {
+    return this.show('modals-container/check-confirm', options);
   },
 
   /**

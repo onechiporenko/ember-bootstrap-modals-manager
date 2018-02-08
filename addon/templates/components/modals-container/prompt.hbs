@@ -18,7 +18,13 @@
       }}
     {{else}}
       <p>{{options.body}}</p>
-      {{input value=promptValue class="form-control"}}
+      {{#bs-form model=this onSubmit=(action "confirm") as |form|}}
+        {{#if simplifiedInput}}
+          {{form.element controlType="checkbox" property="promptValue" label=options.inputLabel}}
+        {{else}}
+          {{form.element property="promptValue" label=options.inputLabel}}
+        {{/if}}
+      {{/bs-form}}
     {{/if}}
   {{/modal.body}}
   {{#modal.footer}}

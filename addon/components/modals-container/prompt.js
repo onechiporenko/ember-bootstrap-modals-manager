@@ -23,6 +23,15 @@ export default BaseModal.extend({
   promptValue: '',
 
   /**
+   * @property inputType
+   * @type string
+   * @default 'text'
+   * @private
+   * @readonly
+   */
+  inputType: 'text',
+
+  /**
    * @property confirmDisabled
    * @type boolean
    * @default true

@@ -72,6 +72,7 @@ test('prompt-modal', function (assert) {
   modalIsOpened(assert, true);
   customModalText(assert, 'header', 'Custom Prompt Modal Title');
   customModalText(assert, 'body', 'Custom Prompt Modal Body');
+  customModalText(assert, 'body', 'Input Label');
   promptValue('test');
   confirmModal();
   modalIsOpened(assert, false);
@@ -132,6 +133,7 @@ test('prompt-confirm-modal', function (assert) {
   confirmButtonState(assert, true);
   customModalText(assert, 'header', 'Custom Prompt Confirm Modal Title');
   customModalText(assert, 'body', 'Please enter a "modal" without quotes');
+  customModalText(assert, 'body', 'Input Label');
   promptValue('modal');
   confirmButtonState(assert, false);
   confirmModal();
@@ -166,6 +168,48 @@ test('Custom prompt-confirm-modal', function (assert) {
   declineModal();
   modalIsOpened(assert, false);
   lastLogMessageAssert(assert, 'Custom Prompt-Confirm was declined');
+});
+
+test('check-confirm-modal', function (assert) {
+  openModal('check-confirm');
+  modalIsOpened(assert, true);
+  confirmButtonState(assert, true);
+  customModalText(assert, 'header', 'Custom Check Confirm Modal Title');
+  customModalText(assert, 'body', 'Confirm your suggestion');
+  customModalText(assert, 'body', 'Input Label');
+  click('.modal-body input[type="checkbox"]');
+  confirmButtonState(assert, false);
+  confirmModal();
+  modalIsOpened(assert, false);
+  lastLogMessageAssert(assert, 'Check-Confirm was confirmed');
+
+  openModal('check-confirm');
+  modalIsOpened(assert, true);
+  confirmButtonState(assert, true);
+  declineModal();
+  modalIsOpened(assert, false);
+  lastLogMessageAssert(assert, 'Check-Confirm was declined');
+});
+
+test('Custom check-confirm-modal', function (assert) {
+  openModal('custom-check-confirm');
+  modalIsOpened(assert, true);
+  confirmButtonState(assert, true);
+  customModalText(assert, 'header', 'Custom Check Confirm Title Component');
+  customModalText(assert, 'body', 'Custom Check Confirm Body Component');
+  customModalText(assert, 'footer', 'Custom Check Confirm Footer Component');
+  click('.modal-body input[type="checkbox"]');
+  confirmButtonState(assert, false);
+  confirmModal();
+  modalIsOpened(assert, false);
+  lastLogMessageAssert(assert, 'Custom Check-Confirm was confirmed');
+
+  openModal('custom-check-confirm');
+  modalIsOpened(assert, true);
+  confirmButtonState(assert, true);
+  declineModal();
+  modalIsOpened(assert, false);
+  lastLogMessageAssert(assert, 'Custom Check-Confirm was declined');
 });
 
 test('progress-modal (success)', function (assert) {
