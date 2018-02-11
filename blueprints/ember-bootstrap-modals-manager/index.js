@@ -4,6 +4,8 @@ module.exports = {
   name: 'ember-bootstrap-modals-manager',
   description: 'Configure ember-bootstrap-modals-manager',
 
+  normalizeEntityName: function() {},
+
   afterInstall() {
     return this.addEmberBootstrap();
   },
