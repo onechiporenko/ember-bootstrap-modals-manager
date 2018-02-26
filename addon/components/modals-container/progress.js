@@ -2,7 +2,6 @@ import layout from '../../templates/components/modals-container/progress';
 import Base from './base';
 import {computed, get, set} from '@ember/object';
 import {alias} from '@ember/object/computed';
-import {inject as service} from '@ember/service';
 import {later} from '@ember/runloop';
 import {A} from '@ember/array';
 import {run} from '@ember/runloop';
@@ -17,8 +16,6 @@ import {run} from '@ember/runloop';
 export default Base.extend({
 
   layout,
-
-  modalsManager: service(),
 
   /**
    * Number of fulfilled promises

@@ -269,3 +269,52 @@ test('Custom progress-modal (success)', function (assert) {
     return done();
   }, 3000);
 });
+
+test('process-modal (success)', function (assert) {
+  openModal('process');
+  const done = assert.async();
+  modalIsOpened(assert, true);
+  andThen(() => {
+    customModalText(assert, 'body', 'Some long process (you must add font-awesome to your project to use `fa`-icons)');
+    assert.equal(find('.modal-footer button').length, 0, 'Footer has not buttons');
+    keyEvent('.modal', 'keydown', 27).then(() => {  // click Esc
+      assert.equal(find('.modal-body').length, 1, 'Modal exists');
+    });
+    triggerEvent('.modal', 'click');
+    modalIsOpened(assert, true);
+  });
+  setTimeout(() => {
+    modalIsOpened(assert, false);
+    lastLogMessageAssert(assert, 'Process was confirmed (with some result)');
+    return done();
+  }, 3100);
+});
+
+test('process-modal (error)', function (assert) {
+  click('.process-will-fail input');
+  openModal('process');
+  const done = assert.async();
+  modalIsOpened(assert, true);
+  setTimeout(() => {
+    modalIsOpened(assert, false);
+    lastLogMessageAssert(assert, 'Process was declined (with some error)');
+    return done();
+  }, 3100);
+});
+
+test('Custom process-modal', function (assert) {
+  openModal('custom-process');
+  const done = assert.async();
+  modalIsOpened(assert, true);
+  andThen(() => {
+    customModalText(assert, 'header', 'Custom Process Title Component');
+    customModalText(assert, 'body', 'Custom Process Body Component');
+    customModalText(assert, 'body', 'Some long process (you must add font-awesome to your project to use `fa`-icons)');
+    customModalText(assert, 'footer', 'Custom Process Footer Component');
+  });
+  setTimeout(() => {
+    modalIsOpened(assert, false);
+    lastLogMessageAssert(assert, 'Process was confirmed (with some result)');
+    return done();
+  }, 3100);
+});

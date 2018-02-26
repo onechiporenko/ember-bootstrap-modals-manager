@@ -37,6 +37,7 @@ export default Controller.extend({
   striped: false,
   notStriped: not('striped'),
   progressWillFail: false,
+  processWillFail: false,
 
   addMessage(msg) {
     get(this, 'messages').pushObject(msg);
@@ -126,7 +127,7 @@ export default Controller.extend({
       set(this, 'options', options);
       get(this, 'modalsManager')
         .progress(options)
-        .then((v) => this.addMessage(`Progress was finished (with ${JSON.stringify(v)})`))
+        .then(v => this.addMessage(`Progress was finished (with ${JSON.stringify(v)})`))
         .catch(([result, error]) => {
           this.addMessage(`Progress was failed (completed ${JSON.stringify(result)}). Error - "${error}"`);
           return get(this, 'modalsManager')
@@ -135,6 +136,21 @@ export default Controller.extend({
               body: `Fulfilled - ${result}. Error - ${JSON.stringify(error)}`
             });
         });
+    },
+    showProcessModal() {
+      const options = {
+        body: 'Some long process (you must add font-awesome to your project to use `fa`-icons)',
+        iconClass: 'text-center fa fa-spinner fa-spin fa-3x fa-fw',
+        title: '',
+        process: () => new Promise((resolve, reject) => setTimeout(() => {
+          get(this, 'processWillFail') ? reject('some error') : resolve('some result');
+        }, 3000))
+      };
+      set(this, 'options', options);
+      get(this, 'modalsManager')
+        .process(options)
+        .then(v => this.addMessage(`Process was confirmed (with ${v})`))
+        .catch(e => this.addMessage(`Process was declined (with ${e})`));
     },
 
     showCustomAlertModal() {
@@ -225,6 +241,24 @@ export default Controller.extend({
               body: `Fulfilled - ${result}. Error - ${JSON.stringify(error)}`
             });
         });
+    },
+    showCustomProcessModal() {
+      const options = {
+        title: 'Process Modal Title',
+        body: 'Some long process (you must add font-awesome to your project to use `fa`-icons)',
+        titleComponent: 'custom-process-header',
+        bodyComponent: 'custom-process-body',
+        footerComponent: 'custom-process-footer',
+        iconClass: 'text-center fa fa-spinner fa-spin fa-3x fa-fw',
+        process: () => new Promise((resolve, reject) => setTimeout(() => {
+          get(this, 'processWillFail') ? reject('some error') : resolve('some result');
+        }, 3000))
+      };
+      set(this, 'options', options);
+      get(this, 'modalsManager')
+        .process(options)
+        .then(v => this.addMessage(`Process was confirmed (with ${v})`))
+        .catch(e => this.addMessage(`Process was declined (with ${e})`));
     },
     cleanMessage() {
       set(this, 'messages', A([]));

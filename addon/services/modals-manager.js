@@ -276,6 +276,44 @@ import {defer} from 'rsvp';
  *
  * **IMPORTANT** Here `options.promises` is a list of _FUNCTIONS_ that returns Promises!
  *
+ * ### `process`
+ *
+ * This modal is used to show a "placeholder" while some process is running. This modal doesn't have any controls like confirm/decline-buttons in the footer or "×" in the header and can't be closed by pressing Esc or clicking somewhere outside a modal. Modal will be confirmed and self-closed after provided promise (`process`) is fulfilled or it will be declined (and self-closed) if it becomes rejected.
+ *
+ * ```js
+ * import Controller from '@ember/controller';
+ * import {inject as service} from '@ember/service';
+ * import {get} from '@ember/object';
+ * import {Promise} from 'rsvp';
+ *
+ * export default Controller.extend({
+ *   modalsManager: service(),
+ *
+ *   actions: {
+ *     showProcessModal() {
+ *       get(this, 'modalsManager')
+ *         .process({
+ *           body: 'Some text goes here',
+ *           iconClass: 'text-center fa fa-spinner fa-spin fa-3x fa-fw',
+ *           title: '',
+ *           // this is required
+ *           process: () => new Promise(resolve => setTimeout(resolve(1), 100))
+ *         })
+ *         .then(result => {
+ *           // called after `process` is resolved
+ *           // here "result" is value of fulfilled Promise
+ *         })
+ *         .catch(error => {
+ *           // called after `process` is rejected
+ *           // here "error" is a reason why last promise was rejected
+ *         });
+ *     }
+ *   }
+ * });
+ * ```
+ *
+ * **IMPORTANT** Here `options.process` is a _FUNCTION_ that return Promise!
+ *
  * ## Go Pro
  *
  * ### Custom components for `title`, `body` and `footer`
@@ -622,7 +660,7 @@ import {defer} from 'rsvp';
  *
  * #### Title Component
  *
- * It takes a single parameter options. Its value is an object passed to the modalsManager.progress.
+ * It takes a single parameter `options`. Its value is an object passed to the `modalsManager.progress`.
  *
  * ```hbs
  * <h4 class="modal-title"><i class="glyphicon glyphicon-info-sign"></i> Custom Progress Title Component</h4>
@@ -652,6 +690,45 @@ import {defer} from 'rsvp';
  * ```hbs
  * <p>Custom Progress Footer Component</p>
  * ```
+ *
+ * ### `process`
+ *
+ * ```js
+ * import Controller from '@ember/controller';
+ * import {inject as service} from '@ember/service';
+ * import {get} from '@ember/object';
+ * import {Promise} from 'rsvp';
+ *
+ * export default Controller.extend({
+ *   modalsManager: service(),
+ *
+ *   actions: {
+ *     showProcessModal() {
+ *       get(this, 'modalsManager')
+ *         .process({
+ *           bodyComponent: 'custom-process-body',
+ *           headerComponent: 'custom-process-footer',
+ *           footerComponent: 'custom-process-header',
+ *           process: () => new Promise(resolve => setTimeout(resolve(1), 100))
+ *         })
+ *         .then(result => {})
+ *         .catch(error => {});
+ *     }
+ *   }
+ * });
+ * ```
+ *
+ * #### Title Component
+ *
+ * It takes a single parameter `options`. Its value is an object passed to the `modalsManager.process`.
+ *
+ * #### Body Component
+ *
+ * It takes a single parameter `options`. Its value is an object passed to the `modalsManager.process`.
+ *
+ * #### Footer Component
+ *
+ * It takes a single parameter `options`. Its value is an object passed to the `modalsManager.process`.
  *
  * @module EmberBootstrapModalsManager
  * @main EmberBootstrapModalsManager
@@ -794,8 +871,6 @@ export default Service.extend({
   /**
    * Shows `progress`-modal. This modal doesn't have any controls and is auto-closed when progress is completed
    *
-   * Alert-modal will be opened if some error-appears
-   *
    * @method progress
    * @param {object} options
    * @returns {RSVP.Promise}
@@ -803,6 +878,16 @@ export default Service.extend({
   progress(options) {
     assert('`options.promises` must be an array', options && isArray(options.promises));
     return this.show('modals-container/progress', options);
+  },
+
+  /**
+   * @method process
+   * @param {object} options
+   * @returns {RSVP.Promise}
+   */
+  process(options) {
+    assert('`options.process` must be defined', options && options.process);
+    return this.show('modals-container/process', options);
   },
 
   /**

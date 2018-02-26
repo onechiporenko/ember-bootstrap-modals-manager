@@ -1,0 +1,33 @@
+{{#bs-modal open=modalIsOpened keyboard=false backdropClose=false onSubmit=(action "confirm") onHide=(action "decline") as |modal|}}
+  {{#modal.header closeButton=false}}
+    {{#if options.titleComponent}}
+      {{component
+        options.titleComponent
+        options=options
+      }}
+    {{else}}
+      {{#bs-modal/header/title}}{{options.title}}{{/bs-modal/header/title}}
+    {{/if}}
+  {{/modal.header}}
+  {{#modal.body}}
+    {{#if options.bodyComponent}}
+      {{component
+        options.bodyComponent
+        options=options
+      }}
+    {{else}}
+      <p>{{options.body}}</p>
+      {{#if options.iconClass}}
+        <p class="text-center"><i class={{options.iconClass}}></i></p>
+      {{/if}}
+    {{/if}}
+  {{/modal.body}}
+  {{#modal.footer}}
+    {{#if options.footerComponent}}
+      {{component
+        options.footerComponent
+        options=options
+      }}
+    {{/if}}
+  {{/modal.footer}}
+{{/bs-modal}}
