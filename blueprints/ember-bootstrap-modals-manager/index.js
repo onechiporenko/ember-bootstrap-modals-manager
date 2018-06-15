@@ -11,8 +11,7 @@ module.exports = {
   },
 
   addEmberBootstrap() {
-    const dependencies = this.project.dependencies();
-    if (!('ember-bootstrap' in dependencies)) {
+    if (!('ember-bootstrap' in this.project.dependencies())) {
       return this.addAddonToProject('ember-bootstrap');
     }
   }
