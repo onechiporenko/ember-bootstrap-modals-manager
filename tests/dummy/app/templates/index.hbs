@@ -44,8 +44,7 @@
     <p>Last Modal Options:</p>
     <pre>{{stringifiedOptions}}</pre>
     <p>Logs:</p>
-    <pre class="logs">{{#each messages as |message|}}{{message}}
-{{/each}}</pre>
+    <p class="logs">{{#each messages as |message|}}{{message}}<br>{{/each}}</p>
     {{#bs-button onClick=(action "cleanMessage")}}Clear logs{{/bs-button}}
   </div>
 </div>
