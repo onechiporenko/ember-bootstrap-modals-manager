@@ -722,4 +722,4 @@
  * @main EmberBootstrapModalsManager
  */
 
-export { default } from 'ember-modals-manager-internal/services/modals-manager';
+export { default } from 'ember-bootstrap-modals-manager/services/modals-manager';
