@@ -1,2 +1,2 @@
-import ModalsContainer from 'ember-modals-manager-internal/components/modals-container';
-export default ModalsContainer.extend({});
+import ModalsManager from 'ember-modals-manager-internal/services/modals-manager';
+export default ModalsManager.extend({});
