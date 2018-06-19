@@ -1,6 +1,6 @@
 {
   "name": "ember-bootstrap-modals-manager",
-  "version": "1.4.0-alpha.2",
+  "version": "1.4.0-alpha.3",
   "description": "Modals-manager for modals from ember-bootstrap",
   "keywords": [
     "ember-addon"
@@ -23,7 +23,7 @@
   "dependencies": {
     "ember-cli-babel": "^6.6.0",
     "ember-cli-htmlbars": "^2.0.1",
-    "ember-modals-manager-internal": "^1.0.2"
+    "ember-modals-manager-internal": "^1.0.3"
   },
   "devDependencies": {
     "bootstrap": "^3.3.7",
