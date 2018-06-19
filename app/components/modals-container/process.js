@@ -1,1 +1,1 @@
-export { default } from 'ember-modals-manager-internal/components/modals-container/process';
+export { default } from 'ember-bootstrap-modals-manager/components/modals-container/process';

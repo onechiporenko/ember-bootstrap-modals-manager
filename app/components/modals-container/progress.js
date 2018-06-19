@@ -1,1 +1,1 @@
-export { default } from 'ember-modals-manager-internal/components/modals-container/progress';
+export { default } from 'ember-bootstrap-modals-manager/components/modals-container/progress';
