@@ -1,8 +1,10 @@
 {
   "name": "ember-bootstrap-modals-manager",
-  "version": "1.4.0-alpha.3",
+  "version": "1.4.0",
   "description": "Modals-manager for modals from ember-bootstrap",
   "keywords": [
+    "bootstrap",
+    "modal",
     "ember-addon"
   ],
   "license": "MIT",
