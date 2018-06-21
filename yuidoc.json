@@ -1,7 +1,7 @@
 {
   "name": "ember-bootstrap-modals-manager",
   "description": "The default blueprint for ember-cli addons.",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "options": {
     "enabledEnvironments": ["development", "production"],
     "paths": [
