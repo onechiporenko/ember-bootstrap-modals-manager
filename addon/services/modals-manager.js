@@ -266,6 +266,10 @@ import ModalsManager from 'ember-modals-manager-internal/services/modals-manager
  *
  * **IMPORTANT** Here `options.promises` is a list of _FUNCTIONS_ that returns Promises!
  *
+ * Option `options.settled` can be used to force complete all provided `promises` and don't stop on first canceled Promise.
+ *
+ * Option `options.cancelable` can be used to add ability to stop `promises`-queue.
+ *
  * ### `process`
  *
  * This modal is used to show a "placeholder" while some process is running. This modal doesn't have any controls like confirm/decline-buttons in the footer or "×" in the header and can't be closed by pressing Esc or clicking somewhere outside a modal. Modal will be confirmed and self-closed after provided promise (`process`) is fulfilled or it will be declined (and self-closed) if it becomes rejected.
