@@ -25,6 +25,8 @@
       <div class="row">
         <div class="col-md-6">
           {{form.element controlType="checkbox" class="progress-show-label" label="Show label in the progress bar" property="showLabel"}}
+          {{form.element controlType="checkbox" class="progress-settled" label="Progress won't stop on first failed" property="settled"}}
+          {{form.element controlType="checkbox" class="progress-cancelable" label="Progress can be canceled" property="cancelable"}}
           {{#form.element controlType="power-select" options=typeChoices property="type" as |el|}}
             {{el.control searchEnabled=false}}
           {{/form.element}}

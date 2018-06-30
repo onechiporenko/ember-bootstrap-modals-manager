@@ -37,6 +37,10 @@
         options.footerComponent
         options=options
       }}
+    {{else}}
+      {{#if options.cancelable}}
+        {{#bs-button onClick=(action "cancel") disabled=canceled}}{{options.cancel}}{{/bs-button}}
+      {{/if}}
     {{/if}}
   {{/modal.footer}}
 {{/bs-modal}}

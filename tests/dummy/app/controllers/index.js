@@ -35,6 +35,8 @@ export default Controller.extend({
   showLabel: false,
   animate: false,
   striped: false,
+  settled: false,
+  cancelable: false,
   notStriped: not('striped'),
   progressWillFail: false,
   processWillFail: false,
@@ -122,6 +124,8 @@ export default Controller.extend({
         showLabel: get(this, 'showLabel'),
         striped: get(this, 'striped'),
         animate: get(this, 'animate'),
+        settled: get(this, 'settled'),
+        cancelable: get(this, 'cancelable'),
         type: get(this, 'type')
       };
       set(this, 'options', options);
@@ -227,6 +231,8 @@ export default Controller.extend({
         showLabel: get(this, 'showLabel'),
         striped: get(this, 'striped'),
         animate: get(this, 'animate'),
+        settled: get(this, 'settled'),
+        cancelable: get(this, 'cancelable'),
         type: get(this, 'type')
       };
       set(this, 'options', options);

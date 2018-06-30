@@ -25,7 +25,7 @@
   "dependencies": {
     "ember-cli-babel": "^6.6.0",
     "ember-cli-htmlbars": "^2.0.1",
-    "ember-modals-manager-internal": "^1.0.4"
+    "ember-modals-manager-internal": "^1.0.5"
   },
   "devDependencies": {
     "@ember/test-helpers": "^0.7.25",
