@@ -28,7 +28,14 @@
       }}
     {{else}}
       <p>{{options.footer}}</p>
-      {{#bs-button type="primary" onClick=(action modal.submit)}}{{options.confirm}}{{/bs-button}}
+      {{bs-button
+        type=options.confirmButtonType
+        defaultText=options.confirm
+        active=options.confirmIsActive
+        iconActive=options.confirmIconActive
+        iconInactive=options.confirmIconInactive
+        onClick=(action modal.submit)
+      }}
     {{/if}}
   {{/modal.footer}}
 {{/bs-modal}}

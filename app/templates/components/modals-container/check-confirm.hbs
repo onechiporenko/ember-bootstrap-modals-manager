@@ -34,8 +34,23 @@
       }}
     {{else}}
       <p>{{options.footer}}</p>
-      {{#bs-button onClick=(action modal.close)}}{{options.decline}}{{/bs-button}}
-      {{#bs-button type="primary" disabled=confirmDisabled onClick=(action modal.submit)}}{{options.confirm}}{{/bs-button}}
+      {{bs-button
+        type=options.declineButtonType
+        defaultText=options.decline
+        active=options.declineIsActive
+        iconActive=options.declineIconActive
+        iconInactive=options.declineIconInactive
+        onClick=(action modal.close)
+      }}
+      {{bs-button
+        type=options.confirmButtonType
+        disabled=confirmDisabled
+        defaultText=options.confirm
+        active=options.confirmIsActive
+        iconActive=options.confirmIconActive
+        iconInactive=options.confirmIconInactive
+        onClick=(action modal.submit)
+      }}
     {{/if}}
   {{/modal.footer}}
 {{/bs-modal}}

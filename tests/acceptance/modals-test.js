@@ -293,7 +293,7 @@ module('Acceptance | modals', function (hooks) {
     await openModal('progress');
     const done = assert.async();
     await modalIsOpened(assert, true);
-    setTimeout(async () => await cancelProgress(), 800);
+    setTimeout(async () => await cancelProgress(), 900);
     setTimeout(async () => {
       await modalIsOpened(assert, false);
       await lastLogMessageAssert(assert, 'Progress was finished (with [0,1,2,3])');
