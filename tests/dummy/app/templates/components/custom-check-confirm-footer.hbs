@@ -1,3 +1,11 @@
-Custom Check Confirm Footer Component {{#bs-button onClick=(action decline)}}Decline{{/bs-button}} {{#bs-button
+{{! BEGIN-SNIPPET components-custom-check-confirm-footer.hbs }}
+Custom Check Confirm Footer Component
+{{bs-button
+  defaultText="Decline"
+  onClick=(action decline)}}
+{{bs-button
   disabled=confirmDisabled
-  onClick=(action confirm) type="primary"}}Confirm{{/bs-button}}
+  defaultText="Confirm"
+  onClick=(action confirm)
+  type="primary"}}
+{{! END-SNIPPET }}

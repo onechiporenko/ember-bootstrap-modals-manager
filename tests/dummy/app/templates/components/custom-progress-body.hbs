@@ -1,4 +1,7 @@
-<p class="alert alert-info">Custom Progress Body Component {{done}} / {{overall}}</p>
+{{! BEGIN-SNIPPET components-custom-progress-body.hbs }}
+<p class="alert alert-info">
+  Custom Progress Body Component {{done}} / {{overall}}
+</p>
 {{#bs-progress as |p|}}
   {{p.bar
     value=progress
@@ -8,3 +11,4 @@
     type=options.type
   }}
 {{/bs-progress}}
+{{! END-SNIPPET }}

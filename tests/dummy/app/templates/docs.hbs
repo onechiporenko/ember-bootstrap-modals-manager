@@ -1,0 +1,35 @@
+<div class="font-sans text-black leading-normal">
+  {{#docs-header as |header|}}
+    {{#header.link "demo"}}
+      Demo
+    {{/header.link}}
+  {{/docs-header}}
+
+  {{#docs-viewer as |viewer|}}
+    {{#viewer.nav as |nav|}}
+      {{nav.item "Install" "docs.install"}}
+      {{nav.item "Modals" "docs.modals.index"}}
+
+      {{nav.section "Predefined Modals"}}
+      {{nav.item "Alert" "docs.modals.alert"}}
+      {{nav.item "Confirm" "docs.modals.confirm"}}
+      {{nav.item "Prompt" "docs.modals.prompt"}}
+      {{nav.item "Check Confirm" "docs.modals.check-confirm"}}
+      {{nav.item "Prompt Confirm" "docs.modals.prompt-confirm"}}
+      {{nav.item "Process" "docs.modals.process"}}
+      {{nav.item "Progress" "docs.modals.progress"}}
+
+      {{nav.section "Custom Modals"}}
+      {{nav.item "With Form" "docs.modals.with-form"}}
+    {{/viewer.nav}}
+
+    {{#viewer.main}}
+      <div class="docs-container">
+        <div class="docs-section">
+          {{outlet}}
+        </div>
+      </div>
+    {{/viewer.main}}
+
+  {{/docs-viewer}}
+</div>

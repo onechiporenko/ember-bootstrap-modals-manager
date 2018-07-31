@@ -1,0 +1,30 @@
+{{! BEGIN-SNIPPET components-modal-with-form.hbs }}
+{{#bs-modal
+  open=modalIsOpened
+  title="User Form"
+  onSubmit=(action "confirm")
+  onHide=(action "decline")
+as |modal|}}
+  {{modal.header}}
+  {{#modal.body}}
+    {{#bs-form model=formData novalidate=true onSubmit=(action "confirm") as |form|}}
+      {{form.element
+        property="firstName"
+        label="First Name"
+      }}
+      {{form.element
+        property="lastName"
+        label="Last Name"
+      }}
+      {{form.element
+        property="email"
+        label="Email"
+      }}
+    {{/bs-form}}
+  {{/modal.body}}
+  {{#modal.footer}}
+    {{bs-button onClick=modal.close type="default" defaultText="Cancel"}}
+    {{bs-button onClick=modal.submit type="success" defaultText="Create"}}
+  {{/modal.footer}}
+{{/bs-modal}}
+{{! END-SNIPPET }}
