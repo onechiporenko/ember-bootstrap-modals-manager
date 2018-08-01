@@ -36,8 +36,7 @@ matrix:
     - env: EMBER_TRY_SCENARIO=ember-canary
 
 before_install:
-  - openssl aes-256-cbc -K $encrypted_9a619a17e909_key -iv $encrypted_9a619a17e909_iv
-    -in .travis/deploy_key.enc -out deploy_key -d
+  - openssl aes-256-cbc -K $encrypted_0c6c60f2bce2_key -iv $encrypted_0c6c60f2bce2_iv -in .travis/deploy_key.enc -out deploy_key -d
   - npm config set spin false
   - npm install -g npm@4
   - npm --version
@@ -51,8 +50,8 @@ script:
 after_success:
   - |
 
-       $(npm bin)/set-up-ssh --key "$encrypted_9a619a17e909_key" \
-                             --iv "$encrypted_9a619a17e909_iv" \
+       $(npm bin)/set-up-ssh --key "$encrypted_0c6c60f2bce2_key" \
+                             --iv "$encrypted_0c6c60f2bce2_iv" \
                              --path-encrypted-key ".travis/github_deploy_key.enc"
   - if [[ ($TRAVIS_BRANCH == master || -n $TRAVIS_TAG) && $EMBER_TRY_SCENARIO == ember-default ]]; then
       node_modules/.bin/ember deploy production;
