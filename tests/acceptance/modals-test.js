@@ -252,7 +252,7 @@ module('Acceptance | modals', function (hooks) {
       await modalIsOpened(assert, false);
       await lastLogMessageAssert(assert, 'Progress was finished (with [0,1,2,3,4])');
       return done();
-    }, 3100);
+    }, 5500);
   });
 
   test('progress-modal (error)', async function (assert) {
@@ -270,7 +270,7 @@ module('Acceptance | modals', function (hooks) {
       customModalText(assert, 'body', 'Promise was rejected');
       await lastLogMessageAssert(assert, 'Progress was failed (completed [0,1]). Error - "Promise was rejected"');
       return done();
-    }, 1000);
+    }, 3500);
   });
 
   test('progress-modal (error settled)', async function (assert) {
@@ -284,7 +284,7 @@ module('Acceptance | modals', function (hooks) {
       await modalIsOpened(assert, false);
       await lastLogMessageAssert(assert, 'Progress was finished (with [[0,1,2,3,4],["Promise was rejected"]])');
       return done();
-    }, 3100);
+    }, 6500);
   });
 
   test('progress-modal (cancelable)', async function (assert) {
@@ -293,12 +293,12 @@ module('Acceptance | modals', function (hooks) {
     await openModal('progress');
     const done = assert.async();
     await modalIsOpened(assert, true);
-    setTimeout(async () => await cancelProgress(), 900);
+    setTimeout(async () => await cancelProgress(), 3500);
     setTimeout(async () => {
       await modalIsOpened(assert, false);
       await lastLogMessageAssert(assert, 'Progress was finished (with [0,1,2,3])');
       return done();
-    }, 3100);
+    }, 5000);
   });
 
   test('Custom progress-modal (success)', async function (assert) {
@@ -316,7 +316,7 @@ module('Acceptance | modals', function (hooks) {
       await modalIsOpened(assert, false);
       await lastLogMessageAssert(assert, 'Progress was finished (with [0,1,2,3,4])');
       return done();
-    }, 3100);
+    }, 5500);
   });
 
   test('process-modal (success)', async function (assert) {
@@ -330,7 +330,7 @@ module('Acceptance | modals', function (hooks) {
       await modalIsOpened(assert, false);
       lastLogMessageAssert(assert, 'Process was confirmed (with some result)');
       return done();
-    }, 3100);
+    }, 5500);
   });
 
   test('process-modal (error)', async function (assert) {
@@ -343,7 +343,7 @@ module('Acceptance | modals', function (hooks) {
       modalIsOpened(assert, false);
       lastLogMessageAssert(assert, 'Process was declined (with some error)');
       return done();
-    }, 3100);
+    }, 5500);
   });
 
   test('Custom process-modal', async function (assert) {
@@ -359,7 +359,7 @@ module('Acceptance | modals', function (hooks) {
       modalIsOpened(assert, false);
       lastLogMessageAssert(assert, 'Process was confirmed (with some result)');
       return done();
-    }, 3100);
+    }, 5500);
   });
 
 });

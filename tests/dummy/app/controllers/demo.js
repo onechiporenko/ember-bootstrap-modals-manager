@@ -48,10 +48,10 @@ export default Controller.extend({
   generatePromiseFactoriesList(count) {
     const list = [];
     for (let i = 0; i < count; i++) {
-      list.push(() => new Promise(resolve => setTimeout(() => resolve(i), 300)));
+      list.push(() => new Promise(resolve => setTimeout(() => resolve(i), 1000)));
     }
     if (get(this, 'progressWillFail')) {
-      list.splice(2, 0, () => new Promise((resolve, reject) => setTimeout(() => reject('Promise was rejected'), 300)));
+      list.splice(2, 0, () => new Promise((resolve, reject) => setTimeout(() => reject('Promise was rejected'), 1000)));
     }
     return A(list);
   },
