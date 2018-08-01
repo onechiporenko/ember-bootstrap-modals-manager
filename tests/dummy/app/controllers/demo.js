@@ -18,6 +18,16 @@ export default Controller.extend({
     }, 2);
   }),
 
+  confirmButtonType: 'primary',
+  declineButtonType: 'secondary',
+
+  confirmIsActive: false,
+  confirmIconActive: '',
+  confirmIconInactive: '',
+  declineIsActive: false,
+  declineIconActive: '',
+  declineIconInactive: '',
+
   type: 'success',
 
   typeChoices: computed(function () {
@@ -27,6 +37,33 @@ export default Controller.extend({
       'info',
       'warning',
       'danger'
+    ];
+  }),
+
+  buttonTypeChoices: computed(function () {
+    return [
+      'primary',
+      'secondary',
+      'success',
+      'info',
+      'warning',
+      'danger',
+      'link',
+      'default'
+    ];
+  }),
+
+  confirmIconChoices: computed(function () {
+    return [
+      'fa fa-check',
+      'fa fa-check-circle'
+    ];
+  }),
+
+  declineIconChoices: computed(function () {
+    return [
+      'fa fa-ban',
+      'fa fa-times'
     ];
   }),
 
@@ -61,6 +98,14 @@ export default Controller.extend({
       const options = {
         title: 'Custom Alert Modal Title',
         body: 'Custom Alert Modal Body',
+        confirmButtonType: get(this, 'confirmButtonType'),
+        declineButtonType: get(this, 'declineButtonType'),
+        confirmIsActive: get(this, 'confirmIsActive'),
+        confirmIconActive: get(this, 'confirmIconActive'),
+        confirmIconInactive: get(this, 'confirmIconInactive'),
+        declineIsActive: get(this, 'declineIsActive'),
+        declineIconActive: get(this, 'declineIconActive'),
+        declineIconInactive: get(this, 'declineIconInactive')
       };
       set(this, 'options', options);
       get(this, 'modalsManager')
@@ -70,7 +115,15 @@ export default Controller.extend({
     showConfirmModal() {
       const options = {
         title: 'Custom Confirm Modal Title',
-        body: 'Custom Confirm Modal Body'
+        body: 'Custom Confirm Modal Body',
+        confirmButtonType: get(this, 'confirmButtonType'),
+        declineButtonType: get(this, 'declineButtonType'),
+        confirmIsActive: get(this, 'confirmIsActive'),
+        confirmIconActive: get(this, 'confirmIconActive'),
+        confirmIconInactive: get(this, 'confirmIconInactive'),
+        declineIsActive: get(this, 'declineIsActive'),
+        declineIconActive: get(this, 'declineIconActive'),
+        declineIconInactive: get(this, 'declineIconInactive')
       };
       set(this, 'options', options);
       get(this, 'modalsManager')
@@ -83,7 +136,15 @@ export default Controller.extend({
         title: 'Custom Prompt Modal Title',
         body: 'Custom Prompt Modal Body',
         inputLabel: 'Input Label',
-        disallowEmpty: get(this, 'disallowEmptyPrompt')
+        disallowEmpty: get(this, 'disallowEmptyPrompt'),
+        confirmButtonType: get(this, 'confirmButtonType'),
+        declineButtonType: get(this, 'declineButtonType'),
+        confirmIsActive: get(this, 'confirmIsActive'),
+        confirmIconActive: get(this, 'confirmIconActive'),
+        confirmIconInactive: get(this, 'confirmIconInactive'),
+        declineIsActive: get(this, 'declineIsActive'),
+        declineIconActive: get(this, 'declineIconActive'),
+        declineIconInactive: get(this, 'declineIconInactive')
       };
       set(this, 'options', options);
       get(this, 'modalsManager')
@@ -96,7 +157,15 @@ export default Controller.extend({
         title: 'Custom Prompt Confirm Modal Title',
         body: 'Please enter a "modal" without quotes',
         inputLabel: 'Input Label',
-        promptValue: 'modal'
+        promptValue: 'modal',
+        confirmButtonType: get(this, 'confirmButtonType'),
+        declineButtonType: get(this, 'declineButtonType'),
+        confirmIsActive: get(this, 'confirmIsActive'),
+        confirmIconActive: get(this, 'confirmIconActive'),
+        confirmIconInactive: get(this, 'confirmIconInactive'),
+        declineIsActive: get(this, 'declineIsActive'),
+        declineIconActive: get(this, 'declineIconActive'),
+        declineIconInactive: get(this, 'declineIconInactive')
       };
       set(this, 'options', options);
       get(this, 'modalsManager')
@@ -108,7 +177,15 @@ export default Controller.extend({
       const options = {
         title: 'Custom Check Confirm Modal Title',
         body: 'Confirm your suggestion',
-        inputLabel: 'Input Label'
+        inputLabel: 'Input Label',
+        confirmButtonType: get(this, 'confirmButtonType'),
+        declineButtonType: get(this, 'declineButtonType'),
+        confirmIsActive: get(this, 'confirmIsActive'),
+        confirmIconActive: get(this, 'confirmIconActive'),
+        confirmIconInactive: get(this, 'confirmIconInactive'),
+        declineIsActive: get(this, 'declineIsActive'),
+        declineIconActive: get(this, 'declineIconActive'),
+        declineIconInactive: get(this, 'declineIconInactive')
       };
       set(this, 'options', options);
       get(this, 'modalsManager')
@@ -267,7 +344,7 @@ export default Controller.extend({
         .catch(e => this.addMessage(`Process was declined (with ${e})`));
     },
     showCustomFormModal() {
-      set(this, 'options', ['modal-with-form', '{}']);
+      set(this, 'options', '.show(\'modal-with-form\')');
       get(this, 'modalsManager')
         .show('modal-with-form')
         .then(v => this.addMessage(`Modal with form was confirmed (with ${JSON.stringify(getProperties(v, 'firstName', 'lastName', 'email'))})`))

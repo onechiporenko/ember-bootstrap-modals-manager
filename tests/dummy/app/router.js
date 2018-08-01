@@ -1,4 +1,4 @@
-import AddonDocsRouter, {docsRoute} from 'ember-cli-addon-docs/router';
+import AddonDocsRouter, {docsRoute, apiRoute} from 'ember-cli-addon-docs/router';
 import config from './config/environment';
 
 const Router = AddonDocsRouter.extend({
@@ -19,6 +19,9 @@ Router.map(function () {
       this.route('process');
       this.route('progress');
       this.route('with-form');
+    });
+    this.route('sandbox', function() {
+      apiRoute(this);
     });
   });
   this.route('demo');

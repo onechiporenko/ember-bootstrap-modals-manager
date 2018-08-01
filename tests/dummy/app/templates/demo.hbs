@@ -7,59 +7,236 @@
   <div class="row">
     <div class="col-md-6 demo">
       <h3>Default modals:</h3>
-      {{#bs-button class="alert-modal" onClick=(action "showAlertModal")}}Alert Modal{{/bs-button}}
-      {{#bs-button class="confirm-modal" onClick=(action "showConfirmModal")}}Confirm Modal{{/bs-button}}
-      {{#bs-button class="prompt-modal" onClick=(action "showPromptModal")}}Prompt Modal{{/bs-button}}
-      {{#bs-button class="prompt-confirm-modal" onClick=(action "showPromptConfirmModal")}}
-        Prompt Confirm Modal{{/bs-button}}
-      {{#bs-button class="check-confirm-modal" onClick=(action "showCheckConfirmModal")}}
-        Check Confirm Modal{{/bs-button}}
-      {{#bs-button class="progress-modal" onClick=(action "showProgressModal")}}Progress Modal{{/bs-button}}
-      {{#bs-button class="process-modal" onClick=(action "showProcessModal")}}Process Modal{{/bs-button}}
+      {{bs-button
+        class="alert-modal"
+        onClick=(action "showAlertModal")
+        defaultText="Alert Modal"
+      }}
+      {{bs-button
+        class="confirm-modal"
+        onClick=(action "showConfirmModal")
+        defaultText="Confirm Modal"
+      }}
+      {{bs-button
+        class="prompt-modal"
+        onClick=(action "showPromptModal")
+        defaultText="Prompt Modal"
+      }}
+      {{bs-button
+        class="prompt-confirm-modal"
+        onClick=(action "showPromptConfirmModal")
+        defaultText="Prompt Confirm Modal"
+      }}
+      {{bs-button
+        class="check-confirm-modal"
+        onClick=(action "showCheckConfirmModal")
+        defaultText="Check Confirm Modal"
+      }}
+      {{bs-button
+        class="progress-modal"
+        onClick=(action "showProgressModal")
+        defaultText="Progress Modal"
+      }}
+      {{bs-button
+        class="process-modal"
+        onClick=(action "showProcessModal")
+        defaultText="Process Modal"
+      }}
 
       <h3>Modals with custom components:</h3>
-      {{#bs-button class="custom-alert-modal" onClick=(action "showCustomAlertModal")}}Alert Modal{{/bs-button}}
-      {{#bs-button class="custom-confirm-modal" onClick=(action "showCustomConfirmModal")}}Confirm Modal{{/bs-button}}
-      {{#bs-button class="custom-prompt-modal" onClick=(action "showCustomPromptModal")}}Prompt Modal{{/bs-button}}
-      {{#bs-button class="custom-prompt-confirm-modal" onClick=(action "showCustomPromptConfirmModal")}}
-        Prompt Confirm Modal{{/bs-button}}
-      {{#bs-button class="custom-check-confirm-modal" onClick=(action "showCustomCheckConfirmModal")}}
-        Check Confirm Modal{{/bs-button}}
-      {{#bs-button class="custom-progress-modal" onClick=(action "showCustomProgressModal")}}
-        Progress Modal{{/bs-button}}
-      {{#bs-button class="custom-process-modal" onClick=(action "showCustomProcessModal")}}Process Modal{{/bs-button}}
-      {{#bs-button class="custom-form-modal" onClick=(action "showCustomFormModal")}}
-        Modal With Form{{/bs-button}}
+      {{bs-button
+        class="custom-alert-modal"
+        onClick=(action "showCustomAlertModal")
+        defaultText="Alert Modal"
+      }}
+      {{bs-button
+        class="custom-confirm-modal"
+        onClick=(action "showCustomConfirmModal")
+        defaultText="Confirm Modal"
+      }}
+      {{bs-button
+        class="custom-prompt-modal"
+        onClick=(action "showCustomPromptModal")
+        defaultText="Prompt Modal"
+      }}
+      {{bs-button
+        class="custom-prompt-confirm-modal"
+        onClick=(action "showCustomPromptConfirmModal")
+        defaultText="Prompt Confirm Modal"
+      }}
+      {{bs-button
+        class="custom-check-confirm-modal"
+        onClick=(action "showCustomCheckConfirmModal")
+        defaultText="Check Confirm Modal"
+      }}
+      {{bs-button
+        class="custom-progress-modal"
+        onClick=(action "showCustomProgressModal")
+        defaultText="Progress Modal"
+      }}
+      {{bs-button
+        class="custom-process-modal"
+        onClick=(action "showCustomProcessModal")
+        defaultText="Process Modal"
+      }}
+      {{bs-button
+        class="custom-form-modal"
+        onClick=(action "showCustomFormModal")
+        defaultText="Modal With Form"
+      }}
       <h3>Settings:</h3>
       {{#bs-form formLayout="vertical" model=this as |form|}}
-        <h4>Prompt:</h4>
-        {{form.element controlType="checkbox" class="disallow-empty" label="Disallow empty prompt"
-                       property="disallowEmptyPrompt"}}
-        <h4>Progress:</h4>
+        <h4>General:</h4>
         <div class="row">
           <div class="col-md-6">
-            {{form.element controlType="checkbox" class="progress-show-label" label="Show label in the progress bar"
-                           property="showLabel"}}
-            {{form.element controlType="checkbox" class="progress-settled" label="Progress won't stop on first failed"
-                           property="settled"}}
-            {{form.element controlType="checkbox" class="progress-cancelable" label="Progress can be canceled"
-                           property="cancelable"}}
-            {{#form.element controlType="power-select" options=typeChoices property="type" as |el|}}
+            {{form.element
+              controlType="checkbox"
+              class="confirm-is-active"
+              label="Confirm is active"
+              property="confirmIsActive"
+            }}
+          </div>
+          <div class="col-md-6">
+            {{form.element
+              controlType="checkbox"
+              class="decline-is-active"
+              label="Decline is active"
+              property="declineIsActive"
+            }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            {{#form.element
+              label="Icon for confirm button (active)"
+              controlType="power-select"
+              options=confirmIconChoices
+              property="confirmIconActive" as |el|
+            }}
+              {{el.control searchEnabled=false allowClear=true}}
+            {{/form.element}}
+          </div>
+          <div class="col-md-6">
+            {{#form.element
+              label="Icon for decline button (active)"
+              controlType="power-select"
+              options=declineIconChoices
+              property="declineIconActive" as |el|
+            }}
+              {{el.control searchEnabled=false allowClear=true}}
+            {{/form.element}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            {{#form.element
+              label="Icon for confirm button (inactive)"
+              controlType="power-select"
+              options=confirmIconChoices
+              property="confirmIconInactive" as |el|
+            }}
+              {{el.control searchEnabled=false allowClear=true}}
+            {{/form.element}}
+          </div>
+          <div class="col-md-6">
+            {{#form.element
+              label="Icon for decline button (inactive)"
+              controlType="power-select"
+              options=declineIconChoices
+              property="declineIconInactive" as |el|
+            }}
+              {{el.control searchEnabled=false allowClear=true}}
+            {{/form.element}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            {{#form.element
+              label="Primary button type"
+              controlType="power-select"
+              options=buttonTypeChoices
+              property="confirmButtonType" as |el|
+            }}
               {{el.control searchEnabled=false}}
             {{/form.element}}
           </div>
           <div class="col-md-6">
-            {{form.element controlType="checkbox" class="progress-striped" label="Progress bar is striped"
-                           property="striped"}}
-            {{form.element controlType="checkbox" class="progress-animate" disabled=notStriped
-                           label="Progress bar is animated" property="animate"}}
-            {{form.element controlType="checkbox" class="progress-will-fail" label="Progress will fail"
-                           property="progressWillFail"}}
+            {{#form.element
+              label="Secondary button type"
+              controlType="power-select"
+              options=buttonTypeChoices
+              property="declineButtonType" as |el|
+            }}
+              {{el.control searchEnabled=false}}
+            {{/form.element}}
+          </div>
+        </div>
+        <h4>Prompt:</h4>
+        {{form.element
+          controlType="checkbox"
+          class="disallow-empty"
+          label="Disallow empty prompt"
+          property="disallowEmptyPrompt"
+        }}
+        <h4>Progress:</h4>
+        <div class="row">
+          <div class="col-md-6">
+            {{form.element
+              controlType="checkbox"
+              class="progress-show-label"
+              label="Show label in the progress bar"
+              property="showLabel"
+            }}
+            {{form.element
+              controlType="checkbox"
+              class="progress-settled"
+              label="Progress won't stop on first failed"
+              property="settled"
+            }}
+            {{form.element
+              controlType="checkbox"
+              class="progress-cancelable"
+              label="Progress can be canceled"
+              property="cancelable"
+            }}
+            {{#form.element
+              label="Progress type"
+              controlType="power-select"
+              options=typeChoices
+              property="type" as |el|
+            }}
+              {{el.control searchEnabled=false}}
+            {{/form.element}}
+          </div>
+          <div class="col-md-6">
+            {{form.element
+              controlType="checkbox"
+              class="progress-striped"
+              label="Progress bar is striped"
+              property="striped"
+            }}
+            {{form.element
+              controlType="checkbox"
+              class="progress-animate"
+              disabled=notStriped
+              label="Progress bar is animated"
+              property="animate"
+            }}
+            {{form.element
+              controlType="checkbox"
+              class="progress-will-fail"
+              label="Progress will fail"
+              property="progressWillFail"
+            }}
           </div>
         </div>
         <h4>Process:</h4>
-        {{form.element controlType="checkbox" class="process-will-fail" label="Process will fail"
-                       property="processWillFail"}}
+        {{form.element
+          controlType="checkbox"
+          class="process-will-fail"
+          label="Process will fail"
+          property="processWillFail"
+        }}
       {{/bs-form}}
       {{outlet}}
     </div>
@@ -68,7 +245,10 @@
       <pre>{{stringifiedOptions}}</pre>
       <p>Logs:</p>
       <p class="logs">{{#each messages as |message|}}{{message}}<br>{{/each}}</p>
-      {{#bs-button onClick=(action "cleanMessage")}}Clear logs{{/bs-button}}
+      {{bs-button
+        onClick=(action "cleanMessage")
+        defaultText="Clear logs"
+      }}
     </div>
   </div>
 </div>
