@@ -252,7 +252,7 @@ module('Acceptance | modals', function (hooks) {
       await modalIsOpened(assert, false);
       await lastLogMessageAssert(assert, 'Progress was finished (with [0,1,2,3,4])');
       return done();
-    }, 5500);
+    }, 6500);
   });
 
   test('progress-modal (error)', async function (assert) {
@@ -284,7 +284,7 @@ module('Acceptance | modals', function (hooks) {
       await modalIsOpened(assert, false);
       await lastLogMessageAssert(assert, 'Progress was finished (with [[0,1,2,3,4],["Promise was rejected"]])');
       return done();
-    }, 6500);
+    }, 7500);
   });
 
   test('progress-modal (cancelable)', async function (assert) {

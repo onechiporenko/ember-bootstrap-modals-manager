@@ -30,6 +30,40 @@ export default Controller.extend({
 
   type: 'success',
 
+  size: null,
+
+  confirmButtonSize: 'md',
+
+  declineButtonSize: 'md',
+
+  backdropTransitionDuration: computed({
+    get() {
+      return 150;
+    },
+    set(k, v) {
+      return Number(v);
+    }
+  }),
+
+  renderInPlace: true,
+
+  transitionDuration: computed({
+    get() {
+      return 300;
+    },
+    set(k, v) {
+      return Number(v);
+    }
+  }),
+
+  buttonSizeChoices: computed(function () {
+    return ['xs', 'sm', 'md', 'lg'];
+  }),
+
+  sizeChoices: computed(function () {
+    return ['sm', 'lg'];
+  }),
+
   typeChoices: computed(function () {
     return [
       '',
@@ -98,6 +132,12 @@ export default Controller.extend({
       const options = {
         title: 'Custom Alert Modal Title',
         body: 'Custom Alert Modal Body',
+        size: get(this, 'size'),
+        confirmButtonSize: get(this, 'confirmButtonSize'),
+        declineButtonSize: get(this, 'declineButtonSize'),
+        backdropTransitionDuration: get(this, 'backdropTransitionDuration'),
+        renderInPlace: get(this, 'renderInPlace'),
+        transitionDuration: get(this, 'transitionDuration'),
         confirmButtonType: get(this, 'confirmButtonType'),
         declineButtonType: get(this, 'declineButtonType'),
         confirmIsActive: get(this, 'confirmIsActive'),
@@ -116,6 +156,12 @@ export default Controller.extend({
       const options = {
         title: 'Custom Confirm Modal Title',
         body: 'Custom Confirm Modal Body',
+        size: get(this, 'size'),
+        confirmButtonSize: get(this, 'confirmButtonSize'),
+        declineButtonSize: get(this, 'declineButtonSize'),
+        backdropTransitionDuration: get(this, 'backdropTransitionDuration'),
+        renderInPlace: get(this, 'renderInPlace'),
+        transitionDuration: get(this, 'transitionDuration'),
         confirmButtonType: get(this, 'confirmButtonType'),
         declineButtonType: get(this, 'declineButtonType'),
         confirmIsActive: get(this, 'confirmIsActive'),
@@ -136,6 +182,12 @@ export default Controller.extend({
         title: 'Custom Prompt Modal Title',
         body: 'Custom Prompt Modal Body',
         inputLabel: 'Input Label',
+        size: get(this, 'size'),
+        confirmButtonSize: get(this, 'confirmButtonSize'),
+        declineButtonSize: get(this, 'declineButtonSize'),
+        backdropTransitionDuration: get(this, 'backdropTransitionDuration'),
+        renderInPlace: get(this, 'renderInPlace'),
+        transitionDuration: get(this, 'transitionDuration'),
         disallowEmpty: get(this, 'disallowEmptyPrompt'),
         confirmButtonType: get(this, 'confirmButtonType'),
         declineButtonType: get(this, 'declineButtonType'),
@@ -158,6 +210,12 @@ export default Controller.extend({
         body: 'Please enter a "modal" without quotes',
         inputLabel: 'Input Label',
         promptValue: 'modal',
+        size: get(this, 'size'),
+        confirmButtonSize: get(this, 'confirmButtonSize'),
+        declineButtonSize: get(this, 'declineButtonSize'),
+        backdropTransitionDuration: get(this, 'backdropTransitionDuration'),
+        renderInPlace: get(this, 'renderInPlace'),
+        transitionDuration: get(this, 'transitionDuration'),
         confirmButtonType: get(this, 'confirmButtonType'),
         declineButtonType: get(this, 'declineButtonType'),
         confirmIsActive: get(this, 'confirmIsActive'),
@@ -178,6 +236,12 @@ export default Controller.extend({
         title: 'Custom Check Confirm Modal Title',
         body: 'Confirm your suggestion',
         inputLabel: 'Input Label',
+        size: get(this, 'size'),
+        confirmButtonSize: get(this, 'confirmButtonSize'),
+        declineButtonSize: get(this, 'declineButtonSize'),
+        backdropTransitionDuration: get(this, 'backdropTransitionDuration'),
+        renderInPlace: get(this, 'renderInPlace'),
+        transitionDuration: get(this, 'transitionDuration'),
         confirmButtonType: get(this, 'confirmButtonType'),
         declineButtonType: get(this, 'declineButtonType'),
         confirmIsActive: get(this, 'confirmIsActive'),
@@ -197,6 +261,10 @@ export default Controller.extend({
       const options = {
         title: 'Progress Modal Title',
         body: '',
+        size: get(this, 'size'),
+        backdropTransitionDuration: get(this, 'backdropTransitionDuration'),
+        renderInPlace: get(this, 'renderInPlace'),
+        transitionDuration: get(this, 'transitionDuration'),
         promises: this.generatePromiseFactoriesList(5),
         showLabel: get(this, 'showLabel'),
         striped: get(this, 'striped'),
@@ -222,6 +290,10 @@ export default Controller.extend({
       const options = {
         body: 'Some long process (you must add font-awesome to your project to use `fa`-icons)',
         iconClass: 'text-center fa fa-spinner fa-spin fa-3x fa-fw',
+        size: get(this, 'size'),
+        backdropTransitionDuration: get(this, 'backdropTransitionDuration'),
+        renderInPlace: get(this, 'renderInPlace'),
+        transitionDuration: get(this, 'transitionDuration'),
         title: '',
         process: () => new Promise((resolve, reject) => setTimeout(() => {
           get(this, 'processWillFail') ? reject('some error') : resolve('some result');

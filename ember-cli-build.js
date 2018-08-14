@@ -9,9 +9,12 @@ module.exports = function(defaults) {
       importBootstrapFont: false,
       importBootstrapCSS: false
     },
-
-    'ember-power-select': {
-      theme: 'bootstrap'
+    outputPaths: {
+      app: {
+        css: {
+          'demo': '/assets/demo.css'
+        }
+      }
     }
   });
 

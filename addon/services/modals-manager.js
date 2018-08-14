@@ -19,7 +19,7 @@ export default ModalsManager.extend({
    *
    * @method alert
    * @param {object} options
-   * @returns {RSVP.Promise}
+   * @return {RSVP.Promise}
    */
 
   /**
@@ -27,7 +27,7 @@ export default ModalsManager.extend({
    *
    * @method confirm
    * @param {object} options
-   * @returns {RSVP.Promise}
+   * @return {RSVP.Promise}
    */
 
   /**
@@ -35,7 +35,7 @@ export default ModalsManager.extend({
    *
    * @method prompt
    * @param {object} options
-   * @returns {RSVP.Promise}
+   * @return {RSVP.Promise}
    */
 
   /**
@@ -43,7 +43,7 @@ export default ModalsManager.extend({
    *
    * @method promptConfirm
    * @param {object} options
-   * @returns {RSVP.Promise}
+   * @return {RSVP.Promise}
    */
 
   /**
@@ -51,7 +51,7 @@ export default ModalsManager.extend({
    *
    * @method checkConfirm
    * @param {object} options
-   * @returns {RSVP.Promise}
+   * @return {RSVP.Promise}
    */
 
   /**
@@ -59,7 +59,7 @@ export default ModalsManager.extend({
    *
    * @method progress
    * @param {object} options
-   * @returns {RSVP.Promise}
+   * @return {RSVP.Promise}
    */
 
   /**
@@ -67,7 +67,7 @@ export default ModalsManager.extend({
    *
    * @method process
    * @param {object} options
-   * @returns {RSVP.Promise}
+   * @return {RSVP.Promise}
    */
 
 });

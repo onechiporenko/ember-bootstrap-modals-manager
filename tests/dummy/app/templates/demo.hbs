@@ -171,6 +171,68 @@
             {{/form.element}}
           </div>
         </div>
+        <div class="row">
+          <div class="col-md-6">
+            {{#form.element
+              label="Primary button size"
+              controlType="power-select"
+              options=buttonSizeChoices
+              property="confirmButtonSize" as |el|
+            }}
+              {{el.control searchEnabled=false}}
+            {{/form.element}}
+          </div>
+          <div class="col-md-6">
+            {{#form.element
+              label="Secondary button size"
+              controlType="power-select"
+              options=buttonSizeChoices
+              property="declineButtonSize" as |el|
+            }}
+              {{el.control searchEnabled=false}}
+            {{/form.element}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            {{#form.element
+              label="Modal Size"
+              controlType="power-select"
+              options=sizeChoices
+              property="size" as |el|
+            }}
+              {{el.control searchEnabled=false allowClear=true}}
+            {{/form.element}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            {{form.element
+              controlType="checkbox"
+              class="renderInPlace"
+              label="Render In Place"
+              property="renderInPlace"
+            }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            {{form.element
+              controlType="number"
+              class="backdropTransitionDuration"
+              label="Backdrop Transition Duration"
+              property="backdropTransitionDuration"
+            }}
+          </div>
+          <div class="col-md-6">
+            {{form.element
+              controlType="number"
+              class="transitionDuration"
+              label="Transition Duration"
+              property="transitionDuration"
+            }}
+          </div>
+        </div>
         <h4>Prompt:</h4>
         {{form.element
           controlType="checkbox"

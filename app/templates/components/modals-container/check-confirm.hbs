@@ -1,4 +1,14 @@
-{{#bs-modal open=modalIsOpened onSubmit=(action "confirm") onHide=(action "decline") as |modal|}}
+{{#bs-modal
+  position=options.position
+  size=options.size
+  backdropTransitionDuration=options.backdropTransitionDuration
+  fade=options.fade
+  renderInPlace=options.renderInPlace
+  transitionDuration=options.transitionDuration
+  open=modalIsOpened
+  onSubmit=(action "confirm")
+  onHide=(action "decline") as |modal|
+}}
   {{#modal.header}}
     {{#if options.titleComponent}}
       {{component
@@ -40,6 +50,7 @@
         active=options.declineIsActive
         iconActive=options.declineIconActive
         iconInactive=options.declineIconInactive
+        size=options.declineButtonSize
         onClick=(action modal.close)
       }}
       {{bs-button
@@ -47,6 +58,7 @@
         disabled=confirmDisabled
         defaultText=options.confirm
         active=options.confirmIsActive
+        size=options.confirmButtonSize
         iconActive=options.confirmIconActive
         iconInactive=options.confirmIconInactive
         onClick=(action modal.submit)

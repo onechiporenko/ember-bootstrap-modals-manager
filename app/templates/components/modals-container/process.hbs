@@ -1,4 +1,16 @@
-{{#bs-modal open=modalIsOpened keyboard=false backdropClose=false onSubmit=(action "confirm") onHide=(action "decline") as |modal|}}
+{{#bs-modal
+  position=options.position
+  size=options.size
+  backdropTransitionDuration=options.backdropTransitionDuration
+  fade=options.fade
+  renderInPlace=options.renderInPlace
+  transitionDuration=options.transitionDuration
+  open=modalIsOpened
+  keyboard=false
+  backdropClose=false
+  onSubmit=(action "confirm")
+  onHide=(action "decline") as |modal|
+}}
   {{#modal.header closeButton=false}}
     {{#if options.titleComponent}}
       {{component
