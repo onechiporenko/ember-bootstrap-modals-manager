@@ -5,7 +5,7 @@
 [![Ember Observer Score](https://emberobserver.com/badges/ember-bootstrap-modals-manager.svg)](https://emberobserver.com/addons/ember-bootstrap-modals-manager)
 [![npm version](https://badge.fury.io/js/ember-bootstrap-modals-manager.png)](http://badge.fury.io/js/ember-bootstrap-modals-manager)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
-[![Downloads](http://img.shields.io/npm/dm/ember-bootstrap-modals-manager.svg)](https://www.npmjs.com/package/ember-bootstrap-modals-manager)
+[![Downloads](http://img.shields.io/npm/dm/ember-bootstrap-modals-manager.svg)](https://www.npmjs.com/package/ember-bootstrap-modals-manager) [![Greenkeeper badge](https://badges.greenkeeper.io/onechiporenko/ember-bootstrap-modals-manager.svg)](https://greenkeeper.io/)
 
 `ember-bootstrap-modals-manager` is an Ember-addon that provides a simple mechanism for interaction with user using modals. This addon is based on modals from `ember-bootstrap`.
 
