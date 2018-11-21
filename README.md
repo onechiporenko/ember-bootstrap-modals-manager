@@ -15,6 +15,6 @@
 
 ## Demo and docs
 
-Check [demo-page](https://onechiporenko.github.io/ember-bootstrap-modals-manager/latest/demo)
+Check [demo-page](https://onechiporenko.github.io/ember-bootstrap-modals-manager/demo)
 
 Check [docs-page](https://onechiporenko.github.io/ember-bootstrap-modals-manager)

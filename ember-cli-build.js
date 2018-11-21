@@ -9,6 +9,13 @@ module.exports = function(defaults) {
       importBootstrapFont: true,
       importBootstrapCSS: false
     },
+    'ember-cli-uglify': {
+      uglify: {
+        compress: {
+          collapse_vars: false
+        }
+      }
+    },
     outputPaths: {
       app: {
         css: {
