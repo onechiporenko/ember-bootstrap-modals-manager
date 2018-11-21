@@ -6,14 +6,13 @@
   transitionDuration=options.transitionDuration
   open=modalIsOpened
   onSubmit=(action "confirm")
-  onHide=(action "decline") as |modal|
-}}
+  onHide=(action "decline")
+as |modal|}}
   {{#modal.header}}
     {{#if options.titleComponent}}
       {{component
         options.titleComponent
-        options=options
-      }}
+        options=options}}
     {{else}}
       {{#bs-modal/header/title title=options.title}}{{options.title}}{{/bs-modal/header/title}}
     {{/if}}
@@ -23,12 +22,17 @@
       {{component
         options.bodyComponent
         options=options
-        updatePromptValue=(action "updatePromptValue")
-      }}
+        updatePromptValue=(action "updatePromptValue")}}
     {{else}}
+      {{! template-lint-disable attribute-indentation }}
       <p>{{options.body}}</p>
-      {{#bs-form model=this onSubmit=(action "confirm") as |form|}}
-        {{form.element property="promptValue" label=options.inputLabel}}
+      {{#bs-form
+        model=this
+        onSubmit=(action "confirm")
+      as |form|}}
+        {{form.element
+          property="promptValue"
+          label=options.inputLabel}}
       {{/bs-form}}
     {{/if}}
   {{/modal.body}}
@@ -39,8 +43,7 @@
         options=options
         confirmDisabled=confirmDisabled
         confirm=(action modal.submit)
-        decline=(action modal.close)
-      }}
+        decline=(action modal.close)}}
     {{else}}
       <p>{{options.footer}}</p>
       {{bs-button
@@ -50,8 +53,7 @@
         iconActive=options.declineIconActive
         iconInactive=options.declineIconInactive
         size=options.declineButtonSize
-        onClick=(action modal.close)
-      }}
+        onClick=(action modal.close)}}
       {{bs-button
         type=options.confirmButtonType
         defaultText=options.confirm
@@ -60,8 +62,7 @@
         iconActive=options.confirmIconActive
         iconInactive=options.confirmIconInactive
         size=options.confirmButtonSize
-        onClick=(action modal.submit)
-      }}
+        onClick=(action modal.submit)}}
     {{/if}}
   {{/modal.footer}}
 {{/bs-modal}}

@@ -8,14 +8,13 @@
   keyboard=false
   backdropClose=false
   onSubmit=(action "confirm")
-  onHide=(action "decline") as |modal|
-}}
+  onHide=(action "decline")
+as |modal|}}
   {{#modal.header closeButton=false}}
     {{#if options.titleComponent}}
       {{component
         options.titleComponent
-        options=options
-      }}
+        options=options}}
     {{else}}
       {{#bs-modal/header/title}}{{options.title}}{{/bs-modal/header/title}}
     {{/if}}
@@ -24,8 +23,7 @@
     {{#if options.bodyComponent}}
       {{component
         options.bodyComponent
-        options=options
-      }}
+        options=options}}
     {{else}}
       <p>{{options.body}}</p>
       {{#if options.iconClass}}
@@ -37,8 +35,7 @@
     {{#if options.footerComponent}}
       {{component
         options.footerComponent
-        options=options
-      }}
+        options=options}}
     {{/if}}
   {{/modal.footer}}
 {{/bs-modal}}
