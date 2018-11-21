@@ -1,5 +1,4 @@
 {{docs-hero
-  logo="ember"
-  slimHeading="Bootstrap"
-  strongHeading="Modals Manager"
+  prefix="Ember Bootstrap"
+  heading="Modals Manager"
   byline="Modals-manager for modals from ember-bootstrap"}}
