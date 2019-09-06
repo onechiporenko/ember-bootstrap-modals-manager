@@ -316,7 +316,7 @@ module('Acceptance | modals', function (hooks) {
       await modalIsOpened(assert, false);
       await lastLogMessageAssert(assert, 'Progress was finished (with [0,1,2,3,4])');
       return done();
-    }, 5500);
+    }, 6000);
   });
 
   test('process-modal (success)', async function (assert) {
