@@ -8,9 +8,7 @@ export default Controller.extend({
   modalsManager: service(),
   messages: A([]),
 
-  options: computed(function () {
-    return {};
-  }),
+  options: null,
 
   stringifiedOptions: computed('options', function () {
     return JSON.stringify(get(this, 'options'), (k, v) => {
@@ -111,6 +109,11 @@ export default Controller.extend({
   notStriped: not('striped'),
   progressWillFail: false,
   processWillFail: false,
+
+  init() {
+    this._super(...arguments);
+    set(this, 'options', {});
+  },
 
   addMessage(msg) {
     get(this, 'messages').pushObject(msg);
