@@ -93,24 +93,26 @@
             {{! template-lint-disable }}
             {{#form.element
               label="Icon for confirm button (active)"
-              controlType="power-select"
-              options=confirmIconChoices
-              property="confirmIconActive"
             as |el|}}
-              {{el.control
+              {{#power-select
+                id=el.id
+                options=confirmIconChoices
+                onchange=(action (mut confirmIconActive))
                 searchEnabled=false
-                allowClear=true}}
+                allowClear=true as |icon|}}
+                {{icon}}
+              {{/power-select}}
             {{/form.element}}
           </div>
           <div class="col-md-6">
             {{! template-lint-disable }}
             {{#form.element
               label="Icon for decline button (active)"
-              controlType="power-select"
-              options=declineIconChoices
-              property="declineIconActive"
             as |el|}}
-              {{el.control
+              {{power-select
+                id=el.id
+                options=declineIconChoices
+                onchange=(action (mut declineIconActive))
                 searchEnabled=false
                 allowClear=true}}
             {{/form.element}}
@@ -121,11 +123,11 @@
             {{! template-lint-disable }}
             {{#form.element
               label="Icon for confirm button (inactive)"
-              controlType="power-select"
-              options=confirmIconChoices
-              property="confirmIconInactive"
             as |el|}}
-              {{el.control
+              {{power-select
+                id=el.id
+                options=confirmIconChoices
+                onchange=(action (mut confirmIconInactive))
                 searchEnabled=false
                 allowClear=true}}
             {{/form.element}}
@@ -134,11 +136,11 @@
             {{! template-lint-disable }}
             {{#form.element
               label="Icon for decline button (inactive)"
-              controlType="power-select"
-              options=declineIconChoices
-              property="declineIconInactive"
             as |el|}}
-              {{el.control
+              {{power-select
+                id=el.id
+                options=declineIconChoices
+                onchange=(action (mut declineIconInactive))
                 searchEnabled=false
                 allowClear=true}}
             {{/form.element}}
@@ -149,11 +151,11 @@
             {{! template-lint-disable }}
             {{#form.element
               label="Primary button type"
-              controlType="power-select"
-              options=buttonTypeChoices
-              property="confirmButtonType"
             as |el|}}
-              {{el.control
+              {{power-select
+                id=el.id
+                options=buttonTypeChoices
+                onchange=(action (mut confirmButtonType))
                 searchEnabled=false}}
             {{/form.element}}
           </div>
@@ -161,11 +163,11 @@
             {{! template-lint-disable }}
             {{#form.element
               label="Secondary button type"
-              controlType="power-select"
-              options=buttonTypeChoices
-              property="declineButtonType"
             as |el|}}
               {{el.control
+                id=el.id
+                options=buttonTypeChoices
+                onchange=(action (mut declineButtonType))
                 searchEnabled=false}}
             {{/form.element}}
           </div>
@@ -175,11 +177,11 @@
             {{! template-lint-disable }}
             {{#form.element
               label="Primary button size"
-              controlType="power-select"
-              options=buttonSizeChoices
-              property="confirmButtonSize"
             as |el|}}
-              {{el.control
+              {{power-select
+                id=el.id
+                options=buttonSizeChoices
+                onchange=(action (mut confirmButtonSize))
                 searchEnabled=false}}
             {{/form.element}}
           </div>
@@ -187,11 +189,11 @@
             {{! template-lint-disable }}
             {{#form.element
               label="Secondary button size"
-              controlType="power-select"
-              options=buttonSizeChoices
-              property="declineButtonSize"
             as |el|}}
-              {{el.control
+              {{power-select
+                id=el.id
+                options=buttonSizeChoices
+                onchange=(action (mut declineButtonSize))
                 searchEnabled=false}}
             {{/form.element}}
           </div>
@@ -201,11 +203,11 @@
             {{! template-lint-disable }}
             {{#form.element
               label="Modal Size"
-              controlType="power-select"
-              options=sizeChoices
-              property="size"
             as |el|}}
-              {{el.control
+              {{power-select
+                id=el.id
+                options=sizeChoices
+                onchange=(action (mut size))
                 searchEnabled=false
                 allowClear=true}}
             {{/form.element}}
@@ -263,11 +265,12 @@
               property="cancelable"}}
             {{#form.element
               label="Progress type"
-              controlType="power-select"
-              options=typeChoices
-              property="type"
             as |el|}}
-              {{el.control searchEnabled=false}}
+              {{power-select
+                id=el.id
+                options=typeChoices
+                searchEnabled=false
+                onchange=(action (mut type))}}
             {{/form.element}}
           </div>
           <div class="col-md-6">
