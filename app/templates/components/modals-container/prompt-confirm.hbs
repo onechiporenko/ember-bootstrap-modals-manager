@@ -1,3 +1,4 @@
+{{! template-lint-disable attribute-indentation }}
 <BsModal
   @position={{options.position}}
   @size={{options.size}}
@@ -61,7 +62,7 @@ as |modal|>
         @active={{options.confirmIsActive}}
         @iconActive={{options.confirmIconActive}}
         @iconInactive={{options.confirmIconInactive}}
-        @size=options.confirmButtonSize}}
+        @size={{options.confirmButtonSize}}
         @onClick={{action modal.submit}} />
     {{/if}}
   </modal.footer>
