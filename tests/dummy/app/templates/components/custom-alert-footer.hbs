@@ -1,7 +1,7 @@
 {{! BEGIN-SNIPPET components-custom-alert-footer.hbs }}
 <p>Custom Alert Footer Component</p>
-{{bs-button
-  type="primary"
-  defaultText="Confirm"
-  onClick=(action confirm)}}
+<BsButton
+  @type="primary"
+  @defaultText="Confirm"
+  @onClick={{action confirm}}/>
 {{! END-SNIPPET }}

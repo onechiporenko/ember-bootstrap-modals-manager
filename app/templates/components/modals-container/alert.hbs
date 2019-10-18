@@ -1,14 +1,14 @@
-{{#bs-modal
-  position=options.position
-  size=options.size
-  backdropTransitionDuration=options.backdropTransitionDuration
-  renderInPlace=options.renderInPlace
-  transitionDuration=options.transitionDuration
-  open=modalIsOpened
-  onSubmit=(action "confirm")
-  onHide=(action "decline")
-as |modal|}}
-  {{#modal.header}}
+<BsModal
+  @position={{options.position}}
+  @size={{options.size}}
+  @backdropTransitionDuration={{options.backdropTransitionDuration}}
+  @renderInPlace={{options.renderInPlace}}
+  @transitionDuration={{options.transitionDuration}}
+  @open={{modalIsOpened}}
+  @onSubmit={{action "confirm"}}
+  @onHidden={{action "decline"}}
+as |modal|>
+  <modal.header>
     {{#if options.titleComponent}}
       {{component
         options.titleComponent
@@ -16,8 +16,8 @@ as |modal|}}
     {{else}}
       {{#bs-modal/header/title}}{{options.title}}{{/bs-modal/header/title}}
     {{/if}}
-  {{/modal.header}}
-  {{#modal.body}}
+  </modal.header>
+  <modal.body>
     {{#if options.bodyComponent}}
       {{component
         options.bodyComponent
@@ -25,8 +25,8 @@ as |modal|}}
     {{else}}
       <p>{{options.body}}</p>
     {{/if}}
-  {{/modal.body}}
-  {{#modal.footer}}
+  </modal.body>
+  <modal.footer>
     {{#if options.footerComponent}}
       {{component
         options.footerComponent
@@ -34,14 +34,14 @@ as |modal|}}
         confirm=(action modal.submit)}}
     {{else}}
       <p>{{options.footer}}</p>
-      {{bs-button
-        type=options.confirmButtonType
-        defaultText=options.confirm
-        active=options.confirmIsActive
-        iconActive=options.confirmIconActive
-        iconInactive=options.confirmIconInactive
-        size=options.confirmButtonSize
-        onClick=(action modal.submit)}}
+      <BsButton
+        @type={{options.confirmButtonType}}
+        @defaultText={{options.confirm}}
+        @active={{options.confirmIsActive}}
+        @iconActive={{options.confirmIconActive}}
+        @iconInactive={{options.confirmIconInactive}}
+        @size={{options.confirmButtonSize}}
+        @onClick={{action modal.submit}} />
     {{/if}}
-  {{/modal.footer}}
-{{/bs-modal}}
+  </modal.footer>
+</BsModal>

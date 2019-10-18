@@ -2,12 +2,12 @@
 <p class="alert alert-info">
   Custom Progress Body Component {{done}} / {{overall}}
 </p>
-{{#bs-progress as |p|}}
-  {{p.bar
-    value=progress
-    showLabel=options.showLabel
-    striped=options.striped
-    animate=options.animate
-    type=options.type}}
-{{/bs-progress}}
+<BsProgress as |p|>
+  <p.bar
+    @value={{progress}}
+    @showLabel={{options.showLabel}}
+    @striped={{options.striped}}
+    @animate={{options.animate}}
+    @type={{options.type}}/>
+</BsProgress>
 {{! END-SNIPPET }}

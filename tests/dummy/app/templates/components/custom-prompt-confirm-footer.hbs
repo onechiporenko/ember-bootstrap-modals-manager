@@ -1,11 +1,11 @@
 {{! BEGIN-SNIPPET components-custom-prompt-confirm-footer.hbs }}
 Custom Prompt Confirm Footer Component
-{{bs-button
-  defaultText="Decline"
-  onClick=(action decline)}}
-{{bs-button
-  disabled=confirmDisabled
-  onClick=(action confirm)
-  defaultText="Confirm"
-  type="primary"}}
+<BsButton
+  @defaultText="Decline"
+  @onClick={{action decline}}/>
+<BsButton
+  @disabled={{confirmDisabled}}
+  @onClick={{action confirm}}
+  @defaultText="Confirm"
+  @type="primary"/>
 {{! END-SNIPPET }}
