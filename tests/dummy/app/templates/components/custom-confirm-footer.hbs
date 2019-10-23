@@ -1,10 +1,12 @@
 {{! BEGIN-SNIPPET components-custom-confirm-footer.hbs }}
 Custom Confirm Footer Component
 <BsButton
-  @defaultText="Decline"
-  @onClick={{action decline}}/>
+  @onClick={{action decline}}>
+  Decline
+</BsButton>
 <BsButton
-  @defaultText="Confirm"
   @onClick={{action confirm}}
-  @type="primary"/>
+  @type="primary">
+  Confirm
+</BsButton>
 {{! END-SNIPPET }}
