@@ -1,56 +1,56 @@
 {{! template-lint-disable attribute-indentation }}
 <BsModal
-  @position={{options.position}}
-  @size={{options.size}}
-  @backdropTransitionDuration={{options.backdropTransitionDuration}}
-  @renderInPlace={{options.renderInPlace}}
-  @transitionDuration={{options.transitionDuration}}
-  @open={{modalIsOpened}}
+  @position={{@options.position}}
+  @size={{@options.size}}
+  @backdropTransitionDuration={{@options.backdropTransitionDuration}}
+  @renderInPlace={{@options.renderInPlace}}
+  @transitionDuration={{@options.transitionDuration}}
+  @open={{@modalIsOpened}}
   @onSubmit={{action "confirm"}}
   @onHidden={{action "decline"}}
 as |modal|>
   <modal.header>
-    {{#if options.titleComponent}}
+    {{#if @options.titleComponent}}
       {{component
-        options.titleComponent
-        options=options}}
+        @options.titleComponent
+        options=@options}}
     {{else}}
-      {{#bs-modal/header/title}}{{options.title}}{{/bs-modal/header/title}}
+      {{#bs-modal/header/title}}{{@options.title}}{{/bs-modal/header/title}}
     {{/if}}
   </modal.header>
   <modal.body>
-    {{#if options.bodyComponent}}
+    {{#if @options.bodyComponent}}
       {{component
-        options.bodyComponent
-        options=options}}
+        @options.bodyComponent
+        options=@options}}
     {{else}}
-      <p>{{options.body}}</p>
+      <p>{{@options.body}}</p>
     {{/if}}
   </modal.body>
   <modal.footer>
-    {{#if options.footerComponent}}
+    {{#if @options.footerComponent}}
       {{component
-        options.footerComponent
-        options=options
+        @options.footerComponent
+        options=@options
         confirm=(action modal.submit)
         decline=(action modal.close)}}
     {{else}}
-      <p>{{options.footer}}</p>
+      <p>{{@options.footer}}</p>
       <BsButton
-        @type={{options.declineButtonType}}
-        @defaultText={{options.decline}}
-        @active={{options.declineIsActive}}
-        @iconActive={{options.declineIconActive}}
-        @iconInactive={{options.declineIconInactive}}
-        @size={{options.declineButtonSize}}
+        @type={{@options.declineButtonType}}
+        @defaultText={{@options.decline}}
+        @active={{@options.declineIsActive}}
+        @iconActive={{@options.declineIconActive}}
+        @iconInactive={{@options.declineIconInactive}}
+        @size={{@options.declineButtonSize}}
         @onClick={{action modal.close}} />
       <BsButton
-        @type={{options.confirmButtonType}}
-        @defaultText={{options.confirm}}
-        @active={{options.confirmIsActive}}
-        @iconActive={{options.confirmIconActive}}
-        @size={{options.confirmButtonSize}}
-        @iconInactive={{options.confirmIconInactive}}
+        @type={{@options.confirmButtonType}}
+        @defaultText={{@options.confirm}}
+        @active={{@options.confirmIsActive}}
+        @iconActive={{@options.confirmIconActive}}
+        @size={{@options.confirmButtonSize}}
+        @iconInactive={{@options.confirmIconInactive}}
         @onClick={{action modal.submit}} />
     {{/if}}
   </modal.footer>
