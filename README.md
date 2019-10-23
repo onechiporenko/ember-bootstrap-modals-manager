@@ -13,6 +13,11 @@
 
 `ember i ember-bootstrap-modals-manager`
 
+## Compatibility
+
+* v2.* is for `ember-bootstrap@2.x`
+* v3.* is for `ember-bootstrap@3.x`
+
 ## Demo and docs
 
 Check [demo-page](https://onechiporenko.github.io/ember-bootstrap-modals-manager/demo)
