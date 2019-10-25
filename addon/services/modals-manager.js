@@ -3,7 +3,7 @@ import ModalsManager from 'ember-modals-manager-internal/services/modals-manager
 /**
  * @class ModalsManager
  */
-export default ModalsManager.extend({
+export default class ModalsManagerService extends ModalsManager {
 
   /**
    * Shows custom modal
@@ -69,5 +69,4 @@ export default ModalsManager.extend({
    * @param {object} options
    * @return {RSVP.Promise}
    */
-
-});
+}

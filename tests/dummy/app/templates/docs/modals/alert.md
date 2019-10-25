@@ -7,21 +7,21 @@ It's used to notify user about something.
 {{#docs-snippet name="show-alert-modal.js" title="Alert Modal"}}
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
-import {get} from '@ember/object';
+import {action, get} from '@ember/object';
 
-export default Controller.extend({
-  modalsManager: service(),
+export default class AlertModalDemoController extends Controller {
+  @service()
+  modalsManager;
 
-  actions: {
-    showAlert() {
-      get(this, 'modalsManager')
-        .alert({title: 'Alert Title', body: 'Alert Body'})
-        .then(() => {
-          // called after user clicks "Yes" in the modal
-        });
-    }
+  @action
+  showAlert() {
+    get(this, 'modalsManager')
+      .alert({title: 'Alert Title', body: 'Alert Body'})
+      .then(() => {
+        // called after user clicks "Yes" in the modal
+      });
   }
-});
+}
 {{/docs-snippet}}
 
 
@@ -30,26 +30,26 @@ export default Controller.extend({
 {{#docs-snippet name="show-custom-alert-modal.js" title="Custom Alert Modal"}}
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
-import {get} from '@ember/object';
+import {action, get} from '@ember/object';
 
-export default Controller.extend({
-  modalsManager: service(),
+export default class AlertModalDemoController extends Controller {
+  @service()
+  modalsManager;
 
-  actions: {
-    showAlert() {
-      get(this, 'modalsManager')
-        .alert({
-          titleComponent: 'custom-alert-title',
-          title: 'Title',
-          bodyComponent: 'custom-alert-body',
-          body: 'Body',
-          footerComponent: 'custom-alert-footer',
-          footer: 'Footer'
-        })
-        .then(() => {});
-    }
+  @action
+  showAlert() {
+    get(this, 'modalsManager')
+      .alert({
+        titleComponent: 'custom-alert-title',
+        title: 'Title',
+        bodyComponent: 'custom-alert-body',
+        body: 'Body',
+        footerComponent: 'custom-alert-footer',
+        footer: 'Footer'
+      })
+      .then(() => {});
   }
-});
+}
 {{/docs-snippet}}
 
 ### Title Component

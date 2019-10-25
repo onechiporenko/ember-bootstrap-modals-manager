@@ -5,41 +5,41 @@ This modal used to show a progress-bar for chain of Promises executed one by one
 {{#docs-snippet name="show-progress-modal.js" title="Progress Modal"}}
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
-import {get} from '@ember/object';
+import {action, get} from '@ember/object';
 import {Promise} from 'rsvp';
 
-export default Controller.extend({
-  modalsManager: service(),
+export default class ProgressModalDemoController extends Controller {
+  @service()
+  modalsManager;
 
-  actions: {
-    showPromptConfirm() {
-      const modalsManager = get(this, 'modalsManager');
-      modalsManager
-        .progress({
-          body: '',
-          promises: [ // this is required
-            () => new Promise(resolve => setTimeout(resolve(1), 100)),
-            () => new Promise(resolve => setTimeout(resolve(2), 100)),
-            () => new Promise(resolve => setTimeout(resolve(3), 100))
-          ]
-        })
-        .then(result => {
-          // called after chain of `promises` is executed.
-          // here "result" is an array of values for fulfilled promises
-        })
-        .catch(([result, error]) => {
-          // called when at least one promise is rejected
-          // here "result" is an array of already fulfilled promises
-          // here "error" is a reason why last promise was rejected
-          return modalsManager
-            .alert({
-              title: 'Something goes wrong',
-              body: `Fulfilled - ${result}. Error - ${JSON.stringify(error)}`
-            });
-        });
-    }
+  @action
+  showPromptConfirm() {
+    const modalsManager = get(this, 'modalsManager');
+    modalsManager
+      .progress({
+        body: '',
+        promises: [ // this is required
+          () => new Promise(resolve => setTimeout(resolve(1), 100)),
+          () => new Promise(resolve => setTimeout(resolve(2), 100)),
+          () => new Promise(resolve => setTimeout(resolve(3), 100))
+        ]
+      })
+      .then(result => {
+        // called after chain of `promises` is executed.
+        // here "result" is an array of values for fulfilled promises
+      })
+      .catch(([result, error]) => {
+        // called when at least one promise is rejected
+        // here "result" is an array of already fulfilled promises
+        // here "error" is a reason why last promise was rejected
+        return modalsManager
+          .alert({
+            title: 'Something goes wrong',
+            body: `Fulfilled - ${result}. Error - ${JSON.stringify(error)}`
+          });
+      });
   }
-});
+}
 {{/docs-snippet}}
 
 Options `striped`, `animate`, `type` and `showLabel` will be passed to the progress-bar. See docs for [ember-bootstrap#progress](http://www.ember-bootstrap.com/#/components/progress)
@@ -55,44 +55,44 @@ Option `options.cancelable` can be used to add ability to stop `promises`-queue.
 {{#docs-snippet name="show-custom-progress-modal.js" title="Custom Progress Modal"}}
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
-import {get} from '@ember/object';
+import {action, get} from '@ember/object';
 import {Promise} from 'rsvp';
 
-export default Controller.extend({
-  modalsManager: service(),
+export default class ProgressModalDemoController extends Controller {
+  @service()
+  modalsManager;
 
-  actions: {
-    showPromptConfirm() {
-      const modalsManager = get(this, 'modalsManager');
-      modalsManager
-        .progress({
-          body: '',
-          titleComponent: 'custom-progress-header',
-          bodyComponent: 'custom-progress-body',
-          footerComponent: 'custom-progress-footer',
-          promises: [ // this is required
-            () => new Promise(resolve => setTimeout(resolve(1), 100)),
-            () => new Promise(resolve => setTimeout(resolve(2), 100)),
-            () => new Promise(resolve => setTimeout(resolve(3), 100))
-          ]
-        })
-        .then(result => {
-          // called after chain of `promises` is executed.
-          // here "result" is an array of values for fulfilled promises
-        })
-        .catch(([result, error]) => {
-          // called when at least one promise is rejected
-          // here "result" is an array of already fulfilled promises
-          // here "error" is a reason why last promise was rejected
-          return modalsManager
-            .alert({
-              title: 'Something goes wrong',
-              body: `Fulfilled - ${result}. Error - ${JSON.stringify(error)}`
-            });
-        });
-    }
+  @action
+  showPromptConfirm() {
+    const modalsManager = get(this, 'modalsManager');
+    modalsManager
+      .progress({
+        body: '',
+        titleComponent: 'custom-progress-header',
+        bodyComponent: 'custom-progress-body',
+        footerComponent: 'custom-progress-footer',
+        promises: [ // this is required
+          () => new Promise(resolve => setTimeout(resolve(1), 100)),
+          () => new Promise(resolve => setTimeout(resolve(2), 100)),
+          () => new Promise(resolve => setTimeout(resolve(3), 100))
+        ]
+      })
+      .then(result => {
+        // called after chain of `promises` is executed.
+        // here "result" is an array of values for fulfilled promises
+      })
+      .catch(([result, error]) => {
+        // called when at least one promise is rejected
+        // here "result" is an array of already fulfilled promises
+        // here "error" is a reason why last promise was rejected
+        return modalsManager
+          .alert({
+            title: 'Something goes wrong',
+            body: `Fulfilled - ${result}. Error - ${JSON.stringify(error)}`
+          });
+      });
   }
-});
+}
 {{/docs-snippet}}
 
 ### Title Component

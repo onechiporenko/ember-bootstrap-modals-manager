@@ -1,13 +1,15 @@
 import Controller from '@ember/controller';
-import {inject as service} from '@ember/service';
-import {computed, get} from '@ember/object';
+import { inject as service } from '@ember/service';
+import { computed, get } from '@ember/object';
 
-export default Controller.extend({
+export default class ApplicationController extends Controller {
 
-  router: service(),
+  @service()
+  router;
 
-  isDemo: computed('router.currentURL', function () {
+  @computed('router.currentURL')
+  get isDemo() {
     return get(this, 'router.currentURL').includes('/demo');
-  })
+  }
 
-});
+}

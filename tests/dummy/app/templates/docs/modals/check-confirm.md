@@ -5,28 +5,28 @@ Almost same as `promptConfirm` however it contains a checkbox instead of text-fi
 {{#docs-snippet name="show-check-confirm-modal.js" title="Check Confirm Modal"}}
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
-import {get} from '@ember/object';
+import {action, get} from '@ember/object';
 
-export default Controller.extend({
-  modalsManager: service(),
+export default class CheckConfirmModalDemoController extends Controller {
+  @service()
+  modalsManager;
 
-  actions: {
-    showCheckConfirmModal() {
-      get(this, 'modalsManager')
-        .checkConfirm({
-          title: 'Confirm Title',
-          body: 'Confirm your suggestion',
-          inputLabel: 'Input Label'
-        })
-        .then(() => {
-          // called after user clicks "Yes" in the modal
-        })
-        .catch(() => {
-          // called after user clicks "No" in the modal
-        });
-    }
+  @action
+  showCheckConfirmModal() {
+    get(this, 'modalsManager')
+      .checkConfirm({
+        title: 'Confirm Title',
+        body: 'Confirm your suggestion',
+        inputLabel: 'Input Label'
+      })
+      .then(() => {
+        // called after user clicks "Yes" in the modal
+      })
+      .catch(() => {
+        // called after user clicks "No" in the modal
+      });
   }
-});
+}
 {{/docs-snippet}}
 
 ## Customization
@@ -34,26 +34,26 @@ export default Controller.extend({
 {{#docs-snippet name="show-custom-check-confirm-modal.js" title="Custom Check Confirm Modal"}}
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
-import {get} from '@ember/object';
+import {action, get} from '@ember/object';
 
-export default Controller.extend({
-  modalsManager: service(),
+export default class CheckConfirmModalDemoController extends Controller {
+  @service()
+  modalsManager;
 
-  actions: {
-    showCheckConfirm() {
-      get(this, 'modalsManager')
-        .checkConfirm({
-          title: 'Check Confirm Title',
-          footer: 'Prompt Confirm Footer',
-          titleComponent: 'custom-check-confirm-header',
-          bodyComponent: 'custom-check-confirm-body',
-          footerComponent: 'custom-check-confirm-footer'
-        })
-        .then(() => {})
-        .catch(() => {});
-    }
+  @action
+  showCheckConfirm() {
+    get(this, 'modalsManager')
+      .checkConfirm({
+        title: 'Check Confirm Title',
+        footer: 'Prompt Confirm Footer',
+        titleComponent: 'custom-check-confirm-header',
+        bodyComponent: 'custom-check-confirm-body',
+        footerComponent: 'custom-check-confirm-footer'
+      })
+      .then(() => {})
+      .catch(() => {});
   }
-});
+}
 {{/docs-snippet}}
 
 ### Title Component

@@ -7,25 +7,25 @@ It's used to get some input from user.
 {{#docs-snippet name="show-prompt-modal.js" title="Prompt Modal"}}
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
-import {get} from '@ember/object';
+import {action, get} from '@ember/object';
 
-export default Controller.extend({
-  modalsManager: service(),
+export default class PromptModalDemoController extends Controller {
+  @service()
+  modalsManager;
 
-  actions: {
-    showPrompt() {
-      get(this, 'modalsManager')
-        .prompt({title: 'Prompt Title', body: 'Prompt Body'})
-        .then(promptValue => {
-          // called after user clicks "Yes" in the modal
-          // takes a single argument with user's input value
-        })
-        .catch(() => {
-          // called after user clicks "No" in the modal
-        });
-    }
+  @action
+  showPrompt() {
+    get(this, 'modalsManager')
+      .prompt({title: 'Prompt Title', body: 'Prompt Body'})
+      .then(promptValue => {
+        // called after user clicks "Yes" in the modal
+        // takes a single argument with user's input value
+      })
+      .catch(() => {
+        // called after user clicks "No" in the modal
+      });
   }
-});
+}
 {{/docs-snippet}}
 
 Extra option `disallowEmpty` with `true`-value will disable Confirm-button until user input at least something:
@@ -39,27 +39,27 @@ modalsManager.prompt({disallowEmpty: true, title: '', body: ''});
 {{#docs-snippet name="show-custom-prompt-modal.js" title="Custom Prompt Modal"}}
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
-import {get} from '@ember/object';
+import {action, get} from '@ember/object';
 
-export default Controller.extend({
-  modalsManager: service(),
+export default class PromptModalDemoController extends Controller {
+  @service()
+  modalsManager;
 
-  actions: {
-    showPrompt() {
-      get(this, 'modalsManager')
-        .prompt({
-          title: 'Prompt Title',
-          body: 'Prompt Body',
-          footer: 'Prompt Footer',
-          titleComponent: 'custom-prompt-header',
-          bodyComponent: 'custom-prompt-body',
-          footerComponent: 'custom-prompt-footer'
-        })
-        .then(promptValue => {})
-        .catch(() => {});
-    }
+  @action
+  showPrompt() {
+    get(this, 'modalsManager')
+      .prompt({
+        title: 'Prompt Title',
+        body: 'Prompt Body',
+        footer: 'Prompt Footer',
+        titleComponent: 'custom-prompt-header',
+        bodyComponent: 'custom-prompt-body',
+        footerComponent: 'custom-prompt-footer'
+      })
+      .then(promptValue => {})
+      .catch(() => {});
   }
-});
+}
 {{/docs-snippet}}
 
 ### Title Component

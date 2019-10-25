@@ -7,24 +7,24 @@ It's used to the ask user about confirmation for some action.
 {{#docs-snippet name="show-confirm-modal.js" title="Confirm Modal"}}
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
-import {get} from '@ember/object';
+import {action, get} from '@ember/object';
 
-export default Controller.extend({
-  modalsManager: service(),
+export default class ConfirmModalDemoController extends Controller {
+  @service()
+  modalsManager;
 
-  actions: {
-    showConfirm() {
-      get(this, 'modalsManager')
-        .confirm({title: 'Confirm Title', body: 'Confirm Body'})
-        .then(() => {
-          // called after user clicks "Yes" in the modal
-        })
-        .catch(() => {
-          // called after user clicks "No" in the modal
-        });
-    }
+  @action
+  showConfirm() {
+    get(this, 'modalsManager')
+      .confirm({title: 'Confirm Title', body: 'Confirm Body'})
+      .then(() => {
+        // called after user clicks "Yes" in the modal
+      })
+      .catch(() => {
+        // called after user clicks "No" in the modal
+      });
   }
-});
+}
 {{/docs-snippet}}
 
 ## Customization
@@ -32,27 +32,27 @@ export default Controller.extend({
 {{#docs-snippet name="show-custom-confirm-modal.js" title="Custom Confirm Modal"}}
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
-import {get} from '@ember/object';
+import {action, get} from '@ember/object';
 
-export default Controller.extend({
-  modalsManager: service(),
+export default class ConfirmModalDemoController extends Controller {
+  @service()
+  modalsManager;
 
-  actions: {
-    showConfirm() {
-      get(this, 'modalsManager')
-        .confirm({
-          title: 'Confirm Title',
-          body: 'Confirm Body',
-          footer: 'Confirm Footer',
-          titleComponent: 'custom-confirm-title',
-          bodyComponent: 'custom-confirm-body',
-          footerComponent: 'custom-confirm-footer'
-        })
-        .then(() => {})
-        .catch(() => {});
-    }
+  @action
+  showConfirm() {
+    get(this, 'modalsManager')
+      .confirm({
+        title: 'Confirm Title',
+        body: 'Confirm Body',
+        footer: 'Confirm Footer',
+        titleComponent: 'custom-confirm-title',
+        bodyComponent: 'custom-confirm-body',
+        footerComponent: 'custom-confirm-footer'
+      })
+      .then(() => {})
+      .catch(() => {});
   }
-});
+}
 {{/docs-snippet}}
 
 ### Title Component

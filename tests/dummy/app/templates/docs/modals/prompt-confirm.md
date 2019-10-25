@@ -7,30 +7,30 @@ As a `confirm` it's used to the ask user about confirmation for some action, but
 {{#docs-snippet name="show-prompt-confirm-modal.js" title="Prompt Confirm Modal"}}
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
-import {get} from '@ember/object';
+import {action, get} from '@ember/object';
 
-export default Controller.extend({
-  modalsManager: service(),
+export default class PromptConfirmModalDemoController extends Controller {
+  @service()
+  modalsManager;
 
-  actions: {
-    showPromptConfirm() {
-      get(this, 'modalsManager')
-        .promptConfirm({
-          title: 'Prompt Confirm Title',
-          body: 'Say "password" and come in',
-          promptValue: 'password' // it's required
-        })
-        .then(promptValue => {
-          // called after user clicks "Yes" in the modal
-          // "Yes" will be active only when user prints "password" in the input-field
-          // takes a single argument with user input value
-        })
-        .catch(() => {
-          // called after user clicks "No" in the modal
-        });
-    }
+  @action
+  showPromptConfirm() {
+    get(this, 'modalsManager')
+      .promptConfirm({
+        title: 'Prompt Confirm Title',
+        body: 'Say "password" and come in',
+        promptValue: 'password' // it's required
+      })
+      .then(promptValue => {
+        // called after user clicks "Yes" in the modal
+        // "Yes" will be active only when user prints "password" in the input-field
+        // takes a single argument with user input value
+      })
+      .catch(() => {
+        // called after user clicks "No" in the modal
+      });
   }
-});
+}
 {{/docs-snippet}}
 
 ## Customization
@@ -38,28 +38,28 @@ export default Controller.extend({
 {{#docs-snippet name="show-custom-prompt-confirm-modal.js" title="Custom Prompt Confirm Modal"}}
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
-import {get} from '@ember/object';
+import {action, get} from '@ember/object';
 
-export default Controller.extend({
-  modalsManager: service(),
+export default class PromptConfirmModalDemoController extends Controller {
+  @service()
+  modalsManager;
 
-  actions: {
-    showPromptConfirm() {
-      get(this, 'modalsManager')
-        .promptConfirm({
-          title: 'Prompt Confirm Title',
-          body: 'Say "password" and come in',
-          footer: 'Prompt Confirm Footer',
-          titleComponent: 'custom-prompt-confirm-header',
-          bodyComponent: 'custom-prompt-confirm-body',
-          footerComponent: 'custom-prompt-confirm-footer',
-          promptValue: 'password' // it's required
-        })
-        .then(promptValue => {})
-        .catch(() => {});
-    }
+  @action
+  showPromptConfirm() {
+    get(this, 'modalsManager')
+      .promptConfirm({
+        title: 'Prompt Confirm Title',
+        body: 'Say "password" and come in',
+        footer: 'Prompt Confirm Footer',
+        titleComponent: 'custom-prompt-confirm-header',
+        bodyComponent: 'custom-prompt-confirm-body',
+        footerComponent: 'custom-prompt-confirm-footer',
+        promptValue: 'password' // it's required
+      })
+      .then(promptValue => {})
+      .catch(() => {});
   }
-});
+}
 {{/docs-snippet}}
 
 ### Title Component
