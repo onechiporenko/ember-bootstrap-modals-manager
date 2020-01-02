@@ -1,4 +1,3 @@
-{{! template-lint-disable attribute-indentation }}
 <BsModal
   @position={{@options.position}}
   @size={{@options.size}}
@@ -15,7 +14,7 @@ as |modal|>
         @options.titleComponent
         options=@options}}
     {{else}}
-      {{#bs-modal/header/title}}{{@options.title}}{{/bs-modal/header/title}}
+      <BsModal::Header::Title>{{@options.title}}</BsModal::Header::Title>
     {{/if}}
   </modal.header>
   <modal.body>

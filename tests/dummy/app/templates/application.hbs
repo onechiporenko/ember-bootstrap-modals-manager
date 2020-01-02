@@ -1,5 +1,5 @@
 {{! add css-file depends on current route }}
-{{#if isDemo}}
-  <link rel="stylesheet" href="{{router.rootURL}}assets/demo.css">
+{{#if this.isDemo}}
+  <link rel="stylesheet" href="{{this.router.rootURL}}assets/demo.css">
 {{/if}}
 {{outlet}}

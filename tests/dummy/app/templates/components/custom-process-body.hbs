@@ -1,7 +1,7 @@
 {{! BEGIN-SNIPPET components-custom-process-body.hbs }}
 <p class="alert alert-info">Custom Process Body Component</p>
-<p class="alert alert-info">{{options.body}}</p>
-{{#if options.iconClass}}
-  <p class="text-center"><i class={{options.iconClass}}></i></p>
+<p class="alert alert-info">{{@options.body}}</p>
+{{#if @options.iconClass}}
+  <p class="text-center"><i class={{@options.iconClass}}></i></p>
 {{/if}}
 {{! END-SNIPPET }}

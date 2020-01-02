@@ -1,315 +1,305 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
-      <h3>Back to {{#link-to "docs"}}docs{{/link-to}}</h3>
+      <h3>Back to <LinkTo @route="docs">docs</LinkTo></h3>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6 demo">
       <h3>Default modals:</h3>
-      {{bs-button
+      <BsButton
         class="alert-modal"
-        onClick=(action "showAlertModal")
-        defaultText="Alert Modal"}}
-      {{bs-button
+        @onClick={{this.showAlertModal}}
+        @defaultText="Alert Modal"/>
+      <BsButton
         class="confirm-modal"
-        onClick=(action "showConfirmModal")
-        defaultText="Confirm Modal"}}
-      {{bs-button
+        @onClick={{this.showConfirmModal}}
+        @defaultText="Confirm Modal"/>
+      <BsButton
         class="prompt-modal"
-        onClick=(action "showPromptModal")
-        defaultText="Prompt Modal"}}
-      {{bs-button
+        @onClick={{this.showPromptModal}}
+        @defaultText="Prompt Modal"/>
+      <BsButton
         class="prompt-confirm-modal"
-        onClick=(action "showPromptConfirmModal")
-        defaultText="Prompt Confirm Modal"}}
-      {{bs-button
+        @onClick={{this.showPromptConfirmModal}}
+        @defaultText="Prompt Confirm Modal"/>
+      <BsButton
         class="check-confirm-modal"
-        onClick=(action "showCheckConfirmModal")
-        defaultText="Check Confirm Modal"}}
-      {{bs-button
+        @onClick={{this.showCheckConfirmModal}}
+        @defaultText="Check Confirm Modal"/>
+      <BsButton
         class="progress-modal"
-        onClick=(action "showProgressModal")
-        defaultText="Progress Modal"}}
-      {{bs-button
+        @onClick={{this.showProgressModal}}
+        @defaultText="Progress Modal"/>
+      <BsButton
         class="process-modal"
-        onClick=(action "showProcessModal")
-        defaultText="Process Modal"}}
+        @onClick={{this.showProcessModal}}
+        @defaultText="Process Modal"/>
 
       <h3>Modals with custom components:</h3>
-      {{bs-button
+      <BsButton
         class="custom-alert-modal"
-        onClick=(action "showCustomAlertModal")
-        defaultText="Alert Modal"}}
-      {{bs-button
+        @onClick={{this.showCustomAlertModal}}
+        @defaultText="Alert Modal"/>
+      <BsButton
         class="custom-confirm-modal"
-        onClick=(action "showCustomConfirmModal")
-        defaultText="Confirm Modal"}}
-      {{bs-button
+        @onClick={{this.showCustomConfirmModal}}
+        @defaultText="Confirm Modal"/>
+      <BsButton
         class="custom-prompt-modal"
-        onClick=(action "showCustomPromptModal")
-        defaultText="Prompt Modal"}}
-      {{bs-button
+        @onClick={{this.showCustomPromptModal}}
+        @defaultText="Prompt Modal"/>
+      <BsButton
         class="custom-prompt-confirm-modal"
-        onClick=(action "showCustomPromptConfirmModal")
-        defaultText="Prompt Confirm Modal"}}
-      {{bs-button
+        @onClick={{this.showCustomPromptConfirmModal}}
+        @defaultText="Prompt Confirm Modal"/>
+      <BsButton
         class="custom-check-confirm-modal"
-        onClick=(action "showCustomCheckConfirmModal")
-        defaultText="Check Confirm Modal"}}
-      {{bs-button
+        @onClick={{this.showCustomCheckConfirmModal}}
+        @defaultText="Check Confirm Modal"/>
+      <BsButton
         class="custom-progress-modal"
-        onClick=(action "showCustomProgressModal")
-        defaultText="Progress Modal"}}
-      {{bs-button
+        @onClick={{this.showCustomProgressModal}}
+        @defaultText="Progress Modal"/>
+      <BsButton
         class="custom-process-modal"
-        onClick=(action "showCustomProcessModal")
-        defaultText="Process Modal"}}
-      {{bs-button
+        @onClick={{this.showCustomProcessModal}}
+        @defaultText="Process Modal"/>
+      <BsButton
         class="custom-form-modal"
-        onClick=(action "showCustomFormModal")
-        defaultText="Modal With Form"}}
+        @onClick={{this.showCustomFormModal}}
+        @defaultText="Modal With Form"/>
       <h3>Settings:</h3>
-      {{#bs-form formLayout="vertical" model=this as |form|}}
+      <BsForm @formLayout="vertical" @model={{this}} as |form|>
         <h4>General:</h4>
         <div class="row">
           <div class="col-md-6">
-            {{form.element
-              controlType="checkbox"
+            <form.element
               class="confirm-is-active"
-              label="Confirm is active"
-              property="confirmIsActive"}}
+              @controlType="checkbox"
+              @label="Confirm is active"
+              @property="confirmIsActive"/>
           </div>
           <div class="col-md-6">
-            {{form.element
-              controlType="checkbox"
+            <form.element
               class="decline-is-active"
-              label="Decline is active"
-              property="declineIsActive"}}
+              @controlType="checkbox"
+              @label="Decline is active"
+              @property="declineIsActive"/>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
-            {{! template-lint-disable }}
-            {{#form.element
-              label="Icon for confirm button (active)"
-            as |el|}}
-              {{#power-select
-                id=el.id
-                options=confirmIconChoices
-                onchange=(action (mut confirmIconActive))
-                searchEnabled=false
-                allowClear=true as |icon|}}
+            <form.element
+              @label="Icon for confirm button (active)"
+            as |el|>
+              <PowerSelect
+                id={{el.id}}
+                @options={{this.confirmIconChoices}}
+                @onchange={{fn (mut this.confirmIconActive)}}
+                @searchEnabled={{false}}
+                @allowClear={{true}} as |icon|>
                 {{icon}}
-              {{/power-select}}
-            {{/form.element}}
+              </PowerSelect>
+            </form.element>
           </div>
           <div class="col-md-6">
-            {{! template-lint-disable }}
-            {{#form.element
-              label="Icon for decline button (active)"
-            as |el|}}
-              {{power-select
-                id=el.id
-                options=declineIconChoices
-                onchange=(action (mut declineIconActive))
-                searchEnabled=false
-                allowClear=true}}
-            {{/form.element}}
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            {{! template-lint-disable }}
-            {{#form.element
-              label="Icon for confirm button (inactive)"
-            as |el|}}
-              {{power-select
-                id=el.id
-                options=confirmIconChoices
-                onchange=(action (mut confirmIconInactive))
-                searchEnabled=false
-                allowClear=true}}
-            {{/form.element}}
-          </div>
-          <div class="col-md-6">
-            {{! template-lint-disable }}
-            {{#form.element
-              label="Icon for decline button (inactive)"
-            as |el|}}
-              {{power-select
-                id=el.id
-                options=declineIconChoices
-                onchange=(action (mut declineIconInactive))
-                searchEnabled=false
-                allowClear=true}}
-            {{/form.element}}
+            <form.element
+              @label="Icon for decline button (active)"
+            as |el|>
+              <PowerSelect
+                id={{el.id}}
+                @options={{this.declineIconChoices}}
+                @onchange={{fn (mut this.declineIconActive)}}
+                @searchEnabled={{false}}
+                @allowClear={{true}}/>
+            </form.element>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
-            {{! template-lint-disable }}
-            {{#form.element
-              label="Primary button type"
-            as |el|}}
-              {{power-select
-                id=el.id
-                options=buttonTypeChoices
-                onchange=(action (mut confirmButtonType))
-                searchEnabled=false}}
-            {{/form.element}}
+            <form.element
+              @label="Icon for confirm button (inactive)"
+            as |el|>
+              <PowerSelect
+                id={{el.id}}
+                @options={{this.confirmIconChoices}}
+                @onchange={{fn (mut this.confirmIconInactive)}}
+                @searchEnabled={{false}}
+                @allowClear={{true}}/>
+            </form.element>
           </div>
           <div class="col-md-6">
-            {{! template-lint-disable }}
-            {{#form.element
+            <form.element
+              @label="Icon for decline button (inactive)"
+            as |el|>
+              <PowerSelect
+                id={{el.id}}
+                @options={{this.declineIconChoices}}
+                @onchange={{fn (mut this.declineIconInactive)}}
+                @searchEnabled={{false}}
+                @allowClear={{true}}/>
+            </form.element>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <form.element
+              @label="Primary button type"
+            as |el|>
+              <PowerSelect
+                id={{el.id}}
+                @options={{this.buttonTypeChoices}}
+                @onchange={{fn (mut this.confirmButtonType)}}
+                @searchEnabled={{false}}/>
+            </form.element>
+          </div>
+          <div class="col-md-6">
+            <form.element
               label="Secondary button type"
-            as |el|}}
-              {{el.control
-                id=el.id
-                options=buttonTypeChoices
-                onchange=(action (mut declineButtonType))
-                searchEnabled=false}}
-            {{/form.element}}
+            as |el|>
+              <el.control
+                id={{el.id}}
+                @options={{this.buttonTypeChoices}}
+                @onchange={{fn (mut this.declineButtonType)}}
+                @searchEnabled={{false}}/>
+            </form.element>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
-            {{! template-lint-disable }}
-            {{#form.element
-              label="Primary button size"
-            as |el|}}
-              {{power-select
-                id=el.id
-                options=buttonSizeChoices
-                onchange=(action (mut confirmButtonSize))
-                searchEnabled=false}}
-            {{/form.element}}
+            <form.element
+              @label="Primary button size"
+            as |el|>
+              <PowerSelect
+                id={{el.id}}
+                @options={{this.buttonSizeChoices}}
+                @onchange={{fn (mut this.confirmButtonSize)}}
+                @searchEnabled={{false}}/>
+            </form.element>
           </div>
           <div class="col-md-6">
-            {{! template-lint-disable }}
-            {{#form.element
-              label="Secondary button size"
-            as |el|}}
-              {{power-select
-                id=el.id
-                options=buttonSizeChoices
-                onchange=(action (mut declineButtonSize))
-                searchEnabled=false}}
-            {{/form.element}}
+            <form.element
+              @label="Secondary button size"
+            as |el|>
+              <PowerSelect
+                id={{el.id}}
+                @options={{this.buttonSizeChoices}}
+                @onchange={{fn (mut this.declineButtonSize)}}
+                @searchEnabled={{false}}/>
+            </form.element>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
-            {{! template-lint-disable }}
-            {{#form.element
-              label="Modal Size"
-            as |el|}}
-              {{power-select
-                id=el.id
-                options=sizeChoices
-                onchange=(action (mut size))
-                searchEnabled=false
-                allowClear=true}}
-            {{/form.element}}
+            <form.element
+              @label="Modal Size"
+            as |el|>
+              <PowerSelect
+                id={{el.id}}
+                @options={{this.sizeChoices}}
+                @onchange={{fn (mut this.size)}}
+                @searchEnabled={{false}}
+                @allowClear={{true}}/>
+            </form.element>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
-            {{form.element
-              controlType="checkbox"
+            <form.element
               class="renderInPlace"
-              label="Render In Place"
-              property="renderInPlace"}}
+              @controlType="checkbox"
+              @label="Render In Place"
+              @property="renderInPlace"/>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
-            {{form.element
-              controlType="number"
+            <form.element
               class="backdropTransitionDuration"
-              label="Backdrop Transition Duration"
-              property="backdropTransitionDuration"}}
+              @controlType="number"
+              @label="Backdrop Transition Duration"
+              @property="backdropTransitionDuration"/>
           </div>
           <div class="col-md-6">
-            {{form.element
-              controlType="number"
+            <form.element
               class="transitionDuration"
-              label="Transition Duration"
-              property="transitionDuration"}}
+              @controlType="number"
+              @label="Transition Duration"
+              @property="transitionDuration"/>
           </div>
         </div>
         <h4>Prompt:</h4>
-        {{form.element
-          controlType="checkbox"
+        <form.element
           class="disallow-empty"
-          label="Disallow empty prompt"
-          property="disallowEmptyPrompt"}}
+          @controlType="checkbox"
+          @label="Disallow empty prompt"
+          @property="disallowEmptyPrompt"/>
         <h4>Progress:</h4>
         <div class="row">
           <div class="col-md-6">
-            {{! template-lint-disable }}
-            {{form.element
-              controlType="checkbox"
+            <form.element
               class="progress-show-label"
-              label="Show label in the progress bar"
-              property="showLabel"}}
-            {{form.element
-              controlType="checkbox"
+              @controlType="checkbox"
+              @label="Show label in the progress bar"
+              @property="showLabel"/>
+            <form.element
               class="progress-settled"
-              label="Progress won't stop on first failed"
-              property="settled"}}
-            {{form.element
-              controlType="checkbox"
+              @controlType="checkbox"
+              @label="Progress won't stop on first failed"
+              @property="settled"/>
+            <form.element
               class="progress-cancelable"
-              label="Progress can be canceled"
-              property="cancelable"}}
-            {{#form.element
-              label="Progress type"
-            as |el|}}
-              {{power-select
-                id=el.id
-                options=typeChoices
-                searchEnabled=false
-                onchange=(action (mut type))}}
-            {{/form.element}}
+              @controlType="checkbox"
+              @label="Progress can be canceled"
+              @property="cancelable"/>
+            <form.element
+              @label="Progress type"
+            as |el|>
+              <PowerSelect
+                id={{el.id}}
+                @options={{this.typeChoices}}
+                @searchEnabled={{false}}
+                @onchange={{fn (mut this.type)}}/>
+              </form.element>
           </div>
           <div class="col-md-6">
-            {{form.element
-              controlType="checkbox"
+            <form.element
               class="progress-striped"
-              label="Progress bar is striped"
-              property="striped"}}
-            {{form.element
-              controlType="checkbox"
+              @controlType="checkbox"
+              @label="Progress bar is striped"
+              @property="striped"/>
+            <form.element
               class="progress-animate"
-              disabled=notStriped
-              label="Progress bar is animated"
-              property="animate"}}
-            {{form.element
-              controlType="checkbox"
+              @controlType="checkbox"
+              @disabled={{this.notStriped}}
+              @label="Progress bar is animated"
+              @property="animate"/>
+            <form.element
               class="progress-will-fail"
-              label="Progress will fail"
-              property="progressWillFail"}}
+              @controlType="checkbox"
+              @label="Progress will fail"
+              @property="progressWillFail"/>
           </div>
         </div>
         <h4>Process:</h4>
-        {{form.element
-          controlType="checkbox"
+        <form.element
           class="process-will-fail"
-          label="Process will fail"
-          property="processWillFail"}}
-      {{/bs-form}}
+          @controlType="checkbox"
+          @label="Process will fail"
+          @property="processWillFail"/>
+      </BsForm>
       {{outlet}}
     </div>
     <div class="col-md-6">
       <p>Last Modal Options:</p>
-      <pre>{{stringifiedOptions}}</pre>
+      <pre>{{this.stringifiedOptions}}</pre>
       <p>Logs:</p>
-      <p class="logs">{{#each messages as |message|}}{{message}}<br>{{/each}}</p>
-      {{bs-button
-        onClick=(action "cleanMessage")
-        defaultText="Clear logs"}}
+      <p class="logs">{{#each this.messages as |message|}}{{message}}<br>{{/each}}</p>
+      <BsButton
+        @onClick={{this.cleanMessage}}
+        @defaultText="Clear logs"/>
     </div>
   </div>
 </div>
-{{modals-container}}
+<ModalsContainer/>

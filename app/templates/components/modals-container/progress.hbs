@@ -1,4 +1,3 @@
-{{! template-lint-disable attribute-indentation }}
 <BsModal
   @position={{@options.position}}
   @size={{@options.size}}
@@ -17,7 +16,7 @@ as |modal|>
         @options.titleComponent
         options=@options}}
     {{else}}
-      {{#bs-modal/header/title}}{{@options.title}}{{/bs-modal/header/title}}
+      <BsModal::Header::Title>{{@options.title}}</BsModal::Header::Title>
     {{/if}}
   </modal.header>
   <modal.body>
@@ -25,15 +24,15 @@ as |modal|>
       {{component
         @options.bodyComponent
         options=@options
-        progress=progress
-        done=done
-        overall=promisesCount}}
+        progress=this.progress
+        done=this.done
+        overall=this.promisesCount}}
     {{else}}
       <p>{{@options.body}}</p>
-      {{#if promisesCount}}
+      {{#if this.promisesCount}}
         <BsProgress as |p|>
           <p.bar
-            @value={{progress}}
+            @value={{this.progress}}
             @showLabel={{@options.showLabel}}
             @striped={{@options.striped}}
             @animate={{@options.animate}}
@@ -52,7 +51,7 @@ as |modal|>
         <BsButton
           @onClick={{action "cancel"}}
           @defaultText={{@options.cancel}}
-          @disabled={{canceled}} />
+          @disabled={{this.canceled}} />
       {{/if}}
     {{/if}}
   </modal.footer>

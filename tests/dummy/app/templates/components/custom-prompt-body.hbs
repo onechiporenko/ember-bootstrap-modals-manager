@@ -5,5 +5,5 @@
 <input
   type="text"
   class="form-control"
-  oninput={{action updatePromptValue value="target.value"}}>
+  {{on "input" this.updatePromptValueInternal}}>
 {{! END-SNIPPET }}

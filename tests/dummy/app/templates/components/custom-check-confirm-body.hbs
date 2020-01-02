@@ -5,7 +5,7 @@
     <label>
       <input
         type="checkbox"
-        onchange={{action updatePromptValue value="target.value"}}>
+        {{on "change" (fn @updatePromptValue value="target.value")}}>
       Custom Label
     </label>
   </div>

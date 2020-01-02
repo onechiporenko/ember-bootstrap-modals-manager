@@ -1,17 +1,16 @@
-{{! template-lint-disable attribute-indentation }}
 {{! BEGIN-SNIPPET components-modal-with-form.hbs }}
 <BsModal
-  @open={{modalIsOpened}}
+  @open={{@modalIsOpened}}
   @title="User Form"
-  @onSubmit={{action "confirm"}}
-  @onHide={{action "decline"}}
+  @onSubmit={{this.confirm}}
+  @onHide={{this.decline}}
 as |modal|>
   <modal.header/>
   <modal.body>
     <BsForm
-      @model={{formData}}
+      @model={{this.formData}}
       @novalidate={{true}}
-      @onSubmit={{action "confirm"}}
+      @onSubmit={{this.confirm}}
     as |form|>
       <form.element
         @property="firstName"

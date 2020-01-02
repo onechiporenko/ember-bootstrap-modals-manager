@@ -1,12 +1,12 @@
 <div class="font-sans text-black leading-normal">
-  {{#docs-header as |header|}}
+  <DocsHeader as |header|>
     {{#header.link "demo"}}
       Demo
     {{/header.link}}
-  {{/docs-header}}
+  </DocsHeader>
 
-  {{#docs-viewer as |viewer|}}
-    {{#viewer.nav as |nav|}}
+  <DocsViewer as |viewer|>
+    <viewer.nav as |nav|>
       {{nav.item "Install" "docs.install"}}
       {{nav.item "Modals" "docs.modals.index"}}
 
@@ -21,15 +21,15 @@
 
       {{nav.section "Custom Modals"}}
       {{nav.item "With Form" "docs.modals.with-form"}}
-    {{/viewer.nav}}
+    </viewer.nav>
 
-    {{#viewer.main}}
+    <viewer.main>
       <div class="docs-container">
         <div class="docs-section">
           {{outlet}}
         </div>
       </div>
-    {{/viewer.main}}
+    </viewer.main>
 
-  {{/docs-viewer}}
+  </DocsViewer>
 </div>

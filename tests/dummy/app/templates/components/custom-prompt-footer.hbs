@@ -1,12 +1,12 @@
 {{! BEGIN-SNIPPET components-custom-prompt-footer.hbs }}
 Custom Prompt Footer Component
 <BsButton
-  @onClick={{action decline}}>
+  @onClick={{@decline}}>
   Decline
 </BsButton>
 <BsButton
-  @onClick={{action confirm}}
-  @disabled={{confirmDisabled}}
+  @onClick={{@confirm}}
+  @disabled={{@confirmDisabled}}
   @type="primary">
   Confirm
 </BsButton>
