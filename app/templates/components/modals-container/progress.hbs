@@ -7,8 +7,8 @@
   @open={{@modalIsOpened}}
   @keyboard={{false}}
   @backdropClose={{false}}
-  @onSubmit={{action "confirm"}}
-  @onHidden={{action "decline"}}
+  @onSubmit={{this.confirm}}
+  @onHidden={{this.decline}}
 as |modal|>
   <modal.header @closeButton={{false}}>
     {{#if @options.titleComponent}}
@@ -49,7 +49,7 @@ as |modal|>
     {{else}}
       {{#if @options.cancelable}}
         <BsButton
-          @onClick={{action "cancel"}}
+          @onClick={{this.cancel}}
           @defaultText={{@options.cancel}}
           @disabled={{this.canceled}} />
       {{/if}}

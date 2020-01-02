@@ -5,8 +5,8 @@
   @renderInPlace={{@options.renderInPlace}}
   @transitionDuration={{@options.transitionDuration}}
   @open={{@modalIsOpened}}
-  @onSubmit={{action "confirm"}}
-  @onHidden={{action "decline"}}
+  @onSubmit={{this.confirm}}
+  @onHidden={{this.decline}}
 as |modal|>
   <modal.header>
     {{#if @options.titleComponent}}
@@ -31,8 +31,8 @@ as |modal|>
       {{component
         @options.footerComponent
         options=@options
-        confirm=(action modal.submit)
-        decline=(action modal.close)}}
+        confirm=modal.submit
+        decline=modal.close}}
     {{else}}
       <p>{{@options.footer}}</p>
       <BsButton
@@ -42,7 +42,7 @@ as |modal|>
         @iconActive={{@options.declineIconActive}}
         @iconInactive={{@options.declineIconInactive}}
         @size={{@options.declineButtonSize}}
-        @onClick={{action modal.close}} />
+        @onClick={{modal.close}} />
       <BsButton
         @type={{@options.confirmButtonType}}
         @defaultText={{@options.confirm}}
@@ -50,7 +50,7 @@ as |modal|>
         @iconActive={{@options.confirmIconActive}}
         @size={{@options.confirmButtonSize}}
         @iconInactive={{@options.confirmIconInactive}}
-        @onClick={{action modal.submit}} />
+        @onClick={{modal.submit}} />
     {{/if}}
   </modal.footer>
 </BsModal>

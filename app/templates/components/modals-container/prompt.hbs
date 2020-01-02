@@ -52,7 +52,7 @@ as |modal|>
         @iconActive={{@options.declineIconActive}}
         @iconInactive={{@options.declineIconInactive}}
         @size={{@options.declineButtonSize}}
-        @onClick={{action modal.close}} />
+        @onClick={{modal.close}} />
       <BsButton
         @type={{@options.confirmButtonType}}
         @defaultText={{@options.confirm}}
@@ -61,7 +61,7 @@ as |modal|>
         @iconActive={{@options.confirmIconActive}}
         @iconInactive={{@options.confirmIconInactive}}
         @size={{@options.confirmButtonSize}}
-        @onClick={{action modal.submit}} />
+        @onClick={{modal.submit}} />
     {{/if}}
   </modal.footer>
 </BsModal>

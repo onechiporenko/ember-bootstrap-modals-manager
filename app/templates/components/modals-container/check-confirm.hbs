@@ -5,8 +5,8 @@
   @renderInPlace={{@options.renderInPlace}}
   @transitionDuration={{@options.transitionDuration}}
   @open={{@modalIsOpened}}
-  @onSubmit={{action "confirm"}}
-  @onHidden={{action "decline"}}
+  @onSubmit={{this.confirm}}
+  @onHidden={{this.decline}}
 as |modal|>
   <modal.header>
     {{#if @options.titleComponent}}
@@ -22,12 +22,12 @@ as |modal|>
       {{component
         @options.bodyComponent
         options=@options
-        updatePromptValue=(action "updatePromptValue")}}
+        updatePromptValue=this.updatePromptValue}}
     {{else}}
       <p>{{@options.body}}</p>
       <BsForm
         @model={{this}}
-        @onSubmit={{action "confirm"}}
+        @onSubmit={{this.confirm}}
       as |form|>
         <form.element
           @controlType="checkbox"
@@ -42,8 +42,8 @@ as |modal|>
         @options.footerComponent
         options=@options
         confirmDisabled=this.confirmDisabled
-        confirm=(action modal.submit)
-        decline=(action modal.close)}}
+        confirm=modal.submit
+        decline=modal.close}}
     {{else}}
       <p>{{@options.footer}}</p>
       <BsButton
@@ -53,7 +53,7 @@ as |modal|>
         @iconActive={{@options.declineIconActive}}
         @iconInactive={{@options.declineIconInactive}}
         @size={{@options.declineButtonSize}}
-        @onClick={{action modal.close}} />
+        @onClick={{modal.close}} />
       <BsButton
         @type={{@options.confirmButtonType}}
         @disabled={{this.confirmDisabled}}
@@ -62,7 +62,7 @@ as |modal|>
         @size={{@options.confirmButtonSize}}
         @iconActive={{@options.confirmIconActive}}
         @iconInactive={{@options.confirmIconInactive}}
-        @onClick={{action modal.submit}} />
+        @onClick={{modal.submit}} />
     {{/if}}
   </modal.footer>
 </BsModal>
