@@ -27,9 +27,10 @@ Inject a service `modals-manager` where you want to use modals:
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
 
-export default Controller.extend({
-  modalsManager: service()
-});
+export default class SomeController extends Controller {
+  @service
+  modalsManager;
+}
 {{/docs-snippet}}
 
 That's it. Now you are able to use predefined modals from `modals-manager`.

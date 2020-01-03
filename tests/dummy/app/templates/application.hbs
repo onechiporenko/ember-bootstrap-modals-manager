@@ -1,5 +1,7 @@
 {{! add css-file depends on current route }}
-{{#if this.isDemo}}
-  <link rel="stylesheet" href="{{this.router.rootURL}}assets/demo.css">
-{{/if}}
-{{outlet}}
+<div class="ember-view">
+  {{#if this.isDemo}}
+    <link rel="stylesheet" href="{{this.router.rootURL}}assets/demo.css">
+  {{/if}}
+  {{outlet}}
+</div>
