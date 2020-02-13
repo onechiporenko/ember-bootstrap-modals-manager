@@ -1,6 +1,6 @@
 {{! BEGIN-SNIPPET components-modal-with-form.hbs }}
 <BsModal
-  @open={{@modalIsOpened}}
+  @open={{this.modalIsOpened}}
   @title="User Form"
   @onSubmit={{this.confirm}}
   @onHide={{this.decline}}
