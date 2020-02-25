@@ -19,6 +19,7 @@ Router.map(function () {
       this.route('process');
       this.route('progress');
       this.route('with-form');
+      this.route('passing-values');
     });
     this.route('sandbox', function() {
       apiRoute(this);
