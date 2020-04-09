@@ -7,6 +7,7 @@
   @open={{this.modalIsOpened}}
   @onSubmit={{this.confirm}}
   @onHidden={{this.decline}}
+  class={{this.options.modalClass}}
 as |modal|>
   <modal.header>
     {{#if this.options.titleComponent}}

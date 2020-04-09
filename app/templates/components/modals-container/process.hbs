@@ -9,6 +9,7 @@
   @backdropClose={{false}}
   @onSubmit={{this.confirm}}
   @onHidden={{this.decline}}
+  class={{this.options.modalClass}}
 as |modal|>
   <modal.header @closeButton={{false}}>
     {{#if this.options.titleComponent}}
@@ -21,6 +22,8 @@ as |modal|>
     {{/if}}
   </modal.header>
   <modal.body>
+
+    jajaj
     {{#if this.options.bodyComponent}}
       {{component
         this.options.bodyComponent

@@ -134,7 +134,8 @@ export default class DemoController extends Controller {
       confirmIconInactive: get(this, 'confirmIconInactive'),
       declineIsActive: get(this, 'declineIsActive'),
       declineIconActive: get(this, 'declineIconActive'),
-      declineIconInactive: get(this, 'declineIconInactive')
+      declineIconInactive: get(this, 'declineIconInactive'),
+      modalClass: 'my-custom-class',
     };
     set(this, 'options', options);
     get(this, 'modalsManager')
@@ -160,7 +161,8 @@ export default class DemoController extends Controller {
       confirmIconInactive: get(this, 'confirmIconInactive'),
       declineIsActive: get(this, 'declineIsActive'),
       declineIconActive: get(this, 'declineIconActive'),
-      declineIconInactive: get(this, 'declineIconInactive')
+      declineIconInactive: get(this, 'declineIconInactive'),
+      modalClass: 'my-custom-class',
     };
     set(this, 'options', options);
     get(this, 'modalsManager')
@@ -189,7 +191,8 @@ export default class DemoController extends Controller {
       confirmIconInactive: get(this, 'confirmIconInactive'),
       declineIsActive: get(this, 'declineIsActive'),
       declineIconActive: get(this, 'declineIconActive'),
-      declineIconInactive: get(this, 'declineIconInactive')
+      declineIconInactive: get(this, 'declineIconInactive'),
+      modalClass: 'my-custom-class',
     };
     set(this, 'options', options);
     get(this, 'modalsManager')
@@ -218,7 +221,8 @@ export default class DemoController extends Controller {
       confirmIconInactive: get(this, 'confirmIconInactive'),
       declineIsActive: get(this, 'declineIsActive'),
       declineIconActive: get(this, 'declineIconActive'),
-      declineIconInactive: get(this, 'declineIconInactive')
+      declineIconInactive: get(this, 'declineIconInactive'),
+      modalClass: 'my-custom-class',
     };
     set(this, 'options', options);
     get(this, 'modalsManager')
@@ -246,7 +250,8 @@ export default class DemoController extends Controller {
       confirmIconInactive: get(this, 'confirmIconInactive'),
       declineIsActive: get(this, 'declineIsActive'),
       declineIconActive: get(this, 'declineIconActive'),
-      declineIconInactive: get(this, 'declineIconInactive')
+      declineIconInactive: get(this, 'declineIconInactive'),
+      modalClass: 'my-custom-class',
     };
     set(this, 'options', options);
     get(this, 'modalsManager')
@@ -270,7 +275,8 @@ export default class DemoController extends Controller {
       animate: get(this, 'animate'),
       settled: get(this, 'settled'),
       cancelable: get(this, 'cancelable'),
-      type: get(this, 'type')
+      type: get(this, 'type'),
+      modalClass: 'my-custom-class',
     };
     set(this, 'options', options);
     get(this, 'modalsManager')
@@ -296,6 +302,7 @@ export default class DemoController extends Controller {
       renderInPlace: get(this, 'renderInPlace'),
       transitionDuration: get(this, 'transitionDuration'),
       title: '',
+      modalClass: 'my-custom-class',
       process: () => new Promise((resolve, reject) => setTimeout(() => {
         get(this, 'processWillFail') ? reject('some error') : resolve('some result');
       }, 3000))
@@ -313,6 +320,7 @@ export default class DemoController extends Controller {
       titleComponent: 'custom-alert-header',
       bodyComponent: 'custom-alert-body',
       footerComponent: 'custom-alert-footer',
+      modalClass: 'my-custom-class',
     };
     set(this, 'options', options);
     get(this, 'modalsManager')
@@ -326,6 +334,7 @@ export default class DemoController extends Controller {
       titleComponent: 'custom-confirm-header',
       bodyComponent: 'custom-confirm-body',
       footerComponent: 'custom-confirm-footer',
+      modalClass: 'my-custom-class',
     };
     set(this, 'options', options);
     get(this, 'modalsManager')
@@ -340,7 +349,8 @@ export default class DemoController extends Controller {
       titleComponent: 'custom-prompt-header',
       bodyComponent: 'custom-prompt-body',
       footerComponent: 'custom-prompt-footer',
-      disallowEmpty: get(this, 'disallowEmptyPrompt')
+      disallowEmpty: get(this, 'disallowEmptyPrompt'),
+      modalClass: 'my-custom-class',
     };
     set(this, 'options', options);
     get(this, 'modalsManager')
@@ -355,7 +365,8 @@ export default class DemoController extends Controller {
       titleComponent: 'custom-prompt-confirm-header',
       bodyComponent: 'custom-prompt-confirm-body',
       footerComponent: 'custom-prompt-confirm-footer',
-      promptValue: 'modal'
+      promptValue: 'modal',
+      modalClass: 'my-custom-class',
     };
     set(this, 'options', options);
     get(this, 'modalsManager')
@@ -371,7 +382,8 @@ export default class DemoController extends Controller {
       body: 'Confirm your suggestion',
       titleComponent: 'custom-check-confirm-header',
       bodyComponent: 'custom-check-confirm-body',
-      footerComponent: 'custom-check-confirm-footer'
+      footerComponent: 'custom-check-confirm-footer',
+      modalClass: 'my-custom-class',
     };
     set(this, 'options', options);
     get(this, 'modalsManager')
@@ -394,7 +406,8 @@ export default class DemoController extends Controller {
       animate: get(this, 'animate'),
       settled: get(this, 'settled'),
       cancelable: get(this, 'cancelable'),
-      type: get(this, 'type')
+      type: get(this, 'type'),
+      modalClass: 'my-custom-class',
     };
     set(this, 'options', options);
     get(this, 'modalsManager')
@@ -419,6 +432,7 @@ export default class DemoController extends Controller {
       bodyComponent: 'custom-process-body',
       footerComponent: 'custom-process-footer',
       iconClass: 'text-center fa fa-spinner fa-spin fa-3x fa-fw',
+      modalClass: 'my-custom-class',
       process: () => new Promise((resolve, reject) => setTimeout(() => {
         get(this, 'processWillFail') ? reject('some error') : resolve('some result');
       }, 3000))
