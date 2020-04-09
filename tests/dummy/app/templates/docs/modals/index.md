@@ -24,6 +24,8 @@ Every modal described below takes a single parameter. It's a POJO with propertie
 
   * `transitionDuration` - the duration of the fade transition
 
+  * `modalClass` - add a custom class to any modal
+
 * **Confirm Button**
 
   * `confirm` - text for confirm-button
