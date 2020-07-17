@@ -25,6 +25,11 @@ branches:
     # npm version tags
     - /^v\d+\.\d+\.\d+/
 
+stages:
+  - Tests
+  - Additional Tests
+  - Deploy
+
 jobs:
   fast_finish: true
   allow_failures:
@@ -37,6 +42,11 @@ jobs:
       script:
         - npm run lint
         - npm run test:ember
+
+    - stage: "Deploy"
+      name: "Deploy"
+      if: (branch = master or tag is present) and type = push
+      script: node_modules/.bin/ember deploy production
 
     - stage: "Additional Tests"
       name: "Floating Dependencies"
@@ -57,10 +67,5 @@ jobs:
     - env: EMBER_TRY_SCENARIO=ember-default-with-jquery
     - env: EMBER_TRY_SCENARIO=ember-classic
 
-      script:
-        - node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO
-
-    - stage: "Deploy"
-      name: "Deploy"
-      if: (branch = master or tag is present) and type = push
-      script: node_modules/.bin/ember deploy production
+script:
+  - node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO
