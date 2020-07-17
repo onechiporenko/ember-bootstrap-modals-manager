@@ -1,6 +1,6 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
-import { action, computed, get, set, getProperties } from '@ember/object';
+import { action, computed, set, getProperties } from '@ember/object';
 import { not } from '@ember/object/computed';
 import { A } from '@ember/array';
 
@@ -13,7 +13,7 @@ export default class DemoController extends Controller {
 
   @computed('options')
   get stringifiedOptions() {
-    return JSON.stringify(get(this, 'options'), (k, v) => {
+    return JSON.stringify(this.options, (k, v) => {
       return typeof v === 'function' ? 'Function' : v;
     }, 2);
   }
@@ -41,19 +41,11 @@ export default class DemoController extends Controller {
     return 150;
   }
 
-  set backdropTransitionDuration(v) {
-    return Number(v);
-  }
-
   renderInPlace = true;
 
   @computed()
   get transitionDuration() {
     return 300;
-  }
-
-  set transitionDuration(v) {
-    return Number(v);
   }
 
   buttonSizeChoices = ['xs', 'sm', 'md', 'lg'];
@@ -102,7 +94,7 @@ export default class DemoController extends Controller {
   processWillFail = false;
 
   addMessage(msg) {
-    get(this, 'messages').pushObject(msg);
+    this.messages.pushObject(msg);
   }
 
   generatePromiseFactoriesList(count) {
@@ -110,7 +102,7 @@ export default class DemoController extends Controller {
     for (let i = 0; i < count; i++) {
       list.push(() => new Promise(resolve => setTimeout(() => resolve(i), 1000)));
     }
-    if (get(this, 'progressWillFail')) {
+    if (this.progressWillFail) {
       list.splice(2, 0, () => new Promise((resolve, reject) => setTimeout(() => reject('Promise was rejected'), 1000)));
     }
     return A(list);
@@ -121,24 +113,24 @@ export default class DemoController extends Controller {
     const options = {
       title: 'Custom Alert Modal Title',
       body: 'Custom Alert Modal Body',
-      size: get(this, 'size'),
-      confirmButtonSize: get(this, 'confirmButtonSize'),
-      declineButtonSize: get(this, 'declineButtonSize'),
-      backdropTransitionDuration: get(this, 'backdropTransitionDuration'),
-      renderInPlace: get(this, 'renderInPlace'),
-      transitionDuration: get(this, 'transitionDuration'),
-      confirmButtonType: get(this, 'confirmButtonType'),
-      declineButtonType: get(this, 'declineButtonType'),
-      confirmIsActive: get(this, 'confirmIsActive'),
-      confirmIconActive: get(this, 'confirmIconActive'),
-      confirmIconInactive: get(this, 'confirmIconInactive'),
-      declineIsActive: get(this, 'declineIsActive'),
-      declineIconActive: get(this, 'declineIconActive'),
-      declineIconInactive: get(this, 'declineIconInactive'),
+      size: this.size,
+      confirmButtonSize: this.confirmButtonSize,
+      declineButtonSize: this.declineButtonSize,
+      backdropTransitionDuration: this.backdropTransitionDuration,
+      renderInPlace: this.renderInPlace,
+      transitionDuration: this.transitionDuration,
+      confirmButtonType: this.confirmButtonType,
+      declineButtonType: this.declineButtonType,
+      confirmIsActive: this.confirmIsActive,
+      confirmIconActive: this.confirmIconActive,
+      confirmIconInactive: this.confirmIconInactive,
+      declineIsActive: this.declineIsActive,
+      declineIconActive: this.declineIconActive,
+      declineIconInactive: this.declineIconInactive,
       modalClass: 'my-custom-class',
     };
     set(this, 'options', options);
-    get(this, 'modalsManager')
+    this.modalsManager
       .alert(options)
       .then(() => this.addMessage('Alert was confirmed'));
   }
@@ -148,24 +140,24 @@ export default class DemoController extends Controller {
     const options = {
       title: 'Custom Confirm Modal Title',
       body: 'Custom Confirm Modal Body',
-      size: get(this, 'size'),
-      confirmButtonSize: get(this, 'confirmButtonSize'),
-      declineButtonSize: get(this, 'declineButtonSize'),
-      backdropTransitionDuration: get(this, 'backdropTransitionDuration'),
-      renderInPlace: get(this, 'renderInPlace'),
-      transitionDuration: get(this, 'transitionDuration'),
-      confirmButtonType: get(this, 'confirmButtonType'),
-      declineButtonType: get(this, 'declineButtonType'),
-      confirmIsActive: get(this, 'confirmIsActive'),
-      confirmIconActive: get(this, 'confirmIconActive'),
-      confirmIconInactive: get(this, 'confirmIconInactive'),
-      declineIsActive: get(this, 'declineIsActive'),
-      declineIconActive: get(this, 'declineIconActive'),
-      declineIconInactive: get(this, 'declineIconInactive'),
+      size: this.size,
+      confirmButtonSize: this.confirmButtonSize,
+      declineButtonSize: this.declineButtonSize,
+      backdropTransitionDuration: this.backdropTransitionDuration,
+      renderInPlace: this.renderInPlace,
+      transitionDuration: this.transitionDuration,
+      confirmButtonType: this.confirmButtonType,
+      declineButtonType: this.declineButtonType,
+      confirmIsActive: this.confirmIsActive,
+      confirmIconActive: this.confirmIconActive,
+      confirmIconInactive: this.confirmIconInactive,
+      declineIsActive: this.declineIsActive,
+      declineIconActive: this.declineIconActive,
+      declineIconInactive: this.declineIconInactive,
       modalClass: 'my-custom-class',
     };
     set(this, 'options', options);
-    get(this, 'modalsManager')
+    this.modalsManager
       .confirm(options)
       .then(() => this.addMessage('Confirm was confirmed'))
       .catch(() => this.addMessage('Confirm was declined'));
@@ -177,25 +169,25 @@ export default class DemoController extends Controller {
       title: 'Custom Prompt Modal Title',
       body: 'Custom Prompt Modal Body',
       inputLabel: 'Input Label',
-      size: get(this, 'size'),
-      confirmButtonSize: get(this, 'confirmButtonSize'),
-      declineButtonSize: get(this, 'declineButtonSize'),
-      backdropTransitionDuration: get(this, 'backdropTransitionDuration'),
-      renderInPlace: get(this, 'renderInPlace'),
-      transitionDuration: get(this, 'transitionDuration'),
-      disallowEmpty: get(this, 'disallowEmptyPrompt'),
-      confirmButtonType: get(this, 'confirmButtonType'),
-      declineButtonType: get(this, 'declineButtonType'),
-      confirmIsActive: get(this, 'confirmIsActive'),
-      confirmIconActive: get(this, 'confirmIconActive'),
-      confirmIconInactive: get(this, 'confirmIconInactive'),
-      declineIsActive: get(this, 'declineIsActive'),
-      declineIconActive: get(this, 'declineIconActive'),
-      declineIconInactive: get(this, 'declineIconInactive'),
+      size: this.size,
+      confirmButtonSize: this.confirmButtonSize,
+      declineButtonSize: this.declineButtonSize,
+      backdropTransitionDuration: this.backdropTransitionDuration,
+      renderInPlace: this.renderInPlace,
+      transitionDuration: this.transitionDuration,
+      disallowEmpty: this.disallowEmptyPrompt,
+      confirmButtonType: this.confirmButtonType,
+      declineButtonType: this.declineButtonType,
+      confirmIsActive: this.confirmIsActive,
+      confirmIconActive: this.confirmIconActive,
+      confirmIconInactive: this.confirmIconInactive,
+      declineIsActive: this.declineIsActive,
+      declineIconActive: this.declineIconActive,
+      declineIconInactive: this.declineIconInactive,
       modalClass: 'my-custom-class',
     };
     set(this, 'options', options);
-    get(this, 'modalsManager')
+    this.modalsManager
       .prompt(options)
       .then(v => this.addMessage(`Prompt was confirmed (with "${v}")`))
       .catch(() => this.addMessage('Prompt was declined'));
@@ -208,24 +200,24 @@ export default class DemoController extends Controller {
       body: 'Please enter a "modal" without quotes',
       inputLabel: 'Input Label',
       promptValue: 'modal',
-      size: get(this, 'size'),
-      confirmButtonSize: get(this, 'confirmButtonSize'),
-      declineButtonSize: get(this, 'declineButtonSize'),
-      backdropTransitionDuration: get(this, 'backdropTransitionDuration'),
-      renderInPlace: get(this, 'renderInPlace'),
-      transitionDuration: get(this, 'transitionDuration'),
-      confirmButtonType: get(this, 'confirmButtonType'),
-      declineButtonType: get(this, 'declineButtonType'),
-      confirmIsActive: get(this, 'confirmIsActive'),
-      confirmIconActive: get(this, 'confirmIconActive'),
-      confirmIconInactive: get(this, 'confirmIconInactive'),
-      declineIsActive: get(this, 'declineIsActive'),
-      declineIconActive: get(this, 'declineIconActive'),
-      declineIconInactive: get(this, 'declineIconInactive'),
+      size: this.size,
+      confirmButtonSize: this.confirmButtonSize,
+      declineButtonSize: this.declineButtonSize,
+      backdropTransitionDuration: this.backdropTransitionDuration,
+      renderInPlace: this.renderInPlace,
+      transitionDuration: this.transitionDuration,
+      confirmButtonType: this.confirmButtonType,
+      declineButtonType: this.declineButtonType,
+      confirmIsActive: this.confirmIsActive,
+      confirmIconActive: this.confirmIconActive,
+      confirmIconInactive: this.confirmIconInactive,
+      declineIsActive: this.declineIsActive,
+      declineIconActive: this.declineIconActive,
+      declineIconInactive: this.declineIconInactive,
       modalClass: 'my-custom-class',
     };
     set(this, 'options', options);
-    get(this, 'modalsManager')
+    this.modalsManager
       .promptConfirm(options)
       .then(v => this.addMessage(`Prompt-Confirm was confirmed (with "${v}")`))
       .catch(() => this.addMessage('Prompt-Confirm was declined'));
@@ -237,24 +229,24 @@ export default class DemoController extends Controller {
       title: 'Custom Check Confirm Modal Title',
       body: 'Confirm your suggestion',
       inputLabel: 'Input Label',
-      size: get(this, 'size'),
-      confirmButtonSize: get(this, 'confirmButtonSize'),
-      declineButtonSize: get(this, 'declineButtonSize'),
-      backdropTransitionDuration: get(this, 'backdropTransitionDuration'),
-      renderInPlace: get(this, 'renderInPlace'),
-      transitionDuration: get(this, 'transitionDuration'),
-      confirmButtonType: get(this, 'confirmButtonType'),
-      declineButtonType: get(this, 'declineButtonType'),
-      confirmIsActive: get(this, 'confirmIsActive'),
-      confirmIconActive: get(this, 'confirmIconActive'),
-      confirmIconInactive: get(this, 'confirmIconInactive'),
-      declineIsActive: get(this, 'declineIsActive'),
-      declineIconActive: get(this, 'declineIconActive'),
-      declineIconInactive: get(this, 'declineIconInactive'),
+      size: this.size,
+      confirmButtonSize: this.confirmButtonSize,
+      declineButtonSize: this.declineButtonSize,
+      backdropTransitionDuration: this.backdropTransitionDuration,
+      renderInPlace: this.renderInPlace,
+      transitionDuration: this.transitionDuration,
+      confirmButtonType: this.confirmButtonType,
+      declineButtonType: this.declineButtonType,
+      confirmIsActive: this.confirmIsActive,
+      confirmIconActive: this.confirmIconActive,
+      confirmIconInactive: this.confirmIconInactive,
+      declineIsActive: this.declineIsActive,
+      declineIconActive: this.declineIconActive,
+      declineIconInactive: this.declineIconInactive,
       modalClass: 'my-custom-class',
     };
     set(this, 'options', options);
-    get(this, 'modalsManager')
+    this.modalsManager
       .checkConfirm(options)
       .then(() => this.addMessage(`Check-Confirm was confirmed`))
       .catch(() => this.addMessage('Check-Confirm was declined'));
@@ -265,26 +257,26 @@ export default class DemoController extends Controller {
     const options = {
       title: 'Progress Modal Title',
       body: '',
-      size: get(this, 'size'),
-      backdropTransitionDuration: get(this, 'backdropTransitionDuration'),
-      renderInPlace: get(this, 'renderInPlace'),
-      transitionDuration: get(this, 'transitionDuration'),
+      size: this.size,
+      backdropTransitionDuration: this.backdropTransitionDuration,
+      renderInPlace: this.renderInPlace,
+      transitionDuration: this.transitionDuration,
       promises: this.generatePromiseFactoriesList(5),
-      showLabel: get(this, 'showLabel'),
-      striped: get(this, 'striped'),
-      animate: get(this, 'animate'),
-      settled: get(this, 'settled'),
-      cancelable: get(this, 'cancelable'),
-      type: get(this, 'type'),
+      showLabel: this.showLabel,
+      striped: this.striped,
+      animate: this.animate,
+      settled: this.settled,
+      cancelable: this.cancelable,
+      type: this.type,
       modalClass: 'my-custom-class',
     };
     set(this, 'options', options);
-    get(this, 'modalsManager')
+    this.modalsManager
       .progress(options)
       .then(v => this.addMessage(`Progress was finished (with ${JSON.stringify(v)})`))
       .catch(([result, error]) => {
         this.addMessage(`Progress was failed (completed ${JSON.stringify(result)}). Error - "${error}"`);
-        return get(this, 'modalsManager')
+        return this.modalsManager
           .alert({
             title: 'Something goes wrong',
             body: `Fulfilled - ${result}. Error - ${JSON.stringify(error)}`
@@ -297,18 +289,18 @@ export default class DemoController extends Controller {
     const options = {
       body: 'Some long process (you must add font-awesome to your project to use `fa`-icons)',
       iconClass: 'text-center fa fa-spinner fa-spin fa-3x fa-fw',
-      size: get(this, 'size'),
-      backdropTransitionDuration: get(this, 'backdropTransitionDuration'),
-      renderInPlace: get(this, 'renderInPlace'),
-      transitionDuration: get(this, 'transitionDuration'),
+      size: this.size,
+      backdropTransitionDuration: this.backdropTransitionDuration,
+      renderInPlace: this.renderInPlace,
+      transitionDuration: this.transitionDuration,
       title: '',
       modalClass: 'my-custom-class',
       process: () => new Promise((resolve, reject) => setTimeout(() => {
-        get(this, 'processWillFail') ? reject('some error') : resolve('some result');
+        this.processWillFail ? reject('some error') : resolve('some result');
       }, 3000))
     };
     set(this, 'options', options);
-    get(this, 'modalsManager')
+    this.modalsManager
       .process(options)
       .then(v => this.addMessage(`Process was confirmed (with ${v})`))
       .catch(e => this.addMessage(`Process was declined (with ${e})`));
@@ -323,7 +315,7 @@ export default class DemoController extends Controller {
       modalClass: 'my-custom-class',
     };
     set(this, 'options', options);
-    get(this, 'modalsManager')
+    this.modalsManager
       .alert(options)
       .then(() => this.addMessage('Custom Alert was confirmed'));
   }
@@ -337,7 +329,7 @@ export default class DemoController extends Controller {
       modalClass: 'my-custom-class',
     };
     set(this, 'options', options);
-    get(this, 'modalsManager')
+    this.modalsManager
       .confirm(options)
       .then(() => this.addMessage('Custom Confirm was confirmed'))
       .catch(() => this.addMessage('Custom Confirm was declined'));
@@ -349,11 +341,11 @@ export default class DemoController extends Controller {
       titleComponent: 'custom-prompt-header',
       bodyComponent: 'custom-prompt-body',
       footerComponent: 'custom-prompt-footer',
-      disallowEmpty: get(this, 'disallowEmptyPrompt'),
+      disallowEmpty: this.disallowEmptyPrompt,
       modalClass: 'my-custom-class',
     };
     set(this, 'options', options);
-    get(this, 'modalsManager')
+    this.modalsManager
       .prompt(options)
       .then(v => this.addMessage(`Custom Prompt was confirmed (with "${v}")`))
       .catch(() => this.addMessage('Custom Prompt was declined'));
@@ -369,7 +361,7 @@ export default class DemoController extends Controller {
       modalClass: 'my-custom-class',
     };
     set(this, 'options', options);
-    get(this, 'modalsManager')
+    this.modalsManager
       .promptConfirm(options)
       .then(v => this.addMessage(`Custom Prompt-Confirm was confirmed (with "${v}")`))
       .catch(() => this.addMessage('Custom Prompt-Confirm was declined'));
@@ -386,7 +378,7 @@ export default class DemoController extends Controller {
       modalClass: 'my-custom-class',
     };
     set(this, 'options', options);
-    get(this, 'modalsManager')
+    this.modalsManager
       .checkConfirm(options)
       .then(() => this.addMessage(`Custom Check-Confirm was confirmed`))
       .catch(() => this.addMessage('Custom Check-Confirm was declined'));
@@ -401,21 +393,21 @@ export default class DemoController extends Controller {
       bodyComponent: 'custom-progress-body',
       footerComponent: 'custom-progress-footer',
       promises: this.generatePromiseFactoriesList(5),
-      showLabel: get(this, 'showLabel'),
-      striped: get(this, 'striped'),
-      animate: get(this, 'animate'),
-      settled: get(this, 'settled'),
-      cancelable: get(this, 'cancelable'),
-      type: get(this, 'type'),
+      showLabel: this.showLabel,
+      striped: this.striped,
+      animate: this.animate,
+      settled: this.settled,
+      cancelable: this.cancelable,
+      type: this.type,
       modalClass: 'my-custom-class',
     };
     set(this, 'options', options);
-    get(this, 'modalsManager')
+    this.modalsManager
       .progress(options)
       .then((v) => this.addMessage(`Progress was finished (with ${JSON.stringify(v)})`))
       .catch(([result, error]) => {
         this.addMessage(`Progress was failed (completed ${JSON.stringify(result)}). Error - "${error}"`);
-        return get(this, 'modalsManager')
+        return this.modalsManager
           .alert({
             title: 'Something goes wrong',
             body: `Fulfilled - ${result}. Error - ${JSON.stringify(error)}`
@@ -434,11 +426,11 @@ export default class DemoController extends Controller {
       iconClass: 'text-center fa fa-spinner fa-spin fa-3x fa-fw',
       modalClass: 'my-custom-class',
       process: () => new Promise((resolve, reject) => setTimeout(() => {
-        get(this, 'processWillFail') ? reject('some error') : resolve('some result');
+        this.processWillFail ? reject('some error') : resolve('some result');
       }, 3000))
     };
     set(this, 'options', options);
-    get(this, 'modalsManager')
+    this.modalsManager
       .process(options)
       .then(v => this.addMessage(`Process was confirmed (with ${v})`))
       .catch(e => this.addMessage(`Process was declined (with ${e})`));
@@ -447,7 +439,7 @@ export default class DemoController extends Controller {
   @action
   showCustomFormModal() {
     set(this, 'options', '.show(\'modal-with-form\')');
-    get(this, 'modalsManager')
+    this.modalsManager
       .show('modal-with-form')
       .then(v => this.addMessage(`Modal with form was confirmed (with ${JSON.stringify(getProperties(v, 'firstName', 'lastName', 'email'))})`))
       .catch(() => this.addMessage('Modal with form declined'));

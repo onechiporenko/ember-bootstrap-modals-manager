@@ -70,6 +70,7 @@
         @onClick={{this.showCustomFormModal}}
         @defaultText="Modal With Form"/>
       <h3>Settings:</h3>
+      <BsAlert @visible={{true}} @type="warning" @dismissible={{false}}> <i class="fa fa-warning"></i> Almost all of settings in this demo are applied only for Default Modals and not for Modals with custom components. However you are able to pass them in your apps.</BsAlert>
       <BsForm @formLayout="vertical" @model={{this}} as |form|>
         <h4>General:</h4>
         <div class="row">
@@ -97,6 +98,7 @@
                 id={{el.id}}
                 @options={{this.confirmIconChoices}}
                 @onchange={{fn (mut this.confirmIconActive)}}
+                @selected={{this.confirmIconActive}}
                 @searchEnabled={{false}}
                 @allowClear={{true}} as |icon|>
                 {{icon}}
@@ -111,8 +113,11 @@
                 id={{el.id}}
                 @options={{this.declineIconChoices}}
                 @onchange={{fn (mut this.declineIconActive)}}
+                @selected={{this.declineIconActive}}
                 @searchEnabled={{false}}
-                @allowClear={{true}}/>
+                @allowClear={{true}} as |icon|>
+                {{icon}}
+              </PowerSelect>
             </form.element>
           </div>
         </div>
@@ -126,7 +131,10 @@
                 @options={{this.confirmIconChoices}}
                 @onchange={{fn (mut this.confirmIconInactive)}}
                 @searchEnabled={{false}}
-                @allowClear={{true}}/>
+                @selected={{this.confirmIconInactive}}
+                @allowClear={{true}} as |icon|>
+                {{icon}}
+              </PowerSelect>
             </form.element>
           </div>
           <div class="col-md-6">
@@ -137,8 +145,11 @@
                 id={{el.id}}
                 @options={{this.declineIconChoices}}
                 @onchange={{fn (mut this.declineIconInactive)}}
+                @selected={{this.declineIconInactive}}
                 @searchEnabled={{false}}
-                @allowClear={{true}}/>
+                @allowClear={{true}} as |icon|>
+                {{icon}}
+              </PowerSelect>
             </form.element>
           </div>
         </div>
@@ -151,18 +162,24 @@
                 id={{el.id}}
                 @options={{this.buttonTypeChoices}}
                 @onchange={{fn (mut this.confirmButtonType)}}
-                @searchEnabled={{false}}/>
+                @selected={{this.confirmButtonType}}
+                @searchEnabled={{false}} as |type|>
+                {{type}}
+              </PowerSelect>
             </form.element>
           </div>
           <div class="col-md-6">
             <form.element
-              label="Secondary button type"
+              @label="Secondary button type"
             as |el|>
-              <el.control
+              <PowerSelect
                 id={{el.id}}
                 @options={{this.buttonTypeChoices}}
                 @onchange={{fn (mut this.declineButtonType)}}
-                @searchEnabled={{false}}/>
+                @selected={{this.declineButtonType}}
+                @searchEnabled={{false}} as |type|>
+                {{type}}
+              </PowerSelect>
             </form.element>
           </div>
         </div>
@@ -175,7 +192,10 @@
                 id={{el.id}}
                 @options={{this.buttonSizeChoices}}
                 @onchange={{fn (mut this.confirmButtonSize)}}
-                @searchEnabled={{false}}/>
+                @selected={{this.confirmButtonSize}}
+                @searchEnabled={{false}} as |size|>
+                {{size}}
+              </PowerSelect>
             </form.element>
           </div>
           <div class="col-md-6">
@@ -186,7 +206,10 @@
                 id={{el.id}}
                 @options={{this.buttonSizeChoices}}
                 @onchange={{fn (mut this.declineButtonSize)}}
-                @searchEnabled={{false}}/>
+                @selected={{this.declineButtonSize}}
+                @searchEnabled={{false}} as |size|>
+                {{size}}
+              </PowerSelect>
             </form.element>
           </div>
         </div>
@@ -199,8 +222,11 @@
                 id={{el.id}}
                 @options={{this.sizeChoices}}
                 @onchange={{fn (mut this.size)}}
+                @selected={{this.size}}
                 @searchEnabled={{false}}
-                @allowClear={{true}}/>
+                @allowClear={{true}} as |size|>
+                {{size}}
+              </PowerSelect>
             </form.element>
           </div>
         </div>
@@ -260,7 +286,10 @@
                 id={{el.id}}
                 @options={{this.typeChoices}}
                 @searchEnabled={{false}}
-                @onchange={{fn (mut this.type)}}/>
+                @selected={{this.type}}
+                @onchange={{fn (mut this.type)}} as |type|>
+                {{type}}
+              </PowerSelect>
             </form.element>
           </div>
           <div class="col-md-6">
@@ -272,9 +301,10 @@
             <form.element
               class="progress-animate"
               @controlType="checkbox"
-              @disabled={{this.notStriped}}
               @label="Progress bar is animated"
-              @property="animate"/>
+              @property="animate" as |el|>
+              <el.control disabled={{this.notStriped}}/>
+            </form.element>
             <form.element
               class="progress-will-fail"
               @controlType="checkbox"
