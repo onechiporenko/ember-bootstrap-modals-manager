@@ -9,11 +9,6 @@ module.exports = async function() {
         name: 'ember-lts-3.4',
         npm: {
           devDependencies: {
-            'ember-angle-bracket-invocation-polyfill': '^2.0.2',
-            'ember-decorators-polyfill': '^1.1.0',
-            'ember-fn-helper-polyfill': '1.0.2',
-            'ember-named-arguments-polyfill': '^1.0.0',
-            'ember-on-modifier': '^1.0.0',
             'ember-source': '~3.4.0'
           }
         }
@@ -22,11 +17,6 @@ module.exports = async function() {
         name: 'ember-lts-3.8',
         npm: {
           devDependencies: {
-            'ember-angle-bracket-invocation-polyfill': '^2.0.2',
-            'ember-decorators-polyfill': '^1.1.0',
-            'ember-fn-helper-polyfill': '1.0.2',
-            'ember-named-arguments-polyfill': '^1.0.0',
-            'ember-on-modifier': '^1.0.0',
             'ember-source': '~3.8.0'
           }
         }
