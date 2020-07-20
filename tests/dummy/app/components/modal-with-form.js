@@ -1,6 +1,6 @@
 // BEGIN-SNIPPET components-modal-with-form.js
 import { layout as templateLayout } from '@ember-decorators/component';
-import BaseModal from './modals-container/base';
+import BaseModal from './ebmm-modals-container/base';
 import layout from '../templates/components/modal-with-form';
 import { validator, buildValidations } from 'ember-cp-validations';
 import EmberObject, { computed } from '@ember/object';

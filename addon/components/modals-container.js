@@ -1,8 +1,8 @@
 import { layout as templateLayout } from '@ember-decorators/component';
-import ModalsContainer from 'ember-modals-manager-internal/components/modals-container';
-import layout from 'ember-bootstrap-modals-manager/templates/components/modals-container';
+import EmmiModalsContainer from 'ember-modals-manager-internal/components/emmi-modals-container';
+import layout from 'ember-modals-manager-internal/templates/components/emmi-modals-container';
 
 export default
 @templateLayout(layout)
-class _ModalsContainer extends ModalsContainer {
+class ModalsContainer extends EmmiModalsContainer {
 }
