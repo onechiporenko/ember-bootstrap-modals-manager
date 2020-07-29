@@ -1,0 +1,62 @@
+<BsModal
+  @position={{@options.position}}
+  @size={{@options.size}}
+  @backdropTransitionDuration={{@options.backdropTransitionDuration}}
+  @renderInPlace={{@options.renderInPlace}}
+  @transitionDuration={{@options.transitionDuration}}
+  @open={{@modalIsOpened}}
+  @keyboard={{false}}
+  @backdropClose={{false}}
+  @onSubmit={{this.confirm}}
+  @onHidden={{this.decline}}
+  class={{@options.modalClass}}
+as |modal|>
+  <modal.header @closeButton={{false}}>
+    {{#if @options.titleComponent}}
+      {{component
+        @options.titleComponent
+        options=@options
+      }}
+    {{else}}
+      <BsModal::Header::Title>{{@options.title}}</BsModal::Header::Title>
+    {{/if}}
+  </modal.header>
+  <modal.body>
+    {{#if @options.bodyComponent}}
+      {{component
+        @options.bodyComponent
+        options=@options
+        progress=this.progress
+        done=this.done
+        overall=this.promisesCount
+      }}
+    {{else}}
+      <p>{{@options.body}}</p>
+      {{#if this.promisesCount}}
+        <BsProgress as |p|>
+          <p.bar
+            @value={{this.progress}}
+            @showLabel={{@options.showLabel}}
+            @striped={{@options.striped}}
+            @animate={{@options.animate}}
+            @type={{@options.type}} />
+        </BsProgress>
+      {{/if}}
+    {{/if}}
+  </modal.body>
+  <modal.footer>
+    {{#if @options.footerComponent}}
+      {{component
+        @options.footerComponent
+        options=@options
+      }}
+    {{else}}
+      {{#if @options.cancelable}}
+        <BsButton
+          @onClick={{this.cancel}}
+          @defaultText={{@options.cancel}}
+          disabled={{this.canceled}} />
+      {{/if}}
+    {{/if}}
+  </modal.footer>
+</BsModal>

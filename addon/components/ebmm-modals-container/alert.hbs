@@ -1,0 +1,51 @@
+<BsModal
+  @position={{@options.position}}
+  @size={{@options.size}}
+  @backdropTransitionDuration={{@options.backdropTransitionDuration}}
+  @renderInPlace={{@options.renderInPlace}}
+  @transitionDuration={{@options.transitionDuration}}
+  @open={{@modalIsOpened}}
+  @onSubmit={{fn this.confirm}}
+  @onHidden={{fn this.decline}}
+  class={{@options.modalClass}}
+as |modal|>
+  <modal.header>
+    {{#if @options.titleComponent}}
+      {{component
+        @options.titleComponent
+        options=@options
+      }}
+    {{else}}
+      <BsModal::Header::Title>{{@options.title}}</BsModal::Header::Title>
+    {{/if}}
+  </modal.header>
+  <modal.body>
+    {{#if @options.bodyComponent}}
+      {{component
+        @options.bodyComponent
+        options=@options
+      }}
+    {{else}}
+      <p>{{@options.body}}</p>
+    {{/if}}
+  </modal.body>
+  <modal.footer>
+    {{#if @options.footerComponent}}
+      {{component
+        @options.footerComponent
+        options=@options
+        confirm=modal.submit
+      }}
+    {{else}}
+      <p>{{@options.footer}}</p>
+      <BsButton
+        @type={{@options.confirmButtonType}}
+        @defaultText={{@options.confirm}}
+        @active={{@options.confirmIsActive}}
+        @iconActive={{@options.confirmIconActive}}
+        @iconInactive={{@options.confirmIconInactive}}
+        @size={{@options.confirmButtonSize}}
+        @onClick={{modal.submit}} />
+    {{/if}}
+  </modal.footer>
+</BsModal>

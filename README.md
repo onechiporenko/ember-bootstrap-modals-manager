@@ -17,6 +17,7 @@
 
 * v2.* is for `ember-bootstrap@2.x`
 * v3.* is for `ember-bootstrap@3.x`
+* v4.* is for `ember-bootstrap@4.x`
 
 ## Demo and docs
 
