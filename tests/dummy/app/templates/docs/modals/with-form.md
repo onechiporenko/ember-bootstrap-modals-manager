@@ -6,12 +6,8 @@ Any modal that extends `components/modals-container/base` can be managed with `m
 
 {{#docs-snippet name="skeleton-for-new-modal-js" title="Skeleton for the new Modal (JS)"}}
 import BaseModal from './modals-container/base';
-import layout from '../templates/components/modal-with-form';
-import { layout as templateLayout } from '@ember-decorators/component';
 
-export default
-@templateLayout(layout)
-class ModalWithForm extends BaseModal {
+export default class ModalWithForm extends BaseModal {
   
 }
 {{/docs-snippet}}
@@ -19,8 +15,8 @@ class ModalWithForm extends BaseModal {
 {{#docs-snippet name="skeleton-for-new-modal-hbs" title="Skeleton for the new Modal (HBS)"}}
 <BsModal
   @open={{modalIsOpened}}
-  @onSubmit={{action "confirm"}}
-  @onHide={{action "decline"}}
+  @onSubmit={{fn this.confirm}}
+  @onHide={{fn this.decline}}
 as |modal|>
   <modal.header />
   <modal.body />
@@ -54,11 +50,8 @@ import BaseModal from './modals-container/base';
 import {validator, buildValidations} from 'ember-cp-validations';
 import EmberObject, {computed} from '@ember/object';
 import {getOwner} from '@ember/application';
-import { layout as templateLayout } from '@ember-decorators/component';
 
-export default
-@templateLayout(layout)
-class ModalWithForm extends BaseModal {
+export default class ModalWithForm extends BaseModal {
 
   @computed()
   get formData () {
@@ -88,7 +81,7 @@ Modal's body with form is:
   <BsForm
     @model={{formData}}
     @novalidate={{true}}
-    @onSubmit={{action "confirm"}}
+    @onSubmit={{fn this.confirm}}
   as |form|>
     <form.element
       @property="firstName"

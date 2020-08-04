@@ -26,6 +26,9 @@ export declare interface EbmmModalOptions {
   disallowEmpty?: boolean;
 }
 
+/**
+ * @class ModalsManager
+ */
 export default class ModalsManager<T> extends Service {
 
   modalIsOpened = false;
@@ -48,6 +51,14 @@ export default class ModalsManager<T> extends Service {
 
   componentName: string | null = null;
 
+  /**
+   * Shows custom modal
+   *
+   * @method show
+   * @param {string} componentName component's name with custom modal
+   * @param {object} options
+   * @return {RSVP.Promise}
+   */
   show(componentName: string, options: EbmmModalOptions): RSVP.Promise<T> {
     assert('Only one modal may be opened in the same time!', !this.modalIsOpened);
     const opts = Object.assign({}, this.defaultOptions, options);
@@ -61,6 +72,10 @@ export default class ModalsManager<T> extends Service {
 
   /**
    * Shows `alert`-modal
+   *
+   * @method alert
+   * @param {object} options
+   * @return {RSVP.Promise}
    */
   alert(options: EbmmModalOptions): RSVP.Promise<T> {
     return this.show(`${this.modalsContainerPath}/alert`, options);
@@ -68,6 +83,10 @@ export default class ModalsManager<T> extends Service {
 
   /**
    * Shows `confirm`-modal
+   *
+   * @method confirm
+   * @param {object} options
+   * @return {RSVP.Promise}
    */
   confirm(options: EbmmModalOptions): RSVP.Promise<T> {
     return this.show(`${this.modalsContainerPath}/confirm`, options);
@@ -75,6 +94,10 @@ export default class ModalsManager<T> extends Service {
 
   /**
    * Shows `prompt`-modal
+   *
+   * @method prompt
+   * @param {object} options
+   * @return {RSVP.Promise}
    */
   prompt(options: EbmmModalOptions): RSVP.Promise<T> {
     return this.show(`${this.modalsContainerPath}/prompt`, options);
@@ -82,6 +105,10 @@ export default class ModalsManager<T> extends Service {
 
   /**
    * Shows `prompt-confirm`-modal
+   *
+   * @method promptConfirm
+   * @param {object} options
+   * @return {RSVP.Promise}
    */
   promptConfirm(options: EbmmModalOptions): RSVP.Promise<T> {
     assert('"options.promptValue" must be defined and not empty', !!options.promptValue);
@@ -90,19 +117,34 @@ export default class ModalsManager<T> extends Service {
 
   /**
    * Show `check-confirm`-modal
+   *
+   * @method checkConfirm
+   * @param {object} options
+   * @return {RSVP.Promise}
    */
   checkConfirm(options: EbmmModalOptions): RSVP.Promise<T> {
     return this.show(`${this.modalsContainerPath}/check-confirm`, options);
   }
 
   /**
-   * Shows `progress`-modal. This modal doesn't have any controls and is auto-closed when progress is completed
+   * Shows `progress`-modal
+   *
+   * @method progress
+   * @param {object} options
+   * @return {RSVP.Promise}
    */
   progress(options: EbmmModalOptions): RSVP.Promise<T> {
     assert('`options.promises` must be an array', options && isArray(options.promises));
     return this.show(`${this.modalsContainerPath}/progress`, options);
   }
 
+  /**
+   * Shows `process`-modal
+   *
+   * @method process
+   * @param {object} options
+   * @return {RSVP.Promise}
+   */
   process(options: EbmmModalOptions): RSVP.Promise<T> {
     assert('`options.process` must be defined', options && options.process);
     return this.show(`${this.modalsContainerPath}/process`, options);

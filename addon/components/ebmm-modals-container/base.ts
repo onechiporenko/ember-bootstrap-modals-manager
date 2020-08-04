@@ -13,12 +13,6 @@ export interface ModalArgs {
   onDecline: (v: EbmmDeclinePayload) => void;
 }
 
-/**
- * Base Components for modals. All of them extends this one
- *
- * @class BaseModal
- * @namespace Components
- */
 export default class BaseModal extends Component<ModalArgs> {
   @action
   confirm(v: EbmmConfirmPayload): void {

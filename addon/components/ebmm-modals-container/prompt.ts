@@ -4,13 +4,6 @@ import { isEmpty } from '@ember/utils';
 import BaseModal from './base';
 import { EbmmConfirmPayload } from '../../services/modals-manager';
 
-/**
- * Prompt-modal
- *
- * @class PromptModal
- * @namespace Components
- * @extends Components.BaseModal
- */
 export default class PromptModal extends BaseModal {
 
   @tracked

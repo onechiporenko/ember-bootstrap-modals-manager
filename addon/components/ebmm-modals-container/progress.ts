@@ -1,5 +1,5 @@
 import { tracked } from '@glimmer/tracking';
-import { action, computed, set } from '@ember/object';
+import { action, computed } from '@ember/object';
 import { readOnly } from '@ember/object/computed';
 import { later } from '@ember/runloop';
 import { A } from '@ember/array';
@@ -13,21 +13,17 @@ import {
   EbmmPromiseFactory
 } from '../../services/modals-manager';
 
-/**
- * Here `promises` means functions that return Promise
- *
- * @class ProgressModal
- * @namespace Components
- * @extends Components.BaseModal
- */
 export default class ProgressModal<T> extends Base {
 
   /**
    * Number of fulfilled promises
+   *
+   * @property done
    * @type number
+   * @default 0
    */
   @tracked
-  done = 0;
+  protected done = 0;
 
   /**
    * Number of promises
@@ -35,41 +31,30 @@ export default class ProgressModal<T> extends Base {
    * This value is set initially and must be used instead of `promises.length`,
    * because `promises`-array is changed while execution
    *
+   * @property promisesCount
    * @type number
+   * @default 0
    */
   @tracked
-  promisesCount = 0;
+  protected promisesCount = 0;
 
   /**
+   * @property canceled
    * @type boolean
+   * @default false
    */
-  canceled = false;
+  protected canceled = false;
 
-  /**
-   * @type boolean
-   */
   @readOnly('args.options.settled')
   protected readonly settled: boolean;
 
-  /**
-   * @type EbmmDeclinePayload[]
-   */
   protected errors = A<EbmmDeclinePayload>([]);
 
-  /**
-   * @type EbmmConfirmPayload[]
-   */
   protected results = A<EbmmConfirmPayload>([]);
 
-  /**
-   * List of promises to fulfill
-   */
   @readOnly('args.options.promises')
   protected readonly promises: EbmmPromiseFactory[];
 
-  /**
-   * @type number
-   */
   @computed('done', 'promisesCount')
   get progress(): number {
     if (!this.promisesCount) {
@@ -85,11 +70,11 @@ export default class ProgressModal<T> extends Base {
 
   @action
   cancel(): void {
-    set(this, 'canceled', true);
+    this.canceled = true;
   }
 
   initProgress(): void {
-    set(this, 'promisesCount', this.promises.length);
+    this.promisesCount = this.promises.length;
     const promise = this.promises.shift();
     if (promise) {
       void this.next(promise);
@@ -121,7 +106,7 @@ export default class ProgressModal<T> extends Base {
       if (arguments.length === 1) {
         this.results.pushObject(result);
       }
-      set(this, 'done', this.done + 1);
+      this.done++;
     });
     const promise = this.promises.shift();
     if (promise) {
