@@ -43,6 +43,7 @@ export default class ProgressModal<T> extends Base {
    * @type boolean
    * @default false
    */
+  @tracked
   protected canceled = false;
 
   @readOnly('args.options.settled')
