@@ -1,0 +1,72 @@
+<BsModal
+  @position={{@options.position}}
+  @size={{@options.size}}
+  @backdropTransitionDuration={{@options.backdropTransitionDuration}}
+  @renderInPlace={{@options.renderInPlace}}
+  @transitionDuration={{@options.transitionDuration}}
+  @open={{@modalIsOpened}}
+  @onSubmit={{this.confirm}}
+  @onHidden={{this.decline}}
+  class={{@options.modalClass}}
+as |modal|>
+  <modal.header>
+    {{#if @options.titleComponent}}
+      {{component
+        @options.titleComponent
+        options=@options
+      }}
+    {{else}}
+      <BsModal::Header::Title>{{@options.title}}</BsModal::Header::Title>
+    {{/if}}
+  </modal.header>
+  <modal.body>
+    {{#if @options.bodyComponent}}
+      {{component
+        @options.bodyComponent
+        options=@options
+        updatePromptValue=this.updatePromptValue
+      }}
+    {{else}}
+      <p>{{@options.body}}</p>
+      <BsForm
+        @model={{this}}
+        @onSubmit={{this.confirm}}
+      as |form|>
+        <form.element
+          @controlType="checkbox"
+          @property="promptValue"
+          @label={{@options.inputLabel}} />
+      </BsForm>
+    {{/if}}
+  </modal.body>
+  <modal.footer>
+    {{#if @options.footerComponent}}
+      {{component
+        @options.footerComponent
+        options=@options
+        confirmDisabled=this.confirmDisabled
+        confirm=modal.submit
+        decline=modal.close
+      }}
+    {{else}}
+      <p>{{@options.footer}}</p>
+      <BsButton
+        @type={{@options.declineButtonType}}
+        @defaultText={{@options.decline}}
+        @active={{@options.declineIsActive}}
+        @iconActive={{@options.declineIconActive}}
+        @iconInactive={{@options.declineIconInactive}}
+        @size={{@options.declineButtonSize}}
+        @onClick={{modal.close}} />
+      <BsButton
+        @type={{@options.confirmButtonType}}
+        disabled={{this.confirmDisabled}}
+        @defaultText={{@options.confirm}}
+        @active={{@options.confirmIsActive}}
+        @size={{@options.confirmButtonSize}}
+        @iconActive={{@options.confirmIconActive}}
+        @iconInactive={{@options.confirmIconInactive}}
+        @onClick={{modal.submit}} />
+    {{/if}}
+  </modal.footer>
+</BsModal>

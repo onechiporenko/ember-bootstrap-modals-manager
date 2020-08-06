@@ -24,6 +24,12 @@ branches:
     - master
     # npm version tags
     - /^v\d+\.\d+\.\d+/
+    - /^v\d+\.\d+/
+
+stages:
+  - Tests
+  - Additional Tests
+  - Deploy
 
 stages:
   - Tests
@@ -57,9 +63,6 @@ jobs:
 
     # we recommend new addons test the current and previous LTS
     # as well as latest stable release (bonus points to beta/canary)
-    - env: EMBER_TRY_SCENARIO=ember-lts-3.4
-    - env: EMBER_TRY_SCENARIO=ember-lts-3.8
-    - env: EMBER_TRY_SCENARIO=ember-lts-3.12
     - env: EMBER_TRY_SCENARIO=ember-lts-3.16
     - env: EMBER_TRY_SCENARIO=ember-release
     - env: EMBER_TRY_SCENARIO=ember-beta

@@ -3,7 +3,6 @@ import layout from '../templates/components/custom-prompt-confirm-body';
 import { layout as templateLayout } from '@ember-decorators/component';
 import { action } from "@ember/object";
 
-export default
 @templateLayout(layout)
 class CustomPromptConfirmBodyComponent extends Component {
   @action
@@ -11,3 +10,5 @@ class CustomPromptConfirmBodyComponent extends Component {
     this.updatePromptValue(e.target.value);
   }
 }
+
+export default CustomPromptConfirmBodyComponent;

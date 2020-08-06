@@ -2,7 +2,7 @@
 
 module.exports = {
   root: true,
-  parser: 'babel-eslint',
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',
@@ -22,6 +22,18 @@ module.exports = {
   },
   rules: {},
   overrides: [
+    {
+      files: ['*.ts', '*.tsx'],
+      plugins: [
+        '@typescript-eslint',
+        'ember'
+      ],
+      extends: [
+        'eslint:recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:ember/recommended'
+      ],
+    },
     // node files
     {
       files: [

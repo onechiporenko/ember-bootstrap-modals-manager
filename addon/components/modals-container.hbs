@@ -1,0 +1,10 @@
+{{#if this.modalIsOpened}}
+  {{component
+    this.componentName
+    modalIsOpened=this.modalIsOpened
+    options=this.options
+    onConfirm=(fn this.confirm)
+    onDecline=(fn this.decline)
+  }}
+{{/if}}
+{{yield}}

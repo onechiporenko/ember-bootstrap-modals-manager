@@ -1,16 +1,22 @@
 {{! BEGIN-SNIPPET components-modal-with-form.hbs }}
 <BsModal
-  @open={{this.modalIsOpened}}
-  @title="User Form"
-  @onSubmit={{this.confirm}}
-  @onHide={{this.decline}}
+  @position={{@options.position}}
+  @size={{@options.size}}
+  @backdropTransitionDuration={{@options.backdropTransitionDuration}}
+  @renderInPlace={{@options.renderInPlace}}
+  @transitionDuration={{@options.transitionDuration}}
+  @open={{@modalIsOpened}}
+  @keyboard={{false}}
+  @backdropClose={{false}}
+  @onSubmit={{fn this.confirm}}
+  @onHidden={{fn this.decline}}
 as |modal|>
-  <modal.header/>
+  <modal.header @title="User Form"/>
   <modal.body>
     <BsForm
       @model={{this.formData}}
       @novalidate={{true}}
-      @onSubmit={{this.confirm}}
+      @onSubmit={{fn this.confirm}}
     as |form|>
       <form.element
         @property="firstName"

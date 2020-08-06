@@ -1,6 +1,7 @@
 import {get, setProperties} from '@ember/object';
+import ApplicationInstance from '@ember/application/instance';
 
-export function initialize(appInstance) {
+export function initialize(appInstance: ApplicationInstance): void {
   const modalsManager = appInstance.lookup('service:modals-manager');
   setProperties(get(modalsManager, 'defaultOptions'), {
     size: null,
