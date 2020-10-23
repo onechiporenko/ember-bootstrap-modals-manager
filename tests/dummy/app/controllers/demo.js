@@ -1,6 +1,6 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
-import { action, computed, set, getProperties } from '@ember/object';
+import { action, computed, set } from '@ember/object';
 import { not } from '@ember/object/computed';
 import { A } from '@ember/array';
 
@@ -441,7 +441,7 @@ export default class DemoController extends Controller {
     set(this, 'options', '.show(\'modal-with-form\')');
     this.modalsManager
       .show('modal-with-form')
-      .then(v => this.addMessage(`Modal with form was confirmed (with ${JSON.stringify(getProperties(v, 'firstName', 'lastName', 'email'))})`))
+      .then(v => this.addMessage(`Modal with form was confirmed (with ${JSON.stringify({firstName: v.firstName, lastName: v.lastName, email: v.email})})`))
       .catch(() => this.addMessage('Modal with form declined'));
   }
 
