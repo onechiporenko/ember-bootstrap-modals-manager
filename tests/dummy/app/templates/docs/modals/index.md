@@ -28,7 +28,7 @@ Every modal described below takes a single parameter. It's a POJO with propertie
 
   * `position` - vertical position, either 'top' (default) or 'center'. 'center' will apply the `modal-dialog-centered` class
 
-  * `scrollable` - allows scrolling within the modal body 'true' will apply the `modal-dialog-scrollable` class
+  * `scrollable` - allows scrolling within the modal body. 'true' will apply the `modal-dialog-scrollable` class
 
 * **Confirm Button**
 
