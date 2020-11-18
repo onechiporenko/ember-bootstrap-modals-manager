@@ -10,7 +10,7 @@
   @onHidden={{this.decline}}
   class={{@options.modalClass}}
 as |modal|>
-  <modal.header>
+  <modal.header @closeButton={{@options.closeButton}}>
     {{#if @options.titleComponent}}
       {{component
         @options.titleComponent

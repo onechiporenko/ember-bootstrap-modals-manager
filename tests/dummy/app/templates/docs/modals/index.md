@@ -6,6 +6,8 @@ Every modal described below takes a single parameter. It's a POJO with propertie
 
   * `title` - modal's title
 
+  * `closeButton` - show a close button (x icon). `false` will hide the close button
+
   * `body` - modal's body message
 
   * `footer` - text shown near the footer buttons (empty string by default)
@@ -18,7 +20,11 @@ Every modal described below takes a single parameter. It's a POJO with propertie
 
   * `size` - modal's size. Set to `null` (default), `lg` or `sm`
 
+  * `backdropClose` - if `true` clicking on the backdrop will close the modal
+
   * `backdropTransitionDuration` - the duration of the backdrop fade transition
+
+  * `keyboard` - closes the modal when `escape` key is pressed
 
   * `renderInPlace` - if `true` component will render in place, rather than be wormholed
 
@@ -28,7 +34,7 @@ Every modal described below takes a single parameter. It's a POJO with propertie
 
   * `position` - vertical position, either 'top' (default) or 'center'. 'center' will apply the `modal-dialog-centered` class
 
-  * `scrollable` - allows scrolling within the modal body 'true' will apply the `modal-dialog-scrollable` class
+  * `scrollable` - allows scrolling within the modal body. `true` will apply the `modal-dialog-scrollable` class
 
 * **Confirm Button**
 
@@ -92,4 +98,10 @@ You may set default options for all modals with:
 
 {{#docs-snippet name="default-options.js"}}
 set(modalsManager, 'defaultOptions', {...});
+{{/docs-snippet}}
+
+If needed, you may set specific option with:
+
+{{#docs-snippet name="specific-options.js"}}
+set(modalsManager.defaultOptions, oneOfAvailableOptionsAbove, value);
 {{/docs-snippet}}
