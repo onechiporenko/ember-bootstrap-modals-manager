@@ -53,6 +53,9 @@ module.exports = async function () {
           }),
         },
         npm: {
+          dependencies: {
+            'ember-cli-babel': '^7.23.1',
+          },
           devDependencies: {
             '@ember/jquery': '^1.1.0',
           },
