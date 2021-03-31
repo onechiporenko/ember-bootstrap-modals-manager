@@ -1,10 +1,3 @@
-import Component from '@ember/component';
-import layout from '../templates/components/custom-confirm-footer';
-import { layout as templateLayout } from '@ember-decorators/component';
+import templateOnly from '@ember/component/template-only';
 
-@templateLayout(layout)
-class CustomConfirmFooterComponent extends Component {
-
-}
-
-export default CustomConfirmFooterComponent;
+export default templateOnly();

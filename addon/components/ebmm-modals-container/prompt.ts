@@ -1,17 +1,15 @@
 import { tracked } from '@glimmer/tracking';
-import { action, computed, set } from '@ember/object';
+import { action } from '@ember/object';
 import { isEmpty } from '@ember/utils';
 import BaseModal from './base';
 import { EbmmConfirmPayload } from '../../services/modals-manager';
 
 export default class PromptModal extends BaseModal {
-
   @tracked
   promptValue: EbmmConfirmPayload = '';
 
   inputType = 'text';
 
-  @computed('promptValue', 'args.options.disallowEmpty')
   protected get confirmDisabled(): boolean {
     return this.args.options.disallowEmpty ? isEmpty(this.promptValue) : false;
   }
@@ -30,7 +28,6 @@ export default class PromptModal extends BaseModal {
    */
   @action
   updatePromptValue(val: string): void {
-    set(this, 'promptValue', val);
+    this.promptValue = val;
   }
-
 }

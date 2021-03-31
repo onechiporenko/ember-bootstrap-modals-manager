@@ -5,7 +5,7 @@ Almost same as `promptConfirm` however it contains a checkbox instead of text-fi
 {{#docs-snippet name="show-check-confirm-modal.js" title="Check Confirm Modal"}}
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
-import {action, get} from '@ember/object';
+import {action} from '@ember/object';
 
 export default class CheckConfirmModalDemoController extends Controller {
   @service()
@@ -13,7 +13,7 @@ export default class CheckConfirmModalDemoController extends Controller {
 
   @action
   showCheckConfirmModal() {
-    get(this, 'modalsManager')
+    this.modalsManager
       .checkConfirm({
         title: 'Confirm Title',
         body: 'Confirm your suggestion',
@@ -34,7 +34,7 @@ export default class CheckConfirmModalDemoController extends Controller {
 {{#docs-snippet name="show-custom-check-confirm-modal.js" title="Custom Check Confirm Modal"}}
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
-import {action, get} from '@ember/object';
+import {action} from '@ember/object';
 
 export default class CheckConfirmModalDemoController extends Controller {
   @service()
@@ -42,7 +42,7 @@ export default class CheckConfirmModalDemoController extends Controller {
 
   @action
   showCheckConfirm() {
-    get(this, 'modalsManager')
+    this.modalsManager
       .checkConfirm({
         title: 'Check Confirm Title',
         footer: 'Prompt Confirm Footer',

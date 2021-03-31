@@ -1,8 +1,8 @@
-{{#if this.modalIsOpened}}
+{{#if this.modalsManager.modalIsOpened}}
   {{component
-    this.componentName
-    modalIsOpened=this.modalIsOpened
-    options=this.options
+    this.modalsManager.componentName
+    modalIsOpened=this.modalsManager.modalIsOpened
+    options=this.modalsManager.options
     onConfirm=(fn this.confirm)
     onDecline=(fn this.decline)
   }}

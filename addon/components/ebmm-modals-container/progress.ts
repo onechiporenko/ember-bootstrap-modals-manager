@@ -1,20 +1,17 @@
 import { tracked } from '@glimmer/tracking';
-import { action, computed } from '@ember/object';
-import { readOnly } from '@ember/object/computed';
+import { action } from '@ember/object';
 import { later } from '@ember/runloop';
 import { A } from '@ember/array';
 import { run } from '@ember/runloop';
-import { tryInvoke } from '@ember/utils';
 import RSVP from 'rsvp';
 import Base, { ModalArgs } from './base';
 import {
   EbmmConfirmPayload,
   EbmmDeclinePayload,
-  EbmmPromiseFactory
+  EbmmPromiseFactory,
 } from '../../services/modals-manager';
 
 export default class ProgressModal<T> extends Base {
-
   /**
    * Number of fulfilled promises
    *
@@ -46,22 +43,23 @@ export default class ProgressModal<T> extends Base {
   @tracked
   protected canceled = false;
 
-  @readOnly('args.options.settled')
-  protected readonly settled: boolean;
+  protected get settled(): boolean {
+    return this.args.options.settled ?? false;
+  }
 
   protected errors = A<EbmmDeclinePayload>([]);
 
   protected results = A<EbmmConfirmPayload>([]);
 
-  @readOnly('args.options.promises')
-  protected readonly promises: EbmmPromiseFactory[];
+  protected get promises(): EbmmPromiseFactory[] {
+    return this.args.options.promises ?? A([]);
+  }
 
-  @computed('done', 'promisesCount')
   get progress(): number {
     if (!this.promisesCount) {
       return 100;
     }
-    return this.done / this.promisesCount * 100;
+    return (this.done / this.promisesCount) * 100;
   }
 
   constructor(owner: unknown, args: ModalArgs) {
@@ -91,15 +89,17 @@ export default class ProgressModal<T> extends Base {
         this._next(result);
         return result;
       })
-      .catch(<EmmiDeclinePayload>(error: EmmiDeclinePayload): EmmiDeclinePayload => {
-        if (this.settled) {
-          this.errors.pushObject(error);
-          this._next();
-        } else {
-          tryInvoke(this, 'decline', [[this.results, error]]);
+      .catch(
+        <EmmiDeclinePayload>(error: EmmiDeclinePayload): EmmiDeclinePayload => {
+          if (this.settled) {
+            this.errors.pushObject(error);
+            this._next();
+          } else {
+            this.decline([this.results, error]);
+          }
+          return error;
         }
-        return error;
-      });
+      );
   }
 
   _next(result?: EbmmConfirmPayload): void {
@@ -119,7 +119,10 @@ export default class ProgressModal<T> extends Base {
   }
 
   _complete(): void {
-    later(() => tryInvoke(this, 'confirm', this.settled ? [[this.results, this.errors]] : [this.results]), 500);
+    later(
+      () =>
+        this.confirm(this.settled ? [this.results, this.errors] : this.results),
+      500
+    );
   }
-
 }

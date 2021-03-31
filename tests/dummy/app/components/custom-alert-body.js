@@ -1,10 +1,3 @@
-import Component from '@ember/component';
-import layout from '../templates/components/custom-alert-body';
-import { layout as templateLayout } from '@ember-decorators/component';
+import templateOnly from '@ember/component/template-only';
 
-@templateLayout(layout)
-class CustomAlertBodyComponent extends Component {
-
-}
-
-export default CustomAlertBodyComponent;
+export default templateOnly();

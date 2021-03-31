@@ -7,7 +7,7 @@ It's used to get some input from user.
 {{#docs-snippet name="show-prompt-modal.js" title="Prompt Modal"}}
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
-import {action, get} from '@ember/object';
+import {action} from '@ember/object';
 
 export default class PromptModalDemoController extends Controller {
   @service()
@@ -15,7 +15,7 @@ export default class PromptModalDemoController extends Controller {
 
   @action
   showPrompt() {
-    get(this, 'modalsManager')
+    this.modalsManager
       .prompt({title: 'Prompt Title', body: 'Prompt Body'})
       .then(promptValue => {
         // called after user clicks "Yes" in the modal
@@ -39,7 +39,7 @@ modalsManager.prompt({disallowEmpty: true, title: '', body: ''});
 {{#docs-snippet name="show-custom-prompt-modal.js" title="Custom Prompt Modal"}}
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
-import {action, get} from '@ember/object';
+import {action} from '@ember/object';
 
 export default class PromptModalDemoController extends Controller {
   @service()
@@ -47,7 +47,7 @@ export default class PromptModalDemoController extends Controller {
 
   @action
   showPrompt() {
-    get(this, 'modalsManager')
+    this.modalsManager
       .prompt({
         title: 'Prompt Title',
         body: 'Prompt Body',

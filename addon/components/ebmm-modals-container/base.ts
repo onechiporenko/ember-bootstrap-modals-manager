@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 import {
   EbmmConfirmPayload,
   EbmmDeclinePayload,
-  EbmmModalOptions
+  EbmmModalOptions,
 } from '../../services/modals-manager';
 
 export interface ModalArgs {

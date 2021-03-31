@@ -7,7 +7,7 @@ As a `confirm` it's used to the ask user about confirmation for some action, but
 {{#docs-snippet name="show-prompt-confirm-modal.js" title="Prompt Confirm Modal"}}
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
-import {action, get} from '@ember/object';
+import {action} from '@ember/object';
 
 export default class PromptConfirmModalDemoController extends Controller {
   @service()
@@ -15,7 +15,7 @@ export default class PromptConfirmModalDemoController extends Controller {
 
   @action
   showPromptConfirm() {
-    get(this, 'modalsManager')
+    this.modalsManager
       .promptConfirm({
         title: 'Prompt Confirm Title',
         body: 'Say "password" and come in',
@@ -38,7 +38,7 @@ export default class PromptConfirmModalDemoController extends Controller {
 {{#docs-snippet name="show-custom-prompt-confirm-modal.js" title="Custom Prompt Confirm Modal"}}
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
-import {action, get} from '@ember/object';
+import {action} from '@ember/object';
 
 export default class PromptConfirmModalDemoController extends Controller {
   @service()
@@ -46,7 +46,7 @@ export default class PromptConfirmModalDemoController extends Controller {
 
   @action
   showPromptConfirm() {
-    get(this, 'modalsManager')
+    this.modalsManager
       .promptConfirm({
         title: 'Prompt Confirm Title',
         body: 'Say "password" and come in',

@@ -1,4 +1,3 @@
 import Route from '@ember/routing/route';
 
-export default class ConfirmRoute extends Route {
-}
+export default class ConfirmRoute extends Route {}

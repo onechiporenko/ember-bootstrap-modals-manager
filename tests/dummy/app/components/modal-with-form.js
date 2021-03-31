@@ -1,27 +1,25 @@
 // BEGIN-SNIPPET components-modal-with-form.js
+import { tracked } from '@glimmer/tracking';
 import BaseModal from './ebmm-modals-container/base';
-import { validator, buildValidations } from 'ember-cp-validations';
-import EmberObject, { computed } from '@ember/object';
-import { getOwner } from '@ember/application';
+import {
+  validatePresence,
+  validateFormat,
+} from 'ember-changeset-validations/validators';
+
+const validations = {
+  firstName: validatePresence(true),
+  lastName: validatePresence(true),
+  email: validateFormat({ type: 'email' }),
+};
 
 export default class ModalWithForm extends BaseModal {
+  validations = validations;
 
-  @computed()
-  get formData () {
-    const Validations = buildValidations({
-      firstName: validator('presence', true),
-      lastName: validator('presence', true),
-      email: [
-        validator('presence', true),
-        validator('format', {
-          type: 'email'
-        })
-      ]
-    });
-    return EmberObject
-      .extend(Validations, {})
-      .create(getOwner(this).ownerInjection());
-  }
-
+  @tracked
+  formData = {
+    firstName: '',
+    lastName: '',
+    email: '',
+  };
 }
 // END-SNIPPET

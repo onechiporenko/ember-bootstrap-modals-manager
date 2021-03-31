@@ -7,7 +7,7 @@ It's used to notify user about something.
 {{#docs-snippet name="show-alert-modal.js" title="Alert Modal"}}
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
-import {action, get} from '@ember/object';
+import {action} from '@ember/object';
 
 export default class AlertModalDemoController extends Controller {
   @service()
@@ -15,7 +15,7 @@ export default class AlertModalDemoController extends Controller {
 
   @action
   showAlert() {
-    get(this, 'modalsManager')
+    this.modalsManager
       .alert({title: 'Alert Title', body: 'Alert Body'})
       .then(() => {
         // called after user clicks "Yes" in the modal
@@ -30,7 +30,7 @@ export default class AlertModalDemoController extends Controller {
 {{#docs-snippet name="show-custom-alert-modal.js" title="Custom Alert Modal"}}
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
-import {action, get} from '@ember/object';
+import {action} from '@ember/object';
 
 export default class AlertModalDemoController extends Controller {
   @service()
@@ -38,7 +38,7 @@ export default class AlertModalDemoController extends Controller {
 
   @action
   showAlert() {
-    get(this, 'modalsManager')
+    this.modalsManager
       .alert({
         titleComponent: 'custom-alert-title',
         title: 'Title',

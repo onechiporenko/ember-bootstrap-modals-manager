@@ -1,10 +1,3 @@
-import Component from '@ember/component';
-import layout from '../templates/components/custom-process-body';
-import { layout as templateLayout } from '@ember-decorators/component';
+import templateOnly from '@ember/component/template-only';
 
-@templateLayout(layout)
-class CustomProcessBodyComponent extends Component {
-
-}
-
-export default CustomProcessBodyComponent;
+export default templateOnly();

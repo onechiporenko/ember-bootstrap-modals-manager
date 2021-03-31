@@ -1,4 +1,7 @@
-import AddonDocsRouter, {docsRoute, apiRoute} from 'ember-cli-addon-docs/router';
+import AddonDocsRouter, {
+  docsRoute,
+  apiRoute,
+} from 'ember-cli-addon-docs/router';
 import config from './config/environment';
 
 const Router = AddonDocsRouter.extend({
@@ -21,7 +24,7 @@ Router.map(function () {
       this.route('with-form');
       this.route('passing-values');
     });
-    this.route('sandbox', function() {
+    this.route('sandbox', function () {
       apiRoute(this);
     });
   });

@@ -7,7 +7,7 @@ It's used to the ask user about confirmation for some action.
 {{#docs-snippet name="show-confirm-modal.js" title="Confirm Modal"}}
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
-import {action, get} from '@ember/object';
+import {action} from '@ember/object';
 
 export default class ConfirmModalDemoController extends Controller {
   @service()
@@ -15,7 +15,7 @@ export default class ConfirmModalDemoController extends Controller {
 
   @action
   showConfirm() {
-    get(this, 'modalsManager')
+    this.modalsManager
       .confirm({title: 'Confirm Title', body: 'Confirm Body'})
       .then(() => {
         // called after user clicks "Yes" in the modal
@@ -40,7 +40,7 @@ export default class ConfirmModalDemoController extends Controller {
 
   @action
   showConfirm() {
-    get(this, 'modalsManager')
+    this.modalsManager
       .confirm({
         title: 'Confirm Title',
         body: 'Confirm Body',

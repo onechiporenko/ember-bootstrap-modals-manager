@@ -1,25 +1,14 @@
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
-import { readOnly } from '@ember/object/computed';
 import ModalsManager, {
-  EbmmConfirmPayload, EbmmDeclinePayload,
-  EbmmModalOptions
+  EbmmConfirmPayload,
+  EbmmDeclinePayload,
 } from '../services/modals-manager';
 
-class ModalsContainer<T> extends Component {
-
+export default class ModalsContainer<T> extends Component {
   @service
-  protected modalsManager: ModalsManager<T>;
-
-  @readOnly('modalsManager.options')
-  protected readonly options: EbmmModalOptions;
-
-  @readOnly('modalsManager.modalIsOpened')
-  protected readonly modalIsOpened: boolean;
-
-  @readOnly('modalsManager.componentName')
-  protected readonly componentName: string;
+  protected modalsManager!: ModalsManager<T>;
 
   @action
   confirm(v: EbmmConfirmPayload): void {
@@ -31,5 +20,3 @@ class ModalsContainer<T> extends Component {
     this.modalsManager.onDeclineClick(v);
   }
 }
-
-export default ModalsContainer;

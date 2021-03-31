@@ -1,5 +1,3 @@
 import BaseModal from './base';
 
-export default class AlertModal extends BaseModal {
-
-}
+export default class AlertModal extends BaseModal {}

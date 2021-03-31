@@ -6,7 +6,7 @@ Modals making use of Custom Components may pass values to those components by as
 {{#docs-snippet name="show-alert-modal.js" title="Alert Modal"}}
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
-import {action, get} from '@ember/object';
+import {action} from '@ember/object';
 
 export default class AlertModalDemoController extends Controller {
   @service()
@@ -14,7 +14,7 @@ export default class AlertModalDemoController extends Controller {
 
   @action
   showAlert() {
-    get(this, 'modalsManager')
+    this.modalsManager
       .alert({bodyComponent: 'my-custom-body-component', username: 'Jane Doe'})
       .then(() => {
         // called after user clicks "Yes" in the modal
@@ -27,7 +27,7 @@ Inside the template for the custom component `my-custom-body-component` the valu
 
 {{#docs-snippet name="my-custom-body-component.hbs" title="My Custom Body Component Template"}}
 <div>
-The users name is : {{@username}}
+The users name is : {{@options.username}}
 </div>
 {{/docs-snippet}}
 
