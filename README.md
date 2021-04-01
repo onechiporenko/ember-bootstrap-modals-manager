@@ -18,9 +18,10 @@
 * v2.* is for `ember-bootstrap@2.x`
 * v3.* is for `ember-bootstrap@3.x`
 * v4.* is for `ember-bootstrap@4.x`
+* v5.* is for `ember-bootstrap@4.x` (with Glimmer components, tracking etc)
 
 ## Demo and docs
 
 Check [demo-page](https://onechiporenko.github.io/ember-bootstrap-modals-manager/demo)
 
-Check [docs-page](https://onechiporenko.github.io/ember-bootstrap-modals-manager)
+Check [docs-page](https://onechiporenko.github.io/ember-bootstrap-modals-manager/docs)

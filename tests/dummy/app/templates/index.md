@@ -14,9 +14,9 @@
 
 `ember-bootstrap-modals-manager` is an Ember-addon that provides a simple mechanism for interaction with user using modals. This addon is based on modals from `ember-bootstrap`.
 
-**Restriction** from the [Bootstrap#modals](https://getbootstrap.com/docs/3.3/javascript/#modals):
+**Restriction** from the [Bootstrap#modals](https://getbootstrap.com/docs/4.6/components/modal/):
 
-> Multiple open modals not supported
+> Bootstrap only supports one modal window at a time. Nested modals arenâ€™t supported as we believe them to be poor user experiences.
 
 You can check how this addon works on [demo-page](https://onechiporenko.github.io/ember-bootstrap-modals-manager/demo).
   

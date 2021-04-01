@@ -1,11 +1,11 @@
 # `progress`
 
-This modal used to show a progress-bar for chain of Promises executed one by one. This modal doesn't have any controls like confirm/decline-buttons in the footer or "&times;" in the header and can't be closed by pressing `Esc` or clicking somewhere outside a modal. Modal will be confirmed and self-closed after all promises are fulfilled or it will be declined (and self-closed) if at least one promise becomes rejected (if `options.settled` is not truly).
+This modal used to show a progress-bar for the chain of Promises executed one by one. This modal doesn't have any controls like confirm/decline-buttons in the footer or "&times;" in the header and can't be closed by pressing `Esc` or clicking somewhere outside a modal. Modal will be confirmed and self-closed after all promises are fulfilled, or it will be declined (and self-closed) if at least one promise becomes rejected (if `options.settled` is not truly).
 
 {{#docs-snippet name="show-progress-modal.js" title="Progress Modal"}}
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
-import {action, get} from '@ember/object';
+import {action} from '@ember/object';
 import {Promise} from 'rsvp';
 
 export default class ProgressModalDemoController extends Controller {
@@ -14,8 +14,7 @@ export default class ProgressModalDemoController extends Controller {
 
   @action
   showPromptConfirm() {
-    const modalsManager = get(this, 'modalsManager');
-    modalsManager
+    this.modalsManager
       .progress({
         body: '',
         promises: [ // this is required
@@ -32,7 +31,7 @@ export default class ProgressModalDemoController extends Controller {
         // called when at least one promise is rejected
         // here "result" is an array of already fulfilled promises
         // here "error" is a reason why last promise was rejected
-        return modalsManager
+        return this.modalsManager
           .alert({
             title: 'Something goes wrong',
             body: `Fulfilled - ${result}. Error - ${JSON.stringify(error)}`
@@ -55,7 +54,7 @@ Option `options.cancelable` can be used to add ability to stop `promises`-queue.
 {{#docs-snippet name="show-custom-progress-modal.js" title="Custom Progress Modal"}}
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
-import {action, get} from '@ember/object';
+import {action} from '@ember/object';
 import {Promise} from 'rsvp';
 
 export default class ProgressModalDemoController extends Controller {
@@ -64,8 +63,7 @@ export default class ProgressModalDemoController extends Controller {
 
   @action
   showPromptConfirm() {
-    const modalsManager = get(this, 'modalsManager');
-    modalsManager
+    this.modalsManager
       .progress({
         body: '',
         titleComponent: 'custom-progress-header',
@@ -85,7 +83,7 @@ export default class ProgressModalDemoController extends Controller {
         // called when at least one promise is rejected
         // here "result" is an array of already fulfilled promises
         // here "error" is a reason why last promise was rejected
-        return modalsManager
+        return this.modalsManager
           .alert({
             title: 'Something goes wrong',
             body: `Fulfilled - ${result}. Error - ${JSON.stringify(error)}`

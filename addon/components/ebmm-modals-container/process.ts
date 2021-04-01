@@ -1,9 +1,10 @@
-import { tryInvoke } from '@ember/utils';
 import Base, { ModalArgs } from './base';
-import { EbmmConfirmPayload, EbmmDeclinePayload } from '../../services/modals-manager';
+import {
+  EbmmConfirmPayload,
+  EbmmDeclinePayload,
+} from '../../services/modals-manager';
 
 export default class ProcessModal extends Base {
-
   constructor(owner: unknown, args: ModalArgs) {
     super(owner, args);
     this.initProcess();
@@ -13,9 +14,8 @@ export default class ProcessModal extends Base {
     const process = this.args.options.process;
     if (process) {
       process()
-        .then((v: EbmmConfirmPayload): void => tryInvoke(this, 'confirm', [v]))
-        .catch((e: EbmmDeclinePayload): void => tryInvoke(this, 'decline', [e]));
+        .then((v: EbmmConfirmPayload): void => this.confirm(v))
+        .catch((e: EbmmDeclinePayload): void => this.decline(e));
     }
   }
 }
-

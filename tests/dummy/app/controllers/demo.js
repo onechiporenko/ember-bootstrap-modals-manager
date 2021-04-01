@@ -1,7 +1,6 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
-import { action, computed, set } from '@ember/object';
-import { not } from '@ember/object/computed';
+import { action, set } from '@ember/object';
 import { A } from '@ember/array';
 
 export default class DemoController extends Controller {
@@ -11,11 +10,12 @@ export default class DemoController extends Controller {
 
   options = {};
 
-  @computed('options')
   get stringifiedOptions() {
-    return JSON.stringify(this.options, (k, v) => {
-      return typeof v === 'function' ? 'Function' : v;
-    }, 2);
+    return JSON.stringify(
+      this.options,
+      (k, v) => (typeof v === 'function' ? 'Function' : v),
+      2
+    );
   }
 
   confirmButtonType = 'primary';
@@ -36,29 +36,17 @@ export default class DemoController extends Controller {
 
   declineButtonSize = 'md';
 
-  @computed()
-  get backdropTransitionDuration() {
-    return 150;
-  }
+  backdropTransitionDuration = 150;
 
   renderInPlace = true;
 
-  @computed()
-  get transitionDuration() {
-    return 300;
-  }
+  transitionDuration = 300;
 
   buttonSizeChoices = ['xs', 'sm', 'md', 'lg'];
 
   sizeChoices = ['sm', 'lg'];
 
-  typeChoices = [
-    '',
-    'success',
-    'info',
-    'warning',
-    'danger'
-  ];
+  typeChoices = ['', 'success', 'info', 'warning', 'danger'];
 
   buttonTypeChoices = [
     'primary',
@@ -68,18 +56,12 @@ export default class DemoController extends Controller {
     'warning',
     'danger',
     'link',
-    'default'
+    'default',
   ];
 
-  confirmIconChoices = [
-    'fa fa-check',
-    'fa fa-check-circle'
-  ];
+  confirmIconChoices = ['fa fa-check', 'fa fa-check-circle'];
 
-  declineIconChoices = [
-    'fa fa-ban',
-    'fa fa-times'
-  ];
+  declineIconChoices = ['fa fa-ban', 'fa fa-times'];
 
   disallowEmptyPrompt = false;
 
@@ -88,8 +70,9 @@ export default class DemoController extends Controller {
   striped = false;
   settled = false;
   cancelable = false;
-  @not('striped')
-  notStriped;
+  get notStriped() {
+    return !this.striped;
+  }
   progressWillFail = false;
   processWillFail = false;
 
@@ -100,10 +83,19 @@ export default class DemoController extends Controller {
   generatePromiseFactoriesList(count) {
     const list = [];
     for (let i = 0; i < count; i++) {
-      list.push(() => new Promise(resolve => setTimeout(() => resolve(i), 1000)));
+      list.push(
+        () => new Promise((resolve) => setTimeout(() => resolve(i), 1000))
+      );
     }
     if (this.progressWillFail) {
-      list.splice(2, 0, () => new Promise((resolve, reject) => setTimeout(() => reject('Promise was rejected'), 1000)));
+      list.splice(
+        2,
+        0,
+        () =>
+          new Promise((resolve, reject) =>
+            setTimeout(() => reject('Promise was rejected'), 1000)
+          )
+      );
     }
     return A(list);
   }
@@ -189,7 +181,7 @@ export default class DemoController extends Controller {
     set(this, 'options', options);
     this.modalsManager
       .prompt(options)
-      .then(v => this.addMessage(`Prompt was confirmed (with "${v}")`))
+      .then((v) => this.addMessage(`Prompt was confirmed (with "${v}")`))
       .catch(() => this.addMessage('Prompt was declined'));
   }
 
@@ -219,7 +211,9 @@ export default class DemoController extends Controller {
     set(this, 'options', options);
     this.modalsManager
       .promptConfirm(options)
-      .then(v => this.addMessage(`Prompt-Confirm was confirmed (with "${v}")`))
+      .then((v) =>
+        this.addMessage(`Prompt-Confirm was confirmed (with "${v}")`)
+      )
       .catch(() => this.addMessage('Prompt-Confirm was declined'));
   }
 
@@ -273,21 +267,27 @@ export default class DemoController extends Controller {
     set(this, 'options', options);
     this.modalsManager
       .progress(options)
-      .then(v => this.addMessage(`Progress was finished (with ${JSON.stringify(v)})`))
+      .then((v) =>
+        this.addMessage(`Progress was finished (with ${JSON.stringify(v)})`)
+      )
       .catch(([result, error]) => {
-        this.addMessage(`Progress was failed (completed ${JSON.stringify(result)}). Error - "${error}"`);
-        return this.modalsManager
-          .alert({
-            title: 'Something goes wrong',
-            body: `Fulfilled - ${result}. Error - ${JSON.stringify(error)}`
-          });
+        this.addMessage(
+          `Progress was failed (completed ${JSON.stringify(
+            result
+          )}). Error - "${error}"`
+        );
+        return this.modalsManager.alert({
+          title: 'Something goes wrong',
+          body: `Fulfilled - ${result}. Error - ${JSON.stringify(error)}`,
+        });
       });
   }
 
   @action
   showProcessModal() {
     const options = {
-      body: 'Some long process (you must add font-awesome to your project to use `fa`-icons)',
+      body:
+        'Some long process (you must add font-awesome to your project to use `fa`-icons)',
       iconClass: 'text-center fa fa-spinner fa-spin fa-3x fa-fw',
       size: this.size,
       backdropTransitionDuration: this.backdropTransitionDuration,
@@ -295,15 +295,20 @@ export default class DemoController extends Controller {
       transitionDuration: this.transitionDuration,
       title: '',
       modalClass: 'my-custom-class',
-      process: () => new Promise((resolve, reject) => setTimeout(() => {
-        this.processWillFail ? reject('some error') : resolve('some result');
-      }, 3000))
+      process: () =>
+        new Promise((resolve, reject) =>
+          setTimeout(() => {
+            this.processWillFail
+              ? reject('some error')
+              : resolve('some result');
+          }, 3000)
+        ),
     };
     set(this, 'options', options);
     this.modalsManager
       .process(options)
-      .then(v => this.addMessage(`Process was confirmed (with ${v})`))
-      .catch(e => this.addMessage(`Process was declined (with ${e})`));
+      .then((v) => this.addMessage(`Process was confirmed (with ${v})`))
+      .catch((e) => this.addMessage(`Process was declined (with ${e})`));
   }
 
   @action
@@ -347,7 +352,7 @@ export default class DemoController extends Controller {
     set(this, 'options', options);
     this.modalsManager
       .prompt(options)
-      .then(v => this.addMessage(`Custom Prompt was confirmed (with "${v}")`))
+      .then((v) => this.addMessage(`Custom Prompt was confirmed (with "${v}")`))
       .catch(() => this.addMessage('Custom Prompt was declined'));
   }
 
@@ -363,7 +368,9 @@ export default class DemoController extends Controller {
     set(this, 'options', options);
     this.modalsManager
       .promptConfirm(options)
-      .then(v => this.addMessage(`Custom Prompt-Confirm was confirmed (with "${v}")`))
+      .then((v) =>
+        this.addMessage(`Custom Prompt-Confirm was confirmed (with "${v}")`)
+      )
       .catch(() => this.addMessage('Custom Prompt-Confirm was declined'));
   }
 
@@ -404,14 +411,19 @@ export default class DemoController extends Controller {
     set(this, 'options', options);
     this.modalsManager
       .progress(options)
-      .then((v) => this.addMessage(`Progress was finished (with ${JSON.stringify(v)})`))
+      .then((v) =>
+        this.addMessage(`Progress was finished (with ${JSON.stringify(v)})`)
+      )
       .catch(([result, error]) => {
-        this.addMessage(`Progress was failed (completed ${JSON.stringify(result)}). Error - "${error}"`);
-        return this.modalsManager
-          .alert({
-            title: 'Something goes wrong',
-            body: `Fulfilled - ${result}. Error - ${JSON.stringify(error)}`
-          });
+        this.addMessage(
+          `Progress was failed (completed ${JSON.stringify(
+            result
+          )}). Error - "${error}"`
+        );
+        return this.modalsManager.alert({
+          title: 'Something goes wrong',
+          body: `Fulfilled - ${result}. Error - ${JSON.stringify(error)}`,
+        });
       });
   }
 
@@ -419,29 +431,43 @@ export default class DemoController extends Controller {
   showCustomProcessModal() {
     const options = {
       title: 'Process Modal Title',
-      body: 'Some long process (you must add font-awesome to your project to use `fa`-icons)',
+      body:
+        'Some long process (you must add font-awesome to your project to use `fa`-icons)',
       titleComponent: 'custom-process-header',
       bodyComponent: 'custom-process-body',
       footerComponent: 'custom-process-footer',
       iconClass: 'text-center fa fa-spinner fa-spin fa-3x fa-fw',
       modalClass: 'my-custom-class',
-      process: () => new Promise((resolve, reject) => setTimeout(() => {
-        this.processWillFail ? reject('some error') : resolve('some result');
-      }, 3000))
+      process: () =>
+        new Promise((resolve, reject) =>
+          setTimeout(() => {
+            this.processWillFail
+              ? reject('some error')
+              : resolve('some result');
+          }, 3000)
+        ),
     };
     set(this, 'options', options);
     this.modalsManager
       .process(options)
-      .then(v => this.addMessage(`Process was confirmed (with ${v})`))
-      .catch(e => this.addMessage(`Process was declined (with ${e})`));
+      .then((v) => this.addMessage(`Process was confirmed (with ${v})`))
+      .catch((e) => this.addMessage(`Process was declined (with ${e})`));
   }
 
   @action
   showCustomFormModal() {
-    set(this, 'options', '.show(\'modal-with-form\')');
+    set(this, 'options', ".show('modal-with-form')");
     this.modalsManager
       .show('modal-with-form')
-      .then(v => this.addMessage(`Modal with form was confirmed (with ${JSON.stringify({firstName: v.firstName, lastName: v.lastName, email: v.email})})`))
+      .then((v) =>
+        this.addMessage(
+          `Modal with form was confirmed (with ${JSON.stringify({
+            firstName: v.firstName,
+            lastName: v.lastName,
+            email: v.email,
+          })})`
+        )
+      )
       .catch(() => this.addMessage('Modal with form declined'));
   }
 

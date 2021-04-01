@@ -1,4 +1,3 @@
 import Route from '@ember/routing/route';
 
-export default class ProcessRoute extends Route {
-}
+export default class ProcessRoute extends Route {}

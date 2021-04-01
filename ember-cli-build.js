@@ -2,27 +2,20 @@
 
 const EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
-module.exports = function(defaults) {
+module.exports = function (defaults) {
   let app = new EmberAddon(defaults, {
     'ember-bootstrap': {
       bootstrapVersion: 3,
       importBootstrapFont: true,
-      importBootstrapCSS: false
-    },
-    'ember-cli-uglify': {
-      uglify: {
-        compress: {
-          collapse_vars: false
-        }
-      }
+      importBootstrapCSS: false,
     },
     outputPaths: {
       app: {
         css: {
-          'demo': '/assets/demo.css'
-        }
-      }
-    }
+          demo: '/assets/demo.css',
+        },
+      },
+    },
   });
 
   /*

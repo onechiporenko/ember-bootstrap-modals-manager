@@ -1,10 +1,3 @@
-import Component from '@ember/component';
-import layout from '../templates/components/custom-progress-header';
-import { layout as templateLayout } from '@ember-decorators/component';
+import templateOnly from '@ember/component/template-only';
 
-@templateLayout(layout)
-class CustomProgressHeaderComponent extends Component {
-
-}
-
-export default CustomProgressHeaderComponent;
+export default templateOnly();

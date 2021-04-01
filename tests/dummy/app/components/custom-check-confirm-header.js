@@ -1,10 +1,3 @@
-import Component from '@ember/component';
-import layout from '../templates/components/custom-check-confirm-header';
-import { layout as templateLayout } from '@ember-decorators/component';
+import templateOnly from '@ember/component/template-only';
 
-@templateLayout(layout)
-class CustomCheckConfirmHeaderComponent extends Component {
-
-}
-
-export default CustomCheckConfirmHeaderComponent;
+export default templateOnly();

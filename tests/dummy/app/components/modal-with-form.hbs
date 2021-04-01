@@ -14,8 +14,8 @@ as |modal|>
   <modal.header @title="User Form"/>
   <modal.body>
     <BsForm
-      @model={{this.formData}}
-      @novalidate={{true}}
+      novalidate
+      @model={{changeset this.formData this.validations}}
       @onSubmit={{fn this.confirm}}
     as |form|>
       <form.element

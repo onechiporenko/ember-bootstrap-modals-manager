@@ -97,7 +97,7 @@
               <PowerSelect
                 id={{el.id}}
                 @options={{this.confirmIconChoices}}
-                @onchange={{fn (mut this.confirmIconActive)}}
+                @onChange={{fn (mut this.confirmIconActive)}}
                 @selected={{this.confirmIconActive}}
                 @searchEnabled={{false}}
                 @allowClear={{true}} as |icon|>
@@ -112,7 +112,7 @@
               <PowerSelect
                 id={{el.id}}
                 @options={{this.declineIconChoices}}
-                @onchange={{fn (mut this.declineIconActive)}}
+                @onChange={{fn (mut this.declineIconActive)}}
                 @selected={{this.declineIconActive}}
                 @searchEnabled={{false}}
                 @allowClear={{true}} as |icon|>
@@ -129,7 +129,7 @@
               <PowerSelect
                 id={{el.id}}
                 @options={{this.confirmIconChoices}}
-                @onchange={{fn (mut this.confirmIconInactive)}}
+                @onChange={{fn (mut this.confirmIconInactive)}}
                 @searchEnabled={{false}}
                 @selected={{this.confirmIconInactive}}
                 @allowClear={{true}} as |icon|>
@@ -144,7 +144,7 @@
               <PowerSelect
                 id={{el.id}}
                 @options={{this.declineIconChoices}}
-                @onchange={{fn (mut this.declineIconInactive)}}
+                @onChange={{fn (mut this.declineIconInactive)}}
                 @selected={{this.declineIconInactive}}
                 @searchEnabled={{false}}
                 @allowClear={{true}} as |icon|>
@@ -161,7 +161,7 @@
               <PowerSelect
                 id={{el.id}}
                 @options={{this.buttonTypeChoices}}
-                @onchange={{fn (mut this.confirmButtonType)}}
+                @onChange={{fn (mut this.confirmButtonType)}}
                 @selected={{this.confirmButtonType}}
                 @searchEnabled={{false}} as |type|>
                 {{type}}
@@ -175,7 +175,7 @@
               <PowerSelect
                 id={{el.id}}
                 @options={{this.buttonTypeChoices}}
-                @onchange={{fn (mut this.declineButtonType)}}
+                @onChange={{fn (mut this.declineButtonType)}}
                 @selected={{this.declineButtonType}}
                 @searchEnabled={{false}} as |type|>
                 {{type}}
@@ -191,7 +191,7 @@
               <PowerSelect
                 id={{el.id}}
                 @options={{this.buttonSizeChoices}}
-                @onchange={{fn (mut this.confirmButtonSize)}}
+                @onChange={{fn (mut this.confirmButtonSize)}}
                 @selected={{this.confirmButtonSize}}
                 @searchEnabled={{false}} as |size|>
                 {{size}}
@@ -205,7 +205,7 @@
               <PowerSelect
                 id={{el.id}}
                 @options={{this.buttonSizeChoices}}
-                @onchange={{fn (mut this.declineButtonSize)}}
+                @onChange={{fn (mut this.declineButtonSize)}}
                 @selected={{this.declineButtonSize}}
                 @searchEnabled={{false}} as |size|>
                 {{size}}
@@ -221,7 +221,7 @@
               <PowerSelect
                 id={{el.id}}
                 @options={{this.sizeChoices}}
-                @onchange={{fn (mut this.size)}}
+                @onChange={{fn (mut this.size)}}
                 @selected={{this.size}}
                 @searchEnabled={{false}}
                 @allowClear={{true}} as |size|>
@@ -287,7 +287,7 @@
                 @options={{this.typeChoices}}
                 @searchEnabled={{false}}
                 @selected={{this.type}}
-                @onchange={{fn (mut this.type)}} as |type|>
+                @onChange={{fn (mut this.type)}} as |type|>
                 {{type}}
               </PowerSelect>
             </form.element>
