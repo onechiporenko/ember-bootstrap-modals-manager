@@ -2,6 +2,7 @@
 <p class="alert alert-danger">Custom Prompt Confirm Body Component</p>
 <p class="alert alert-danger">Please enter a "{{@options.promptValue}}" without quotes</p>
 <input
+  aria-label="prompt-value"
   type="text"
   class="form-control"
   {{on "input" this.updatePromptValueInternal}}>

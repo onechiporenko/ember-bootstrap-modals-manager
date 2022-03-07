@@ -8,15 +8,15 @@
   @open={{@modalIsOpened}}
   @keyboard={{false}}
   @backdropClose={{false}}
-  @onSubmit={{fn this.confirm}}
-  @onHidden={{fn this.decline}}
+  @onSubmit={{this.confirm}}
+  @onHidden={{this.decline}}
 as |modal|>
   <modal.header @title="User Form"/>
   <modal.body>
     <BsForm
       novalidate
       @model={{changeset this.formData this.validations}}
-      @onSubmit={{fn this.confirm}}
+      @onSubmit={{this.confirm}}
     as |form|>
       <form.element
         @property="firstName"
