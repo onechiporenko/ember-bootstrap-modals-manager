@@ -8,6 +8,9 @@ module.exports = function (defaults) {
       bootstrapVersion: 5,
       importBootstrapCSS: false,
     },
+    'ember-cli-babel': {
+      includePolyfill: true,
+    },
     outputPaths: {
       app: {
         css: {
