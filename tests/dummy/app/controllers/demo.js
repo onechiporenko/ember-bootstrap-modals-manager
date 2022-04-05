@@ -286,8 +286,7 @@ export default class DemoController extends Controller {
   @action
   showProcessModal() {
     const options = {
-      body:
-        'Some long process (you must add font-awesome to your project to use `fa`-icons)',
+      body: 'Some long process (you must add font-awesome to your project to use `fa`-icons)',
       iconClass: 'text-center fa fa-spinner fa-spin fa-3x fa-fw',
       size: this.size,
       backdropTransitionDuration: this.backdropTransitionDuration,
@@ -431,8 +430,7 @@ export default class DemoController extends Controller {
   showCustomProcessModal() {
     const options = {
       title: 'Process Modal Title',
-      body:
-        'Some long process (you must add font-awesome to your project to use `fa`-icons)',
+      body: 'Some long process (you must add font-awesome to your project to use `fa`-icons)',
       titleComponent: 'custom-process-header',
       bodyComponent: 'custom-process-body',
       footerComponent: 'custom-process-footer',

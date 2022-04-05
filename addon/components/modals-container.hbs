@@ -1,10 +1,10 @@
 {{#if this.modalsManager.modalIsOpened}}
   {{component
-    this.modalsManager.componentName
+    (ensure-safe-component this.modalsManager.componentName)
     modalIsOpened=this.modalsManager.modalIsOpened
     options=this.modalsManager.options
-    onConfirm=(fn this.confirm)
-    onDecline=(fn this.decline)
+    onConfirm=this.confirm
+    onDecline=this.decline
   }}
 {{/if}}
 {{yield}}

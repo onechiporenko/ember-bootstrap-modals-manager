@@ -31,6 +31,7 @@ module('Acceptance | modals', function (hooks) {
   setupApplicationTest(hooks);
 
   test('alert-modal', async function (assert) {
+    assert.expect(6);
     await visit('/demo');
     await openModal('alert');
     await modalIsOpened(assert, true);
@@ -48,6 +49,7 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('Custom alert-modal', async function (assert) {
+    assert.expect(6);
     await visit('/demo');
     await openModal('custom-alert');
     await modalIsOpened(assert, true);
@@ -60,6 +62,7 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('confirm-modal', async function (assert) {
+    assert.expect(8);
     await visit('/demo');
     await openModal('confirm');
     await modalIsOpened(assert, true);
@@ -77,6 +80,7 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('Custom confirm-modal', async function (assert) {
+    assert.expect(9);
     await visit('/demo');
     await openModal('custom-confirm');
     await modalIsOpened(assert, true);
@@ -95,6 +99,7 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('prompt-modal', async function (assert) {
+    assert.expect(9);
     await visit('/demo');
     await openModal('prompt');
     await modalIsOpened(assert, true);
@@ -114,6 +119,7 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('prompt-modal with disabled Confirm button', async function (assert) {
+    assert.expect(5);
     await visit('/demo');
     await click('.disallow-empty input');
     await openModal('prompt');
@@ -127,6 +133,7 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('Custom prompt-modal', async function (assert) {
+    assert.expect(9);
     await visit('/demo');
     await openModal('custom-prompt');
     await modalIsOpened(assert, true);
@@ -149,6 +156,7 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('Custom prompt-modal with disabled Confirm button', async function (assert) {
+    assert.expect(5);
     await visit('/demo');
     await click('.disallow-empty input');
     await openModal('custom-prompt');
@@ -162,6 +170,7 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('prompt-confirm-modal', async function (assert) {
+    assert.expect(12);
     await visit('/demo');
     await openModal('prompt-confirm');
     await modalIsOpened(assert, true);
@@ -187,6 +196,7 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('Custom prompt-confirm-modal', async function (assert) {
+    assert.expect(13);
     await visit('/demo');
     await openModal('custom-prompt-confirm');
     await modalIsOpened(assert, true);
@@ -213,6 +223,7 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('check-confirm-modal', async function (assert) {
+    assert.expect(12);
     await visit('/demo');
     await openModal('check-confirm');
     await modalIsOpened(assert, true);
@@ -235,6 +246,7 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('Custom check-confirm-modal', async function (assert) {
+    assert.expect(12);
     await visit('/demo');
     await openModal('custom-check-confirm');
     await modalIsOpened(assert, true);
@@ -257,6 +269,7 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('progress-modal (success)', async function (assert) {
+    assert.expect(5);
     await visit('/demo');
     await openModal('progress');
     const done = assert.async();
@@ -274,6 +287,7 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('progress-modal (error)', async function (assert) {
+    assert.expect(7);
     await visit('/demo');
     await click('.progress-will-fail input');
     await openModal('progress');
@@ -298,6 +312,7 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('progress-modal (error settled)', async function (assert) {
+    assert.expect(3);
     await visit('/demo');
     await click('.progress-will-fail input');
     await click('.progress-settled input');
@@ -315,6 +330,7 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('progress-modal (cancelable)', async function (assert) {
+    assert.expect(3);
     await visit('/demo');
     await click('.progress-cancelable input');
     await openModal('progress');
@@ -332,6 +348,7 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('Custom progress-modal (success)', async function (assert) {
+    assert.expect(9);
     await visit('/demo');
     await openModal('custom-progress');
     const done = assert.async();
@@ -353,6 +370,7 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('process-modal (success)', async function (assert) {
+    assert.expect(5);
     await visit('/demo');
     await openModal('process');
     const done = assert.async();
@@ -371,6 +389,7 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('process-modal (error)', async function (assert) {
+    assert.expect(3);
     await visit('/demo');
     await click('.process-will-fail input');
     await openModal('process');
@@ -384,6 +403,7 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('Custom process-modal', async function (assert) {
+    assert.expect(7);
     await visit('/demo');
     await openModal('custom-process');
     const done = assert.async();

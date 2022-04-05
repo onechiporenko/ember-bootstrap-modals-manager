@@ -8,8 +8,8 @@
   @renderInPlace={{@options.renderInPlace}}
   @transitionDuration={{@options.transitionDuration}}
   @open={{@modalIsOpened}}
-  @onSubmit={{fn this.confirm}}
-  @onHidden={{fn this.decline}}
+  @onSubmit={{this.confirm}}
+  @onHidden={{this.decline}}
   class={{@options.modalClass}}
 as |modal|>
   <modal.header @closeButton={{@options.closeButton}}>
