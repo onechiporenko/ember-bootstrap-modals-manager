@@ -1,7 +1,6 @@
 # ember-bootstrap-modals-manager
 
-[![Build Status](https://travis-ci.org/onechiporenko/ember-bootstrap-modals-manager.svg?branch=master)](https://travis-ci.org/onechiporenko/ember-bootstrap-modals-manager)
-[![Codacy Badge](https://www.codacy.com/project/badge/062ef689838e43dfa46eecd1f74f22af)](https://www.codacy.com/app/cv_github/ember-bootstrap-modals-manager)
+[![CI](https://github.com/onechiporenko/ember-bootstrap-modals-manager/actions/workflows/ci.yml/badge.svg)](https://github.com/onechiporenko/ember-bootstrap-modals-manager/actions/workflows/ci.yml)
 [![Ember Observer Score](https://emberobserver.com/badges/ember-bootstrap-modals-manager.svg)](https://emberobserver.com/addons/ember-bootstrap-modals-manager)
 [![npm version](https://badge.fury.io/js/ember-bootstrap-modals-manager.png)](http://badge.fury.io/js/ember-bootstrap-modals-manager)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
@@ -19,6 +18,7 @@
 * v3.* is for `ember-bootstrap@3.x`
 * v4.* is for `ember-bootstrap@4.x`
 * v5.* is for `ember-bootstrap@4.x` (with Glimmer components, tracking etc)
+* v6.* is for `ember-bootstrap@5.x`
 
 ## Demo and docs
 
