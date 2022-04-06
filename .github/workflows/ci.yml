@@ -72,29 +72,3 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Run Tests
         run: ./node_modules/.bin/ember try:one ${{ matrix.try-scenario }}
-
-  embroider:
-    name: ${{ matrix.try-scenario }}
-    runs-on: ubuntu-latest
-    needs: 'test'
-
-    strategy:
-      fail-fast: false
-      matrix:
-        try-scenario:
-          - embroider-safe
-          - embroider-optimized
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Install Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: 12.x
-          cache: yarn
-      - name: Install Dependencies
-        run: |
-          yarn install --frozen-lockfile
-          yarn remove ember-cli-addon-docs
-      - name: Run Tests
-        run: ./node_modules/.bin/ember try:one ${{ matrix.try-scenario }}
