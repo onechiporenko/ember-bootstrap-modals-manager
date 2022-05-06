@@ -33,6 +33,7 @@
     "postpack": "ember ts:clean"
   },
   "dependencies": {
+    "@embroider/util": "^1.5.0",
     "ember-cli-babel": "^7.26.11",
     "ember-cli-htmlbars": "^6.0.1",
     "ember-cli-typescript": "^5.0.0"
@@ -83,7 +84,7 @@
     "ember-changeset-validations": "^4.0.0-beta.3",
     "ember-cli": "~4.2.0",
     "ember-cli-addon-docs": "^4.2.2",
-    "ember-cli-addon-docs-yuidoc": "^0.2.4",
+    "ember-cli-addon-docs-esdoc": "^0.4.0",
     "ember-cli-dependency-checker": "^3.2.0",
     "ember-cli-deploy": "^1.0.2",
     "ember-cli-deploy-build": "^1.1.2",
@@ -95,7 +96,7 @@
     "ember-cli-terser": "^4.0.2",
     "ember-cli-typescript-blueprints": "^3.0.0",
     "ember-cli-yuidoc": "^0.8.8",
-    "ember-data": "^4.2.0",
+    "ember-data": "^4.3.0",
     "ember-disable-prototype-extensions": "^1.1.3",
     "ember-export-application-global": "^2.0.1",
     "ember-load-initializers": "^2.1.2",

@@ -12,6 +12,12 @@
 
 `ember i ember-bootstrap-modals-manager`
 
+Add next to your `application.hbs`:
+
+```html
+<ModalsContainer />
+```
+
 ## Compatibility
 
 * v2.* is for `ember-bootstrap@2.x`

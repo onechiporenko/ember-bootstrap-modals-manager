@@ -1,6 +1,6 @@
 {{#if this.modalsManager.modalIsOpened}}
   {{component
-    (ensure-safe-component this.modalsManager.componentName)
+    (ensure-safe-component this.modalsManager.componentToRender)
     modalIsOpened=this.modalsManager.modalIsOpened
     options=this.modalsManager.options
     onConfirm=this.confirm

@@ -44,7 +44,7 @@ export default class ProgressModal<T> extends Base {
   protected canceled = false;
 
   protected get settled(): boolean {
-    return this.args.options.settled ?? false;
+    return this.args.options.settled ? this.args.options.settled : false;
   }
 
   protected errors = A<EbmmDeclinePayload>([]);
@@ -52,7 +52,7 @@ export default class ProgressModal<T> extends Base {
   protected results = A<EbmmConfirmPayload>([]);
 
   protected get promises(): EbmmPromiseFactory[] {
-    return this.args.options.promises ?? A([]);
+    return this.args.options.promises ? this.args.options.promises : A([]);
   }
 
   get progress(): number {
