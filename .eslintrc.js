@@ -10,7 +10,7 @@ module.exports = {
       legacyDecorators: true,
     },
   },
-  plugins: ['ember'],
+  plugins: ['ember', '@typescript-eslint'],
   extends: [
     'eslint:recommended',
     'plugin:ember/recommended',
@@ -21,8 +21,19 @@ module.exports = {
   env: {
     browser: true,
   },
-  rules: {},
+  rules: {
+    '@typescript-eslint/explicit-module-boundary-types': 0,
+    '@typescript-eslint/no-var-requires': 0,
+  },
   overrides: [
+    {
+      // enable the rule specifically for TypeScript files
+      files: ['*.ts', '*.tsx'],
+      rules: {
+        '@typescript-eslint/explicit-module-boundary-types': 2,
+        '@typescript-eslint/no-var-requires': 2,
+      },
+    },
     // node files
     {
       files: [
