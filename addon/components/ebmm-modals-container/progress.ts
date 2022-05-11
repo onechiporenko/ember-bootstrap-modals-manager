@@ -89,17 +89,15 @@ export default class ProgressModal<T> extends Base {
         this._next(result);
         return result;
       })
-      .catch(
-        <EmmiDeclinePayload>(error: EmmiDeclinePayload): EmmiDeclinePayload => {
-          if (this.settled) {
-            this.errors.pushObject(error);
-            this._next();
-          } else {
-            this.decline([this.results, error]);
-          }
-          return error;
+      .catch((error) => {
+        if (this.settled) {
+          this.errors.pushObject(error);
+          this._next();
+        } else {
+          this.decline([this.results, error]);
         }
-      );
+        return error;
+      });
   }
 
   _next(result?: EbmmConfirmPayload): void {

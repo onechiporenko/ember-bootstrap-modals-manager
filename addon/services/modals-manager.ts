@@ -1,17 +1,8 @@
-import { ensureSafeComponent } from '@embroider/util';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import Service from '@ember/service';
 import { isArray } from '@ember/array';
 import RSVP, { defer } from 'rsvp';
-
-import AlertModal from '../components/ebmm-modals-container/alert';
-import ConfirmModal from '../components/ebmm-modals-container/confirm';
-import PromptModal from '../components/ebmm-modals-container/prompt';
-import ProcessModal from '../components/ebmm-modals-container/process';
-import ProgressModal from '../components/ebmm-modals-container/progress';
-import CheckConfirmModal from '../components/ebmm-modals-container/check-confirm';
-import PromptConfirmModal from '../components/ebmm-modals-container/prompt-confirm';
 
 export declare type EbmmPromiseFactory = () => RSVP.Promise<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 export declare type EbmmConfirmPayload = any; // eslint-disable-line @typescript-eslint/no-explicit-any
@@ -105,15 +96,17 @@ export default class ModalsManager<T> extends Service {
    * Shows custom modal
    *
    * @method show
+   * @param {string} componentName component's name with custom modal
    * @param {object} options
    * @return {RSVP.Promise}
    */
-  show(options: EbmmModalOptions): RSVP.Promise<T> {
+  show(componentToRender: string, options: EbmmModalOptions): RSVP.Promise<T> {
     assert(
       'Only one modal may be opened in the same time!',
       !this.modalIsOpened
     );
     const opts = Object.assign({}, this.defaultOptions, options);
+    this.componentToRender = componentToRender;
     this.modalIsOpened = true;
     this.options = opts;
     const modalDefer = defer<T>();
@@ -129,8 +122,7 @@ export default class ModalsManager<T> extends Service {
    * @return {RSVP.Promise}
    */
   alert(options: EbmmModalOptions): RSVP.Promise<T> {
-    this.componentToRender = ensureSafeComponent(AlertModal, this);
-    return this.show(options);
+    return this.show(`${this.modalsContainerPath}/alert`, options);
   }
 
   /**
@@ -141,8 +133,7 @@ export default class ModalsManager<T> extends Service {
    * @return {RSVP.Promise}
    */
   confirm(options: EbmmModalOptions): RSVP.Promise<T> {
-    this.componentToRender = ensureSafeComponent(ConfirmModal, this);
-    return this.show(options);
+    return this.show(`${this.modalsContainerPath}/confirm`, options);
   }
 
   /**
@@ -153,8 +144,7 @@ export default class ModalsManager<T> extends Service {
    * @return {RSVP.Promise}
    */
   prompt(options: EbmmModalOptions): RSVP.Promise<T> {
-    this.componentToRender = ensureSafeComponent(PromptModal, this);
-    return this.show(options);
+    return this.show(`${this.modalsContainerPath}/prompt`, options);
   }
 
   /**
@@ -169,8 +159,7 @@ export default class ModalsManager<T> extends Service {
       '"options.promptValue" must be defined and not empty',
       !!options.promptValue
     );
-    this.componentToRender = ensureSafeComponent(PromptConfirmModal, this);
-    return this.show(options);
+    return this.show(`${this.modalsContainerPath}/prompt-confirm`, options);
   }
 
   /**
@@ -181,8 +170,7 @@ export default class ModalsManager<T> extends Service {
    * @return {RSVP.Promise}
    */
   checkConfirm(options: EbmmModalOptions): RSVP.Promise<T> {
-    this.componentToRender = ensureSafeComponent(CheckConfirmModal, this);
-    return this.show(options);
+    return this.show(`${this.modalsContainerPath}/check-confirm`, options);
   }
 
   /**
@@ -197,8 +185,7 @@ export default class ModalsManager<T> extends Service {
       '`options.promises` must be an array',
       options && isArray(options.promises)
     );
-    this.componentToRender = ensureSafeComponent(ProgressModal, this);
-    return this.show(options);
+    return this.show(`${this.modalsContainerPath}/progress`, options);
   }
 
   /**
@@ -210,8 +197,7 @@ export default class ModalsManager<T> extends Service {
    */
   process(options: EbmmModalOptions): RSVP.Promise<T> {
     assert('`options.process` must be defined', options && options.process);
-    this.componentToRender = ensureSafeComponent(ProcessModal, this);
-    return this.show(options);
+    return this.show(`${this.modalsContainerPath}/process`, options);
   }
 
   onConfirmClick(v: EbmmConfirmPayload): void {
