@@ -4,12 +4,12 @@
 
 * `git clone <repository-url>`
 * `cd ember-bootstrap-modals-manager`
-* `npm install`
+* `yarn install`
 
 ## Linting
 
-* `npm run lint`
-* `npm run lint:fix`
+* `yarn lint`
+* `yarn lint:fix`
 
 ## Running tests
 
