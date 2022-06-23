@@ -4,7 +4,7 @@ Similar to the `window.confirm`. It shows modal with two buttons ("Yes" and "No"
 
 It's used to the ask user about confirmation for some action.
 
-{{#docs-snippet name="show-confirm-modal.js" title="Confirm Modal"}}
+<DocsSnippet @name="show-confirm-modal.js" @title="Confirm Modal">
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
 import {action} from '@ember/object';
@@ -25,11 +25,11 @@ export default class ConfirmModalDemoController extends Controller {
       });
   }
 }
-{{/docs-snippet}}
+</DocsSnippet>
 
 ## Customization
 
-{{#docs-snippet name="show-custom-confirm-modal.js" title="Custom Confirm Modal"}}
+<DocsSnippet @name="show-custom-confirm-modal.js" @title="Custom Confirm Modal">
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
 import {action, get} from '@ember/object';
@@ -53,7 +53,7 @@ export default class ConfirmModalDemoController extends Controller {
       .catch(() => {});
   }
 }
-{{/docs-snippet}}
+</DocsSnippet>
 
 ### Title Component
 

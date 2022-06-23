@@ -2,7 +2,7 @@
 
 Almost same as `promptConfirm` however it contains a checkbox instead of text-field. "Yes"-button is disabled until checkbox is not checked.
 
-{{#docs-snippet name="show-check-confirm-modal.js" title="Check Confirm Modal"}}
+<DocsSnippet @name="show-check-confirm-modal.js" @title="Check Confirm Modal">
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
 import {action} from '@ember/object';
@@ -27,11 +27,11 @@ export default class CheckConfirmModalDemoController extends Controller {
       });
   }
 }
-{{/docs-snippet}}
+</DocsSnippet>
 
 ## Customization
 
-{{#docs-snippet name="show-custom-check-confirm-modal.js" title="Custom Check Confirm Modal"}}
+<DocsSnippet @name="show-custom-check-confirm-modal.js" @title="Custom Check Confirm Modal">
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
 import {action} from '@ember/object';
@@ -54,7 +54,7 @@ export default class CheckConfirmModalDemoController extends Controller {
       .catch(() => {});
   }
 }
-{{/docs-snippet}}
+</DocsSnippet>
 
 ### Title Component
 

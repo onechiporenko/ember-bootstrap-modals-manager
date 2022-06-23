@@ -2,7 +2,7 @@
 
 This modal is used to show a "placeholder" while some process is running. This modal doesn't have any controls like confirm/decline-buttons in the footer or "×" in the header and can't be closed by pressing Esc or clicking somewhere outside a modal. Modal will be confirmed and self-closed after provided promise (`process`) is fulfilled, or it will be declined (and self-closed) if it becomes rejected.
 
-{{#docs-snippet name="show-process-modal.js" title="Process Modal"}}
+<DocsSnippet @name="show-process-modal.js" @title="Process Modal">
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
 import {action} from '@ember/object';
@@ -32,13 +32,13 @@ export default class ProcessModalDemoController extends Controller {
       });
   }
 }
-{{/docs-snippet}}
+</DocsSnippet>
 
 **IMPORTANT** Here `options.process` is a _FUNCTION_ that return Promise!
 
 ## Customization
 
-{{#docs-snippet name="show-custom-process-modal.js" title="Custom Process Modal"}}
+<DocsSnippet @name="show-custom-process-modal.js" @title="Custom Process Modal">
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
 import {action} from '@ember/object';
@@ -61,7 +61,7 @@ export default class ProcessModalDemoController extends Controller {
       .catch(error => {});
   }
 }
-{{/docs-snippet}}
+</DocsSnippet>
 
 ### Title Component
 

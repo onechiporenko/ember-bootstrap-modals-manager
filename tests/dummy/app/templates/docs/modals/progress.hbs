@@ -2,7 +2,7 @@
 
 This modal used to show a progress-bar for the chain of Promises executed one by one. This modal doesn't have any controls like confirm/decline-buttons in the footer or "&times;" in the header and can't be closed by pressing `Esc` or clicking somewhere outside a modal. Modal will be confirmed and self-closed after all promises are fulfilled, or it will be declined (and self-closed) if at least one promise becomes rejected (if `options.settled` is not truly).
 
-{{#docs-snippet name="show-progress-modal.js" title="Progress Modal"}}
+<DocsSnippet @name="show-progress-modal.js" @title="Progress Modal">
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
 import {action} from '@ember/object';
@@ -39,7 +39,7 @@ export default class ProgressModalDemoController extends Controller {
       });
   }
 }
-{{/docs-snippet}}
+</DocsSnippet>
 
 Options `striped`, `animate`, `type` and `showLabel` will be passed to the progress-bar. See docs for [ember-bootstrap#progress](http://www.ember-bootstrap.com/#/components/progress)
 
@@ -51,7 +51,7 @@ Option `options.cancelable` can be used to add ability to stop `promises`-queue.
 
 ## Customization
 
-{{#docs-snippet name="show-custom-progress-modal.js" title="Custom Progress Modal"}}
+<DocsSnippet @name="show-custom-progress-modal.js" @title="Custom Progress Modal">
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
 import {action} from '@ember/object';
@@ -91,7 +91,7 @@ export default class ProgressModalDemoController extends Controller {
       });
   }
 }
-{{/docs-snippet}}
+</DocsSnippet>
 
 ### Title Component
 

@@ -4,7 +4,7 @@ Almost the same as `prompt`, however its "Yes"-button is disabled until user wri
 
 As a `confirm` it's used to the ask user about confirmation for some action, but it's more demanding.
 
-{{#docs-snippet name="show-prompt-confirm-modal.js" title="Prompt Confirm Modal"}}
+<DocsSnippet @name="show-prompt-confirm-modal.js" @title="Prompt Confirm Modal">
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
 import {action} from '@ember/object';
@@ -31,11 +31,11 @@ export default class PromptConfirmModalDemoController extends Controller {
       });
   }
 }
-{{/docs-snippet}}
+</DocsSnippet>
 
 ## Customization
 
-{{#docs-snippet name="show-custom-prompt-confirm-modal.js" title="Custom Prompt Confirm Modal"}}
+<DocsSnippet @name="show-custom-prompt-confirm-modal.js" @title="Custom Prompt Confirm Modal">
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
 import {action} from '@ember/object';
@@ -60,7 +60,7 @@ export default class PromptConfirmModalDemoController extends Controller {
       .catch(() => {});
   }
 }
-{{/docs-snippet}}
+</DocsSnippet>
 
 ### Title Component
 

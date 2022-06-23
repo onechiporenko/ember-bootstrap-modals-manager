@@ -3,7 +3,7 @@
 Modals making use of Custom Components may pass values to those components by assigning a value to a property of the object passed as an argument when invoking the modal. In the example below
 
  
-{{#docs-snippet name="show-alert-modal.js" title="Alert Modal"}}
+<DocsSnippet @name="show-alert-modal.js" @title="Alert Modal">
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
 import {action} from '@ember/object';
@@ -21,14 +21,14 @@ export default class AlertModalDemoController extends Controller {
       });
   }
 }
-{{/docs-snippet}}
+</DocsSnippet>
 
 Inside the template for the custom component `my-custom-body-component` the value of the `username` may be accessed in the usual way.
 
-{{#docs-snippet name="my-custom-body-component.hbs" title="My Custom Body Component Template"}}
+<DocsSnippet @name="my-custom-body-component.hbs" @title="My Custom Body Component Template">
 <div>
 The users name is : {{@options.username}}
 </div>
-{{/docs-snippet}}
+</DocsSnippet>
 
 Clearly care needs to be taken that the properties used for passing values do not reuse the standard property names used by `ember-bootstrap-modals-manager`. 

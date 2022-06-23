@@ -4,50 +4,50 @@ Let's create a modal with form. It'll be a component called `modal-with-form`.
 
 Any modal that extends `components/modals-container/base` can be managed with `modals-manager`:
 
-{{#docs-snippet name="skeleton-for-new-modal-js" title="Skeleton for the new Modal (JS)"}}
+<DocsSnippet @name="skeleton-for-new-modal-js" @title="Skeleton for the new Modal (JS)">
 import BaseModal from './ebmm-modals-container/base';
 
 export default class ModalWithForm extends BaseModal {
   
 }
-{{/docs-snippet}}
+</DocsSnippet>
 
-{{#docs-snippet name="skeleton-for-new-modal-hbs" title="Skeleton for the new Modal (HBS)"}}
+<DocsSnippet @name="skeleton-for-new-modal-hbs" @title="Skeleton for the new Modal (HBS)">
 <BsModal
   @open={{modalIsOpened}}
-  @onSubmit={{fn this.confirm}}
-  @onHide={{fn this.decline}}
+  @onSubmit={{this.confirm}}
+  @onHide={{this.decline}}
 as |modal|>
   <modal.header />
   <modal.body />
   <modal.footer />
 </BsModal>
-{{/docs-snippet}}
+</DocsSnippet>
 
 Attribute `modalIsOpened` is declared in the `Base`-modal. Its value is set in the modals-manager and represents modal's state (is it opened or closed). Action handlers `confirm` and `decline` are used to "proceed" modal. Both of them are also declared in the `Base`-modal. Confirmation can be done by clicking on "confirm" button (e.g. 'OK', 'Yes', 'Confirm' etc). Any other modal-closing is going to be processed as "decline".
 
 Footer for modal is going to by like this:
 
-{{#docs-snippet name="modal-footer-hbs" title="Modal's footer"}}
+<DocsSnippet @name="modal-footer-hbs" @title="Modal's footer">
 <BsModal
 @open={{modalIsOpened}}
-@onSubmit={{fn this.confirm}}
-@onHide={{fn this.decline}}
+@onSubmit={{this.confirm}}
+@onHide={{this.decline}}
 as |modal|>
   <modal.footer>
     <BsButton @onClick=modal.close @type="default">Cancel</BsButton>
     <BsButton @onClick=modal.submit @type="success">Create</BsButton>
   </modal.footer>
 </BsModal>
-{{/docs-snippet}}
+</DocsSnippet>
 
 It has two buttons - Create and Cancel. First one is 'Confirm' and second one is 'Decline'. Click-handlers for them are taken from `modal`-hash.
 
 Finally, let's add a form to the modal's body. It's going to be not a simple form and a form with validations. So, extra addon called `ember-bootstrap-changeset-validations` is used. It can be installed with next command:
  
-{{#docs-snippet name="install-ember-bootstrap-cp-validations"}}
+<DocsSnippet @name="install-ember-bootstrap-cp-validations">
 ember i ember-bootstrap-changeset-validations
-{{/docs-snippet}}
+</DocsSnippet>
  
 Forms in the `ember-bootstrap` require `model`-property. It can be a model from your application or any other object. Let's create a property called `formData` in the component `modal-with-form`:
 
@@ -69,7 +69,7 @@ Full component's example you can check on {{#link-to "demo"}}demo page{{/link-to
 
 Last question is how to use this modal with `modals-manager`? It can be used with method `show`:
  
-{{#docs-snippet name="modal-with-form-usage" title="Using of created modal"}}
+<DocsSnippet @name="modal-with-form-usage" @title="Using of created modal">
 import Controller from '@ember/controller';
 import {action} from '@ember/object';
 import {inject as service} from '@ember/service';
@@ -91,4 +91,4 @@ export default class ModalWithFormDemoController extends Controller {
       });
   }
 }
-{{/docs-snippet}}
+</DocsSnippet>

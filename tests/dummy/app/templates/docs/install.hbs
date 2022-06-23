@@ -2,9 +2,9 @@
 
 **Firstly:**
 
-{{#docs-snippet name="install.sh" title="Install"}}
+<DocsSnippet @name="install.sh" @title="Install">
 ember i ember-bootstrap-modals-manager
-{{/docs-snippet}}
+</DocsSnippet>
 
 `ember-bootstrap` will be added to the `dependencies` in the `package.json` and installed if it wasn't installed before.
 
@@ -14,16 +14,16 @@ ember i ember-bootstrap-modals-manager
 
 Add component `modals-container` to the `application.hbs`:
 
-{{#docs-snippet name="application.hbs" title="application.hbs"}}
+<DocsSnippet @name="application.hbs" @title="application.hbs">
 {{outlet}}
 {{modals-container}}
-{{/docs-snippet}}
+</DocsSnippet>
 
 **Thirdly:**
 
 Inject a service `modals-manager` where you want to use modals:
 
-{{#docs-snippet name="any-context.js" title="Modals Manager injection"}}
+<DocsSnippet @name="any-context.js" @title="Modals Manager injection">
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
 
@@ -31,6 +31,6 @@ export default class SomeController extends Controller {
   @service
   modalsManager;
 }
-{{/docs-snippet}}
+</DocsSnippet>
 
 That's it. Now you are able to use predefined modals from `modals-manager`.
