@@ -122,10 +122,7 @@
     "qunit-dom": "^2.0.0",
     "sass": "^1.32.8",
     "typescript": "^4.6.2",
-    "webpack": "^5.0.0",
-    "@embroider/core": "1.8.0",
-    "@embroider/webpack": "1.8.0",
-    "@embroider/compat": "1.8.0"
+    "webpack": "^5.72.1"
   },
   "engines": {
     "node": "12.* || 14.* || >= 16"
