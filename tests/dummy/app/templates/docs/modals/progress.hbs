@@ -1,112 +1,38 @@
-# `progress`
+<h1><code>progress</code></h1>
 
-This modal used to show a progress-bar for the chain of Promises executed one by one. This modal doesn't have any controls like confirm/decline-buttons in the footer or "&times;" in the header and can't be closed by pressing `Esc` or clicking somewhere outside a modal. Modal will be confirmed and self-closed after all promises are fulfilled, or it will be declined (and self-closed) if at least one promise becomes rejected (if `options.settled` is not truly).
+<p>This modal used to show a progress-bar for the chain of Promises executed one by one. This modal doesn't have any controls like confirm/decline-buttons in the footer or "&times;" in the header and can't be closed by pressing <code>Esc</code> or clicking somewhere outside a modal. Modal will be confirmed and self-closed after all promises are fulfilled, or it will be declined (and self-closed) if at least one promise becomes rejected (if <code>options.settled</code> is not truly).</p>
 
-<DocsSnippet @name="show-progress-modal.js" @title="Progress Modal">
-import Controller from '@ember/controller';
-import {inject as service} from '@ember/service';
-import {action} from '@ember/object';
-import {Promise} from 'rsvp';
+<CodeBlockExample @snippetName="progress-demo-controller.js" @title="Progress Modal" />
 
-export default class ProgressModalDemoController extends Controller {
-  @service()
-  modalsManager;
+<p>Options <code>striped</code>, <code>animate</code>, <code>type</code> and <code>showLabel</code> will be passed to the progress-bar. See docs for <a target="_blank" href="http://www.ember-bootstrap.com/#/components/progress" rel="noopener noreferrer">ember-bootstrap#progress</a>.</p>
 
-  @action
-  showPromptConfirm() {
-    this.modalsManager
-      .progress({
-        body: '',
-        promises: [ // this is required
-          () => new Promise(resolve => setTimeout(resolve(1), 100)),
-          () => new Promise(resolve => setTimeout(resolve(2), 100)),
-          () => new Promise(resolve => setTimeout(resolve(3), 100))
-        ]
-      })
-      .then(result => {
-        // called after chain of `promises` is executed.
-        // here "result" is an array of values for fulfilled promises
-      })
-      .catch(([result, error]) => {
-        // called when at least one promise is rejected
-        // here "result" is an array of already fulfilled promises
-        // here "error" is a reason why last promise was rejected
-        return this.modalsManager
-          .alert({
-            title: 'Something goes wrong',
-            body: `Fulfilled - ${result}. Error - ${JSON.stringify(error)}`
-          });
-      });
-  }
-}
-</DocsSnippet>
+<BsAlert @visible={{true}} @type="warning" @dismissible={{false}}>
+  <i class="bi bi-exclamation-triangle-fill me-2"></i>
+  Here <code>options.promises</code> is a list of <i class="text-uppercase">functions</i> that returns <code>Promises</code>!
+</BsAlert>
 
-Options `striped`, `animate`, `type` and `showLabel` will be passed to the progress-bar. See docs for [ember-bootstrap#progress](http://www.ember-bootstrap.com/#/components/progress)
+<p>Option <code>options.settled</code> can be used to force complete all provided <code>promises</code> and don't stop on first canceled Promise.</p>
 
-**IMPORTANT** Here `options.promises` is a list of _FUNCTIONS_ that returns Promises!
+<p>Option <code>options.cancelable</code> can be used to add ability to stop <code>promises</code>-queue.</p>
 
-Option `options.settled` can be used to force complete all provided `promises` and don't stop on first canceled Promise.
+<h2>Customization</h2>
 
-Option `options.cancelable` can be used to add ability to stop `promises`-queue.
+<CodeBlockExample @snippetName="progress-custom-demo-controller.js" @title="Custom Progress Modal" />
 
-## Customization
+<h3>Title Component</h3>
 
-<DocsSnippet @name="show-custom-progress-modal.js" @title="Custom Progress Modal">
-import Controller from '@ember/controller';
-import {inject as service} from '@ember/service';
-import {action} from '@ember/object';
-import {Promise} from 'rsvp';
+<p>It takes a single parameter <code>options</code>. Its value is an object passed to the <code>modalsManager.progress</code>.</p>
 
-export default class ProgressModalDemoController extends Controller {
-  @service()
-  modalsManager;
+<CodeBlockExample @snippetName="components-custom-progress-header.hbs" @title="components/custom-progress-header.hbs"/>
 
-  @action
-  showPromptConfirm() {
-    this.modalsManager
-      .progress({
-        body: '',
-        titleComponent: 'custom-progress-header',
-        bodyComponent: 'custom-progress-body',
-        footerComponent: 'custom-progress-footer',
-        promises: [ // this is required
-          () => new Promise(resolve => setTimeout(resolve(1), 100)),
-          () => new Promise(resolve => setTimeout(resolve(2), 100)),
-          () => new Promise(resolve => setTimeout(resolve(3), 100))
-        ]
-      })
-      .then(result => {
-        // called after chain of `promises` is executed.
-        // here "result" is an array of values for fulfilled promises
-      })
-      .catch(([result, error]) => {
-        // called when at least one promise is rejected
-        // here "result" is an array of already fulfilled promises
-        // here "error" is a reason why last promise was rejected
-        return this.modalsManager
-          .alert({
-            title: 'Something goes wrong',
-            body: `Fulfilled - ${result}. Error - ${JSON.stringify(error)}`
-          });
-      });
-  }
-}
-</DocsSnippet>
+<h3>Body Component</h3>
 
-### Title Component
+<p>It takes four parameters. First one is an options described before. Second one is an <code>overall</code> - number of <code>promises</code> passed to the modal. Third one is a <code>done</code> - number of already fulfilled promises. Fourth one is a <code>progress</code> - calculated percentage value of the fulfilled promises that me be used in the progress-bar. Usage example:</p>
 
-It takes a single parameter `options`. Its value is an object passed to the `modalsManager.progress`.
+<CodeBlockExample @snippetName="components-custom-progress-body.hbs" @title="components/custom-progress-body.hbs"/>
 
-{{docs-snippet name="components-custom-progress-header.hbs" title="components/custom-progress-header.hbs"}}
+<h3>Footer Component</h3>
 
-### Body Component
+<p>It takes one parameter called <code>options</code>. It was described before. There are no action-handlers because progress-modal is auto-closed and triggers <code>decline</code> and <code>confirm</code> by itself and not with user's interaction.</p>
 
-It takes four parameters. First one is an options described before. Second one is an `overall` - number of `promises` passed to the modal. Third one is a `done` - number of already fulfilled promises. Fourth one is a `progress` - calculated percentage value of the fulfilled promises that me be used in the progress-bar. Usage example:
-
-{{docs-snippet name="components-custom-progress-body.hbs" title="components/custom-progress-body.hbs"}}
-
-### Footer Component
-
-It takes one parameter called `options`. It was described before. There are no action-handlers because progress-modal is auto-closed and triggers `decline` and `confirm` by itself and not with user's interaction.
-
-{{docs-snippet name="components-custom-progress-footer.hbs" title="components/custom-progress-footer.hbs"}}
+<CodeBlockExample @snippetName="components-custom-progress-footer.hbs" @title="components/custom-progress-footer.hbs"/>

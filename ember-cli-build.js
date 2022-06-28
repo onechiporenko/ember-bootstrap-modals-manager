@@ -11,11 +11,14 @@ module.exports = function (defaults) {
     'ember-cli-babel': {
       includePolyfill: true,
     },
+    'ember-prism': {
+      theme: 'tomorrow',
+      components: ['scss', 'javascript', 'handlebars', 'markup-templating'],
+    },
+    snippetSearchPaths: ['app', 'addon', 'tests/dummy/app'],
     outputPaths: {
       app: {
-        css: {
-          demo: '/assets/demo.css',
-        },
+        css: {},
       },
     },
   });

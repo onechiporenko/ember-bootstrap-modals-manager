@@ -1,34 +1,11 @@
-# Passing Values to Custom Components
+<h1>Passing Values to Custom Components</h1>
 
-Modals making use of Custom Components may pass values to those components by assigning a value to a property of the object passed as an argument when invoking the modal. In the example below
+<p>Modals making use of Custom Components may pass values to those components by assigning a value to a property of the object passed as an argument when invoking the modal. In the example below</p>
 
- 
-<DocsSnippet @name="show-alert-modal.js" @title="Alert Modal">
-import Controller from '@ember/controller';
-import {inject as service} from '@ember/service';
-import {action} from '@ember/object';
+<CodeBlockExample @snippetName="passing-values-demo-controller.js" @title="Passing Values Controller"/>
 
-export default class AlertModalDemoController extends Controller {
-  @service()
-  modalsManager;
+<p>Inside the template for the custom component <code>body-with-custom-option</code> the value of the <code>username</code> may be accessed in the usual way.</p>
 
-  @action
-  showAlert() {
-    this.modalsManager
-      .alert({bodyComponent: 'my-custom-body-component', username: 'Jane Doe'})
-      .then(() => {
-        // called after user clicks "Yes" in the modal
-      });
-  }
-}
-</DocsSnippet>
+<CodeBlockExample @snippetName="body-with-custom-options.hbs" @title="Body Component with custom options"/>
 
-Inside the template for the custom component `my-custom-body-component` the value of the `username` may be accessed in the usual way.
-
-<DocsSnippet @name="my-custom-body-component.hbs" @title="My Custom Body Component Template">
-<div>
-The users name is : {{@options.username}}
-</div>
-</DocsSnippet>
-
-Clearly care needs to be taken that the properties used for passing values do not reuse the standard property names used by `ember-bootstrap-modals-manager`. 
+<p>Clearly care needs to be taken that the properties used for passing values do not reuse the standard property names used by <code>ember-bootstrap-modals-manager</code>.</p>

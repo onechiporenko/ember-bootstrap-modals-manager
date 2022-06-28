@@ -1,82 +1,32 @@
-# `process`
+<h1><code>process</code></h1>
 
-This modal is used to show a "placeholder" while some process is running. This modal doesn't have any controls like confirm/decline-buttons in the footer or "×" in the header and can't be closed by pressing Esc or clicking somewhere outside a modal. Modal will be confirmed and self-closed after provided promise (`process`) is fulfilled, or it will be declined (and self-closed) if it becomes rejected.
+<p>This modal is used to show a "placeholder" while some process is running. This modal doesn't have any controls like confirm/decline-buttons in the footer or "×" in the header and can't be closed by pressing Esc or clicking somewhere outside a modal. Modal will be confirmed and self-closed after provided promise (<code>process</code>) is fulfilled, or it will be declined (and self-closed) if it becomes rejected.</p>
 
-<DocsSnippet @name="show-process-modal.js" @title="Process Modal">
-import Controller from '@ember/controller';
-import {inject as service} from '@ember/service';
-import {action} from '@ember/object';
-import {Promise} from 'rsvp';
+<CodeBlockExample @snippetName="process-demo-controller.js" @title="Process Modal" />
 
-export default class ProcessModalDemoController extends Controller {
-  @service()
-  modalsManager;
+<BsAlert @visible={{true}} @type="warning" @dismissible={{false}}>
+  <i class="bi bi-exclamation-triangle-fill me-2"></i>
+  Here <code>options.process</code> is a <i class="text-uppercase">function</i> that return <code>Promise</code>!
+</BsAlert>
 
-  @action
-  showProcessModal() {
-    this.modalsManager
-      .process({
-        body: 'Some text goes here',
-        iconClass: 'text-center fa fa-spinner fa-spin fa-3x fa-fw',
-        title: '',
-        // this is required
-        process: () => new Promise(resolve => setTimeout(resolve(1), 100))
-      })
-      .then(result => {
-        // called after `process` is resolved
-        // here "result" is value of fulfilled Promise
-      })
-      .catch(error => {
-        // called after `process` is rejected
-        // here "error" is a reason why last promise was rejected
-      });
-  }
-}
-</DocsSnippet>
+<h2>Customization</h2>
 
-**IMPORTANT** Here `options.process` is a _FUNCTION_ that return Promise!
+<CodeBlockExample @snippetName="process-custom-demo-controller.js" @title="Custom Process Modal" />
 
-## Customization
+<h3>Title Component</h3>
 
-<DocsSnippet @name="show-custom-process-modal.js" @title="Custom Process Modal">
-import Controller from '@ember/controller';
-import {inject as service} from '@ember/service';
-import {action} from '@ember/object';
-import {Promise} from 'rsvp';
+<p>It takes a single parameter <code>options</code>. Its value is an object passed to the <code>modalsManager.process</code>.</p>
 
-export default class ProcessModalDemoController extends Controller {
-  @service()
-  modalsManager;
+<CodeBlockExample @snippetName="components-custom-process-header.hbs" @title="components/custom-process-header.hbs"/>
 
-  @action
-  showProcessModal() {
-    this.modalsManager
-      .process({
-        bodyComponent: 'custom-process-body',
-        headerComponent: 'custom-process-footer',
-        footerComponent: 'custom-process-header',
-        process: () => new Promise(resolve => setTimeout(resolve(1), 100))
-      })
-      .then(result => {})
-      .catch(error => {});
-  }
-}
-</DocsSnippet>
+<h3>Body Component</h3>
 
-### Title Component
+<p>It takes a single parameter <code>options</code>. Its value is an object passed to the <code>modalsManager.process</code>.</p>
 
-It takes a single parameter `options`. Its value is an object passed to the `modalsManager.process`.
+<CodeBlockExample @snippetName="components-custom-process-body.hbs" @title="components/custom-process-body.hbs"/>
 
-{{docs-snippet name="components-custom-process-header.hbs" title="components/custom-process-header.hbs"}}
+<h3>Footer Component</h3>
 
-### Body Component
+<p>It takes a single parameter <code>options</code>. Its value is an object passed to the <code>modalsManager.process</code>.</p>
 
-It takes a single parameter `options`. Its value is an object passed to the `modalsManager.process`.
-
-{{docs-snippet name="components-custom-process-body.hbs" title="components/custom-process-body.hbs"}}
-
-### Footer Component
-
-It takes a single parameter `options`. Its value is an object passed to the `modalsManager.process`.
-
-{{docs-snippet name="components-custom-process-footer.hbs" title="components/custom-process-footer.hbs"}}
+<CodeBlockExample @snippetName="components-custom-process-footer.hbs" title="components/custom-process-footer.hbs"/>

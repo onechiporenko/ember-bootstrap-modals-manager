@@ -1,94 +1,50 @@
-# Modal With Form
+<h1>Modal With Form</h1>
 
-Let's create a modal with form. It'll be a component called `modal-with-form`.
+<p>Let's create a modal with form. It'll be a component called <code>modal-with-form</code>.</p>
 
-Any modal that extends `components/modals-container/base` can be managed with `modals-manager`:
+<p>Any modal that extends <code>components/ebmm-modals-container/base</code> can be managed with <code>modals-manager</code>:</p>
 
-<DocsSnippet @name="skeleton-for-new-modal-js" @title="Skeleton for the new Modal (JS)">
-import BaseModal from './ebmm-modals-container/base';
+<CodeBlockExample @snippetName="modal-with-form-skeleton.js" @title="Skeleton for the new Modal (JS)"/>
 
-export default class ModalWithForm extends BaseModal {
-  
-}
-</DocsSnippet>
+<CodeBlockExample @snippetName="modal-with-form-skeleton.hbs" @title="Skeleton for the new Modal (HBS)"/>
 
-<DocsSnippet @name="skeleton-for-new-modal-hbs" @title="Skeleton for the new Modal (HBS)">
-<BsModal
-  @open={{modalIsOpened}}
-  @onSubmit={{this.confirm}}
-  @onHide={{this.decline}}
-as |modal|>
-  <modal.header />
-  <modal.body />
-  <modal.footer />
-</BsModal>
-</DocsSnippet>
+<p>Attribute <code>modalIsOpened</code> is declared in the <code>Base</code>-modal. Its value is set in the modals-manager and represents modal's state (is it opened or closed). Action handlers <code>confirm</code> and <code>decline</code> are used to "proceed" modal. Both of them are also declared in the <code>Base</code>-modal. Confirmation can be done by clicking on "confirm" button (e.g. 'OK', 'Yes', 'Confirm' etc). Any other modal-closing is going to be processed as "decline".</p>
 
-Attribute `modalIsOpened` is declared in the `Base`-modal. Its value is set in the modals-manager and represents modal's state (is it opened or closed). Action handlers `confirm` and `decline` are used to "proceed" modal. Both of them are also declared in the `Base`-modal. Confirmation can be done by clicking on "confirm" button (e.g. 'OK', 'Yes', 'Confirm' etc). Any other modal-closing is going to be processed as "decline".
+<p>Footer for modal is going to by like this:</p>
 
-Footer for modal is going to by like this:
+<CodeBlockExample @snippetName="modal-with-form-footer.hbs" @title="Modal's footer" />
 
-<DocsSnippet @name="modal-footer-hbs" @title="Modal's footer">
-<BsModal
-@open={{modalIsOpened}}
-@onSubmit={{this.confirm}}
-@onHide={{this.decline}}
-as |modal|>
-  <modal.footer>
-    <BsButton @onClick=modal.close @type="default">Cancel</BsButton>
-    <BsButton @onClick=modal.submit @type="success">Create</BsButton>
-  </modal.footer>
-</BsModal>
-</DocsSnippet>
+<p>It has two buttons - Create and Cancel. First one is 'Confirm' and second one is 'Decline'. Click-handlers for them are taken from <code>modal</code>-hash.</p>
 
-It has two buttons - Create and Cancel. First one is 'Confirm' and second one is 'Decline'. Click-handlers for them are taken from `modal`-hash.
+<p>Finally, let's add a form to the modal's body. It's going to be not a simple form and a form with validations. So, extra addon called <code>ember-bootstrap-changeset-validations</code> is used. It can be installed with next command:</p>
 
-Finally, let's add a form to the modal's body. It's going to be not a simple form and a form with validations. So, extra addon called `ember-bootstrap-changeset-validations` is used. It can be installed with next command:
- 
-<DocsSnippet @name="install-ember-bootstrap-cp-validations">
-ember i ember-bootstrap-changeset-validations
-</DocsSnippet>
- 
-Forms in the `ember-bootstrap` require `model`-property. It can be a model from your application or any other object. Let's create a property called `formData` in the component `modal-with-form`:
+<CodeBlock @code="ember i ember-bootstrap-changeset-validations"/>
+<p></p>
 
-{{docs-snippet name="components-modal-with-form.js" title="components/modal-with-form.js"}}
+<p>Forms in the <code>ember-bootstrap</code> require <code>model</code>-property. It can be a model from your application or any other object. Let's create a property called <code>formData</code> in the component <code>modal-with-form</code>:</p>
 
-Here validations are added "in-place" where object is defined. More about validations is in the [ember-bootstrap-changeset-validations#usage](https://github.com/kaliber5/ember-bootstrap-changeset-validations#usage) and [ember-changeset#usage](https://github.com/poteto/ember-changeset#usage) itself.
+<CodeBlockExample @snippetName="modal-with-form.js" title="components/modal-with-form.js"/>
+<p></p>
 
-Modal's body with form is:
+<p>Here validations are added "in-place" where object is defined. More about validations is in the <a target="_blank" href="https://github.com/kaliber5/ember-bootstrap-changeset-validations#usage" rel="noopener noreferrer">ember-bootstrap-changeset-validations#usage</a> and <a target="_blank" href="https://github.com/poteto/ember-changeset#usage" rel="noopener noreferrer">ember-changeset#usage</a> itself.</p>
 
-{{docs-snippet name="components-modal-with-form.hbs" title="templates/components/modal-with-form.hbs"}}
+<p>Modal's body with form is:</p>
 
-Form has three inputs for fields `firstName`, `lastName` and `email`. All of them are described in the `formData` and has validation requirements.
+<CodeBlockExample @snippetName="modal-with-form.hbs" @title="templates/components/modal-with-form.hbs"/>
 
-**Important** `onSubmit`-handler is `(action "confirm")` and not `modal.submit`!  
+<p>Form has three inputs for fields <code>firstName</code>, <code>lastName</code> and <code>email</code>. All of them are described in the `formData` and has validation requirements.</p>
 
-Full component's example you can check on {{#link-to "demo"}}demo page{{/link-to}}. 
+<BsAlert @visible={{true}} @type="warning" @dismissible={{false}}>
+  <i class="bi bi-exclamation-triangle-fill me-2"></i>
+  <code>onSubmit</code>-handler is <code>this.confirm</code> and not <code>modal.submit</code>!
+</BsAlert>
 
-> Form from `modal.body` can be moved to the separated component. In this case "submit"-handler should be passed on it and `formData` should be declared in the new form-component and not in the modal.
+<p>Full component's example you can check on <LinkTo @route="demo">demo-page</LinkTo>.</p>
 
-Last question is how to use this modal with `modals-manager`? It can be used with method `show`:
- 
-<DocsSnippet @name="modal-with-form-usage" @title="Using of created modal">
-import Controller from '@ember/controller';
-import {action} from '@ember/object';
-import {inject as service} from '@ember/service';
+<blockquote>
+  Form from <code>modal.body</code> can be moved to the separated component. In this case "submit"-handler should be passed on it and <code>formData</code> should be declared in the new form-component and not in the modal.
+</blockquote>
 
-export default class ModalWithFormDemoController extends Controller {
-  @service()
-  modalsManager;
-  
-  @action
-  showModalWithForm() {
-    return this.modalsManager
-      .show('modal-with-form')
-      .then(formValues => {
-        // form is submitted
-        // here `formValues` is an object with values from inputs
-      })
-      .catch(() => {
-        // modal is closed without submit
-      });
-  }
-}
-</DocsSnippet>
+<p>Last question is how to use this modal with <code>modals-manager</code>? It can be used with method <code>show</code>:</p>
+
+<CodeBlockExample @snippetName="with-form-demo-controller.js" @title="Modal With Form usage"/>

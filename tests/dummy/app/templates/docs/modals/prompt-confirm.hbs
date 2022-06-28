@@ -1,81 +1,29 @@
-# `promptConfirm`
+<h1><code>promptConfirm</code></h1>
 
-Almost the same as `prompt`, however its "Yes"-button is disabled until user write needed value to the input-field.
+<p>Almost the same as <code>prompt</code>, however its "Yes"-button is disabled until user write needed value to the input-field.</p>
 
-As a `confirm` it's used to the ask user about confirmation for some action, but it's more demanding.
+<p>As a <code>confirm</code> it's used to the ask user about confirmation for some action, but it's more demanding.</p>
 
-<DocsSnippet @name="show-prompt-confirm-modal.js" @title="Prompt Confirm Modal">
-import Controller from '@ember/controller';
-import {inject as service} from '@ember/service';
-import {action} from '@ember/object';
+<CodeBlockExample @snippetName="prompt-confirm-demo-controller.js" @title="Prompt Confirm Modal"/>
 
-export default class PromptConfirmModalDemoController extends Controller {
-  @service()
-  modalsManager;
+<h2>Customization</h2>
 
-  @action
-  showPromptConfirm() {
-    this.modalsManager
-      .promptConfirm({
-        title: 'Prompt Confirm Title',
-        body: 'Say "password" and come in',
-        promptValue: 'password' // it's required
-      })
-      .then(promptValue => {
-        // called after user clicks "Yes" in the modal
-        // "Yes" will be active only when user prints "password" in the input-field
-        // takes a single argument with user input value
-      })
-      .catch(() => {
-        // called after user clicks "No" in the modal
-      });
-  }
-}
-</DocsSnippet>
+<CodeBlockExample @snippetName="prompt-confirm-custom-demo-controller.js" @title="Custom Prompt Confirm Modal"/>
 
-## Customization
+<h3>Title Component</h3>
 
-<DocsSnippet @name="show-custom-prompt-confirm-modal.js" @title="Custom Prompt Confirm Modal">
-import Controller from '@ember/controller';
-import {inject as service} from '@ember/service';
-import {action} from '@ember/object';
+<p>It takes a single parameter <code>options</code>. Its value is an object passed to the <code>modalsManager.promptConfirm</code>.</p>
 
-export default class PromptConfirmModalDemoController extends Controller {
-  @service()
-  modalsManager;
+<CodeBlockExample @snippetName="components-custom-prompt-confirm-header.hbs" @title="components/custom-prompt-confirm-header.hbs"/>
 
-  @action
-  showPromptConfirm() {
-    this.modalsManager
-      .promptConfirm({
-        title: 'Prompt Confirm Title',
-        body: 'Say "password" and come in',
-        footer: 'Prompt Confirm Footer',
-        titleComponent: 'custom-prompt-confirm-header',
-        bodyComponent: 'custom-prompt-confirm-body',
-        footerComponent: 'custom-prompt-confirm-footer',
-        promptValue: 'password' // it's required
-      })
-      .then(promptValue => {})
-      .catch(() => {});
-  }
-}
-</DocsSnippet>
+<h3>Body Component</h3>
 
-### Title Component
+<p>It takes two parameters. First one is an <code>options</code> described before. Second one is an action <code>updatePromptValue</code> It's used to update prompted value in the modal-scope. Usage example:</p>
 
-It takes a single parameter `options`. Its value is an object passed to the `modalsManager.promptConfirm`.
+<CodeBlockExample @snippetName="components-custom-prompt-confirm-body.hbs" @title="components/custom-prompt-confirm-body.hbs"/>
 
-{{docs-snippet name="components-custom-prompt-confirm-header.hbs" title="components/custom-prompt-confirm-header.hbs"}}
+<h3>Footer Component</h3>
 
-### Body Component
+<p>It takes four parameters. First one is an <code>options</code> described before. Second one is a <code>confirmDisabled</code>. This flag determines if confirm-button should be disabled. Last two are actions <code>confirm</code> and <code>decline</code> used as click-handler for "Yes" and "No" buttons. Usage example:</p>
 
-It takes two parameters. First one is an `options` described before. Second one is an action `updatePromptValue`. It's used to update prompted value in the modal-scope. Usage example:
-
-{{docs-snippet name="components-custom-prompt-confirm-body.hbs" title="components/custom-prompt-confirm-body.hbs"}}
-
-### Footer Component
-
-It takes four parameters. First one is an `options` described before. Second one is a `confirmDisabled`. This flag determines if confirm-button should be disabled. Last two are actions `confirm` and `decline` used as click-handler for "Yes" and "No" buttons. Usage example:
-
-{{docs-snippet name="components-custom-prompt-confirm-footer.hbs" title="components/custom-prompt-confirm-footer.hbs"}}
+<CodeBlockExample @snippetName="components-custom-prompt-confirm-footer.hbs" @title="components/custom-prompt-confirm-footer.hbs"/>

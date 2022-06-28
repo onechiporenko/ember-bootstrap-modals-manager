@@ -1,71 +1,29 @@
-# `alert`
+<h1><code>alert</code></h1>
 
-Similar to the `window.alert`. It shows modal with a single button.
+<p>Similar to the <code>window.alert</code>. It shows modal with a single button.</p>
 
-It's used to notify user about something.
+<p>It's used to notify user about something.</p>
 
-<DocsSnippet @name="show-alert-modal.js" @title="Alert Modal">
-import Controller from '@ember/controller';
-import {inject as service} from '@ember/service';
-import {action} from '@ember/object';
+<CodeBlockExample @snippetName="alert-demo-controller.js" @title="Alert Modal"/>
 
-export default class AlertModalDemoController extends Controller {
-  @service()
-  modalsManager;
+<h2>Customization</h2>
 
-  @action
-  showAlert() {
-    this.modalsManager
-      .alert({title: 'Alert Title', body: 'Alert Body'})
-      .then(() => {
-        // called after user clicks "Yes" in the modal
-      });
-  }
-}
-</DocsSnippet>
+<CodeBlockExample @snippetName="alert-custom-demo-controller.js" @title="Custom Alert Modal"/>
 
+<h3>Title Component</h3>
 
-## Customization
+<p>It takes a single parameter <code>options</code>. Its value is an object passed to the <code>modalsManager.alert</code>.</p>
 
-<DocsSnippet @name="show-custom-alert-modal.js" @title="Custom Alert Modal">
-import Controller from '@ember/controller';
-import {inject as service} from '@ember/service';
-import {action} from '@ember/object';
+<CodeBlockExample @snippetName="components-custom-alert-header.hbs" @title="components/custom-alert-header.hbs"/>
 
-export default class AlertModalDemoController extends Controller {
-  @service()
-  modalsManager;
+<h3>Body Component</h3>
 
-  @action
-  showAlert() {
-    this.modalsManager
-      .alert({
-        titleComponent: 'custom-alert-title',
-        title: 'Title',
-        bodyComponent: 'custom-alert-body',
-        body: 'Body',
-        footerComponent: 'custom-alert-footer',
-        footer: 'Footer'
-      })
-      .then(() => {});
-  }
-}
-</DocsSnippet>
+<p>It takes a single parameter <code>options</code>. Its value is an object passed to the <code>modalsManager.alert</code>.</p>
 
-### Title Component
+<CodeBlockExample @snippetName="components-custom-alert-body.hbs" @title="components/custom-alert-body.hbs"/>
 
-It takes a single parameter `options`. Its value is an object passed to the `modalsManager.alert`.
+<h3>Footer Component</h3>
 
-{{docs-snippet name="components-custom-alert-header.hbs" title="components/custom-alert-header.hbs"}}
+<p>It takes two parameters. First one is an <code>options</code> described before. Second one is an action <code>confirm</code> used to confirm modal. It may be used like:</p>
 
-### Body Component
-
-It takes a single parameter `options`. Its value is an object passed to the `modalsManager.alert`.
-
-{{docs-snippet name="components-custom-alert-body.hbs" title="components/custom-alert-body.hbs"}}
-
-### Footer Component
-
-It takes two parameters. First one is an `options` described before. Second one is an action `confirm` used to confirm modal. It may be used like:
-
-{{docs-snippet name="components-custom-alert-footer.hbs" title="components/custom-alert-footer.hbs"}}
+<CodeBlockExample @snippetName="components-custom-alert-footer.hbs" @title="components/custom-alert-footer.hbs"/>

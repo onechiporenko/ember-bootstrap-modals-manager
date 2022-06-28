@@ -1,7 +1,28 @@
-{{! add css-file depends on current route }}
-<div class="ember-view">
-  {{#if this.isDemo}}
-    <link rel="stylesheet" href="{{this.router.rootURL}}assets/demo.css">
-  {{/if}}
+<BsNavbar
+  @type="dark"
+  @backgroundColor="dark"
+  as |navbar|
+>
+  <div class="container-lg">
+  <navbar.toggle/>
+  <navbar.content>
+    <navbar.nav class="me-auto" as |nav|>
+      <nav.item>
+      <nav.link-to @route="docs">Docs</nav.link-to>
+      </nav.item>
+      <nav.item>
+      <nav.link-to @route="demo">Demo</nav.link-to>
+      </nav.item>
+    </navbar.nav>
+    <navbar.nav as |nav|>
+      <nav.item>
+        <a class="nav-link" target="_blank" href="https://github.com/onechiporenko/ember-bootstrap-modals-manager" rel="noopener noreferrer"><i class="bi bi-github"></i></a>
+      </nav.item>
+    </navbar.nav>
+  </navbar.content>
+  </div>
+</BsNavbar>
+<div class="container-lg mt-4">
   {{outlet}}
 </div>
+<ModalsContainer/>

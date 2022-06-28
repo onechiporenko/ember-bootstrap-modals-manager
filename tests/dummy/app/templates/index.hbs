@@ -1,27 +1,15 @@
-<div class="">
-  <DocsHeader as |header|>
-    {{#header.link "demo"}}
-      Demo
-    {{/header.link}}
-  </DocsHeader>
-  {{docs-hero
-    prefix="Ember Bootstrap"
-    heading="Modals Manager"
-    byline="Modals-manager for modals from ember-bootstrap"}}
-    
-  <div class="docs-container docs-md">
-    <h2 class="docs-flex docs-items-center docs-mt-8 docs-h2">About</h2>
+<div class="bg-light rounded h-100 p-5">
+  <h1>Ember Bootstrap Modals Manager</h1>
+  <p class="fw-light fs-4">Ember-addon that provides a simple mechanism for interaction with user using modals.</p>
+  <p>This addon is based on modals from <a target="_blank" href="https://www.ember-bootstrap.com/" rel="noopener noreferrer">ember-bootstrap</a>.</p>
 
-`ember-bootstrap-modals-manager` is an Ember-addon that provides a simple mechanism for interaction with user using modals. This addon is based on modals from `ember-bootstrap`.
-
-**Restriction** from the [Bootstrap#modals](https://getbootstrap.com/docs/4.6/components/modal/):
-
-> Bootstrap only supports one modal window at a time. Nested modals arenâ€™t supported as we believe them to be poor user experiences.
-
-You can check how this addon works on [demo-page](https://onechiporenko.github.io/ember-bootstrap-modals-manager/demo).
-  
-<p>{{#link-to "docs" class="docs-bg-grey-darkest hover:docs-bg-black docs-text-white docs-py-2 docs-px-4 docs-no-underline docs-rounded"}}
-     Read the docs →
-   {{/link-to}}</p>
-  </div>
+  <p>You can check how this addon works on <a href="https://onechiporenko.github.io/ember-bootstrap-modals-manager/demo">Demo Page</a>.</p>
 </div>
+
+<BsAlert class="mt-4 d-flex align-items-center" @type="warning" @dismissible={{false}}>
+  <i class="bi bi-exclamation-triangle-fill me-2 fs-2"></i>
+  <div>
+    <p>Restriction from the <a class="alert-link" target="_blank" href="https://getbootstrap.com/docs/4.6/components/modal/" rel="noopener noreferrer">Bootstrap#modals</a>:</p>
+    <span class="font-monospace">Bootstrap only supports one modal window at a time. Nested modals aren't supported as we believe them to be poor user experiences.</span>
+  </div>
+</BsAlert>

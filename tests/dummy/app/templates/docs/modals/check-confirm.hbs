@@ -1,75 +1,27 @@
-# `checkConfirm`
+<h1><code>checkConfirm</code></h1>
 
-Almost same as `promptConfirm` however it contains a checkbox instead of text-field. "Yes"-button is disabled until checkbox is not checked.
+<p>Almost same as <code>promptConfirm</code> however it contains a checkbox instead of text-field. "Yes"-button is disabled until checkbox is not checked.</p>
 
-<DocsSnippet @name="show-check-confirm-modal.js" @title="Check Confirm Modal">
-import Controller from '@ember/controller';
-import {inject as service} from '@ember/service';
-import {action} from '@ember/object';
+<CodeBlockExample @snippetName="check-confirm-demo-controller.js" @title="Check Confirm Modal"/>
 
-export default class CheckConfirmModalDemoController extends Controller {
-  @service()
-  modalsManager;
+<h2>Customization</h2>
 
-  @action
-  showCheckConfirmModal() {
-    this.modalsManager
-      .checkConfirm({
-        title: 'Confirm Title',
-        body: 'Confirm your suggestion',
-        inputLabel: 'Input Label'
-      })
-      .then(() => {
-        // called after user clicks "Yes" in the modal
-      })
-      .catch(() => {
-        // called after user clicks "No" in the modal
-      });
-  }
-}
-</DocsSnippet>
+<CodeBlockExample @snippetName="check-confirm-custom-demo-controller.js" @title="Custom Check Confirm Modal"/>
 
-## Customization
+<h3>Title Component</h3>
 
-<DocsSnippet @name="show-custom-check-confirm-modal.js" @title="Custom Check Confirm Modal">
-import Controller from '@ember/controller';
-import {inject as service} from '@ember/service';
-import {action} from '@ember/object';
+<p>It takes a single parameter <code>options</code>. Its value is an object passed to the <code>modalsManager.prompt</code>.</p>
 
-export default class CheckConfirmModalDemoController extends Controller {
-  @service()
-  modalsManager;
+<CodeBlockExample @snippetName="components-custom-check-confirm-header.hbs" @title="components/custom-check-confirm-header.hbs"/>
 
-  @action
-  showCheckConfirm() {
-    this.modalsManager
-      .checkConfirm({
-        title: 'Check Confirm Title',
-        footer: 'Prompt Confirm Footer',
-        titleComponent: 'custom-check-confirm-header',
-        bodyComponent: 'custom-check-confirm-body',
-        footerComponent: 'custom-check-confirm-footer'
-      })
-      .then(() => {})
-      .catch(() => {});
-  }
-}
-</DocsSnippet>
+<h3>Body Component</h3>
 
-### Title Component
+<p>It takes two parameters. First one is an <code>options</code> described before. Second one is an action <code>updatePromptValue</code>. It's used to update prompted value in the modal-scope. Usage example:</p>
 
-It takes a single parameter `options`. Its value is an object passed to the `modalsManager.prompt`.
+<CodeBlockExample @snippetName="components-custom-check-confirm-body.hbs" @title="components/custom-check-confirm-body.hbs"/>
 
-{{docs-snippet name="components-custom-check-confirm-header.hbs" title="components/custom-check-confirm-header.hbs"}}
+<h3>Footer Component</h3>
 
-### Body Component
+<p>It takes four parameters. First one is an <code>options</code> described before. Second one is a <code>confirmDisabled</code>. This flag determines if confirm-button should be disabled. Last two are actions <code>confirm</code> and <code>decline</code> used as click-handler for "Yes" and "No" buttons. Usage example:</p>
 
-It takes two parameters. First one is an `options` described before. Second one is an action `updatePromptValue`. It's used to update prompted value in the modal-scope. Usage example:
-
-{{docs-snippet name="components-custom-check-confirm-body.hbs" title="components/custom-check-confirm-body.hbs"}}
-
-### Footer Component
-
-It takes four parameters. First one is an `options` described before. Second one is a `confirmDisabled`. This flag determines if confirm-button should be disabled. Last two are actions `confirm` and `decline` used as click-handler for "Yes" and "No" buttons. Usage example:
-
-{{docs-snippet name="components-custom-check-confirm-footer.hbs" title="components/custom-check-confirm-footer.hbs"}}
+<CodeBlockExample @snippetName="components-custom-check-confirm-footer.hbs" @title="components/custom-check-confirm-footer.hbs"/>
