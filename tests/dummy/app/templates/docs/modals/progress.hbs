@@ -1,0 +1,38 @@
+<h1><code>progress</code></h1>
+
+<p>This modal used to show a progress-bar for the chain of Promises executed one by one. This modal doesn't have any controls like confirm/decline-buttons in the footer or "&times;" in the header and can't be closed by pressing <code>Esc</code> or clicking somewhere outside a modal. Modal will be confirmed and self-closed after all promises are fulfilled, or it will be declined (and self-closed) if at least one promise becomes rejected (if <code>options.settled</code> is not truly).</p>
+
+<CodeBlockExample @snippetName="progress-demo-controller.js" @title="Progress Modal" />
+
+<p>Options <code>striped</code>, <code>animate</code>, <code>type</code> and <code>showLabel</code> will be passed to the progress-bar. See docs for <a target="_blank" href="http://www.ember-bootstrap.com/#/components/progress" rel="noopener noreferrer">ember-bootstrap#progress</a>.</p>
+
+<BsAlert @visible={{true}} @type="warning" @dismissible={{false}}>
+  <i class="bi bi-exclamation-triangle-fill me-2"></i>
+  Here <code>options.promises</code> is a list of <i class="text-uppercase">functions</i> that returns <code>Promises</code>!
+</BsAlert>
+
+<p>Option <code>options.settled</code> can be used to force complete all provided <code>promises</code> and don't stop on first canceled Promise.</p>
+
+<p>Option <code>options.cancelable</code> can be used to add ability to stop <code>promises</code>-queue.</p>
+
+<h2>Customization</h2>
+
+<CodeBlockExample @snippetName="progress-custom-demo-controller.js" @title="Custom Progress Modal" />
+
+<h3>Title Component</h3>
+
+<p>It takes a single parameter <code>options</code>. Its value is an object passed to the <code>modalsManager.progress</code>.</p>
+
+<CodeBlockExample @snippetName="components-custom-progress-header.hbs" @title="components/custom-progress-header.hbs"/>
+
+<h3>Body Component</h3>
+
+<p>It takes four parameters. First one is an options described before. Second one is an <code>overall</code> - number of <code>promises</code> passed to the modal. Third one is a <code>done</code> - number of already fulfilled promises. Fourth one is a <code>progress</code> - calculated percentage value of the fulfilled promises that me be used in the progress-bar. Usage example:</p>
+
+<CodeBlockExample @snippetName="components-custom-progress-body.hbs" @title="components/custom-progress-body.hbs"/>
+
+<h3>Footer Component</h3>
+
+<p>It takes one parameter called <code>options</code>. It was described before. There are no action-handlers because progress-modal is auto-closed and triggers <code>decline</code> and <code>confirm</code> by itself and not with user's interaction.</p>
+
+<CodeBlockExample @snippetName="components-custom-progress-footer.hbs" @title="components/custom-progress-footer.hbs"/>

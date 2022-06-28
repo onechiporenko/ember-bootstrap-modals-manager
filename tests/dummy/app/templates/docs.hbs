@@ -1,36 +1,50 @@
-<div class="font-sans text-black leading-normal">
-  <DocsHeader as |header|>
-    {{#header.link "demo"}}
-      Demo
-    {{/header.link}}
-  </DocsHeader>
-
-  <DocsViewer as |viewer|>
-    <viewer.nav as |nav|>
-      {{nav.item "Install" "docs.install"}}
-      {{nav.item "Modals" "docs.modals.index"}}
-
-      {{nav.section "Predefined Modals"}}
-      {{nav.item "Alert" "docs.modals.alert"}}
-      {{nav.item "Confirm" "docs.modals.confirm"}}
-      {{nav.item "Prompt" "docs.modals.prompt"}}
-      {{nav.item "Check Confirm" "docs.modals.check-confirm"}}
-      {{nav.item "Prompt Confirm" "docs.modals.prompt-confirm"}}
-      {{nav.item "Process" "docs.modals.process"}}
-      {{nav.item "Progress" "docs.modals.progress"}}
-
-      {{nav.section "Custom Modals"}}
-      {{nav.item "With Form" "docs.modals.with-form"}}
-      {{nav.item "Passing Values" "docs.modals.passing-values"}}
-    </viewer.nav>
-
-    <viewer.main>
-      <div class="docs-container">
-        <div class="docs-section">
-          {{outlet}}
-        </div>
-      </div>
-    </viewer.main>
-
-  </DocsViewer>
+<div class="row">
+  <div class="col-sm-4 col-md-3">
+    <BsNav
+      @type="pills"
+      @justified={{false}}
+      @stacked={{true}}
+      @fill={{false}} as |nav|
+    >
+      <nav.item>
+        <nav.link-to @route="docs.install">Install</nav.link-to>
+      </nav.item>
+      <nav.item>
+        <nav.link-to @route="docs.modals.index"><span class="text-uppercase">Predefined Modals</span></nav.link-to>
+      </nav.item>
+      <nav.item>
+        <nav.link-to @route="docs.modals.alert">Alert</nav.link-to>
+      </nav.item>
+      <nav.item>
+        <nav.link-to @route="docs.modals.confirm">Confirm</nav.link-to>
+      </nav.item>
+      <nav.item>
+        <nav.link-to @route="docs.modals.prompt">Prompt</nav.link-to>
+      </nav.item>
+      <nav.item>
+        <nav.link-to @route="docs.modals.check-confirm">Check Confirm</nav.link-to>
+      </nav.item>
+      <nav.item>
+        <nav.link-to @route="docs.modals.prompt-confirm">Prompt Confirm</nav.link-to>
+      </nav.item>
+      <nav.item>
+        <nav.link-to @route="docs.modals.process">Process</nav.link-to>
+      </nav.item>
+      <nav.item>
+        <nav.link-to @route="docs.modals.progress">Progress</nav.link-to>
+      </nav.item>
+      <nav.item>
+        <nav.link-to class="disabled" @route="index"><span class="text-uppercase">Custom Modals</span></nav.link-to>
+      </nav.item>
+      <nav.item>
+        <nav.link-to @route="docs.modals.with-form">With Form</nav.link-to>
+      </nav.item>
+      <nav.item>
+        <nav.link-to @route="docs.modals.passing-values">Passing Values</nav.link-to>
+      </nav.item>
+    </BsNav>
+  </div>
+  <div class="col-sm-8 col-md-9">
+    {{outlet}}
+  </div>
 </div>

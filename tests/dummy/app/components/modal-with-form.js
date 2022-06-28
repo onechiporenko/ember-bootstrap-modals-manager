@@ -1,6 +1,6 @@
-// BEGIN-SNIPPET components-modal-with-form.js
+// BEGIN-SNIPPET modal-with-form
 import { tracked } from '@glimmer/tracking';
-import BaseModal from './ebmm-modals-container/base';
+import BaseModal from 'ember-bootstrap-modals-manager/components/ebmm-modals-container/base';
 import {
   validatePresence,
   validateFormat,

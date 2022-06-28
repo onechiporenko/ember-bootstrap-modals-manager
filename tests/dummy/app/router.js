@@ -1,18 +1,15 @@
-import AddonDocsRouter, {
-  docsRoute,
-  apiRoute,
-} from 'ember-cli-addon-docs/router';
+import EmberRouter from '@ember/routing/router';
 import config from './config/environment';
 
-const Router = AddonDocsRouter.extend({
-  location: config.locationType,
-  rootURL: config.rootURL,
-});
+export default class Router extends EmberRouter {
+  location = config.locationType;
+  rootURL = config.rootURL;
+}
 
 Router.map(function () {
-  docsRoute(this, function () {
+  this.route('demo');
+  this.route('docs', function () {
     this.route('install');
-
     this.route('modals', function () {
       this.route('alert');
       this.route('confirm');
@@ -24,11 +21,24 @@ Router.map(function () {
       this.route('with-form');
       this.route('passing-values');
     });
-    this.route('sandbox', function () {
-      apiRoute(this);
+
+    this.route('examples', function () {
+      this.route('alert-demo');
+      this.route('alert-custom-demo');
+      this.route('confirm-demo');
+      this.route('confirm-custom-demo');
+      this.route('prompt-demo');
+      this.route('prompt-custom-demo');
+      this.route('check-confirm-demo');
+      this.route('check-confirm-custom-demo');
+      this.route('prompt-confirm-demo');
+      this.route('prompt-confirm-custom-demo');
+      this.route('process-demo');
+      this.route('process-custom-demo');
+      this.route('progress-demo');
+      this.route('progress-custom-demo');
+      this.route('passing-values-demo');
+      this.route('with-form-demo');
     });
   });
-  this.route('demo');
 });
-
-export default Router;

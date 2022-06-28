@@ -1,0 +1,32 @@
+<h1><code>process</code></h1>
+
+<p>This modal is used to show a "placeholder" while some process is running. This modal doesn't have any controls like confirm/decline-buttons in the footer or "×" in the header and can't be closed by pressing Esc or clicking somewhere outside a modal. Modal will be confirmed and self-closed after provided promise (<code>process</code>) is fulfilled, or it will be declined (and self-closed) if it becomes rejected.</p>
+
+<CodeBlockExample @snippetName="process-demo-controller.js" @title="Process Modal" />
+
+<BsAlert @visible={{true}} @type="warning" @dismissible={{false}}>
+  <i class="bi bi-exclamation-triangle-fill me-2"></i>
+  Here <code>options.process</code> is a <i class="text-uppercase">function</i> that return <code>Promise</code>!
+</BsAlert>
+
+<h2>Customization</h2>
+
+<CodeBlockExample @snippetName="process-custom-demo-controller.js" @title="Custom Process Modal" />
+
+<h3>Title Component</h3>
+
+<p>It takes a single parameter <code>options</code>. Its value is an object passed to the <code>modalsManager.process</code>.</p>
+
+<CodeBlockExample @snippetName="components-custom-process-header.hbs" @title="components/custom-process-header.hbs"/>
+
+<h3>Body Component</h3>
+
+<p>It takes a single parameter <code>options</code>. Its value is an object passed to the <code>modalsManager.process</code>.</p>
+
+<CodeBlockExample @snippetName="components-custom-process-body.hbs" @title="components/custom-process-body.hbs"/>
+
+<h3>Footer Component</h3>
+
+<p>It takes a single parameter <code>options</code>. Its value is an object passed to the <code>modalsManager.process</code>.</p>
+
+<CodeBlockExample @snippetName="components-custom-process-footer.hbs" title="components/custom-process-footer.hbs"/>

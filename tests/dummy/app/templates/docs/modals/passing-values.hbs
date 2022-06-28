@@ -1,0 +1,11 @@
+<h1>Passing Values to Custom Components</h1>
+
+<p>Modals making use of Custom Components may pass values to those components by assigning a value to a property of the object passed as an argument when invoking the modal. In the example below</p>
+
+<CodeBlockExample @snippetName="passing-values-demo-controller.js" @title="Passing Values Controller"/>
+
+<p>Inside the template for the custom component <code>body-with-custom-option</code> the value of the <code>username</code> may be accessed in the usual way.</p>
+
+<CodeBlockExample @snippetName="body-with-custom-options.hbs" @title="Body Component with custom options"/>
+
+<p>Clearly care needs to be taken that the properties used for passing values do not reuse the standard property names used by <code>ember-bootstrap-modals-manager</code>.</p>

@@ -1,0 +1,11 @@
+{{! BEGIN-SNIPPET modal-with-form-skeleton }}
+<BsModal
+  @open={{@modalIsOpened}}
+  @onSubmit={{this.confirm}}
+  @onHide={{this.decline}}
+  as |modal|>
+  <modal.header />
+  <modal.body />
+  <modal.footer />
+</BsModal>
+{{! END-SNIPPET }}

@@ -1,0 +1,29 @@
+<h1><code>alert</code></h1>
+
+<p>Similar to the <code>window.alert</code>. It shows modal with a single button.</p>
+
+<p>It's used to notify user about something.</p>
+
+<CodeBlockExample @snippetName="alert-demo-controller.js" @title="Alert Modal"/>
+
+<h2>Customization</h2>
+
+<CodeBlockExample @snippetName="alert-custom-demo-controller.js" @title="Custom Alert Modal"/>
+
+<h3>Title Component</h3>
+
+<p>It takes a single parameter <code>options</code>. Its value is an object passed to the <code>modalsManager.alert</code>.</p>
+
+<CodeBlockExample @snippetName="components-custom-alert-header.hbs" @title="components/custom-alert-header.hbs"/>
+
+<h3>Body Component</h3>
+
+<p>It takes a single parameter <code>options</code>. Its value is an object passed to the <code>modalsManager.alert</code>.</p>
+
+<CodeBlockExample @snippetName="components-custom-alert-body.hbs" @title="components/custom-alert-body.hbs"/>
+
+<h3>Footer Component</h3>
+
+<p>It takes two parameters. First one is an <code>options</code> described before. Second one is an action <code>confirm</code> used to confirm modal. It may be used like:</p>
+
+<CodeBlockExample @snippetName="components-custom-alert-footer.hbs" @title="components/custom-alert-footer.hbs"/>

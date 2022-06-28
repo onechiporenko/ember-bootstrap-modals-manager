@@ -1,0 +1,15 @@
+<div class="bg-light rounded h-100 p-5">
+  <h1>Ember Bootstrap Modals Manager</h1>
+  <p class="fw-light fs-4">Ember-addon that provides a simple mechanism for interaction with user using modals.</p>
+  <p>This addon is based on modals from <a target="_blank" href="https://www.ember-bootstrap.com/" rel="noopener noreferrer">ember-bootstrap</a>.</p>
+
+  <p>You can check how this addon works on <a href="https://onechiporenko.github.io/ember-bootstrap-modals-manager/demo">Demo Page</a>.</p>
+</div>
+
+<BsAlert class="mt-4 d-flex align-items-center" @type="warning" @dismissible={{false}}>
+  <i class="bi bi-exclamation-triangle-fill me-2 fs-2"></i>
+  <div>
+    <p>Restriction from the <a class="alert-link" target="_blank" href="https://getbootstrap.com/docs/4.6/components/modal/" rel="noopener noreferrer">Bootstrap#modals</a>:</p>
+    <span class="font-monospace">Bootstrap only supports one modal window at a time. Nested modals aren't supported as we believe them to be poor user experiences.</span>
+  </div>
+</BsAlert>
