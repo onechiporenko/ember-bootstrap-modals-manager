@@ -1,6 +1,6 @@
 {
   "name": "ember-bootstrap-modals-manager",
-  "version": "5.0.0",
+  "version": "6.0.0-beta.1",
   "description": "Modals-manager for modals from ember-bootstrap",
   "keywords": [
     "bootstrap",
