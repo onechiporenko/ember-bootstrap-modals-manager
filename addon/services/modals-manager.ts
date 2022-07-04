@@ -4,6 +4,24 @@ import Service from '@ember/service';
 import { isArray } from '@ember/array';
 import RSVP, { defer } from 'rsvp';
 
+import AlertModal from '../components/ebmm-modals-container/alert';
+import ConfirmModal from '../components/ebmm-modals-container/confirm';
+import PromptModal from '../components/ebmm-modals-container/prompt';
+import PromptConfirmModal from '../components/ebmm-modals-container/prompt-confirm';
+import CheckConfirmModal from '../components/ebmm-modals-container/check-confirm';
+import ProcessModal from '../components/ebmm-modals-container/process';
+import ProgressModal from '../components/ebmm-modals-container/progress';
+
+const predefinedModals = {
+  alert: AlertModal,
+  confirm: ConfirmModal,
+  prompt: PromptModal,
+  'prompt-confirm': PromptConfirmModal,
+  'check-confirm': CheckConfirmModal,
+  process: ProcessModal,
+  progress: ProgressModal,
+};
+
 export declare type EbmmPromiseFactory = () => RSVP.Promise<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 export declare type EbmmConfirmPayload = any; // eslint-disable-line @typescript-eslint/no-explicit-any
 export declare type EbmmDeclinePayload = any; // eslint-disable-line @typescript-eslint/no-explicit-any
@@ -15,8 +33,14 @@ export declare interface EbmmModalOptions {
   bodyComponent?: string;
   footer?: string;
   footerComponent?: string;
-  confirm?: string;
-  decline?: string;
+  confirmButtonDefaultText?: string;
+  confirmButtonFulfilledText?: string;
+  confirmButtonPendingText?: string;
+  confirmButtonRejectedText?: string;
+  declineButtonDefaultText?: string;
+  declineButtonFulfilledText?: string;
+  declineButtonPendingText?: string;
+  declineButtonRejectedText?: string;
   cancel?: string;
   promptValue?: string;
   process?: EbmmPromiseFactory;
@@ -60,8 +84,14 @@ export default class ModalsManager<T> extends Service {
     title: ' ',
     body: ' ',
     footer: ' ',
-    confirm: 'Yes',
-    decline: 'No',
+    confirmButtonDefaultText: 'Yes',
+    confirmButtonFulfilledText: 'Yes',
+    confirmButtonPendingText: 'Yes',
+    confirmButtonRejectedText: 'Yes',
+    declineButtonDefaultText: 'No',
+    declineButtonFulfilledText: 'No',
+    declineButtonPendingText: 'No',
+    declineButtonRejectedText: 'No',
     cancel: 'Cancel',
     backdrop: true,
     backdropClose: true,
@@ -94,19 +124,18 @@ export default class ModalsManager<T> extends Service {
 
   /**
    * Shows custom modal
-   *
-   * @method show
-   * @param {string} componentName component's name with custom modal
-   * @param {object} options
-   * @return {RSVP.Promise}
    */
-  show(componentToRender: string, options: EbmmModalOptions): RSVP.Promise<T> {
+  show(
+    componentToRender: keyof typeof predefinedModals,
+    options: EbmmModalOptions
+  ): RSVP.Promise<T> {
     assert(
       'Only one modal may be opened in the same time!',
       !this.modalIsOpened
     );
+    const component = predefinedModals[componentToRender];
     const opts = Object.assign({}, this.defaultOptions, options);
-    this.componentToRender = componentToRender;
+    this.componentToRender = component;
     this.modalIsOpened = true;
     this.options = opts;
     const modalDefer = defer<T>();
@@ -122,7 +151,7 @@ export default class ModalsManager<T> extends Service {
    * @return {RSVP.Promise}
    */
   alert(options: EbmmModalOptions): RSVP.Promise<T> {
-    return this.show(`${this.modalsContainerPath}/alert`, options);
+    return this.show('alert', options);
   }
 
   /**
@@ -133,7 +162,7 @@ export default class ModalsManager<T> extends Service {
    * @return {RSVP.Promise}
    */
   confirm(options: EbmmModalOptions): RSVP.Promise<T> {
-    return this.show(`${this.modalsContainerPath}/confirm`, options);
+    return this.show('confirm', options);
   }
 
   /**
@@ -144,7 +173,7 @@ export default class ModalsManager<T> extends Service {
    * @return {RSVP.Promise}
    */
   prompt(options: EbmmModalOptions): RSVP.Promise<T> {
-    return this.show(`${this.modalsContainerPath}/prompt`, options);
+    return this.show('prompt', options);
   }
 
   /**
@@ -159,7 +188,7 @@ export default class ModalsManager<T> extends Service {
       '"options.promptValue" must be defined and not empty',
       !!options.promptValue
     );
-    return this.show(`${this.modalsContainerPath}/prompt-confirm`, options);
+    return this.show('prompt-confirm', options);
   }
 
   /**
@@ -170,7 +199,7 @@ export default class ModalsManager<T> extends Service {
    * @return {RSVP.Promise}
    */
   checkConfirm(options: EbmmModalOptions): RSVP.Promise<T> {
-    return this.show(`${this.modalsContainerPath}/check-confirm`, options);
+    return this.show('check-confirm', options);
   }
 
   /**
@@ -185,7 +214,7 @@ export default class ModalsManager<T> extends Service {
       '`options.promises` must be an array',
       options && isArray(options.promises)
     );
-    return this.show(`${this.modalsContainerPath}/progress`, options);
+    return this.show('progress', options);
   }
 
   /**
@@ -196,8 +225,11 @@ export default class ModalsManager<T> extends Service {
    * @return {RSVP.Promise}
    */
   process(options: EbmmModalOptions): RSVP.Promise<T> {
-    assert('`options.process` must be defined', options && options.process);
-    return this.show(`${this.modalsContainerPath}/process`, options);
+    assert(
+      '`options.process` must be defined',
+      !!(options && options?.process)
+    );
+    return this.show('process', options);
   }
 
   onConfirmClick(v: EbmmConfirmPayload): void {
