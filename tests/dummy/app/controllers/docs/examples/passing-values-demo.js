@@ -2,6 +2,7 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
+import BodyWithCustomOptions from '../../../components/body-with-custom-options';
 
 export default class DocsExamplesPassingValuesDemoController extends Controller {
   @service()
@@ -11,7 +12,7 @@ export default class DocsExamplesPassingValuesDemoController extends Controller 
   showAlertWithCustomOptions() {
     this.modalsManager
       .alert({
-        bodyComponent: 'body-with-custom-options',
+        bodyComponent: BodyWithCustomOptions,
         username: 'Jane Doe',
       })
       .then(() => {

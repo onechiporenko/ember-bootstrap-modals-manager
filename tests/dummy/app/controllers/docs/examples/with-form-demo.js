@@ -2,6 +2,7 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
+import ModalWithForm from '../../../components/modal-with-form';
 
 export default class DocsExamplesWithFormDemoController extends Controller {
   @service()
@@ -10,7 +11,7 @@ export default class DocsExamplesWithFormDemoController extends Controller {
   @action
   showModalWithForm() {
     return this.modalsManager
-      .show('modal-with-form')
+      .show(ModalWithForm)
       .then((formValues) => {
         // form is submitted
         // here `formValues` is an object with values from inputs

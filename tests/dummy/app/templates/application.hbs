@@ -1,14 +1,18 @@
 <BsNavbar
   @type="dark"
   @backgroundColor="dark"
+  @container="lg"
   as |navbar|
 >
-  <div class="container-lg">
+  <LinkTo @route="index" class="navbar-brand">Ember Bootstrap Modals Manager</LinkTo>
   <navbar.toggle/>
   <navbar.content>
     <navbar.nav class="me-auto" as |nav|>
       <nav.item>
-      <nav.link-to @route="docs">Docs</nav.link-to>
+      <nav.link-to @route="docs.install">Docs</nav.link-to>
+      </nav.item>
+      <nav.item>
+        <a class="nav-link" rel="noopener noreferrer" target="_blank" href="/ember-bootstrap-modals-manager/api-docs">API Docs</a>
       </nav.item>
       <nav.item>
       <nav.link-to @route="demo">Demo</nav.link-to>
@@ -20,7 +24,6 @@
       </nav.item>
     </navbar.nav>
   </navbar.content>
-  </div>
 </BsNavbar>
 <div class="container-lg mt-4">
   {{outlet}}

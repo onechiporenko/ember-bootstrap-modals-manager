@@ -25,6 +25,7 @@ import CustomProgressFooter from '../components/custom-progress-footer';
 import CustomProcessFooter from '../components/custom-process-footer';
 import CustomProcessBody from '../components/custom-process-body';
 import CustomProcessHeader from '../components/custom-process-header';
+import ModalWithForm from '../components/modal-with-form';
 
 export default class DemoController extends Controller {
   @service()
@@ -480,9 +481,9 @@ export default class DemoController extends Controller {
 
   @action
   showCustomFormModal() {
-    set(this, 'options', ".show('modal-with-form')");
+    this.options = '.show(ModalWithForm)';
     this.modalsManager
-      .show('modal-with-form')
+      .show(ModalWithForm)
       .then((v) =>
         this.addMessage(
           `Modal with form was confirmed (with ${JSON.stringify({

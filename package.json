@@ -16,7 +16,7 @@
   },
   "scripts": {
     "build": "ember build --environment=production",
-    "build:gh-pages": "ember build --prod --docs",
+    "docs": "typedoc",
     "lint": "npm-run-all --aggregate-output --continue-on-error --parallel \"lint:!(fix)\"",
     "lint:fix": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*:fix",
     "lint:hbs": "ember-template-lint .",
@@ -112,6 +112,8 @@
     "qunit": "^2.19.1",
     "qunit-dom": "^2.0.0",
     "sass": "^1.32.8",
+    "typedoc": "^0.23.5",
+    "typedoc-plugin-rename-defaults": "^0.6.1",
     "typescript": "^4.7.4",
     "webpack": "^5.72.1"
   },

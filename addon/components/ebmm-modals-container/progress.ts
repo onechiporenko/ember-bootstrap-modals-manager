@@ -11,13 +11,12 @@ import {
   EbmmPromiseFactory,
 } from '../../services/modals-manager';
 
+/**
+ * @category Default Modals
+ */
 export default class ProgressModal<T> extends Base {
   /**
    * Number of fulfilled promises
-   *
-   * @property done
-   * @type number
-   * @default 0
    */
   @tracked
   protected done = 0;
@@ -27,19 +26,10 @@ export default class ProgressModal<T> extends Base {
    *
    * This value is set initially and must be used instead of `promises.length`,
    * because `promises`-array is changed while execution
-   *
-   * @property promisesCount
-   * @type number
-   * @default 0
    */
   @tracked
   protected promisesCount = 0;
 
-  /**
-   * @property canceled
-   * @type boolean
-   * @default false
-   */
   @tracked
   protected canceled = false;
 
@@ -67,6 +57,9 @@ export default class ProgressModal<T> extends Base {
     this.initProgress();
   }
 
+  /**
+   * @category Action Handlers
+   */
   @action
   cancel(): void {
     this.canceled = true;

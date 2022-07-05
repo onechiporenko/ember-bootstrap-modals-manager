@@ -1,3 +1,4 @@
+import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import Service from '@ember/service';
@@ -11,16 +12,6 @@ import PromptConfirmModal from '../components/ebmm-modals-container/prompt-confi
 import CheckConfirmModal from '../components/ebmm-modals-container/check-confirm';
 import ProcessModal from '../components/ebmm-modals-container/process';
 import ProgressModal from '../components/ebmm-modals-container/progress';
-
-const predefinedModals = {
-  alert: AlertModal,
-  confirm: ConfirmModal,
-  prompt: PromptModal,
-  'prompt-confirm': PromptConfirmModal,
-  'check-confirm': CheckConfirmModal,
-  process: ProcessModal,
-  progress: ProgressModal,
-};
 
 export declare type EbmmPromiseFactory = () => RSVP.Promise<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 export declare type EbmmConfirmPayload = any; // eslint-disable-line @typescript-eslint/no-explicit-any
@@ -70,16 +61,17 @@ export declare interface EbmmModalOptions {
   declineIconInactive?: string;
 }
 
+/**
+ * @category Services
+ */
 export default class ModalsManager<T> extends Service {
   @tracked
-  modalIsOpened = false;
+  protected modalIsOpened = false;
 
   @tracked
-  modalsContainerPath = 'ebmm-modals-container';
+  protected modalDefer: RSVP.Deferred<T> | null = null;
 
   @tracked
-  modalDefer: RSVP.Deferred<T> | null = null;
-
   defaultOptions: EbmmModalOptions = {
     title: ' ',
     body: ' ',
@@ -117,23 +109,25 @@ export default class ModalsManager<T> extends Service {
   };
 
   @tracked
-  options: EbmmModalOptions = {} as EbmmModalOptions;
+  protected options: EbmmModalOptions = {} as EbmmModalOptions;
 
   @tracked
-  componentToRender: string | unknown | null = null;
+  protected componentToRender: string | unknown | null = null;
 
   /**
-   * Shows custom modal
+   * @throws {Error} if some modal is already opened
+   * @param componentToRender Component's child-class represents needed modal
+   * @param options options passed to the rendered modal
    */
   show(
-    componentToRender: keyof typeof predefinedModals,
+    componentToRender: typeof Component,
     options: EbmmModalOptions
   ): RSVP.Promise<T> {
     assert(
       'Only one modal may be opened in the same time!',
       !this.modalIsOpened
     );
-    const component = predefinedModals[componentToRender];
+    const component = componentToRender;
     const opts = Object.assign({}, this.defaultOptions, options);
     this.componentToRender = component;
     this.modalIsOpened = true;
@@ -144,100 +138,81 @@ export default class ModalsManager<T> extends Service {
   }
 
   /**
-   * Shows `alert`-modal
-   *
-   * @method alert
-   * @param {object} options
-   * @return {RSVP.Promise}
+   * @category Default Modals
    */
   alert(options: EbmmModalOptions): RSVP.Promise<T> {
-    return this.show('alert', options);
+    return this.show(AlertModal, options);
   }
 
   /**
-   * Shows `confirm`-modal
-   *
-   * @method confirm
-   * @param {object} options
-   * @return {RSVP.Promise}
+   * @category Default Modals
    */
   confirm(options: EbmmModalOptions): RSVP.Promise<T> {
-    return this.show('confirm', options);
+    return this.show(ConfirmModal, options);
   }
 
   /**
-   * Shows `prompt`-modal
-   *
-   * @method prompt
-   * @param {object} options
-   * @return {RSVP.Promise}
+   * @category Default Modals
    */
   prompt(options: EbmmModalOptions): RSVP.Promise<T> {
-    return this.show('prompt', options);
+    return this.show(PromptModal, options);
   }
 
   /**
-   * Shows `prompt-confirm`-modal
-   *
-   * @method promptConfirm
-   * @param {object} options
-   * @return {RSVP.Promise}
+   * @category Default Modals
+   * @throws {Error} if `options.promptValue` is not provided
    */
   promptConfirm(options: EbmmModalOptions): RSVP.Promise<T> {
     assert(
       '"options.promptValue" must be defined and not empty',
       !!options.promptValue
     );
-    return this.show('prompt-confirm', options);
+    return this.show(PromptConfirmModal, options);
   }
 
   /**
-   * Show `check-confirm`-modal
-   *
-   * @method checkConfirm
-   * @param {object} options
-   * @return {RSVP.Promise}
+   * @category Default Modals
    */
   checkConfirm(options: EbmmModalOptions): RSVP.Promise<T> {
-    return this.show('check-confirm', options);
+    return this.show(CheckConfirmModal, options);
   }
 
   /**
-   * Shows `progress`-modal
-   *
-   * @method progress
-   * @param {object} options
-   * @return {RSVP.Promise}
+   * @category Default Modals
+   * @throws {Error} if `options.promises` is not an array
    */
   progress(options: EbmmModalOptions): RSVP.Promise<T> {
     assert(
       '`options.promises` must be an array',
       options && isArray(options.promises)
     );
-    return this.show('progress', options);
+    return this.show(ProgressModal, options);
   }
 
   /**
-   * Shows `process`-modal
-   *
-   * @method process
-   * @param {object} options
-   * @return {RSVP.Promise}
+   * @category Default Modals
+   * @throws {Error} if `options.process` is not defined
    */
   process(options: EbmmModalOptions): RSVP.Promise<T> {
     assert(
       '`options.process` must be defined',
       !!(options && options?.process)
     );
-    return this.show('process', options);
+    return this.show(ProcessModal, options);
   }
 
+  /**
+   * @category Action Handlers
+   */
   onConfirmClick(v: EbmmConfirmPayload): void {
     this.modalIsOpened = false;
     this.modalDefer && this.modalDefer.resolve(v);
     this.clearOptions();
   }
 
+  /**
+   * @category Action Handlers
+   */
   onDeclineClick(v: EbmmDeclinePayload): void {
     this.modalIsOpened = false;
     this.modalDefer && this.modalDefer.reject(v);
