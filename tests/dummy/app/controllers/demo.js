@@ -3,6 +3,28 @@ import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { action, set } from '@ember/object';
 import { A } from '@ember/array';
+import { ensureSafeComponent } from '@embroider/util';
+import CustomAlertHeader from '../components/custom-alert-header';
+import CustomAlertBody from '../components/custom-alert-body';
+import CustomAlertFooter from '../components/custom-alert-footer';
+import CustomConfirmHeader from '../components/custom-confirm-header';
+import CustomConfirmBody from '../components/custom-confirm-body';
+import CustomConfirmFooter from '../components/custom-confirm-footer';
+import CustomPromptHeader from '../components/custom-prompt-header';
+import CustomPromptBody from '../components/custom-prompt-body';
+import CustomPromptFooter from '../components/custom-prompt-footer';
+import CustomPromptConfirmHeader from '../components/custom-prompt-confirm-header';
+import CustomPromptConfirmBody from '../components/custom-prompt-confirm-body';
+import CustomPromptConfirmFooter from '../components/custom-prompt-confirm-footer';
+import CustomCheckConfirmHeader from '../components/custom-check-confirm-header';
+import CustomCheckConfirmBody from '../components/custom-check-confirm-body';
+import CustomCheckConfirmFooter from '../components/custom-check-confirm-footer';
+import CustomProgressHeader from '../components/custom-progress-header';
+import CustomProgressBody from '../components/custom-progress-body';
+import CustomProgressFooter from '../components/custom-progress-footer';
+import CustomProcessFooter from '../components/custom-process-footer';
+import CustomProcessBody from '../components/custom-process-body';
+import CustomProcessHeader from '../components/custom-process-header';
 
 export default class DemoController extends Controller {
   @service()
@@ -59,11 +81,13 @@ export default class DemoController extends Controller {
     'danger',
     'link',
     'default',
+    'dark',
+    'light',
   ];
 
-  confirmIconChoices = ['fa fa-check', 'fa fa-check-circle'];
+  confirmIconChoices = ['bi bi-check', 'bi bi-check-circle'];
 
-  declineIconChoices = ['fa fa-ban', 'fa fa-times'];
+  declineIconChoices = ['bi bi-slash-circle-fill', 'bi bi-x-circle'];
 
   disallowEmptyPrompt = false;
 
@@ -123,7 +147,7 @@ export default class DemoController extends Controller {
       declineIconInactive: this.declineIconInactive,
       modalClass: 'my-custom-class',
     };
-    set(this, 'options', options);
+    this.options = options;
     this.modalsManager
       .alert(options)
       .then(() => this.addMessage('Alert was confirmed'));
@@ -150,7 +174,7 @@ export default class DemoController extends Controller {
       declineIconInactive: this.declineIconInactive,
       modalClass: 'my-custom-class',
     };
-    set(this, 'options', options);
+    this.options = options;
     this.modalsManager
       .confirm(options)
       .then(() => this.addMessage('Confirm was confirmed'))
@@ -180,7 +204,7 @@ export default class DemoController extends Controller {
       declineIconInactive: this.declineIconInactive,
       modalClass: 'my-custom-class',
     };
-    set(this, 'options', options);
+    this.options = options;
     this.modalsManager
       .prompt(options)
       .then((v) => this.addMessage(`Prompt was confirmed (with "${v}")`))
@@ -210,7 +234,7 @@ export default class DemoController extends Controller {
       declineIconInactive: this.declineIconInactive,
       modalClass: 'my-custom-class',
     };
-    set(this, 'options', options);
+    this.options = options;
     this.modalsManager
       .promptConfirm(options)
       .then((v) =>
@@ -241,7 +265,7 @@ export default class DemoController extends Controller {
       declineIconInactive: this.declineIconInactive,
       modalClass: 'my-custom-class',
     };
-    set(this, 'options', options);
+    this.options = options;
     this.modalsManager
       .checkConfirm(options)
       .then(() => this.addMessage(`Check-Confirm was confirmed`))
@@ -266,7 +290,7 @@ export default class DemoController extends Controller {
       type: this.type,
       modalClass: 'my-custom-class',
     };
-    set(this, 'options', options);
+    this.options = options;
     this.modalsManager
       .progress(options)
       .then((v) =>
@@ -305,7 +329,7 @@ export default class DemoController extends Controller {
           }, 3000)
         ),
     };
-    set(this, 'options', options);
+    this.options = options;
     this.modalsManager
       .process(options)
       .then((v) => this.addMessage(`Process was confirmed (with ${v})`))
@@ -315,12 +339,12 @@ export default class DemoController extends Controller {
   @action
   showCustomAlertModal() {
     const options = {
-      titleComponent: 'custom-alert-header',
-      bodyComponent: 'custom-alert-body',
-      footerComponent: 'custom-alert-footer',
+      titleComponent: ensureSafeComponent(CustomAlertHeader, this),
+      bodyComponent: ensureSafeComponent(CustomAlertBody, this),
+      footerComponent: ensureSafeComponent(CustomAlertFooter, this),
       modalClass: 'my-custom-class',
     };
-    set(this, 'options', options);
+    this.options = options;
     this.modalsManager
       .alert(options)
       .then(() => this.addMessage('Custom Alert was confirmed'));
@@ -329,12 +353,12 @@ export default class DemoController extends Controller {
   @action
   showCustomConfirmModal() {
     const options = {
-      titleComponent: 'custom-confirm-header',
-      bodyComponent: 'custom-confirm-body',
-      footerComponent: 'custom-confirm-footer',
+      titleComponent: CustomConfirmHeader,
+      bodyComponent: CustomConfirmBody,
+      footerComponent: CustomConfirmFooter,
       modalClass: 'my-custom-class',
     };
-    set(this, 'options', options);
+    this.options = options;
     this.modalsManager
       .confirm(options)
       .then(() => this.addMessage('Custom Confirm was confirmed'))
@@ -344,13 +368,13 @@ export default class DemoController extends Controller {
   @action
   showCustomPromptModal() {
     const options = {
-      titleComponent: 'custom-prompt-header',
-      bodyComponent: 'custom-prompt-body',
-      footerComponent: 'custom-prompt-footer',
+      titleComponent: CustomPromptHeader,
+      bodyComponent: CustomPromptBody,
+      footerComponent: CustomPromptFooter,
       disallowEmpty: this.disallowEmptyPrompt,
       modalClass: 'my-custom-class',
     };
-    set(this, 'options', options);
+    this.options = options;
     this.modalsManager
       .prompt(options)
       .then((v) => this.addMessage(`Custom Prompt was confirmed (with "${v}")`))
@@ -360,13 +384,13 @@ export default class DemoController extends Controller {
   @action
   showCustomPromptConfirmModal() {
     const options = {
-      titleComponent: 'custom-prompt-confirm-header',
-      bodyComponent: 'custom-prompt-confirm-body',
-      footerComponent: 'custom-prompt-confirm-footer',
+      titleComponent: CustomPromptConfirmHeader,
+      bodyComponent: CustomPromptConfirmBody,
+      footerComponent: CustomPromptConfirmFooter,
       promptValue: 'modal',
       modalClass: 'my-custom-class',
     };
-    set(this, 'options', options);
+    this.options = options;
     this.modalsManager
       .promptConfirm(options)
       .then((v) =>
@@ -380,12 +404,12 @@ export default class DemoController extends Controller {
     const options = {
       title: 'Custom Check Confirm Modal Title',
       body: 'Confirm your suggestion',
-      titleComponent: 'custom-check-confirm-header',
-      bodyComponent: 'custom-check-confirm-body',
-      footerComponent: 'custom-check-confirm-footer',
+      titleComponent: CustomCheckConfirmHeader,
+      bodyComponent: CustomCheckConfirmBody,
+      footerComponent: CustomCheckConfirmFooter,
       modalClass: 'my-custom-class',
     };
-    set(this, 'options', options);
+    this.options = options;
     this.modalsManager
       .checkConfirm(options)
       .then(() => this.addMessage(`Custom Check-Confirm was confirmed`))
@@ -397,9 +421,9 @@ export default class DemoController extends Controller {
     const options = {
       title: 'Progress Modal Title',
       body: '',
-      titleComponent: 'custom-progress-header',
-      bodyComponent: 'custom-progress-body',
-      footerComponent: 'custom-progress-footer',
+      titleComponent: CustomProgressHeader,
+      bodyComponent: CustomProgressBody,
+      footerComponent: CustomProgressFooter,
       promises: this.generatePromiseFactoriesList(5),
       showLabel: this.showLabel,
       striped: this.striped,
@@ -409,7 +433,7 @@ export default class DemoController extends Controller {
       type: this.type,
       modalClass: 'my-custom-class',
     };
-    set(this, 'options', options);
+    this.options = options;
     this.modalsManager
       .progress(options)
       .then((v) =>
@@ -433,9 +457,9 @@ export default class DemoController extends Controller {
     const options = {
       title: 'Process Modal Title',
       body: 'Some long process (you must add font-awesome to your project to use `fa`-icons)',
-      titleComponent: 'custom-process-header',
-      bodyComponent: 'custom-process-body',
-      footerComponent: 'custom-process-footer',
+      titleComponent: CustomProcessHeader,
+      bodyComponent: CustomProcessBody,
+      footerComponent: CustomProcessFooter,
       iconClass: 'text-center fa fa-spinner fa-spin fa-3x fa-fw',
       modalClass: 'my-custom-class',
       process: () =>
@@ -447,7 +471,7 @@ export default class DemoController extends Controller {
           }, 3000)
         ),
     };
-    set(this, 'options', options);
+    this.options = options;
     this.modalsManager
       .process(options)
       .then((v) => this.addMessage(`Process was confirmed (with ${v})`))

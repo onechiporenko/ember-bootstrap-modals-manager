@@ -15,7 +15,7 @@ as |modal|>
   <modal.header @closeButton={{@options.closeButton}}>
     {{#if @options.titleComponent}}
       {{component
-        @options.titleComponent
+        (ensure-safe-component @options.titleComponent)
         options=@options
       }}
     {{else}}
@@ -25,7 +25,7 @@ as |modal|>
   <modal.body>
     {{#if @options.bodyComponent}}
       {{component
-        @options.bodyComponent
+        (ensure-safe-component @options.bodyComponent)
         options=@options
         updatePromptValue=this.updatePromptValue
       }}
@@ -44,7 +44,7 @@ as |modal|>
   <modal.footer>
     {{#if @options.footerComponent}}
       {{component
-        @options.footerComponent
+        (ensure-safe-component @options.footerComponent)
         options=@options
         confirmDisabled=this.confirmDisabled
         confirm=modal.submit
@@ -54,7 +54,10 @@ as |modal|>
       <p>{{@options.footer}}</p>
       <BsButton
         @type={{@options.declineButtonType}}
-        @defaultText={{@options.decline}}
+        @defaultText={{@options.declineButtonDefaultText}}
+        @fulfilledText={{@options.declineButtonFulfilledText}}
+        @pendingText={{@options.declineButtonPendingText}}
+        @rejectedText={{@options.declineButtonRejectedText}}
         @active={{@options.declineIsActive}}
         @iconActive={{@options.declineIconActive}}
         @iconInactive={{@options.declineIconInactive}}
@@ -62,7 +65,10 @@ as |modal|>
         @onClick={{modal.close}} />
       <BsButton
         @type={{@options.confirmButtonType}}
-        @defaultText={{@options.confirm}}
+        @defaultText={{@options.confirmButtonDefaultText}}
+        @fulfilledText={{@options.confirmButtonFulfilledText}}
+        @pendingText={{@options.confirmButtonPendingText}}
+        @rejectedText={{@options.confirmButtonRejectedText}}
         disabled={{this.confirmDisabled}}
         @active={{@options.confirmIsActive}}
         @iconActive={{@options.confirmIconActive}}

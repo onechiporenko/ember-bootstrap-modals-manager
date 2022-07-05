@@ -1418,10 +1418,38 @@
     resolve "^1.20.0"
     semver "^7.3.2"
 
+"@embroider/macros@^1.5.0":
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/@embroider/macros/-/macros-1.8.1.tgz#a74a36ae092213c82d9848a568fbbe9dbf08a110"
+  integrity sha512-P5yxwex95rRghKniycaPTtOiass/q+OTyHaSnlMJbIBN3cPYhEiNLoVDiSpC51EjMGx8FzQnndC51HG7We5ryQ==
+  dependencies:
+    "@embroider/shared-internals" "1.8.1"
+    assert-never "^1.2.1"
+    babel-import-util "^1.1.0"
+    ember-cli-babel "^7.26.6"
+    find-up "^5.0.0"
+    lodash "^4.17.21"
+    resolve "^1.20.0"
+    semver "^7.3.2"
+
 "@embroider/shared-internals@1.8.0", "@embroider/shared-internals@^1.8.0":
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/@embroider/shared-internals/-/shared-internals-1.8.0.tgz#4c9b563e5f155410d982a30667b027a227be7312"
   integrity sha512-TsjApG80SDVZ+dxkshO4FtzwzZYupmyl1w3Bnehfbk1429dsv30K+/DhcxDFIlKXPtsvCF9mdQY3mYUs+hoLOg==
+  dependencies:
+    babel-import-util "^1.1.0"
+    ember-rfc176-data "^0.3.17"
+    fs-extra "^9.1.0"
+    js-string-escape "^1.0.1"
+    lodash "^4.17.21"
+    resolve-package-path "^4.0.1"
+    semver "^7.3.5"
+    typescript-memoize "^1.0.1"
+
+"@embroider/shared-internals@1.8.1":
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/@embroider/shared-internals/-/shared-internals-1.8.1.tgz#86ac331958d53fc432273f4280869730edb0f47c"
+  integrity sha512-sP+QyVQ6pRYJ0QPQg+13kIVyKKWlFUN5jAkXiFqrx53oqMe+XPbqVxt9z+EcElOHNOec7Gmy03ISmY3fOaBkdQ==
   dependencies:
     babel-import-util "^1.1.0"
     ember-rfc176-data "^0.3.17"
@@ -1958,43 +1986,6 @@
   resolved "https://registry.yarnpkg.com/@types/cors/-/cors-2.8.12.tgz#6b2c510a7ad7039e98e7b8d3d6598f4359e5c080"
   integrity sha512-vt+kDhq/M2ayberEtJcIN/hxXy1Pk+59g2FV/ZQceeaTyCtCucjL2Q7FXlFjtWn4n15KCr1NE2lNNFhp0lEThw==
 
-"@types/ember-data@*", "@types/ember-data@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@types/ember-data/-/ember-data-4.0.0.tgz#ee915a16d75debd565bff73c8e0bd5bbb4d64b33"
-  integrity sha512-UEZHkTFYAYJ5S+Kzz62z+wvlXtS6wu/lTIpwk4OnDXX1KRYauNfYfluaEH8GZ8rooMTG2xcpqFbAAw3FZJqrUQ==
-  dependencies:
-    "@types/ember" "*"
-    "@types/ember__object" "*"
-    "@types/rsvp" "*"
-
-"@types/ember-data__adapter@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@types/ember-data__adapter/-/ember-data__adapter-4.0.0.tgz#026acd53795cc81c49090ed5a033ffe40093b0dc"
-  integrity sha512-qyXYzNOEKDWk4RSYpwa1TG9WFvWb0bEDLNGW92zy/4hFDbV4LMz06XqWPZ2tDqhagz1uTvMKLXhTwKgVDEmFRw==
-  dependencies:
-    "@types/ember-data" "*"
-
-"@types/ember-data__model@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@types/ember-data__model/-/ember-data__model-4.0.0.tgz#e6c145fd55bdabb6cc86a5013aabc35ea4268b17"
-  integrity sha512-2AYPQZWYrm5RS4qx5ajtkVs5nH4hADdKRV1l7+OoPTitXbXA4hNwvra68QhRcBR6cxM9ALlxkC/Fz84pDB2Oaw==
-  dependencies:
-    "@types/ember-data" "*"
-
-"@types/ember-data__serializer@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@types/ember-data__serializer/-/ember-data__serializer-4.0.0.tgz#2e39804691fe89f3095b5d670b0afe6673c7ab15"
-  integrity sha512-hUq9c4XyVsHRSOjVevHdj7c1rG8o9OpC6qZJ4oGUZSvbRDIXHp2YTCUcbx0qqX+ryYyYpZlSeYKYtcVlLvJ4hg==
-  dependencies:
-    "@types/ember-data" "*"
-
-"@types/ember-data__store@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@types/ember-data__store/-/ember-data__store-4.0.0.tgz#d4039424b4b26c98c6417dc98028b151c6c81dee"
-  integrity sha512-J0hDf9LcG9T/DT/w/1E6P++K37yma+ANXN10ijT+fWKP5b3BE5uk7i1XNHmuKhfUzMQ1GzoO3nUxnTlnTr75oA==
-  dependencies:
-    "@types/ember-data" "*"
-
 "@types/ember-qunit@^5.0.0":
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/@types/ember-qunit/-/ember-qunit-5.0.0.tgz#e39749d129dc7643df13d8df94225867c57d006e"
@@ -2057,7 +2048,7 @@
     "@types/ember__array" "*"
     "@types/ember__object" "*"
 
-"@types/ember__component@*", "@types/ember__component@^4.0.4":
+"@types/ember__component@*", "@types/ember__component@^4.0.8":
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/@types/ember__component/-/ember__component-4.0.8.tgz#09a5f954f734fcbe6c988a173f4de4fa09084470"
   integrity sha512-YVGn/kpWtpZAu6I2XtS9fsZV+78/sON5NyKzK5EOUyMiCwwpbUr5XL8dTSdkHehYrsfzJikcYvqpmwbNZSJxGQ==
@@ -2096,7 +2087,7 @@
   resolved "https://registry.yarnpkg.com/@types/ember__error/-/ember__error-4.0.0.tgz#c73037e65c1c3d7060b97f98135ba73c712972b1"
   integrity sha512-1WVMR65/QTqPzMWafK2vKEwGafILxRxItbWJng6eEJyKDHRvvHFCl3XzJ4dQjdFcfOlozsn0mmEYCpjKoyzMqA==
 
-"@types/ember__object@*", "@types/ember__object@^4.0.1":
+"@types/ember__object@*", "@types/ember__object@^4.0.2":
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/@types/ember__object/-/ember__object-4.0.2.tgz#070f1a36961f7df777e1fceed2551a648db0fd23"
   integrity sha512-m3xjqjs7bGVT0+QXlgIoDMsp/oqePobnf4IiVoFdXLBpGCICiOAEi7HuUtCLi57WTvx0lYsS9hE1vgGyZn9qnw==
@@ -2110,7 +2101,7 @@
   resolved "https://registry.yarnpkg.com/@types/ember__polyfills/-/ember__polyfills-4.0.0.tgz#d83ae94ff2890ad47798315426d9916f39ff4ae6"
   integrity sha512-Yk85J18y1Ys6agoIBLdJWu6ZkWe68oaC9JPyW7BhOINVNKm89PXrR/yxdOJ1/vN1Hj7ZZQKq+4X6fz3sxebavA==
 
-"@types/ember__routing@*", "@types/ember__routing@^4.0.4":
+"@types/ember__routing@*", "@types/ember__routing@^4.0.7":
   version "4.0.7"
   resolved "https://registry.yarnpkg.com/@types/ember__routing/-/ember__routing-4.0.7.tgz#16cc442fcee2dda06dc79bb3d7fd5002f154ad07"
   integrity sha512-iWsk8C0WIqqK6dgK1UdJisyQLs6rVq/+A2f7fXjdLJHA+SAHK8aqfCHHFkTuiy4sXkM/PBINmP9qHpk4KrScbw==
@@ -2121,7 +2112,7 @@
     "@types/ember__routing" "*"
     "@types/ember__service" "*"
 
-"@types/ember__runloop@*", "@types/ember__runloop@^4.0.0":
+"@types/ember__runloop@*", "@types/ember__runloop@^4.0.1":
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@types/ember__runloop/-/ember__runloop-4.0.1.tgz#7f6e45af7dbf1158655ef3ad852852b0bf87065f"
   integrity sha512-3HrsavVrdgxUkYptQUv/e9RwJG02cV9WbnJxKSvwl9ZYpeX4JbuDVucjTWk5BAvJUVtbiQLPGzLEHZ6daoCbbg==
@@ -2281,7 +2272,7 @@
   resolved "https://registry.yarnpkg.com/@types/qs/-/qs-6.9.7.tgz#63bb7d067db107cc1e457c303bc25d511febf6cb"
   integrity sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==
 
-"@types/qunit@*", "@types/qunit@^2.11.3":
+"@types/qunit@*", "@types/qunit@^2.19.1":
   version "2.19.1"
   resolved "https://registry.yarnpkg.com/@types/qunit/-/qunit-2.19.1.tgz#e29a57e26bebdb12f68746b6b4a208a32a06033b"
   integrity sha512-1ZCjSdq0OKdglZc5qlj8Fv80y7xzVyU2pCckLJf6q2oo0g6BHQmIbQ9TDceqUgelAlXUV9h2EgTCa/YIhxkohA==
@@ -5868,7 +5859,7 @@ ember-cli-typescript@^4.0.0, ember-cli-typescript@^4.2.0, ember-cli-typescript@^
     stagehand "^1.0.0"
     walk-sync "^2.2.0"
 
-ember-cli-typescript@^5.0.0:
+ember-cli-typescript@^5.0.0, ember-cli-typescript@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/ember-cli-typescript/-/ember-cli-typescript-5.1.0.tgz#460eb848564e29d64f2b36b2a75bbe98172b72a4"
   integrity sha512-wEZfJPkjqFEZAxOYkiXsDrJ1HY75e/6FoGhQFg8oNFJeGYpIS/3W0tgyl1aRkSEEN1NRlWocDubJ4aZikT+RTA==
@@ -13027,7 +13018,7 @@ typescript-memoize@^1.0.0-alpha.3, typescript-memoize@^1.0.1:
   resolved "https://registry.yarnpkg.com/typescript-memoize/-/typescript-memoize-1.1.0.tgz#4a8f512d06fc995167c703a3592219901db8bc79"
   integrity sha512-LQPKVXK8QrBBkL/zclE6YgSWn0I8ew5m0Lf+XL00IwMhlotqRLlzHV+BRrljVQIc+NohUAuQP7mg4HQwrx5Xbg==
 
-typescript@^4.6.2:
+typescript@^4.7.4:
   version "4.7.4"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.4.tgz#1a88596d1cf47d59507a1bcdfb5b9dfe4d488235"
   integrity sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==
@@ -13268,7 +13259,7 @@ validate-peer-dependencies@^1.2.0:
     resolve-package-path "^3.1.0"
     semver "^7.3.2"
 
-validated-changeset@^1.1.3, validated-changeset@~1.3.2:
+validated-changeset@~1.3.2:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/validated-changeset/-/validated-changeset-1.3.2.tgz#ee1c308a8110af86c2c60a9211070e3e4a105a79"
   integrity sha512-uRBNUvXPRaewdH/NgIHPBy3BNVUyq9RV9e3BQ/Zkxx2uraCEM6E2boyyhl2kfcCVKEmvEUXE6yXReezKt1agtw==

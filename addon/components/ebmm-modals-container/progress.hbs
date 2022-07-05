@@ -15,7 +15,7 @@ as |modal|>
   <modal.header @closeButton={{false}}>
     {{#if @options.titleComponent}}
       {{component
-        @options.titleComponent
+        (ensure-safe-component @options.titleComponent)
         options=@options
       }}
     {{else}}
@@ -25,7 +25,7 @@ as |modal|>
   <modal.body>
     {{#if @options.bodyComponent}}
       {{component
-        @options.bodyComponent
+        (ensure-safe-component @options.bodyComponent)
         options=@options
         progress=this.progress
         done=this.done
@@ -48,7 +48,7 @@ as |modal|>
   <modal.footer>
     {{#if @options.footerComponent}}
       {{component
-        @options.footerComponent
+        (ensure-safe-component @options.footerComponent)
         options=@options
       }}
     {{else}}
