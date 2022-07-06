@@ -2,7 +2,6 @@
 
 # compiled output
 /dist/
-/api-docs/
 /tmp/
 
 # dependencies
