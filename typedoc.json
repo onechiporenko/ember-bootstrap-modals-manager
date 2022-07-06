@@ -1,0 +1,9 @@
+{
+  "entryPoints": ["./addon/index.d.ts"],
+  "excludeExternals": true,
+  "entryPointStrategy": "expand",
+  "out": "api-docs",
+  "readme": "none",
+  "name": "Ember Bootstrap Modals Manager",
+  "includeVersion": true
+}

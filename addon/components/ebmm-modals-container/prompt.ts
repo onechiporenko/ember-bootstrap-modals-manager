@@ -4,6 +4,9 @@ import { isEmpty } from '@ember/utils';
 import BaseModal from './base';
 import { EbmmConfirmPayload } from '../../services/modals-manager';
 
+/**
+ * @category Default Modals
+ */
 export default class PromptModal extends BaseModal {
   @tracked
   promptValue: EbmmConfirmPayload = '';
@@ -15,7 +18,7 @@ export default class PromptModal extends BaseModal {
   }
 
   /**
-   * @event confirm
+   * @category Action Handlers
    */
   @action
   confirm(): void {
@@ -23,8 +26,7 @@ export default class PromptModal extends BaseModal {
   }
 
   /**
-   * @event updatePromptValue
-   * @param {*} val
+   * @category Action Handlers
    */
   @action
   updatePromptValue(val: string): void {
