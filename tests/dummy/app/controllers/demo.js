@@ -1,4 +1,4 @@
-import { tracked } from '@glimmer/tracking';
+import { tracked, TrackedArray } from 'tracked-built-ins';
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { action, set } from '@ember/object';
@@ -30,7 +30,9 @@ import ModalWithForm from '../components/modal-with-form';
 export default class DemoController extends Controller {
   @service()
   modalsManager;
-  messages = A([]);
+
+  @tracked
+  messages = new TrackedArray([]);
 
   @tracked
   options = {};
@@ -104,7 +106,7 @@ export default class DemoController extends Controller {
   processWillFail = false;
 
   addMessage(msg) {
-    this.messages.pushObject(msg);
+    this.messages.push(msg);
   }
 
   generatePromiseFactoriesList(count) {
