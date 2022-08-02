@@ -215,6 +215,7 @@ export default class ModalsManager<T> extends Service {
    */
   onDeclineClick(v: EbmmDeclinePayload): void {
     this.modalIsOpened = false;
+    // eslint-disable-next-line ember/no-array-prototype-extensions
     this.modalDefer && this.modalDefer.reject(v);
     this.clearOptions();
   }

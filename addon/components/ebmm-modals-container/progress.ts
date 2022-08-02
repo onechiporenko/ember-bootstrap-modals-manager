@@ -1,4 +1,4 @@
-import { tracked } from '@glimmer/tracking';
+import { tracked, TrackedArray } from 'tracked-built-ins';
 import { action } from '@ember/object';
 import { later } from '@ember/runloop';
 import { A } from '@ember/array';
@@ -37,9 +37,11 @@ export default class ProgressModal<T> extends Base {
     return this.args.options.settled ? this.args.options.settled : false;
   }
 
-  protected errors = A<EbmmDeclinePayload>([]);
+  @tracked
+  protected errors = new TrackedArray<EbmmDeclinePayload>([]);
 
-  protected results = A<EbmmConfirmPayload>([]);
+  @tracked
+  protected results = new TrackedArray<EbmmConfirmPayload>([]);
 
   protected get promises(): EbmmPromiseFactory[] {
     return this.args.options.promises ? this.args.options.promises : A([]);
@@ -84,7 +86,7 @@ export default class ProgressModal<T> extends Base {
       })
       .catch((error) => {
         if (this.settled) {
-          this.errors.pushObject(error);
+          this.errors.push(error);
           this._next();
         } else {
           this.decline([this.results, error]);
@@ -96,7 +98,7 @@ export default class ProgressModal<T> extends Base {
   _next(result?: EbmmConfirmPayload): void {
     run(() => {
       if (arguments.length === 1) {
-        this.results.pushObject(result);
+        this.results.push(result);
       }
       this.done++;
     });
