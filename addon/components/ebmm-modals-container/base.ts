@@ -12,6 +12,7 @@ export interface ModalSignature {
   };
   Blocks: undefined;
 }
+export type ModalArgs = ModalSignature['Args'];
 
 /**
  * @category Default Modals
