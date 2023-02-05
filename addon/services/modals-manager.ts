@@ -12,6 +12,7 @@ import PromptConfirmModal from '../components/ebmm-modals-container/prompt-confi
 import CheckConfirmModal from '../components/ebmm-modals-container/check-confirm';
 import ProcessModal from '../components/ebmm-modals-container/process';
 import ProgressModal from '../components/ebmm-modals-container/progress';
+import { ModalSignature } from '../components/ebmm-modals-container/base';
 
 export declare type EbmmPromiseFactory = () => RSVP.Promise<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 export declare type EbmmConfirmPayload = any; // eslint-disable-line @typescript-eslint/no-explicit-any
@@ -105,7 +106,7 @@ export default class ModalsManager<T> extends Service {
     declineButtonType: 'secondary',
     declineIconActive: '',
     declineIconInactive: '',
-    modalClass: '',
+    modalClass: ''
   };
 
   @tracked
@@ -119,14 +120,8 @@ export default class ModalsManager<T> extends Service {
    * @param componentToRender Component's child-class represents needed modal
    * @param options options passed to the rendered modal
    */
-  show(
-    componentToRender: typeof Component,
-    options: EbmmModalOptions
-  ): RSVP.Promise<T> {
-    assert(
-      'Only one modal may be opened in the same time!',
-      !this.modalIsOpened
-    );
+  show(componentToRender: typeof Component<ModalSignature>, options: EbmmModalOptions): RSVP.Promise<T> {
+    assert('Only one modal may be opened in the same time!', !this.modalIsOpened);
     const component = componentToRender;
     const opts = Object.assign({}, this.defaultOptions, options);
     this.componentToRender = component;
@@ -163,10 +158,7 @@ export default class ModalsManager<T> extends Service {
    * @throws {Error} if `options.promptValue` is not provided
    */
   promptConfirm(options: EbmmModalOptions): RSVP.Promise<T> {
-    assert(
-      '"options.promptValue" must be defined and not empty',
-      !!options.promptValue
-    );
+    assert('"options.promptValue" must be defined and not empty', !!options.promptValue);
     return this.show(PromptConfirmModal, options);
   }
 
@@ -182,10 +174,7 @@ export default class ModalsManager<T> extends Service {
    * @throws {Error} if `options.promises` is not an array
    */
   progress(options: EbmmModalOptions): RSVP.Promise<T> {
-    assert(
-      '`options.promises` must be an array',
-      options && isArray(options.promises)
-    );
+    assert('`options.promises` must be an array', options && isArray(options.promises));
     return this.show(ProgressModal, options);
   }
 
@@ -194,10 +183,7 @@ export default class ModalsManager<T> extends Service {
    * @throws {Error} if `options.process` is not defined
    */
   process(options: EbmmModalOptions): RSVP.Promise<T> {
-    assert(
-      '`options.process` must be defined',
-      !!(options && options?.process)
-    );
+    assert('`options.process` must be defined', !!(options && options?.process));
     return this.show(ProcessModal, options);
   }
 
