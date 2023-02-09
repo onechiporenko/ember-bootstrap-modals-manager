@@ -51,15 +51,23 @@ export declare interface EbmmModalOptions {
   renderInPlace?: boolean;
   transitionDuration?: number;
   confirmIsActive?: boolean;
-  confirmButtonSize?: string;
+  confirmButtonSize?: 'lg' | 'sm' | null;
   confirmButtonType?: string;
   confirmIconActive?: string;
   confirmIconInactive?: string;
   declineIsActive?: boolean;
-  declineButtonSize?: string;
+  declineButtonSize?: 'lg' | 'sm' | null;
   declineButtonType?: string;
   declineIconActive?: string;
   declineIconInactive?: string;
+  closeButton?: boolean;
+  cancelable?: boolean;
+  inputLabel?: string;
+  animate?: boolean;
+  type?: string;
+  striped?: boolean;
+  showLabel?: boolean;
+  iconClass?: string;
 }
 
 /**
@@ -97,12 +105,12 @@ export default class ModalsManager<T> extends Service {
     size: null,
     transitionDuration: 300,
     confirmIsActive: false,
-    confirmButtonSize: 'md',
+    confirmButtonSize: null,
     confirmButtonType: 'primary',
     confirmIconActive: '',
     confirmIconInactive: '',
     declineIsActive: false,
-    declineButtonSize: 'md',
+    declineButtonSize: null,
     declineButtonType: 'secondary',
     declineIconActive: '',
     declineIconInactive: '',
