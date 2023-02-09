@@ -1,22 +1,23 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
-import {
-  EbmmConfirmPayload,
-  EbmmDeclinePayload,
-  EbmmModalOptions,
-} from '../../services/modals-manager';
+import { EbmmConfirmPayload, EbmmDeclinePayload, EbmmModalOptions } from '../../services/modals-manager';
 
-export interface ModalArgs {
-  modalIsOpened: boolean;
-  options: EbmmModalOptions;
-  onConfirm: (v: EbmmConfirmPayload) => void;
-  onDecline: (v: EbmmDeclinePayload) => void;
+export interface ModalSignature {
+  Element: HTMLElement;
+  Args: {
+    modalIsOpened: boolean;
+    options: EbmmModalOptions;
+    onConfirm: (v: EbmmConfirmPayload) => void;
+    onDecline: (v: EbmmDeclinePayload) => void;
+  };
+  Blocks: undefined;
 }
+export type ModalArgs = ModalSignature['Args'];
 
 /**
  * @category Default Modals
  */
-export default class BaseModal extends Component<ModalArgs> {
+export default class BaseModal extends Component<ModalSignature> {
   /**
    * @category Action Handlers
    */
