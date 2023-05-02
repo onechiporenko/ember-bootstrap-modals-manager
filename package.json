@@ -37,6 +37,7 @@
   "dependencies": {
     "@embroider/macros": "^1.5.0",
     "@embroider/util": "^1.5.0",
+    "ember-auto-import": "^2.6.3",
     "ember-cli-babel": "^7.26.11",
     "ember-cli-htmlbars": "^6.2.0",
     "ember-cli-typescript": "^5.2.1",
@@ -82,7 +83,6 @@
     "bootstrap": "^5.0.0",
     "broccoli-asset-rev": "^3.0.0",
     "concurrently": "^8.0.1",
-    "ember-auto-import": "^2.6.3",
     "ember-bootstrap": "5.1.1",
     "ember-bootstrap-changeset-validations": "^5.0.0",
     "ember-bootstrap-power-select": "^3.0.1",
