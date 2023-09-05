@@ -1,6 +1,6 @@
-@import url("ember-bootstrap/bootstrap");
-@import url("ember-power-select/themes/bootstrap");
-@import url("ember-power-select");
+@import "ember-bootstrap/bootstrap";
+@import "ember-power-select/themes/bootstrap";
+@import "ember-power-select";
 
 pre[class*="language-"] {
   margin: 0;
