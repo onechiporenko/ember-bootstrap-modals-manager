@@ -115,7 +115,7 @@ export default class ProgressModal<T> extends Base {
     later(
       () =>
         this.confirm(this.settled ? [this.results, this.errors] : this.results),
-      500
+      500,
     );
   }
 }
