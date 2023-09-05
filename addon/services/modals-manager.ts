@@ -121,11 +121,11 @@ export default class ModalsManager<T> extends Service {
    */
   show(
     componentToRender: typeof Component,
-    options: EbmmModalOptions
+    options: EbmmModalOptions,
   ): RSVP.Promise<T> {
     assert(
       'Only one modal may be opened in the same time!',
-      !this.modalIsOpened
+      !this.modalIsOpened,
     );
     const component = componentToRender;
     const opts = Object.assign({}, this.defaultOptions, options);
@@ -165,7 +165,7 @@ export default class ModalsManager<T> extends Service {
   promptConfirm(options: EbmmModalOptions): RSVP.Promise<T> {
     assert(
       '"options.promptValue" must be defined and not empty',
-      !!options.promptValue
+      !!options.promptValue,
     );
     return this.show(PromptConfirmModal, options);
   }
@@ -184,7 +184,7 @@ export default class ModalsManager<T> extends Service {
   progress(options: EbmmModalOptions): RSVP.Promise<T> {
     assert(
       '`options.promises` must be an array',
-      options && isArray(options.promises)
+      options && isArray(options.promises),
     );
     return this.show(ProgressModal, options);
   }
@@ -196,7 +196,7 @@ export default class ModalsManager<T> extends Service {
   process(options: EbmmModalOptions): RSVP.Promise<T> {
     assert(
       '`options.process` must be defined',
-      !!(options && options?.process)
+      !!(options && options?.process),
     );
     return this.show(ProcessModal, options);
   }

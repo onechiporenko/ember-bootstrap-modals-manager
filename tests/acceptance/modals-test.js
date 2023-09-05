@@ -14,7 +14,7 @@ import {
 } from 'ember-modals-manager-internal/test-support';
 
 const confirmButtonState = getConfirmButtonState(
-  '.modal-footer button:last-child'
+  '.modal-footer button:last-child',
 );
 const confirmModal = getConfirmModal('.modal-footer button:last-child');
 const declineModal = getDeclineModal('.modal-footer button');
@@ -31,15 +31,14 @@ module('Acceptance | modals', function (hooks) {
   setupApplicationTest(hooks);
 
   test('alert-modal', async function (assert) {
-    assert.expect(6);
     await visit('/demo');
     await openModal('alert');
     await modalIsOpened(assert, true);
     assert.ok(
       await find('.modal-header').innerText.includes(
-        'Custom Alert Modal Title'
+        'Custom Alert Modal Title',
       ),
-      `header has "Custom Alert Modal Title"`
+      `header has "Custom Alert Modal Title"`,
     );
     customModalText(assert, 'header', 'Custom Alert Modal Title');
     customModalText(assert, 'body', 'Custom Alert Modal Body');
@@ -49,7 +48,6 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('Custom alert-modal', async function (assert) {
-    assert.expect(6);
     await visit('/demo');
     await openModal('custom-alert');
     await modalIsOpened(assert, true);
@@ -62,7 +60,6 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('confirm-modal', async function (assert) {
-    assert.expect(8);
     await visit('/demo');
     await openModal('confirm');
     await modalIsOpened(assert, true);
@@ -80,7 +77,6 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('Custom confirm-modal', async function (assert) {
-    assert.expect(9);
     await visit('/demo');
     await openModal('custom-confirm');
     await modalIsOpened(assert, true);
@@ -99,7 +95,6 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('prompt-modal', async function (assert) {
-    assert.expect(9);
     await visit('/demo');
     await openModal('prompt');
     await modalIsOpened(assert, true);
@@ -119,7 +114,6 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('prompt-modal with disabled Confirm button', async function (assert) {
-    assert.expect(5);
     await visit('/demo');
     await click('.disallow-empty input');
     await openModal('prompt');
@@ -133,7 +127,6 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('Custom prompt-modal', async function (assert) {
-    assert.expect(9);
     await visit('/demo');
     await openModal('custom-prompt');
     await modalIsOpened(assert, true);
@@ -145,7 +138,7 @@ module('Acceptance | modals', function (hooks) {
     await modalIsOpened(assert, false);
     await lastLogMessageAssert(
       assert,
-      'Custom Prompt was confirmed (with "test")'
+      'Custom Prompt was confirmed (with "test")',
     );
 
     await openModal('custom-prompt');
@@ -156,7 +149,6 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('Custom prompt-modal with disabled Confirm button', async function (assert) {
-    assert.expect(5);
     await visit('/demo');
     await click('.disallow-empty input');
     await openModal('custom-prompt');
@@ -170,7 +162,6 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('prompt-confirm-modal', async function (assert) {
-    assert.expect(12);
     await visit('/demo');
     await openModal('prompt-confirm');
     await modalIsOpened(assert, true);
@@ -184,7 +175,7 @@ module('Acceptance | modals', function (hooks) {
     await modalIsOpened(assert, false);
     await lastLogMessageAssert(
       assert,
-      'Prompt-Confirm was confirmed (with "modal")'
+      'Prompt-Confirm was confirmed (with "modal")',
     );
 
     await openModal('prompt-confirm');
@@ -196,7 +187,6 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('Custom prompt-confirm-modal', async function (assert) {
-    assert.expect(13);
     await visit('/demo');
     await openModal('custom-prompt-confirm');
     await modalIsOpened(assert, true);
@@ -211,7 +201,7 @@ module('Acceptance | modals', function (hooks) {
     await modalIsOpened(assert, false);
     await lastLogMessageAssert(
       assert,
-      'Custom Prompt-Confirm was confirmed (with "modal")'
+      'Custom Prompt-Confirm was confirmed (with "modal")',
     );
 
     await openModal('custom-prompt-confirm');
@@ -223,7 +213,6 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('check-confirm-modal', async function (assert) {
-    assert.expect(12);
     await visit('/demo');
     await openModal('check-confirm');
     await modalIsOpened(assert, true);
@@ -246,7 +235,6 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('Custom check-confirm-modal', async function (assert) {
-    assert.expect(12);
     await visit('/demo');
     await openModal('custom-check-confirm');
     await modalIsOpened(assert, true);
@@ -269,7 +257,6 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('progress-modal (success)', async function (assert) {
-    assert.expect(5);
     await visit('/demo');
     await openModal('progress');
     const done = assert.async();
@@ -280,14 +267,13 @@ module('Acceptance | modals', function (hooks) {
       await modalIsOpened(assert, false);
       await lastLogMessageAssert(
         assert,
-        'Progress was finished (with [0,1,2,3,4])'
+        'Progress was finished (with [0,1,2,3,4])',
       );
       return done();
     }, 6500);
   });
 
   test('progress-modal (error)', async function (assert) {
-    assert.expect(7);
     await visit('/demo');
     await click('.progress-will-fail input');
     await openModal('progress');
@@ -300,19 +286,18 @@ module('Acceptance | modals', function (hooks) {
       await modalIsOpened(assert, true);
       assert.notOk(
         find('.modal-body .progress-bar'),
-        'Progress bar does not exist'
+        'Progress bar does not exist',
       );
       customModalText(assert, 'body', 'Promise was rejected');
       await lastLogMessageAssert(
         assert,
-        'Progress was failed (completed [0,1]). Error - "Promise was rejected"'
+        'Progress was failed (completed [0,1]). Error - "Promise was rejected"',
       );
       return done();
     }, 3500);
   });
 
   test('progress-modal (error settled)', async function (assert) {
-    assert.expect(3);
     await visit('/demo');
     await click('.progress-will-fail input');
     await click('.progress-settled input');
@@ -323,14 +308,13 @@ module('Acceptance | modals', function (hooks) {
       await modalIsOpened(assert, false);
       await lastLogMessageAssert(
         assert,
-        'Progress was finished (with [[0,1,2,3,4],["Promise was rejected"]])'
+        'Progress was finished (with [[0,1,2,3,4],["Promise was rejected"]])',
       );
       return done();
     }, 7500);
   });
 
   test('progress-modal (cancelable)', async function (assert) {
-    assert.expect(3);
     await visit('/demo');
     await click('.progress-cancelable input');
     await openModal('progress');
@@ -341,14 +325,13 @@ module('Acceptance | modals', function (hooks) {
       await modalIsOpened(assert, false);
       await lastLogMessageAssert(
         assert,
-        'Progress was finished (with [0,1,2,3])'
+        'Progress was finished (with [0,1,2,3])',
       );
       return done();
     }, 5000);
   });
 
   test('Custom progress-modal (success)', async function (assert) {
-    assert.expect(9);
     await visit('/demo');
     await openModal('custom-progress');
     const done = assert.async();
@@ -363,14 +346,13 @@ module('Acceptance | modals', function (hooks) {
       await modalIsOpened(assert, false);
       await lastLogMessageAssert(
         assert,
-        'Progress was finished (with [0,1,2,3,4])'
+        'Progress was finished (with [0,1,2,3,4])',
       );
       return done();
     }, 6000);
   });
 
   test('process-modal (success)', async function (assert) {
-    assert.expect(5);
     await visit('/demo');
     await openModal('process');
     const done = assert.async();
@@ -378,7 +360,7 @@ module('Acceptance | modals', function (hooks) {
     customModalText(
       assert,
       'body',
-      'Some long process (you must add font-awesome to your project to use `fa`-icons)'
+      'Some long process (you must add font-awesome to your project to use `fa`-icons)',
     );
     assert.notOk(await find('.modal-footer button'), 'Footer has not buttons');
     setTimeout(async () => {
@@ -389,7 +371,6 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('process-modal (error)', async function (assert) {
-    assert.expect(3);
     await visit('/demo');
     await click('.process-will-fail input');
     await openModal('process');
@@ -403,7 +384,6 @@ module('Acceptance | modals', function (hooks) {
   });
 
   test('Custom process-modal', async function (assert) {
-    assert.expect(7);
     await visit('/demo');
     await openModal('custom-process');
     const done = assert.async();
@@ -413,7 +393,7 @@ module('Acceptance | modals', function (hooks) {
     customModalText(
       assert,
       'body',
-      'Some long process (you must add font-awesome to your project to use `fa`-icons)'
+      'Some long process (you must add font-awesome to your project to use `fa`-icons)',
     );
     customModalText(assert, 'footer', 'Custom Process Footer Component');
     setTimeout(() => {

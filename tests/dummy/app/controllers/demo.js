@@ -41,7 +41,7 @@ export default class DemoController extends Controller {
     return JSON.stringify(
       this.options,
       (k, v) => (typeof v === 'function' ? 'Function' : v),
-      2
+      2,
     );
   }
 
@@ -113,7 +113,7 @@ export default class DemoController extends Controller {
     const list = [];
     for (let i = 0; i < count; i++) {
       list.push(
-        () => new Promise((resolve) => setTimeout(() => resolve(i), 1000))
+        () => new Promise((resolve) => setTimeout(() => resolve(i), 1000)),
       );
     }
     if (this.progressWillFail) {
@@ -122,8 +122,8 @@ export default class DemoController extends Controller {
         0,
         () =>
           new Promise((resolve, reject) =>
-            setTimeout(() => reject('Promise was rejected'), 1000)
-          )
+            setTimeout(() => reject('Promise was rejected'), 1000),
+          ),
       );
     }
     return A(list);
@@ -241,7 +241,7 @@ export default class DemoController extends Controller {
     this.modalsManager
       .promptConfirm(options)
       .then((v) =>
-        this.addMessage(`Prompt-Confirm was confirmed (with "${v}")`)
+        this.addMessage(`Prompt-Confirm was confirmed (with "${v}")`),
       )
       .catch(() => this.addMessage('Prompt-Confirm was declined'));
   }
@@ -297,13 +297,13 @@ export default class DemoController extends Controller {
     this.modalsManager
       .progress(options)
       .then((v) =>
-        this.addMessage(`Progress was finished (with ${JSON.stringify(v)})`)
+        this.addMessage(`Progress was finished (with ${JSON.stringify(v)})`),
       )
       .catch(([result, error]) => {
         this.addMessage(
           `Progress was failed (completed ${JSON.stringify(
-            result
-          )}). Error - "${error}"`
+            result,
+          )}). Error - "${error}"`,
         );
         return this.modalsManager.alert({
           title: 'Something goes wrong',
@@ -329,7 +329,7 @@ export default class DemoController extends Controller {
             this.processWillFail
               ? reject('some error')
               : resolve('some result');
-          }, 3000)
+          }, 3000),
         ),
     };
     this.options = options;
@@ -397,7 +397,7 @@ export default class DemoController extends Controller {
     this.modalsManager
       .promptConfirm(options)
       .then((v) =>
-        this.addMessage(`Custom Prompt-Confirm was confirmed (with "${v}")`)
+        this.addMessage(`Custom Prompt-Confirm was confirmed (with "${v}")`),
       )
       .catch(() => this.addMessage('Custom Prompt-Confirm was declined'));
   }
@@ -440,13 +440,13 @@ export default class DemoController extends Controller {
     this.modalsManager
       .progress(options)
       .then((v) =>
-        this.addMessage(`Progress was finished (with ${JSON.stringify(v)})`)
+        this.addMessage(`Progress was finished (with ${JSON.stringify(v)})`),
       )
       .catch(([result, error]) => {
         this.addMessage(
           `Progress was failed (completed ${JSON.stringify(
-            result
-          )}). Error - "${error}"`
+            result,
+          )}). Error - "${error}"`,
         );
         return this.modalsManager.alert({
           title: 'Something goes wrong',
@@ -471,7 +471,7 @@ export default class DemoController extends Controller {
             this.processWillFail
               ? reject('some error')
               : resolve('some result');
-          }, 3000)
+          }, 3000),
         ),
     };
     this.options = options;
@@ -492,8 +492,8 @@ export default class DemoController extends Controller {
             firstName: v.firstName,
             lastName: v.lastName,
             email: v.email,
-          })})`
-        )
+          })})`,
+        ),
       )
       .catch(() => this.addMessage('Modal with form declined'));
   }
