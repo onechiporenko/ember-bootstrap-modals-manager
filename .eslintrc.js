@@ -58,7 +58,6 @@ module.exports = {
         browser: false,
         node: true,
       },
-      plugins: ['n'],
       extends: ['plugin:n/recommended'],
     },
     {
