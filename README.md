@@ -29,6 +29,6 @@ Add next to your `application.hbs`:
 
 ## Demo and docs
 
-Check [demo-page](https://onechiporenko.github.io/ember-bootstrap-modals-manager/demo)
+Check [demo-page](https://onechiporenko.github.io/ember-bootstrap-modals-manager/#/demo)
 
-Check [docs-page](https://onechiporenko.github.io/ember-bootstrap-modals-manager/docs)
+Check [docs-page](https://onechiporenko.github.io/ember-bootstrap-modals-manager/#/docs)
