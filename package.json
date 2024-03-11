@@ -86,7 +86,7 @@
     "concurrently": "^8.2.2",
     "ember-bootstrap": "^6.1.0",
     "ember-bootstrap-changeset-validations": "^5.0.0",
-    "ember-bootstrap-power-select": "^3.0.1",
+    "ember-bootstrap-power-select": "^5.0.0",
     "ember-changeset": "^4.0.0-beta.5",
     "ember-changeset-validations": "^4.0.0-beta.3",
     "ember-cli": "~5.7.0",
