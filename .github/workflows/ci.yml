@@ -77,3 +77,31 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Run Tests
         run: ./node_modules/.bin/ember try:one ${{ matrix.try-scenario }}
+
+  validate-success:
+    needs:
+      ["try-scenarios"]
+    runs-on: ubuntu-latest
+    outputs:
+      success: ${{ steps.set-output.outputs.success }}
+    steps:
+      - id: set-output
+        run: echo "success=true" >> $GITHUB_OUTPUT
+
+  notify-success:
+    name: CI pipeline succeeded
+    needs: ["validate-success"]
+    if: always() # Always run, so we never skip this required check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Note Pipeline Passed
+        run: |
+          msgPrefix="Pipeline #${{ github.run_id }} finished"
+          passed="${{ needs.validate-success.outputs.success }}"
+          if [[ "$passed" == "true" ]]; then
+            echo "${msgPrefix}, PR passed all tests."
+            exit 0
+          else
+            echo "${msgPrefix}, but with failures. Check left sidebar summary to see which jobs failed."
+            exit 1
+          fi
