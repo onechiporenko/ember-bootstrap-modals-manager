@@ -37,7 +37,7 @@
   "dependencies": {
     "@embroider/macros": "^1.5.0",
     "@embroider/util": "^1.5.0",
-    "@babel/core": "^7.24.0",
+    "@babel/core": "^7.24.4",
     "ember-auto-import": "^2.7.2",
     "ember-cli-babel": "^8.2.0",
     "ember-cli-htmlbars": "^6.3.0",
@@ -45,8 +45,8 @@
     "tracked-built-ins": "^3.1.0"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.23.10",
-    "@babel/plugin-proposal-decorators": "^7.24.0",
+    "@babel/eslint-parser": "^7.24.1",
+    "@babel/plugin-proposal-decorators": "^7.24.1",
     "@ember/optional-features": "^2.1.0",
     "@ember/string": "^3.1.1",
     "@ember/test-helpers": "^3.3.0",
@@ -89,7 +89,7 @@
     "ember-bootstrap-power-select": "^5.0.0",
     "ember-changeset": "^4.0.0-beta.5",
     "ember-changeset-validations": "^4.0.0-beta.3",
-    "ember-cli": "~5.7.0",
+    "ember-cli": "~5.8.1",
     "ember-cli-clean-css": "^3.0.0",
     "ember-cli-dependency-checker": "^3.3.2",
     "ember-cli-inject-live-reload": "^2.1.0",
@@ -101,14 +101,14 @@
     "ember-focus-trap": "1.1.0",
     "ember-load-initializers": "^2.1.2",
     "ember-modals-manager-internal": "^3.0.0",
-    "ember-page-title": "^8.2.2",
+    "ember-page-title": "^8.2.3",
     "ember-power-select": "^7.1.0",
     "ember-prism": "^0.13.0",
     "ember-qunit": "^8.0.2",
     "ember-resolver": "^11.0.1",
-    "ember-source": "~5.7.0",
+    "ember-source": "~5.8.0",
     "ember-source-channel-url": "^3.0.0",
-    "ember-template-lint": "^6.0.0",
+    "ember-template-lint": "^5.13.0",
     "ember-try": "^3.0.0",
     "ember-welcome-page": "^7.0.2",
     "eslint": "^8.57.0",
@@ -129,7 +129,7 @@
     "typedoc": "0.25.13",
     "typedoc-plugin-rename-defaults": "^0.7.0",
     "typescript": "^5.0.4",
-    "webpack": "^5.90.3"
+    "webpack": "^5.91.0"
   },
   "peerDependencies": {
     "ember-source": ">= 4.0.0"
