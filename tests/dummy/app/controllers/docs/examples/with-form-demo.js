@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // BEGIN-SNIPPET with-form-demo-controller
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
