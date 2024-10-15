@@ -1,8 +1,6 @@
 import { tracked, TrackedArray } from 'tracked-built-ins';
 import { action } from '@ember/object';
-import { later } from '@ember/runloop';
 import { A } from '@ember/array';
-import { run } from '@ember/runloop';
 import RSVP from 'rsvp';
 import Base, { ModalArgs } from './base';
 import {
@@ -10,6 +8,9 @@ import {
   EbmmDeclinePayload,
   EbmmPromiseFactory,
 } from '../../services/modals-manager';
+import { runTask } from 'ember-lifeline';
+
+const noResult = Symbol('no-result');
 
 /**
  * @category Default Modals
@@ -87,7 +88,7 @@ export default class ProgressModal<T> extends Base {
       .catch((error) => {
         if (this.settled) {
           this.errors.push(error);
-          this._next();
+          this._next(noResult);
         } else {
           this.decline([this.results, error]);
         }
@@ -95,9 +96,9 @@ export default class ProgressModal<T> extends Base {
       });
   }
 
-  _next(result?: EbmmConfirmPayload): void {
-    run(() => {
-      if (arguments.length === 1) {
+  _next(result: unknown): void {
+    runTask(this, () => {
+      if (result !== noResult) {
         this.results.push(result);
       }
       this.done++;
@@ -112,7 +113,8 @@ export default class ProgressModal<T> extends Base {
   }
 
   _complete(): void {
-    later(
+    runTask(
+      this,
       () =>
         this.confirm(this.settled ? [this.results, this.errors] : this.results),
       500,

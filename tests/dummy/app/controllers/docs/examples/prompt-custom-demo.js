@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // BEGIN-SNIPPET prompt-custom-demo-controller
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
