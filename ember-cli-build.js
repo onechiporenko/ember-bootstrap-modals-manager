@@ -9,6 +9,7 @@ module.exports = function (defaults) {
       importBootstrapCSS: false,
     },
     'ember-cli-babel': {
+      enableTypeScriptTransform: true,
       includePolyfill: true,
     },
     'ember-prism': {
@@ -16,11 +17,6 @@ module.exports = function (defaults) {
       components: ['scss', 'javascript', 'handlebars', 'markup-templating'],
     },
     snippetSearchPaths: ['app', 'addon', 'tests/dummy/app'],
-    outputPaths: {
-      app: {
-        css: {},
-      },
-    },
   });
 
   /*
