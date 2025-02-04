@@ -1,14 +1,15 @@
-import { tracked, TrackedArray } from 'tracked-built-ins';
-import { action } from '@ember/object';
 import { A } from '@ember/array';
+import { action } from '@ember/object';
+import { runTask } from 'ember-lifeline';
 import RSVP from 'rsvp';
-import Base, { ModalArgs } from './base';
+import { tracked, TrackedArray } from 'tracked-built-ins';
+
 import {
   EbmmConfirmPayload,
   EbmmDeclinePayload,
   EbmmPromiseFactory,
 } from '../../services/modals-manager';
-import { runTask } from 'ember-lifeline';
+import Base, { ModalArgs } from './base';
 
 const noResult = Symbol('no-result');
 

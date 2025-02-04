@@ -1,4 +1,5 @@
 import { tracked } from '@glimmer/tracking';
+
 import PromptModal from './prompt';
 
 /**

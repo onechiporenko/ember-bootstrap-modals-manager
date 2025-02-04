@@ -2,8 +2,8 @@
 import { tracked } from '@glimmer/tracking';
 import BaseModal from 'ember-bootstrap-modals-manager/components/ebmm-modals-container/base';
 import {
-  validatePresence,
   validateFormat,
+  validatePresence,
 } from 'ember-changeset-validations/validators';
 
 const validations = {

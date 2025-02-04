@@ -1,30 +1,31 @@
-import { tracked, TrackedArray } from 'tracked-built-ins';
-import Controller from '@ember/controller';
-import { inject as service } from '@ember/service';
-import { action, set } from '@ember/object';
 import { A } from '@ember/array';
+import Controller from '@ember/controller';
+import { action, set } from '@ember/object';
+import { inject as service } from '@ember/service';
 import { ensureSafeComponent } from '@embroider/util';
-import CustomAlertHeader from '../components/custom-alert-header';
+import { tracked, TrackedArray } from 'tracked-built-ins';
+
 import CustomAlertBody from '../components/custom-alert-body';
 import CustomAlertFooter from '../components/custom-alert-footer';
-import CustomConfirmHeader from '../components/custom-confirm-header';
-import CustomConfirmBody from '../components/custom-confirm-body';
-import CustomConfirmFooter from '../components/custom-confirm-footer';
-import CustomPromptHeader from '../components/custom-prompt-header';
-import CustomPromptBody from '../components/custom-prompt-body';
-import CustomPromptFooter from '../components/custom-prompt-footer';
-import CustomPromptConfirmHeader from '../components/custom-prompt-confirm-header';
-import CustomPromptConfirmBody from '../components/custom-prompt-confirm-body';
-import CustomPromptConfirmFooter from '../components/custom-prompt-confirm-footer';
-import CustomCheckConfirmHeader from '../components/custom-check-confirm-header';
+import CustomAlertHeader from '../components/custom-alert-header';
 import CustomCheckConfirmBody from '../components/custom-check-confirm-body';
 import CustomCheckConfirmFooter from '../components/custom-check-confirm-footer';
-import CustomProgressHeader from '../components/custom-progress-header';
+import CustomCheckConfirmHeader from '../components/custom-check-confirm-header';
+import CustomConfirmBody from '../components/custom-confirm-body';
+import CustomConfirmFooter from '../components/custom-confirm-footer';
+import CustomConfirmHeader from '../components/custom-confirm-header';
+import CustomProcessBody from '../components/custom-process-body';
+import CustomProcessFooter from '../components/custom-process-footer';
+import CustomProcessHeader from '../components/custom-process-header';
 import CustomProgressBody from '../components/custom-progress-body';
 import CustomProgressFooter from '../components/custom-progress-footer';
-import CustomProcessFooter from '../components/custom-process-footer';
-import CustomProcessBody from '../components/custom-process-body';
-import CustomProcessHeader from '../components/custom-process-header';
+import CustomProgressHeader from '../components/custom-progress-header';
+import CustomPromptBody from '../components/custom-prompt-body';
+import CustomPromptConfirmBody from '../components/custom-prompt-confirm-body';
+import CustomPromptConfirmFooter from '../components/custom-prompt-confirm-footer';
+import CustomPromptConfirmHeader from '../components/custom-prompt-confirm-header';
+import CustomPromptFooter from '../components/custom-prompt-footer';
+import CustomPromptHeader from '../components/custom-prompt-header';
 import ModalWithForm from '../components/modal-with-form';
 
 export default class DemoController extends Controller {
@@ -326,7 +327,7 @@ export default class DemoController extends Controller {
       process: () =>
         new Promise((resolve, reject) =>
           setTimeout(() => {
-            this.processWillFail
+            return this.processWillFail
               ? reject('some error')
               : resolve('some result');
           }, 3000),
@@ -468,7 +469,7 @@ export default class DemoController extends Controller {
       process: () =>
         new Promise((resolve, reject) =>
           setTimeout(() => {
-            this.processWillFail
+            return this.processWillFail
               ? reject('some error')
               : resolve('some result');
           }, 3000),

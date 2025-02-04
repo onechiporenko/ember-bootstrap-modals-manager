@@ -1,17 +1,17 @@
-import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
+import { isArray } from '@ember/array';
 import { assert } from '@ember/debug';
 import Service from '@ember/service';
-import { isArray } from '@ember/array';
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 import RSVP, { defer } from 'rsvp';
 
 import AlertModal from '../components/ebmm-modals-container/alert';
-import ConfirmModal from '../components/ebmm-modals-container/confirm';
-import PromptModal from '../components/ebmm-modals-container/prompt';
-import PromptConfirmModal from '../components/ebmm-modals-container/prompt-confirm';
 import CheckConfirmModal from '../components/ebmm-modals-container/check-confirm';
+import ConfirmModal from '../components/ebmm-modals-container/confirm';
 import ProcessModal from '../components/ebmm-modals-container/process';
 import ProgressModal from '../components/ebmm-modals-container/progress';
+import PromptModal from '../components/ebmm-modals-container/prompt';
+import PromptConfirmModal from '../components/ebmm-modals-container/prompt-confirm';
 
 export declare type EbmmPromiseFactory = () => RSVP.Promise<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 export declare type EbmmConfirmPayload = any; // eslint-disable-line @typescript-eslint/no-explicit-any
@@ -206,7 +206,9 @@ export default class ModalsManager<T> extends Service {
    */
   onConfirmClick(v: EbmmConfirmPayload): void {
     this.modalIsOpened = false;
-    this.modalDefer && this.modalDefer.resolve(v);
+    if (this.modalDefer) {
+      this.modalDefer.resolve(v);
+    }
     this.clearOptions();
   }
 
@@ -215,8 +217,10 @@ export default class ModalsManager<T> extends Service {
    */
   onDeclineClick(v: EbmmDeclinePayload): void {
     this.modalIsOpened = false;
-    // eslint-disable-next-line ember/no-array-prototype-extensions
-    this.modalDefer && this.modalDefer.reject(v);
+
+    if (this.modalDefer) {
+      this.modalDefer.reject(v);
+    }
     this.clearOptions();
   }
 

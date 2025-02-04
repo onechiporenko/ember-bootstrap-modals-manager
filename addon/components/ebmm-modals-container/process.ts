@@ -1,8 +1,8 @@
-import Base, { ModalArgs } from './base';
 import {
   EbmmConfirmPayload,
   EbmmDeclinePayload,
 } from '../../services/modals-manager';
+import Base, { ModalArgs } from './base';
 
 /**
  * @category Default Modals

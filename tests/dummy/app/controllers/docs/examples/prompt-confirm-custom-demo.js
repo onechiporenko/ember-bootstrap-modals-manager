@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // BEGIN-SNIPPET prompt-confirm-custom-demo-controller
 import Controller from '@ember/controller';
-import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default class DocsExamplesPromptConfirmCustomDemoController extends Controller {
   @service()

@@ -3,6 +3,7 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
+
 import ModalWithForm from '../../../components/modal-with-form';
 
 export default class DocsExamplesWithFormDemoController extends Controller {
