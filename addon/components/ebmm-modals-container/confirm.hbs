@@ -11,7 +11,8 @@
   @onSubmit={{this.confirm}}
   @onHidden={{this.decline}}
   class={{@options.modalClass}}
-as |modal|>
+  as |modal|
+>
   <modal.header @closeButton={{@options.closeButton}}>
     {{#if @options.titleComponent}}
       {{component
@@ -52,7 +53,8 @@ as |modal|>
         @iconActive={{@options.declineIconActive}}
         @iconInactive={{@options.declineIconInactive}}
         @size={{@options.declineButtonSize}}
-        @onClick={{modal.close}} />
+        @onClick={{modal.close}}
+      />
       <BsButton
         @type={{@options.confirmButtonType}}
         @defaultText={{@options.confirmButtonDefaultText}}
@@ -63,7 +65,8 @@ as |modal|>
         @iconActive={{@options.confirmIconActive}}
         @size={{@options.confirmButtonSize}}
         @iconInactive={{@options.confirmIconInactive}}
-        @onClick={{modal.submit}} />
+        @onClick={{modal.submit}}
+      />
     {{/if}}
   </modal.footer>
 </BsModal>

@@ -1,6 +1,9 @@
 {{! BEGIN-SNIPPET components-custom-progress-body }}
 <p class="alert alert-info">
-  Custom Progress Body Component {{@done}} / {{@overall}}
+  Custom Progress Body Component
+  {{@done}}
+  /
+  {{@overall}}
 </p>
 <BsProgress as |p|>
   <p.bar
@@ -8,7 +11,7 @@
     @showLabel={{@options.showLabel}}
     @striped={{@options.striped}}
     @animate={{@options.animate}}
-    @type={{@options.type}}>
-  </p.bar>
+    @type={{@options.type}}
+  />
 </BsProgress>
 {{! END-SNIPPET }}

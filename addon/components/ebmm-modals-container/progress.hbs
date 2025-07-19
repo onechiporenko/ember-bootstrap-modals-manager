@@ -11,7 +11,8 @@
   @onSubmit={{this.confirm}}
   @onHidden={{this.decline}}
   class={{@options.modalClass}}
-as |modal|>
+  as |modal|
+>
   <modal.header @closeButton={{false}}>
     {{#if @options.titleComponent}}
       {{component
@@ -40,7 +41,8 @@ as |modal|>
             @showLabel={{@options.showLabel}}
             @striped={{@options.striped}}
             @animate={{@options.animate}}
-            @type={{@options.type}} />
+            @type={{@options.type}}
+          />
         </BsProgress>
       {{/if}}
     {{/if}}
@@ -56,7 +58,8 @@ as |modal|>
         <BsButton
           @onClick={{this.cancel}}
           @defaultText={{@options.cancel}}
-          disabled={{this.canceled}} />
+          disabled={{this.canceled}}
+        />
       {{/if}}
     {{/if}}
   </modal.footer>

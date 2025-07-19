@@ -1,26 +1,31 @@
-<BsNavbar
-  @type="dark"
-  @backgroundColor="dark"
-  @container="lg"
-  as |navbar|
->
+<BsNavbar @type="dark" @backgroundColor="dark" @container="lg" as |navbar|>
   <LinkTo @route="index" class="navbar-brand">Ember Bootstrap Modals Manager</LinkTo>
-  <navbar.toggle/>
+  <navbar.toggle />
   <navbar.content>
     <navbar.nav class="me-auto" as |nav|>
       <nav.item>
-      <nav.link-to @route="docs.install">Docs</nav.link-to>
+        <nav.link-to @route="docs.install">Docs</nav.link-to>
       </nav.item>
       <nav.item>
-        <a class="nav-link" rel="noopener noreferrer" target="_blank" href="/ember-bootstrap-modals-manager/api-docs">API Docs</a>
+        <a
+          class="nav-link"
+          rel="noopener noreferrer"
+          target="_blank"
+          href="/ember-bootstrap-modals-manager/api-docs"
+        >API Docs</a>
       </nav.item>
       <nav.item>
-      <nav.link-to @route="demo">Demo</nav.link-to>
+        <nav.link-to @route="demo">Demo</nav.link-to>
       </nav.item>
     </navbar.nav>
     <navbar.nav as |nav|>
       <nav.item>
-        <a class="nav-link" target="_blank" href="https://github.com/onechiporenko/ember-bootstrap-modals-manager" rel="noopener noreferrer"><i class="bi bi-github"></i></a>
+        <a
+          class="nav-link"
+          target="_blank"
+          href="https://github.com/onechiporenko/ember-bootstrap-modals-manager"
+          rel="noopener noreferrer"
+        ><i class="bi bi-github"></i></a>
       </nav.item>
     </navbar.nav>
   </navbar.content>
@@ -28,4 +33,4 @@
 <div class="container-lg mt-4">
   {{outlet}}
 </div>
-<ModalsContainer/>
+<ModalsContainer />

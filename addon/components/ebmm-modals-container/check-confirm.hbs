@@ -11,7 +11,8 @@
   @onSubmit={{this.confirm}}
   @onHidden={{this.decline}}
   class={{@options.modalClass}}
-as |modal|>
+  as |modal|
+>
   <modal.header @closeButton={{@options.closeButton}}>
     {{#if @options.titleComponent}}
       {{component
@@ -31,14 +32,12 @@ as |modal|>
       }}
     {{else}}
       <p>{{@options.body}}</p>
-      <BsForm
-        @model={{this}}
-        @onSubmit={{this.confirm}}
-      as |form|>
+      <BsForm @model={{this}} @onSubmit={{this.confirm}} as |form|>
         <form.element
           @controlType="checkbox"
           @property="promptValue"
-          @label={{@options.inputLabel}} />
+          @label={{@options.inputLabel}}
+        />
       </BsForm>
     {{/if}}
   </modal.body>
@@ -63,7 +62,8 @@ as |modal|>
         @iconActive={{@options.declineIconActive}}
         @iconInactive={{@options.declineIconInactive}}
         @size={{@options.declineButtonSize}}
-        @onClick={{modal.close}} />
+        @onClick={{modal.close}}
+      />
       <BsButton
         @type={{@options.confirmButtonType}}
         disabled={{this.confirmDisabled}}
@@ -75,7 +75,8 @@ as |modal|>
         @size={{@options.confirmButtonSize}}
         @iconActive={{@options.confirmIconActive}}
         @iconInactive={{@options.confirmIconInactive}}
-        @onClick={{modal.submit}} />
+        @onClick={{modal.submit}}
+      />
     {{/if}}
   </modal.footer>
 </BsModal>

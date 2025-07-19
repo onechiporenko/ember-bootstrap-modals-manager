@@ -1,29 +1,55 @@
 <h1><code>confirm</code></h1>
 
-<p>Similar to the <code>window.confirm</code>. It shows modal with two buttons ("Yes" and "No").</p>
+<p>Similar to the
+  <code>window.confirm</code>. It shows modal with two buttons ("Yes" and "No").</p>
 
 <p>It's used to the ask user about confirmation for some action.</p>
 
-<CodeBlockExample @snippetName="confirm-demo-controller.js" @title="Confirm Modal"/>
+<CodeBlockExample
+  @snippetName="confirm-demo-controller.js"
+  @title="Confirm Modal"
+/>
 
 <h2>Customization</h2>
 
-<CodeBlockExample @snippetName="confirm-custom-demo-controller.js" @title="Custom Confirm Modal"/>
+<CodeBlockExample
+  @snippetName="confirm-custom-demo-controller.js"
+  @title="Custom Confirm Modal"
+/>
 
 <h3>Title Component</h3>
 
-<p>It takes a single parameter <code>options</code>. Its value is an object passed to the <code>modalsManager.confirm</code>.</p>
+<p>It takes a single parameter
+  <code>options</code>. Its value is an object passed to the
+  <code>modalsManager.confirm</code>.</p>
 
-<CodeBlockExample @snippetName="components-custom-confirm-header.hbs" @title="components/custom-confirm-header.hbs"/>
+<CodeBlockExample
+  @snippetName="components-custom-confirm-header.hbs"
+  @title="components/custom-confirm-header.hbs"
+/>
 
 <h3>Body Component</h3>
 
-<p>It takes a single parameter <code>options</code>. Its value is an object passed to the <code>modalsManager.confirm</code>.</p>
+<p>It takes a single parameter
+  <code>options</code>. Its value is an object passed to the
+  <code>modalsManager.confirm</code>.</p>
 
-<CodeBlockExample @snippetName="components-custom-confirm-body.hbs" @title="components/custom-confirm-body.hbs"/>
+<CodeBlockExample
+  @snippetName="components-custom-confirm-body.hbs"
+  @title="components/custom-confirm-body.hbs"
+/>
 
 <h3>Footer Component</h3>
 
-<p>It takes three parameters. First on is an <code>options</code> described before. Second one is an action <code>confirm</code> used to confirm modal. Third one is an action <code>decline</code> used to decline modal. Both of them may be used like:</p>
+<p>It takes three parameters. First on is an
+  <code>options</code>
+  described before. Second one is an action
+  <code>confirm</code>
+  used to confirm modal. Third one is an action
+  <code>decline</code>
+  used to decline modal. Both of them may be used like:</p>
 
-<CodeBlockExample @snippetName="components-custom-confirm-footer.hbs" @title="components/custom-confirm-footer.hbs"/>
+<CodeBlockExample
+  @snippetName="components-custom-confirm-footer.hbs"
+  @title="components/custom-confirm-footer.hbs"
+/>
