@@ -146,7 +146,7 @@ importers:
         version: 4.0.9
       bootstrap:
         specifier: ^5.3.3
-        version: 5.3.3(@popperjs/core@2.11.8)
+        version: 5.3.8(@popperjs/core@2.11.8)
       broccoli-asset-rev:
         specifier: ^3.0.0
         version: 3.0.0
@@ -2199,8 +2199,8 @@ packages:
   body@5.1.0:
     resolution: {integrity: sha512-chUsBxGRtuElD6fmw1gHLpvnKdVLK302peeFa9ZqAEk8TyzZ3fygLyUEDDPTJvL9+Bor0dIwn6ePOsRM2y0zQQ==}
 
-  bootstrap@5.3.3:
-    resolution: {integrity: sha512-8HLCdWgyoMguSO9o+aH+iuZ+aht+mzW0u3HIMzVu7Srrpv7EBBxTnrFlSCskwdY1+EOFQSm7uMJhNQHkdPcmjg==}
+  bootstrap@5.3.8:
+    resolution: {integrity: sha512-HP1SZDqaLDPwsNiqRqi5NcP0SSXciX2s9E+RyqJIIqGo+vJeN5AJVM98CXmW/Wux0nQ5L7jeWUdplCEf0Ee+tg==}
     peerDependencies:
       '@popperjs/core': ^2.11.8
 
@@ -8575,15 +8575,11 @@ snapshots:
       '@glimmer/manager': 0.92.4
       '@glimmer/runtime': 0.92.4
       '@types/ember': 4.0.11
-    transitivePeerDependencies:
-      - supports-color
 
   '@types/ember__modifier@4.0.9':
     dependencies:
       '@types/ember': 4.0.11
       '@types/ember__owner': 4.0.9
-    transitivePeerDependencies:
-      - supports-color
 
   '@types/ember__object@4.0.12':
     dependencies:
@@ -9281,7 +9277,7 @@ snapshots:
       raw-body: 1.1.7
       safe-json-parse: 1.0.1
 
-  bootstrap@5.3.3(@popperjs/core@2.11.8):
+  bootstrap@5.3.8(@popperjs/core@2.11.8):
     dependencies:
       '@popperjs/core': 2.11.8
 
