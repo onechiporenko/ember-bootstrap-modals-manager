@@ -287,7 +287,7 @@ importers:
         version: 0.26.9(typescript@5.9.3)
       typedoc-plugin-rename-defaults:
         specifier: ^0.7.0
-        version: 0.7.2(typedoc@0.26.9(typescript@5.9.3))
+        version: 0.7.3(typedoc@0.26.9(typescript@5.9.3))
       typescript:
         specifier: ^5.9.2
         version: 5.9.3
@@ -6445,10 +6445,10 @@ packages:
   typedarray-to-buffer@3.1.5:
     resolution: {integrity: sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==}
 
-  typedoc-plugin-rename-defaults@0.7.2:
-    resolution: {integrity: sha512-9oa1CsMN4p/xuVR2JW2YDD6xE7JcrIth3KAfjR8YBi6NnrDk2Q72o4lbArybLDjxKAkOzk7N1uUdGwJlooLEOg==}
+  typedoc-plugin-rename-defaults@0.7.3:
+    resolution: {integrity: sha512-fDtrWZ9NcDfdGdlL865GW7uIGQXlthPscURPOhDkKUe4DBQSRRFUf33fhWw41FLlsz8ZTeSxzvvuNmh54MynFA==}
     peerDependencies:
-      typedoc: '>=0.22.x <0.28.x'
+      typedoc: '>=0.22.x <0.29.x'
 
   typedoc@0.26.9:
     resolution: {integrity: sha512-Rc7QpWL7EtmrT8yxV0GmhOR6xHgFnnhphbD9Suti3fz3um7ZOrou6q/g9d6+zC5PssTLZmjaW4Upmzv8T1rCcQ==}
@@ -8575,15 +8575,11 @@ snapshots:
       '@glimmer/manager': 0.92.4
       '@glimmer/runtime': 0.92.4
       '@types/ember': 4.0.11
-    transitivePeerDependencies:
-      - supports-color
 
   '@types/ember__modifier@4.0.9':
     dependencies:
       '@types/ember': 4.0.11
       '@types/ember__owner': 4.0.9
-    transitivePeerDependencies:
-      - supports-color
 
   '@types/ember__object@4.0.12':
     dependencies:
@@ -14771,7 +14767,7 @@ snapshots:
     dependencies:
       is-typedarray: 1.0.0
 
-  typedoc-plugin-rename-defaults@0.7.2(typedoc@0.26.9(typescript@5.9.3)):
+  typedoc-plugin-rename-defaults@0.7.3(typedoc@0.26.9(typescript@5.9.3)):
     dependencies:
       camelcase: 8.0.0
       typedoc: 0.26.9(typescript@5.9.3)
