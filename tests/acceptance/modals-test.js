@@ -11,7 +11,7 @@ import {
   getPromptValue,
   lastLogMessageAssert,
   openModal,
-} from '../../addon-test-support';
+} from 'ember-bootstrap-modals-manager/test-support';
 
 const confirmButtonState = getConfirmButtonState(
   '.modal-footer button:last-child',

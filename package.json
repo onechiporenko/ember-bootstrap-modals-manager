@@ -144,5 +144,10 @@
   "ember-addon": {
     "configPath": "tests/dummy/config"
   },
-  "homepage": "https://onechiporenko.github.io/ember-bootstrap-modals-manager"
+  "homepage": "https://onechiporenko.github.io/ember-bootstrap-modals-manager",
+  "pnpm": {
+    "overrides": {
+      "@glimmer/component": "^2.0.0"
+    }
+  }
 }
