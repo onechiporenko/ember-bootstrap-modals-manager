@@ -1,5 +1,6 @@
 import { A } from '@ember/array';
 import { action } from '@ember/object';
+import type Owner from '@ember/owner';
 import { runTask } from 'ember-lifeline';
 import RSVP from 'rsvp';
 import { tracked, TrackedArray } from 'tracked-built-ins';
@@ -10,7 +11,6 @@ import {
   type EbmmPromiseFactory,
 } from '../../services/modals-manager';
 import Base, { type ModalArgs } from './base';
-import type Owner from '@ember/owner';
 
 const noResult = Symbol('no-result');
 

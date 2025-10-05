@@ -1,4 +1,5 @@
 import type Owner from '@ember/owner';
+
 import {
   type EbmmConfirmPayload,
   type EbmmDeclinePayload,
