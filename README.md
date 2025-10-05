@@ -20,12 +20,12 @@ Add next to your `application.hbs`:
 
 ## Compatibility
 
-* v2.* is for `ember-bootstrap@2.x`
-* v3.* is for `ember-bootstrap@3.x`
-* v4.* is for `ember-bootstrap@4.x`
-* v5.* is for `ember-bootstrap@4.x` (with Glimmer components, tracking etc)
-* v6.* is for `ember-bootstrap@5.x`
-* v7.* is for `ember@5.x`
+- v2.\* is for `ember-bootstrap@2.x`
+- v3.\* is for `ember-bootstrap@3.x`
+- v4.\* is for `ember-bootstrap@4.x`
+- v5.\* is for `ember-bootstrap@4.x` (with Glimmer components, tracking etc)
+- v6.\* is for `ember-bootstrap@5.x`
+- v7.\* is for `ember@5.x`
 
 ## Demo and docs
 

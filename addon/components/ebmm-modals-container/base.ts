@@ -2,9 +2,9 @@ import { action } from '@ember/object';
 import Component from '@glimmer/component';
 
 import {
-  EbmmConfirmPayload,
-  EbmmDeclinePayload,
-  EbmmModalOptions,
+  type EbmmConfirmPayload,
+  type EbmmDeclinePayload,
+  type EbmmModalOptions,
 } from '../../services/modals-manager';
 
 export interface ModalArgs {

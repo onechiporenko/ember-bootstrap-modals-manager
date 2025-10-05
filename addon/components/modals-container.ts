@@ -3,8 +3,8 @@ import { inject as service } from '@ember/service';
 import Component from '@glimmer/component';
 
 import ModalsManager, {
-  EbmmConfirmPayload,
-  EbmmDeclinePayload,
+  type EbmmConfirmPayload,
+  type EbmmDeclinePayload,
 } from '../services/modals-manager';
 
 export default class ModalsContainer<T> extends Component {

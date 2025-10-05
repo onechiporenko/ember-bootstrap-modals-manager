@@ -8,7 +8,7 @@ import {
   getPromptValue,
   lastLogMessageAssert,
   openModal,
-} from 'ember-modals-manager-internal/test-support';
+} from 'ember-bootstrap-modals-manager/test-support';
 import { setupApplicationTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 

@@ -10,34 +10,24 @@
   @backdropClose={{false}}
   @onSubmit={{this.confirm}}
   @onHidden={{this.decline}}
-as |modal|>
-  <modal.header @title="User Form"/>
+  as |modal|
+>
+  <modal.header @title="User Form" />
   <modal.body>
     <BsForm
       novalidate
       @model={{changeset this.formData this.validations}}
       @onSubmit={{this.confirm}}
-    as |form|>
-      <form.element
-        @property="firstName"
-        @label="First Name"/>
-      <form.element
-        @property="lastName"
-        @label="Last Name"/>
-      <form.element
-        @property="email"
-        @label="Email"/>
+      as |form|
+    >
+      <form.element @property="firstName" @label="First Name" />
+      <form.element @property="lastName" @label="Last Name" />
+      <form.element @property="email" @label="Email" />
     </BsForm>
   </modal.body>
   <modal.footer>
-    <BsButton
-      @onClick={{modal.close}}
-      @type="default"
-      @defaultText="Cancel"/>
-    <BsButton
-      @onClick={{modal.submit}}
-      @type="success"
-      @defaultText="Create"/>
+    <BsButton @onClick={{modal.close}} @type="default" @defaultText="Cancel" />
+    <BsButton @onClick={{modal.submit}} @type="success" @defaultText="Create" />
   </modal.footer>
 </BsModal>
 {{! END-SNIPPET }}

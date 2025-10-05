@@ -1,13 +1,9 @@
 {{! BEGIN-SNIPPET components-custom-prompt-confirm-footer }}
 Custom Prompt Confirm Footer Component
-<BsButton
-  @onClick={{@decline}}>
+<BsButton @onClick={{@decline}}>
   Decline
 </BsButton>
-<BsButton
-  disabled={{@confirmDisabled}}
-  @onClick={{@confirm}}
-  @type="primary">
+<BsButton disabled={{@confirmDisabled}} @onClick={{@confirm}} @type="primary">
   Confirm
 </BsButton>
 {{! END-SNIPPET }}

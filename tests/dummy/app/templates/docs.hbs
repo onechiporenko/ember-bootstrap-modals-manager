@@ -4,13 +4,16 @@
       @type="pills"
       @justified={{false}}
       @stacked={{true}}
-      @fill={{false}} as |nav|
+      @fill={{false}}
+      as |nav|
     >
       <nav.item>
         <nav.link-to @route="docs.install">Install</nav.link-to>
       </nav.item>
       <nav.item>
-        <nav.link-to @route="docs.modals.index"><span class="text-uppercase">Predefined Modals</span></nav.link-to>
+        <nav.link-to @route="docs.modals.index"><span
+            class="text-uppercase"
+          >Predefined Modals</span></nav.link-to>
       </nav.item>
       <nav.item>
         <nav.link-to @route="docs.modals.alert">Alert</nav.link-to>
@@ -34,7 +37,9 @@
         <nav.link-to @route="docs.modals.progress">Progress</nav.link-to>
       </nav.item>
       <nav.item>
-        <nav.link-to class="disabled" @route="index"><span class="text-uppercase">Custom Modals</span></nav.link-to>
+        <nav.link-to class="disabled" @route="index"><span
+            class="text-uppercase"
+          >Custom Modals</span></nav.link-to>
       </nav.item>
       <nav.item>
         <nav.link-to @route="docs.modals.with-form">With Form</nav.link-to>

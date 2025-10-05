@@ -2,22 +2,35 @@
 
 <h3>Firstly:</h3>
 
-<CodeBlock
-  @code="ember i ember-bootstrap-modals-manager" />
+<CodeBlock @code="ember i ember-bootstrap-modals-manager" />
 
-<p><code>ember-bootstrap</code> will be added to the <code>dependencies</code> in the <code>package.json</code> and installed if it wasn't installed before.</p>
+<p><code>ember-bootstrap</code>
+  will be added to the
+  <code>dependencies</code>
+  in the
+  <code>package.json</code>
+  and installed if it wasn't installed before.</p>
 
 <h3>Secondly:</h3>
 
-<p>Add component <code>ModalsContainer</code> to the <code>application.hbs</code>:</p>
+<p>Add component
+  <code>ModalsContainer</code>
+  to the
+  <code>application.hbs</code>:</p>
 
-<CodeBlock @code="<ModalsContainer/>"/>
+<CodeBlock @code="<ModalsContainer/>" />
 <p></p>
 
 <h3>Thirdly:</h3>
 
-<p>Inject a service <code>modals-manager</code> where you want to use modals:</p>
+<p>Inject a service
+  <code>modals-manager</code>
+  where you want to use modals:</p>
 
-<CodeBlockExample @snippetName="controller-with-service.js" @title="Modals Manager injection"/>
+<CodeBlockExample
+  @snippetName="controller-with-service.js"
+  @title="Modals Manager injection"
+/>
 
-<p>That's it. Now you are able to use predefined modals from <code>modals-manager</code>.</p>
+<p>That's it. Now you are able to use predefined modals from
+  <code>modals-manager</code>.</p>

@@ -1,30 +1,63 @@
 <h1><code>prompt</code></h1>
 
-<p>Similar to the <code>window.prompt</code>. It shows modal with two buttons and single input-field.</p>
+<p>Similar to the
+  <code>window.prompt</code>. It shows modal with two buttons and single
+  input-field.</p>
 
 <p>It's used to get some input from user.</p>
 
-<CodeBlockExample @snippetName="prompt-demo-controller.js" @title="Prompt Modal"/>
+<CodeBlockExample
+  @snippetName="prompt-demo-controller.js"
+  @title="Prompt Modal"
+/>
 
-<p>Extra option <code>disallowEmpty</code> with <code>true</code>-value will disable Confirm-button until user input at least something.</p>
+<p>Extra option
+  <code>disallowEmpty</code>
+  with
+  <code>true</code>-value will disable Confirm-button until user input at least
+  something.</p>
 
 <h2>Customization</h2>
-<CodeBlockExample @snippetName="prompt-custom-demo-controller.js" @title="Custom Prompt Modal"/>
+<CodeBlockExample
+  @snippetName="prompt-custom-demo-controller.js"
+  @title="Custom Prompt Modal"
+/>
 
 <h3>Title Component</h3>
 
-<p>It takes a single parameter <code>options</code>. Its value is an object passed to the <code>modalsManager.prompt</code>.</p>
+<p>It takes a single parameter
+  <code>options</code>. Its value is an object passed to the
+  <code>modalsManager.prompt</code>.</p>
 
-<CodeBlockExample @snippetName="components-custom-prompt-header.hbs" @title="components/custom-prompt-header.hbs"/>
+<CodeBlockExample
+  @snippetName="components-custom-prompt-header.hbs"
+  @title="components/custom-prompt-header.hbs"
+/>
 
 <h3>Body Component</h3>
 
-<p>It takes two parameters. First one is an <code>options</code> described before. Second one is an action <code>updatePromptValue</code>. It's used to update prompted value in the modal-scope. Usage example:</p>
+<p>It takes two parameters. First one is an
+  <code>options</code>
+  described before. Second one is an action
+  <code>updatePromptValue</code>. It's used to update prompted value in the
+  modal-scope. Usage example:</p>
 
-<CodeBlockExample @snippetName="components-custom-prompt-body.hbs" @title="components/custom-prompt-body.hbs"/>
+<CodeBlockExample
+  @snippetName="components-custom-prompt-body.hbs"
+  @title="components/custom-prompt-body.hbs"
+/>
 
 <h3>Footer Component</h3>
 
-<p>It takes three parameters. First on is an <code>options</code> described before. Second one is an action <code>confirm</code> used to confirm modal. Third one is an action <code>decline</code> used to decline modal. Both of them may be used like:</p>
+<p>It takes three parameters. First on is an
+  <code>options</code>
+  described before. Second one is an action
+  <code>confirm</code>
+  used to confirm modal. Third one is an action
+  <code>decline</code>
+  used to decline modal. Both of them may be used like:</p>
 
-<CodeBlockExample @snippetName="components-custom-prompt-footer.hbs" @title="components/custom-prompt-footer.hbs"/>
+<CodeBlockExample
+  @snippetName="components-custom-prompt-footer.hbs"
+  @title="components/custom-prompt-footer.hbs"
+/>
