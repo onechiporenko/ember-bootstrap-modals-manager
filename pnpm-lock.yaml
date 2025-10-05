@@ -167,7 +167,7 @@ importers:
         version: 4.1.2(@glint/template@1.6.1)(webpack@5.102.0)
       ember-changeset-validations:
         specifier: ^4.0.0-beta.3
-        version: 4.1.1(@glint/template@1.6.1)(webpack@5.102.0)
+        version: 4.2.0(@ember/string@3.1.1)(@glint/template@1.6.1)(ember-source@6.7.0(@glimmer/component@2.0.0)(rsvp@4.8.5))(webpack@5.102.0)
       ember-cli:
         specifier: ~6.7.0
         version: 6.7.0(handlebars@4.7.8)(underscore@1.13.7)
@@ -3123,9 +3123,12 @@ packages:
     resolution: {integrity: sha512-hSPcvIKarA8wad2/b6jDd/eU+OtKmi6uP+iYQbzi5TQpjsqV6b4QdRqrLk7ClSRRKBAtdTuutx+m+X+WlEd2lw==}
     engines: {node: 10.* || >= 12}
 
-  ember-changeset-validations@4.1.1:
-    resolution: {integrity: sha512-lRT+LOwY+kTMRC/op85L6+FFHDuOkoQvqgexexTiLFECiTNw4vQbOrcAqhfe6n/QJBr5uypZ+bg4W1Ng34dkMg==}
+  ember-changeset-validations@4.2.0:
+    resolution: {integrity: sha512-QNyiDVMEKqz3z7RwJHnL/kK2f+WWPzZl2O81QhSUQAyP0O9poquffrdt8fOXaLzxGCfqLQwAZ8aUNWuxhCHTNA==}
     engines: {node: 12.* || 14.* || >= 16}
+    peerDependencies:
+      '@ember/string': ^3.0.0 || ^4.0.0
+      ember-source: '>= 3.20.0'
 
   ember-changeset@4.1.2:
     resolution: {integrity: sha512-tHQTFOHz1BAUG5taVZJadECm9QsZdZkj59XIRdHnwyG8cOKFnFQamhJFY+Zu2yU7/sAksYtgbr71kFm57Unz9w==}
@@ -6603,6 +6606,9 @@ packages:
   validated-changeset@1.3.5:
     resolution: {integrity: sha512-FLKdrzYoaoltu8Sd6ZrZ/FcYtBSPzML8fVp/+vm3be1Nk2EN5N4UOmHbpovbHtAkTVuapQdU6ZehZrJYDZRzYg==}
 
+  validated-changeset@1.4.1:
+    resolution: {integrity: sha512-GPs6R5bBGP8aY+QIYaDKeO1jJvYzaUhOuZiO6nczUS7MFlgV5oOBq21ShDVrpn28308/6h2fYfC9voJKl4eMtQ==}
+
   vary@1.1.2:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
@@ -8575,15 +8581,11 @@ snapshots:
       '@glimmer/manager': 0.92.4
       '@glimmer/runtime': 0.92.4
       '@types/ember': 4.0.11
-    transitivePeerDependencies:
-      - supports-color
 
   '@types/ember__modifier@4.0.9':
     dependencies:
       '@types/ember': 4.0.11
       '@types/ember__owner': 4.0.9
-    transitivePeerDependencies:
-      - supports-color
 
   '@types/ember__object@4.0.12':
     dependencies:
@@ -10428,13 +10430,16 @@ snapshots:
       - '@babel/core'
       - supports-color
 
-  ember-changeset-validations@4.1.1(@glint/template@1.6.1)(webpack@5.102.0):
+  ember-changeset-validations@4.2.0(@ember/string@3.1.1)(@glint/template@1.6.1)(ember-source@6.7.0(@glimmer/component@2.0.0)(rsvp@4.8.5))(webpack@5.102.0):
     dependencies:
+      '@babel/core': 7.28.4
+      '@ember/string': 3.1.1
       ember-auto-import: 2.11.0(@glint/template@1.6.1)(webpack@5.102.0)
-      ember-cli-babel: 7.26.11
+      ember-cli-babel: 8.2.0(@babel/core@7.28.4)
       ember-get-config: 2.1.1(@glint/template@1.6.1)
+      ember-source: 6.7.0(@glimmer/component@2.0.0)(rsvp@4.8.5)
       ember-validators: 4.1.2(@glint/template@1.6.1)
-      validated-changeset: 1.3.5
+      validated-changeset: 1.4.1
     transitivePeerDependencies:
       - '@glint/template'
       - supports-color
@@ -14917,6 +14922,10 @@ snapshots:
       semver: 7.7.2
 
   validated-changeset@1.3.5:
+    dependencies:
+      '@ungap/structured-clone': 0.3.4
+
+  validated-changeset@1.4.1:
     dependencies:
       '@ungap/structured-clone': 0.3.4
 
