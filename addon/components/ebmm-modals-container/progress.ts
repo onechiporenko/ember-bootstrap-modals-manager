@@ -1,6 +1,5 @@
 import { A } from '@ember/array';
 import { action } from '@ember/object';
-import type Owner from '@ember/owner';
 import { runTask } from 'ember-lifeline';
 import RSVP from 'rsvp';
 import { tracked, TrackedArray } from 'tracked-built-ins';
@@ -57,7 +56,7 @@ export default class ProgressModal<T> extends Base {
     return (this.done / this.promisesCount) * 100;
   }
 
-  constructor(owner: Owner, args: ModalArgs) {
+  constructor(owner: unknown, args: ModalArgs) {
     super(owner, args);
     this.initProgress();
   }
