@@ -1,7 +1,4 @@
 import { click, find, visit } from '@ember/test-helpers';
-import { setupApplicationTest } from 'ember-qunit';
-import { module, test } from 'qunit';
-
 import {
   getConfirmButtonState,
   getConfirmModal,
@@ -12,6 +9,8 @@ import {
   lastLogMessageAssert,
   openModal,
 } from 'ember-bootstrap-modals-manager/test-support';
+import { setupApplicationTest } from 'ember-qunit';
+import { module, test } from 'qunit';
 
 const confirmButtonState = getConfirmButtonState(
   '.modal-footer button:last-child',
