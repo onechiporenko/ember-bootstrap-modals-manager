@@ -1,44 +1,89 @@
 <h1>Predefined modals</h1>
 
-<p>Every modal described below takes a single parameter. It's a POJO with properties:</p>
+<p>Every modal described below takes a single parameter. It's a POJO with
+  properties:</p>
 
 <h6>General</h6>
 <ul>
   <li><code>title</code> - modal's title</li>
   <li><code>body</code> - modal's body message</li>
-  <li><code>footer</code> - text shown near the footer buttons (empty string by default)</li>
-  <li><code>titleComponent</code> - custom component rendered as modal's title</li>
-  <li><code>bodyComponent</code> - custom component rendered as modal's body</li>
-  <li><code>footerComponent</code> - custom component rendered as modals' footer</li>
-  <li><code>size</code> - modal's size. Set to <code>null</code> (default), <code>lg</code> or <code>sm</code></li>
-  <li><code>backdropClose</code> - if <code>true</code> clicking on the backdrop will close the modal</li>
-  <li><code>backdropTransitionDuration</code> - the duration of the backdrop fade transition</li>
-  <li><code>keyboard</code> - closes the modal when <code>escape</code> key is pressed</li>
-  <li><code>renderInPlace</code> - if `true` component will render in place, rather than be wormholed</li>
+  <li><code>footer</code>
+    - text shown near the footer buttons (empty string by default)</li>
+  <li><code>titleComponent</code>
+    - custom component rendered as modal's title</li>
+  <li><code>bodyComponent</code>
+    - custom component rendered as modal's body</li>
+  <li><code>footerComponent</code>
+    - custom component rendered as modals' footer</li>
+  <li><code>size</code>
+    - modal's size. Set to
+    <code>null</code>
+    (default),
+    <code>lg</code>
+    or
+    <code>sm</code></li>
+  <li><code>backdropClose</code>
+    - if
+    <code>true</code>
+    clicking on the backdrop will close the modal</li>
+  <li><code>backdropTransitionDuration</code>
+    - the duration of the backdrop fade transition</li>
+  <li><code>keyboard</code>
+    - closes the modal when
+    <code>escape</code>
+    key is pressed</li>
+  <li><code>renderInPlace</code>
+    - if `true` component will render in place, rather than be wormholed</li>
   <li><code>transitionDuration</code> - the duration of the fade transition</li>
   <li><code>modalClass</code> - add a custom class to any modal</li>
-  <li><code>position</code> - vertical position, either 'top' (default) or 'center'. 'center' will apply the <code>modal-dialog-centered</code> class</li>
-  <li><code>scrollable</code> - allows scrolling within the modal body. <code>true</code> will apply the <code>modal-dialog-scrollable</code> class</li>
+  <li><code>position</code>
+    - vertical position, either 'top' (default) or 'center'. 'center' will apply
+    the
+    <code>modal-dialog-centered</code>
+    class</li>
+  <li><code>scrollable</code>
+    - allows scrolling within the modal body.
+    <code>true</code>
+    will apply the
+    <code>modal-dialog-scrollable</code>
+    class</li>
 </ul>
 
 <h6>Confirm Button</h6>
 <ul>
   <li><code>confirm</code> - text for confirm-button</li>
   <li><code>confirmIsActive</code> - is confirm-button active</li>
-  <li><code>confirmButtonSize</code> - property for size styling, set to <code>lg</code>, <code>md</code>, <code>sm</code> or <code>xs</code></li>
+  <li><code>confirmButtonSize</code>
+    - property for size styling, set to
+    <code>lg</code>,
+    <code>md</code>,
+    <code>sm</code>
+    or
+    <code>xs</code></li>
   <li><code>confirmButtonType</code> - type of confirm-button ('primary')</li>
-  <li><code>confirmIconActive</code> - icon for confirm-button when it's active</li>
-  <li><code>confirmIconInactive</code> - icon for confirm-button when it's not active</li>
+  <li><code>confirmIconActive</code>
+    - icon for confirm-button when it's active</li>
+  <li><code>confirmIconInactive</code>
+    - icon for confirm-button when it's not active</li>
 </ul>
 
-<h6>Decline Button <small>(not used in the <code>alert</code>-modal)</small></h6>
+<h6>Decline Button
+  <small>(not used in the <code>alert</code>-modal)</small></h6>
 <ul>
   <li><code>decline</code> - text for decline-button</li>
   <li><code>declineIsActive</code> - is decline-button active</li>
-  <li><code>declineButtonSize</code> - property for size styling, set to <code>lg</code>, <code>md</code>, <code>sm</code> or <code>xs</code></li>
+  <li><code>declineButtonSize</code>
+    - property for size styling, set to
+    <code>lg</code>,
+    <code>md</code>,
+    <code>sm</code>
+    or
+    <code>xs</code></li>
   <li><code>declineButtonType</code> - type of decline-button ('secondary')</li>
-  <li><code>declineIconActive</code> - icon for decline-button when it's active</li>
-  <li><code>declineIconInactive</code> - icon for decline-button when it's not active</li>
+  <li><code>declineIconActive</code>
+    - icon for decline-button when it's active</li>
+  <li><code>declineIconInactive</code>
+    - icon for decline-button when it's not active</li>
 </ul>
 
 <p>There are custom properties used in the next modals:</p>
@@ -50,18 +95,22 @@
 
 <h6>Check Confirm</h6>
 <ul>
-  <li><code>inputLabel</code> - label for the checkbox shown in the modal's body</li>
+  <li><code>inputLabel</code>
+    - label for the checkbox shown in the modal's body</li>
 </ul>
 
 <h6>Prompt Confirm</h6>
 <ul>
-  <li><code>inputLabel</code> - label for the input shown in the modal's body</li>
-  <li><code>promptValue</code> - value that must be prompted in the modal's body to confirm modal</li>
+  <li><code>inputLabel</code>
+    - label for the input shown in the modal's body</li>
+  <li><code>promptValue</code>
+    - value that must be prompted in the modal's body to confirm modal</li>
 </ul>
 
 <h6>Progress</h6>
 <ul>
-  <li><code>showLabel</code> - if true a label will be shown inside the progress bar</li>
+  <li><code>showLabel</code>
+    - if true a label will be shown inside the progress bar</li>
   <li><code>striped</code> - create a striped effect</li>
   <li><code>animate</code> - animate the stripes</li>
   <li><code>type</code> - property for type styling</li>
@@ -74,10 +123,16 @@
 
 <p>You may set default options for all modals with:</p>
 
-<CodeBlock @code="modalsManager.defaultOptions = {...};" @name="default-options.js" />
+<CodeBlock
+  @code="modalsManager.defaultOptions = {...};"
+  @name="default-options.js"
+/>
 <p></p>
 
 <p>If needed, you may set specific option with:</p>
 
-<CodeBlock @code="modalsManager.defaultOptions[oneOfAvailableOptionsAbove] = value;" @name="specific-options.js" />
+<CodeBlock
+  @code="modalsManager.defaultOptions[oneOfAvailableOptionsAbove] = value;"
+  @name="specific-options.js"
+/>
 <p></p>

@@ -3,7 +3,8 @@
   @open={{@modalIsOpened}}
   @onSubmit={{this.confirm}}
   @onHide={{this.decline}}
-  as |modal|>
+  as |modal|
+>
   <modal.footer>
     <BsButton @onClick={{modal.close}} @type="default">Cancel</BsButton>
     <BsButton @onClick={{modal.submit}} @type="success">Create</BsButton>
