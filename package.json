@@ -100,7 +100,7 @@
     "ember-focus-trap": "1.1.0",
     "ember-load-initializers": "^3.0.1",
     "ember-page-title": "^9.0.3",
-    "ember-power-select": "^7.1.0",
+    "ember-power-select": "^8.0.0",
     "ember-prism": "^0.13.0",
     "ember-qunit": "^9.0.3",
     "ember-resolver": "^13.1.1",
