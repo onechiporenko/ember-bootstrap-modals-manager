@@ -5,11 +5,12 @@ import RSVP from 'rsvp';
 import { tracked, TrackedArray } from 'tracked-built-ins';
 
 import {
-  EbmmConfirmPayload,
-  EbmmDeclinePayload,
-  EbmmPromiseFactory,
+  type EbmmConfirmPayload,
+  type EbmmDeclinePayload,
+  type EbmmPromiseFactory,
 } from '../../services/modals-manager';
-import Base, { ModalArgs } from './base';
+import Base, { type ModalArgs } from './base';
+import type Owner from '@ember/owner';
 
 const noResult = Symbol('no-result');
 
@@ -56,7 +57,7 @@ export default class ProgressModal<T> extends Base {
     return (this.done / this.promisesCount) * 100;
   }
 
-  constructor(owner: unknown, args: ModalArgs) {
+  constructor(owner: Owner, args: ModalArgs) {
     super(owner, args);
     this.initProgress();
   }

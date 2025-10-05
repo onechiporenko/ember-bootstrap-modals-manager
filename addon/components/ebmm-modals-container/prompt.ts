@@ -2,7 +2,7 @@ import { action } from '@ember/object';
 import { isEmpty } from '@ember/utils';
 import { tracked } from '@glimmer/tracking';
 
-import { EbmmConfirmPayload } from '../../services/modals-manager';
+import { type EbmmConfirmPayload } from '../../services/modals-manager';
 import BaseModal from './base';
 
 /**
