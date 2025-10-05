@@ -1,3 +1,5 @@
+import type Owner from '@ember/owner';
+
 import {
   type EbmmConfirmPayload,
   type EbmmDeclinePayload,
@@ -8,7 +10,7 @@ import Base, { type ModalArgs } from './base';
  * @category Default Modals
  */
 export default class ProcessModal extends Base {
-  constructor(owner: unknown, args: ModalArgs) {
+  constructor(owner: Owner, args: ModalArgs) {
     super(owner, args);
     this.initProcess();
   }
