@@ -79,6 +79,7 @@ export default tseslint.config(
     },
   },
   {
+    ...qunit.configs.recommended,
     files: ['tests/**/*-test.{ts,js,gjs}'],
     plugins: {
       qunit,
@@ -88,6 +89,7 @@ export default tseslint.config(
    * CJS node files
    */
   {
+    ...n.configs['flat/recommended-script'],
     files: [
       '**/*.cjs',
       'config/**/*.js',
@@ -122,6 +124,7 @@ export default tseslint.config(
    * ESM node files
    */
   {
+    ...n.configs['flat/recommended-module'],
     files: ['**/*.mjs'],
     plugins: {
       n,
